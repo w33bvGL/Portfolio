@@ -15,7 +15,7 @@ export default defineEventHandler(() => {
       { name: 'Vitest', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitest/vitest-original.svg' },
       { name: 'Vuetify', icon: 'https://bestofjs.org/logos/vuetify.svg' },
       { name: 'Nuxt UI', icon: 'https://nuxt.com/assets/design-kit/icon-green.svg' },
-      { name: 'Prime Vue', icon: 'https://techstackapps.com/wp-content/uploads/2024/10/primevue-original.png' },
+      { name: 'Prime Vue', icon: '/tech/prime-vue.png' },
       { name: 'ShadCN', icon: 'https://avatars.githubusercontent.com/u/139895814?s=200&v=4' }
     ],
     backend: [

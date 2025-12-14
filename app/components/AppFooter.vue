@@ -7,7 +7,9 @@ const { footer } = useAppConfig()
     :ui="{ left: 'text-xs mt-0', container: 'px-0 md:px-0 lg:px-0 flex flex-row-reverse lg:flex-row w-full justify-between' }"
   >
     <template #left>
-      <p class="text-primary">{{ footer.credits }}</p>
+      <p class="text-primary">
+        {{ footer.credits }}
+      </p>
     </template>
 
     <template #right>

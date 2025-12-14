@@ -2,12 +2,9 @@
 import * as locales from '@nuxt/ui/locale'
 import AppIcons from '~/components/AppIcons.vue'
 
-const appConfig = useAppConfig()
 const colorMode = useColorMode()
 const { locale } = useI18n()
 const color = computed(() => colorMode.value === 'dark' ? '#020618' : 'white')
-
-const blackAsPrimary = computed(() => appConfig.theme.blackAsPrimary ? `:root { --ui-primary: black; } .dark { --ui-primary: white; }` : ':root {}')
 
 useHead({
   meta: [
@@ -18,21 +15,16 @@ useHead({
   link: [
     { rel: 'icon', href: '/favicon.ico' }
   ],
-  style: [
-    { innerHTML: blackAsPrimary, id: 'nuxt-ui-black-as-primary', tagPriority: -2 }
-  ],
   htmlAttrs: {
     lang: locale.value
   }
 })
 
-// SEO
 useSeoMeta({
   ogImage: '/avatar-og.jpg',
   twitterImage: '/avatar-og.jpg',
   twitterCard: 'summary'
 })
-
 </script>
 
 <template>

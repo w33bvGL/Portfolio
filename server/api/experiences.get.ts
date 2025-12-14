@@ -2,10 +2,10 @@ export default defineEventHandler(() => {
   return {
     ru: [
       {
-        year: '2024 — 2025',
+        year: '2024',
         company: 'Nsoft',
         title: 'Middle Full-Stack Разработчик',
-        period: 'Октябрь 2024 — Октябрь 2025',
+        period: 'Октябрь 2024',
         description: 'Писал код для микросервисов, занимался фронтендом и backend. Поддерживал работоспособность и корректную работу системы. Создал уникальную систему получения курсов валют.'
       },
       {
@@ -25,10 +25,10 @@ export default defineEventHandler(() => {
     ],
     en: [
       {
-        year: '2024 — 2025',
+        year: '2024',
         company: 'Nsoft',
         title: 'Middle Full-Stack Developer',
-        period: 'October 2024 — October 2025',
+        period: 'October 2024',
         description: 'Wrote code for microservices, worked on frontend and backend. Maintained system functionality and stability. Created a unique currency rates retrieval system.'
       },
       {
@@ -48,10 +48,10 @@ export default defineEventHandler(() => {
     ],
     hy: [
       {
-        year: '2024 — 2025',
+        year: '2024',
         company: 'Nsoft',
         title: 'Միջին Full-Stack Ծրագրավորող',
-        period: 'Հոկտեմբեր 2024 — Հոկտեմբեր 2025',
+        period: 'Հոկտեմբեր 2024',
         description: 'Գրել եմ կոդ միկրոսերվիսների համար, զբաղվել frontend և backend-ով։ Պահպանել եմ համակարգի աշխատանքը և կայունությունը։ Ստեղծել եմ եզակի արժույթների փոխարժեքների ստացման համակարգ։'
       },
       {
@@ -71,10 +71,10 @@ export default defineEventHandler(() => {
     ],
     uk: [
       {
-        year: '2024 — 2025',
+        year: '2024',
         company: 'Nsoft',
         title: 'Middle Full-Stack Розробник',
-        period: 'Жовтень 2024 — Жовтень 2025',
+        period: 'Жовтень 2024',
         description: 'Писав код для мікросервісів, займався фронтендом і backend. Підтримував працездатність та стабільну роботу системи. Створив унікальну систему отримання курсів валют.'
       },
       {
