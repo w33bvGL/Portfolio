@@ -14,9 +14,10 @@ const achievements = computed<Achievement[]>(() => achData.value?.[locale.value]
 <template>
   <section class="story-section">
     <div class="grid-layout">
-
       <div class="column bio-col">
-        <h2 class="col-title">{{ t('about.title') }}</h2>
+        <h2 class="col-title">
+          {{ t('about.title') }}
+        </h2>
 
         <div class="cards-stack">
           <div
@@ -24,14 +25,20 @@ const achievements = computed<Achievement[]>(() => achData.value?.[locale.value]
             :key="idx"
             class="story-card glass-panel"
           >
-            <h3 class="card-title">{{ item.title }}</h3>
-            <p class="card-text">{{ item.content }}</p>
+            <h3 class="card-title">
+              {{ item.title }}
+            </h3>
+            <p class="card-text">
+              {{ item.content }}
+            </p>
           </div>
         </div>
       </div>
 
       <div class="column ach-col">
-        <h2 class="col-title">{{ t('achievements.title') }}</h2>
+        <h2 class="col-title">
+          {{ t('achievements.title') }}
+        </h2>
 
         <div class="timeline-stack">
           <div class="timeline-line" />
@@ -44,12 +51,13 @@ const achievements = computed<Achievement[]>(() => achData.value?.[locale.value]
             <div class="ach-dot" />
             <div class="ach-card glass-panel">
               <span class="ach-year">{{ item.year }}</span>
-              <p class="ach-desc">{{ item.description }}</p>
+              <p class="ach-desc">
+                {{ item.description }}
+              </p>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </section>
 </template>

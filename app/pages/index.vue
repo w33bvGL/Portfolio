@@ -13,9 +13,9 @@ useSeoMeta({
 <template>
   <div class="page-home">
     <IndexCta />
- <IndexExperience />
-<!--    <IndexEducation/>-->
-    <IndexFaq/>
+    <IndexExperience />
+    <!--    <IndexEducation/> -->
+    <IndexFaq />
   </div>
 </template>
 

@@ -5,14 +5,12 @@ const { t } = useI18n()
 
 <template>
   <section class="hero-section">
-
     <div class="ambient-glow">
       <div class="glow-spot spot-1" />
       <div class="glow-spot spot-2" />
     </div>
 
     <div class="glass-container">
-
       <div class="avatar-block stagger-item">
         <div class="avatar-wrapper">
           <div class="avatar-ring" />
@@ -44,7 +42,6 @@ const { t } = useI18n()
         <IndexResumeDropdown />
         <IndexSocials />
       </div>
-
     </div>
   </section>
 </template>

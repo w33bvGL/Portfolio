@@ -5,15 +5,19 @@ const { data: techs } = await useAsyncData('technologies', () => $fetch('/api/te
 const groups = [
   { key: 'frontend', title: 'Frontend', items: techs.value?.frontend },
   { key: 'backend', title: 'Backend', items: techs.value?.backend },
-  { key: 'tools', title: 'Tools & DevOps', items: techs.value?.tools },
+  { key: 'tools', title: 'Tools & DevOps', items: techs.value?.tools }
 ]
 </script>
 
 <template>
   <section class="stack-section">
     <div class="section-header">
-      <h2 class="section-title">Tech Stack</h2>
-      <p class="section-desc">Tools used to build the future.</p>
+      <h2 class="section-title">
+        Tech Stack
+      </h2>
+      <p class="section-desc">
+        Tools used to build the future.
+      </p>
     </div>
 
     <div class="stack-grid">
@@ -22,7 +26,9 @@ const groups = [
         :key="group.key"
         class="stack-group glass-panel"
       >
-        <h3 class="group-title">{{ group.title }}</h3>
+        <h3 class="group-title">
+          {{ group.title }}
+        </h3>
 
         <div class="tech-list">
           <div
@@ -31,7 +37,12 @@ const groups = [
             class="tech-item"
           >
             <div class="icon-box">
-              <img :src="tech.icon" :alt="tech.name" class="tech-icon" loading="lazy" />
+              <img
+                :src="tech.icon"
+                :alt="tech.name"
+                class="tech-icon"
+                loading="lazy"
+              >
             </div>
             <span class="tech-name">{{ tech.name }}</span>
           </div>

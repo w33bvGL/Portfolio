@@ -31,7 +31,10 @@ onUnmounted(() => document.removeEventListener('click', close))
 </script>
 
 <template>
-  <div class="resume-wrapper" ref="containerRef">
+  <div
+    ref="containerRef"
+    class="resume-wrapper"
+  >
     <UiButton
       variant="primary"
       icon="lucide:file-down"
@@ -47,7 +50,10 @@ onUnmounted(() => document.removeEventListener('click', close))
     </UiButton>
 
     <Transition name="fade-drop">
-      <div v-if="isOpen" class="dropdown-menu glass-panel">
+      <div
+        v-if="isOpen"
+        class="dropdown-menu glass-panel"
+      >
         <button
           v-for="l in locales"
           :key="l.code"
@@ -56,7 +62,10 @@ onUnmounted(() => document.removeEventListener('click', close))
         >
           <span class="lang-code">{{ l.code.toUpperCase() }}</span>
           <span class="lang-label">{{ l.name }}</span>
-          <Icon name="lucide:download" class="dl-icon" />
+          <Icon
+            name="lucide:download"
+            class="dl-icon"
+          />
         </button>
       </div>
     </Transition>

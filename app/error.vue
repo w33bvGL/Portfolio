@@ -18,7 +18,6 @@ useHead({
 
 <template>
   <div class="error-view">
-
     <div class="fx-background">
       <div class="orb orb-1" />
       <div class="orb orb-2" />
@@ -27,7 +26,6 @@ useHead({
 
     <div class="glass-container">
       <div class="content-stagger">
-
         <h1 class="code">
           {{ error.statusCode }}
         </h1>
@@ -51,10 +49,8 @@ useHead({
             Return to Base
           </UiButton>
         </div>
-
       </div>
     </div>
-
   </div>
 </template>
 

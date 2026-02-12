@@ -5,7 +5,6 @@ const { locale, t } = useI18n()
 const { experienceString } = useExperienceString()
 const { vIntersection } = useScrollObserver()
 
-// Fetch Data
 const { data: experienceByLang } = await useAsyncData<TranslatedExperiences>(
   'experiences',
   () => $fetch('/api/experiences')
@@ -19,31 +18,27 @@ const experiences = computed<Experience[]>(() => {
 
 <template>
   <section class="experience-section">
-
-    <div class="section-header scroll-reveal" v-intersection>
-      <div class="title-row">
-        <h2 class="section-title">
-          {{ t('experience.title') }}
-        </h2>
+    <UiSectionHeader
+      :title="t('experience.title')"
+      :description="t('experience.description')"
+    >
+      <template #badge>
         <div class="exp-badge">
           <span class="exp-count">{{ experienceString }}</span>
         </div>
-      </div>
-      <p class="section-desc">{{ t('experience.description') }}</p>
-    </div>
+      </template>
+    </UiSectionHeader>
 
     <div class="timeline-wrapper">
-
       <div class="mobile-track" />
 
       <div
         v-for="(exp, index) in experiences"
         :key="index"
-        class="timeline-row scroll-reveal"
         v-intersection
+        class="timeline-row scroll-reveal"
         :style="{ '--delay': `${index * 0.1}s` }"
       >
-
         <div class="connector-anchor">
           <div class="connector-dot">
             <div class="dot-core" />
@@ -60,7 +55,9 @@ const experiences = computed<Experience[]>(() => {
             <div class="card-header">
               <span class="mobile-period">{{ exp.period || exp.year }}</span>
 
-              <h3 class="job-title">{{ exp.title }}</h3>
+              <h3 class="job-title">
+                {{ exp.title }}
+              </h3>
               <div class="company-info">
                 <span class="company-name">{{ exp.company }}</span>
               </div>
@@ -71,9 +68,7 @@ const experiences = computed<Experience[]>(() => {
           </div>
         </div>
       </div>
-
     </div>
-
   </section>
 </template>
 
@@ -87,31 +82,6 @@ const experiences = computed<Experience[]>(() => {
 
 @media (min-width: 640px) {
   .experience-section { padding: 0 2rem; }
-}
-
-.section-header {
-  margin-bottom: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-@media (min-width: 1024px) {
-  .section-header { margin-bottom: 3rem; }
-}
-
-.title-row {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.section-title {
-  font-size: var(--font-h2);
-  color: var(--text-main);
-  line-height: var(--leading-tight);
-  margin-bottom: 0.5rem;
 }
 
 .exp-badge {
@@ -129,17 +99,12 @@ const experiences = computed<Experience[]>(() => {
   letter-spacing: 0.05em;
 }
 
-.section-desc {
-  font-size: var(--font-body-lg);
-  color: var(--text-muted);
-  line-height: var(--leading-normal);
-}
-
 .timeline-wrapper {
   display: flex;
   flex-direction: column;
   position: relative;
   padding-left: 1.5rem;
+  gap: 2rem;
 }
 
 @media (min-width: 1024px) {
@@ -175,31 +140,13 @@ const experiences = computed<Experience[]>(() => {
   display: flex;
   justify-content: center;
   width: 20px;
-
-  left: -32px;
+  left: -9px;
   top: 1.5rem;
 }
 
 @media (min-width: 1024px) {
   .connector-anchor {
     left: calc(-2rem - 10px);
-  }
-}
-
-.date-anchor {
-  display: none;
-}
-
-@media (min-width: 1024px) {
-  .date-anchor {
-    display: block;
-    position: absolute;
-    right: 100%;
-    top: 1.5rem;
-    padding-right: 3.5rem;
-    text-align: right;
-    width: 200px;
-    pointer-events: none;
   }
 }
 
@@ -237,8 +184,26 @@ const experiences = computed<Experience[]>(() => {
   z-index: 1;
 }
 
+/* --- Date Anchor --- */
+.date-anchor {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .date-anchor {
+    display: block;
+    position: absolute;
+    right: 100%;
+    top: 1.5rem;
+    padding-right: 3.5rem;
+    text-align: right;
+    width: 200px;
+    pointer-events: none;
+  }
+}
+
 .desktop-period {
-  font-family: var(--font-sans);
+  font-family: var(--font-sans),sans-serif;
   font-size: var(--font-small);
   font-weight: 600;
   color: var(--text-muted);
@@ -329,6 +294,6 @@ const experiences = computed<Experience[]>(() => {
 
 @keyframes pulse {
   0% { width: 100%; height: 100%; opacity: 0.5; border-width: 2px; }
-  100% { width: 250%; height: 250%; opacity: 0; border-width: 0px; }
+  100% { width: 250%; height: 250%; opacity: 0; border-width: 0; }
 }
 </style>

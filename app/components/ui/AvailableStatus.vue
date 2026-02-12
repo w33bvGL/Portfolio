@@ -21,7 +21,10 @@ defineProps({
       <div class="solid-dot" />
     </div>
 
-    <span v-if="!compact" class="status-label">
+    <span
+      v-if="!compact"
+      class="status-label"
+    >
       {{ isAvailable ? t('availability.available') : t('availability.unavailable') }}
     </span>
   </div>

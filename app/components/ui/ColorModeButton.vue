@@ -59,7 +59,10 @@ const startViewTransition = (event: MouseEvent) => {
         class="theme-btn"
         @click="startViewTransition"
       >
-        <Icon :name="iconName" class="theme-icon" />
+        <Icon
+          :name="iconName"
+          class="theme-icon"
+        />
       </button>
 
       <template #fallback>

@@ -3,7 +3,10 @@ const { footer } = useAppConfig()
 </script>
 
 <template>
-  <div class="social-group" v-if="footer?.links">
+  <div
+    v-if="footer?.links"
+    class="social-group"
+  >
     <UiButton
       v-for="(link, index) of footer.links"
       :key="index"

@@ -4,11 +4,11 @@ const { locale } = useI18n()
 useHead({
   meta: [
     { charset: 'utf-8' },
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' }
   ],
   link: [
     { rel: 'icon', href: '/favicon.ico' }
-  ],
+  ]
 })
 
 useSeoMeta({
@@ -19,14 +19,14 @@ useSeoMeta({
 </script>
 
 <template>
-    <NuxtLoadingIndicator
-      :height="2"
-    />
-    <NuxtLayout>
-      <main class="relative">
-        <NuxtPage />
-      </main>
-    </NuxtLayout>
+  <NuxtLoadingIndicator
+    :height="2"
+  />
+  <NuxtLayout>
+    <main class="relative">
+      <NuxtPage />
+    </main>
+  </NuxtLayout>
 </template>
 
 <style scoped>

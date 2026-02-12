@@ -28,7 +28,10 @@ const img = useImage()
       />
 
       <div class="hover-icon">
-        <Icon name="lucide:arrow-up-right" class="icon" />
+        <Icon
+          name="lucide:arrow-up-right"
+          class="icon"
+        />
       </div>
     </div>
 

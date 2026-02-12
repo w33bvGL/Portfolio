@@ -6,7 +6,6 @@ const { t } = useI18n()
 <template>
   <section class="about-intro">
     <div class="glass-panel content-wrapper">
-
       <div class="text-side">
         <h1 class="title">
           {{ t('about.title') }}
@@ -17,7 +16,10 @@ const { t } = useI18n()
           {{ t('about.intro') }}
         </p>
 
-        <div class="socials" v-if="footer?.links">
+        <div
+          v-if="footer?.links"
+          class="socials"
+        >
           <UiButton
             v-for="(link, index) of footer.links"
             :key="index"
@@ -27,7 +29,10 @@ const { t } = useI18n()
             class="social-btn"
             :aria-label="link['aria-label']"
           >
-            <Icon :name="link.icon.replace('i-simple-icons-', 'simple-icons:')" class="icon" />
+            <Icon
+              :name="link.icon.replace('i-simple-icons-', 'simple-icons:')"
+              class="icon"
+            />
           </UiButton>
         </div>
       </div>
@@ -45,7 +50,6 @@ const { t } = useI18n()
           </div>
         </div>
       </div>
-
     </div>
   </section>
 </template>

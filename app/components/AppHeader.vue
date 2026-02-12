@@ -25,7 +25,6 @@ const isActive = (path: string) => {
 <template>
   <header class="header-wrapper">
     <nav class="nav-bar">
-
       <NuxtLink
         v-for="link in links"
         :key="link.key"
@@ -33,15 +32,25 @@ const isActive = (path: string) => {
         class="nav-link"
         :class="{ 'is-active': isActive(link.to) }"
       >
-        <div class="nav-pill" v-if="isActive(link.to)" layoutId="nav-pill" />
+        <div
+          v-if="isActive(link.to)"
+          class="nav-pill"
+          layoutId="nav-pill"
+        />
 
         <div class="nav-content">
-          <Icon :name="link.icon" class="nav-icon" />
+          <Icon
+            :name="link.icon"
+            class="nav-icon"
+          />
 
           <span class="nav-text">{{ t(`routes.${link.key}`) }}</span>
         </div>
 
-        <div class="active-dot" :class="{ 'dot-visible': isActive(link.to) }" />
+        <div
+          class="active-dot"
+          :class="{ 'dot-visible': isActive(link.to) }"
+        />
       </NuxtLink>
 
       <div class="divider" />
@@ -49,7 +58,6 @@ const isActive = (path: string) => {
       <div class="theme-switch-wrapper">
         <UiColorModeButton />
       </div>
-
     </nav>
   </header>
 </template>

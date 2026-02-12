@@ -16,16 +16,13 @@ const faqItems = computed<FaqItem[]>(() => {
 
 <template>
   <section class="faq-section">
-
-    <div class="section-header">
-      <h2 class="section-title">{{  t('faq.title') }}</h2>
-      <p class="section-desc">
-        {{ t('faq.description') }}
-      </p>
-    </div>
+    <UiSectionHeader
+      :title="t('faq.title')"
+      :description="t('faq.description')"
+      align="center"
+    />
 
     <UiAccordion :items="faqItems" />
-
   </section>
 </template>
 

@@ -19,10 +19,13 @@ const educations = computed<Education[]>(() => {
 
 <template>
   <section class="education-section">
-
     <div class="section-header">
-      <h2 class="section-title">{{ t('education.title') }}</h2>
-      <p class="section-desc">{{ t('education.description') }}</p>
+      <h2 class="section-title">
+        {{ t('education.title') }}
+      </h2>
+      <p class="section-desc">
+        {{ t('education.description') }}
+      </p>
     </div>
 
     <div class="grid-container">
@@ -35,7 +38,10 @@ const educations = computed<Education[]>(() => {
         :style="{ '--delay': `${index * 0.1}s` }"
       >
         <div class="card-icon">
-          <Icon name="lucide:graduation-cap" class="icon" />
+          <Icon
+            name="lucide:graduation-cap"
+            class="icon"
+          />
         </div>
 
         <div class="card-content">
@@ -48,7 +54,6 @@ const educations = computed<Education[]>(() => {
         </div>
       </a>
     </div>
-
   </section>
 </template>
 

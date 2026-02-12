@@ -9,7 +9,6 @@ const currentYear = new Date().getFullYear()
 <template>
   <footer class="footer-wrapper">
     <div class="glass-bar">
-
       <div class="credits">
         <span class="copyright-symbol">©</span>
         <span class="year">{{ currentYear }}</span>
@@ -19,7 +18,10 @@ const currentYear = new Date().getFullYear()
       <div class="spacer" />
 
       <div class="actions">
-        <div class="socials" v-if="links.length">
+        <div
+          v-if="links.length"
+          class="socials"
+        >
           <UiButton
             v-for="(link, idx) in links"
             :key="idx"
@@ -40,7 +42,6 @@ const currentYear = new Date().getFullYear()
 
         <UiLanguageSwitcher />
       </div>
-
     </div>
   </footer>
 </template>

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 const { locale, locales, setLocale } = useI18n()
 const isOpen = ref(false)
 const containerRef = ref(null)
@@ -31,21 +30,33 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="lang-switcher" ref="containerRef">
-
+  <div
+    ref="containerRef"
+    class="lang-switcher"
+  >
     <button
       class="lang-btn"
       :class="{ 'is-active': isOpen }"
-      @click="toggle"
       aria-label="Change language"
+      @click="toggle"
     >
-      <Icon name="lucide:globe" class="globe-icon" />
+      <Icon
+        name="lucide:globe"
+        class="globe-icon"
+      />
       <span class="current-lang">{{ currentLocaleLabel }}</span>
-      <Icon name="lucide:chevron-up" class="arrow-icon" :class="{ 'rotate': isOpen }" />
+      <Icon
+        name="lucide:chevron-up"
+        class="arrow-icon"
+        :class="{ rotate: isOpen }"
+      />
     </button>
 
     <Transition name="pop-up">
-      <div v-if="isOpen" class="lang-menu glass-panel">
+      <div
+        v-if="isOpen"
+        class="lang-menu glass-panel"
+      >
         <button
           v-for="l in locales"
           :key="l.code"
@@ -54,11 +65,14 @@ onMounted(() => {
           @click="switchLocale(l.code)"
         >
           <span class="lang-name">{{ l.name }}</span>
-          <Icon v-if="l.code === locale" name="lucide:check" class="check-icon" />
+          <Icon
+            v-if="l.code === locale"
+            name="lucide:check"
+            class="check-icon"
+          />
         </button>
       </div>
     </Transition>
-
   </div>
 </template>
 

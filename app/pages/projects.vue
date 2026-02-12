@@ -25,14 +25,12 @@ useSeoMeta({
 
 <template>
   <div class="page-projects">
-
     <div class="page-blobs">
       <div class="blob b-1" />
       <div class="blob b-2" />
     </div>
 
     <div class="container">
-
       <div class="header-section">
         <h1 class="page-title">
           {{ t('projects.title') }}
@@ -56,7 +54,6 @@ useSeoMeta({
       <ProjectsCta />
 
       <div class="spacer" />
-
     </div>
   </div>
 </template>

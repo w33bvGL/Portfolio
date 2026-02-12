@@ -38,7 +38,7 @@ export default defineAppConfig({
         'to': 'mailto:w33bv.gl@gmail.com',
         'target': '_blank',
         'aria-label': 'Send email to Vahe'
-      },
+      }
     ]
   }
 })

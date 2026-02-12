@@ -6,7 +6,8 @@ export default defineNuxtConfig({
     'nuxt-og-image',
     '@nuxtjs/i18n',
     '@nuxtjs/color-mode',
-    '@nuxt/icon'
+    '@nuxt/icon',
+    '@vueuse/nuxt'
   ],
 
   app: {

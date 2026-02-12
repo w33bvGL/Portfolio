@@ -31,16 +31,39 @@ const componentTag = computed(() => {
     class="ui-btn"
     :class="[`variant-${variant}`, { 'is-loading': loading, 'is-block': block }]"
   >
-    <Icon v-if="icon && !loading" :name="icon" class="btn-icon" />
+    <Icon
+      v-if="icon && !loading"
+      :name="icon"
+      class="btn-icon"
+    />
 
-    <span class="btn-text" :class="{ 'is-hidden': loading }">
+    <span
+      class="btn-text"
+      :class="{ 'is-hidden': loading }"
+    >
       <slot />
     </span>
 
-    <div v-if="loading" class="spinner">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="10" stroke-opacity="0.1" />
-        <path d="M12 2a10 10 0 0 1 10 10" stroke-opacity="1" />
+    <div
+      v-if="loading"
+      class="spinner"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+          stroke-opacity="0.1"
+        />
+        <path
+          d="M12 2a10 10 0 0 1 10 10"
+          stroke-opacity="1"
+        />
       </svg>
     </div>
   </component>

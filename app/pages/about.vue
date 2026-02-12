@@ -12,7 +12,6 @@ useSeoMeta({
 
 <template>
   <div class="page-about">
-
     <div class="page-blobs">
       <div class="blob b-1" />
       <div class="blob b-2" />
@@ -24,7 +23,6 @@ useSeoMeta({
       <AboutStory />
       <AboutFaq />
     </div>
-
   </div>
 </template>
 

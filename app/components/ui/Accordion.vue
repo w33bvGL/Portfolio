@@ -25,13 +25,19 @@ const toggle = (idx: number) => {
         <span class="question-text">{{ item.q }}</span>
 
         <div class="icon-wrapper">
-          <Icon name="lucide:plus" class="toggle-icon" mode="svg" />
+          <Icon
+            name="lucide:plus"
+            class="toggle-icon"
+            mode="svg"
+          />
         </div>
       </button>
 
       <div class="accordion-body">
         <div class="body-inner">
-          <p class="answer-text">{{ item.a }}</p>
+          <p class="answer-text">
+            {{ item.a }}
+          </p>
         </div>
       </div>
     </div>
