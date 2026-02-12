@@ -45,20 +45,21 @@ onUnmounted(() => document.removeEventListener('click', closeResumeMenu))
 
     <div class="glass-container">
 
-      <div class="avatar-wrapper stagger-item">
-        <div class="avatar-ring" />
-
-        <div class="avatar-clip">
-          <SeasonalAvatar
-            :src="global.picture.src"
-            :alt="global.picture.alt"
-            :size="120"
-            class="user-avatar"
-          />
+      <div class="avatar-block stagger-item">
+        <div class="avatar-wrapper">
+          <div class="avatar-ring" />
+          <div class="avatar-clip">
+            <SeasonalAvatar
+              :src="global.picture.src"
+              :alt="global.picture.alt"
+              :size="130"
+              class="user-avatar"
+            />
+          </div>
         </div>
 
-        <div class="status-badge">
-          <UiAvailableStatus compact />
+        <div class="status-container">
+          <UiAvailableStatus />
         </div>
       </div>
 
@@ -127,11 +128,9 @@ onUnmounted(() => document.removeEventListener('click', closeResumeMenu))
 <style scoped>
 .hero-section {
   position: relative;
-  /* Увеличил верхний отступ для баланса */
   padding: 8rem 1.5rem 6rem;
   display: flex;
   justify-content: center;
-  /* overflow: hidden убрали, чтобы свечение не резалось жестко, если layout позволяет */
 }
 
 /* --- Ambient Background --- */
@@ -148,7 +147,7 @@ onUnmounted(() => document.removeEventListener('click', closeResumeMenu))
 .glow-spot {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
+  filter: blur(90px);
   opacity: 0.4;
   will-change: transform;
 }
@@ -172,7 +171,7 @@ onUnmounted(() => document.removeEventListener('click', closeResumeMenu))
   right: 15%;
 }
 
-/* --- Main Container --- */
+/* --- Glass Container --- */
 .glass-container {
   position: relative;
   z-index: 1;
@@ -182,23 +181,21 @@ onUnmounted(() => document.removeEventListener('click', closeResumeMenu))
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 2.5rem;
-  /* Убрали анимацию самого контейнера, чтобы не было сдвигов */
+  gap: 2rem;
+  /* Убрали scale анимацию, чтобы кнопки не прыгали */
 }
 
-/* --- Staggered Animation Logic --- */
-/* Элементы скрыты по умолчанию */
+/* --- Animation Stagger --- */
 .stagger-item {
   opacity: 0;
-  transform: translateY(15px);
+  transform: translateY(20px);
   animation: fade-up 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   will-change: opacity, transform;
 }
 
-/* Задержки для каждого элемента */
 .stagger-item:nth-child(1) { animation-delay: 0.1s; } /* Avatar */
-.stagger-item:nth-child(2) { animation-delay: 0.2s; } /* Content */
-.stagger-item:nth-child(3) { animation-delay: 0.3s; } /* Actions */
+.stagger-item:nth-child(2) { animation-delay: 0.2s; } /* Text */
+.stagger-item:nth-child(3) { animation-delay: 0.3s; } /* Buttons */
 
 @keyframes fade-up {
   to {
@@ -207,31 +204,37 @@ onUnmounted(() => document.removeEventListener('click', closeResumeMenu))
   }
 }
 
-/* --- Avatar Styling --- */
+/* --- Avatar Block --- */
+.avatar-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem; /* Отступ между авой и статусом */
+}
+
 .avatar-wrapper {
   position: relative;
-  width: 120px;
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
 }
 
 .avatar-ring {
   position: absolute;
-  inset: -8px;
+  inset: -10px;
   border-radius: 50%;
-  background: radial-gradient(circle, var(--text-main) 0%, transparent 70%);
-  opacity: 0.1;
+  background: radial-gradient(circle, var(--text-main) 0%, transparent 60%);
+  opacity: 0.08;
 }
 
 .avatar-clip {
   width: 100%;
   height: 100%;
-  border-radius: 50%; /* СТРОГО КРУГЛЫЙ */
-  overflow: hidden;   /* Обрезает всё лишнее */
-  background: var(--glass-bg); /* Фон на случай прозрачной PNG */
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--glass-bg);
+  /* Легкое свечение */
+  box-shadow: 0 0 30px rgba(0,0,0,0.05);
 }
 
 .user-avatar {
@@ -240,20 +243,18 @@ onUnmounted(() => document.removeEventListener('click', closeResumeMenu))
   object-fit: cover;
 }
 
-.status-badge {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
-  z-index: 2;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+.status-container {
+  /* Контейнер для статуса-таблетки */
+  display: flex;
+  justify-content: center;
 }
 
-/* --- Text Content --- */
+/* --- Typography --- */
 .hero-title {
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 800;
   line-height: 1.1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
   margin: 0 0 1rem 0;
 
   background: linear-gradient(180deg, var(--text-main) 20%, rgba(125,125,125,0.4) 100%);
@@ -269,15 +270,13 @@ onUnmounted(() => document.removeEventListener('click', closeResumeMenu))
   margin: 0 auto;
 }
 
-/* --- Actions Wrapper --- */
+/* --- Actions --- */
 .actions-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
   width: 100%;
-
-  /* Фикс от сдвигов: гарантируем выравнивание */
   justify-content: center;
 }
 
@@ -285,13 +284,12 @@ onUnmounted(() => document.removeEventListener('click', closeResumeMenu))
   .actions-wrapper {
     flex-direction: row;
     gap: 1.5rem;
-    align-items: center; /* Центрируем по вертикали */
   }
 }
 
-/* --- Dropdown Styles (Те же самые, но без конфликтов) --- */
+/* --- Dropdown Styles --- */
 .resume-dropdown { position: relative; }
-.resume-trigger { min-width: 190px; justify-content: space-between; }
+.resume-trigger { min-width: 200px; justify-content: space-between; }
 .chevron { width: 1rem; height: 1rem; transition: transform 0.3s; opacity: 0.6; }
 .chevron.is-rotated { transform: rotate(180deg); }
 
@@ -311,7 +309,6 @@ onUnmounted(() => document.removeEventListener('click', closeResumeMenu))
   flex-direction: column;
   gap: 2px;
   z-index: 50;
-  /* Фикс для выпадающего меню, чтобы оно не было прозрачным при анимации родителя */
   transform-origin: top center;
 }
 
