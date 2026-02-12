@@ -37,12 +37,11 @@ useSeoMeta({
 .container {
   max-width: 1000px;
   margin: 0 auto;
-  padding-top: 4rem; /* Отступ от хедера */
+  padding-top: 4rem;
   position: relative;
   z-index: 1;
 }
 
-/* Фоновые пятна */
 .page-blobs {
   position: absolute;
   top: 0;
