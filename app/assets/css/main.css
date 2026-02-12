@@ -17,6 +17,24 @@
   --glass-highlight: rgba(255, 255, 255, 0.8);
 
   --container-width: 56rem;
+
+  --font-hero: clamp(2rem, 5vw, 3.5rem);
+
+  --font-h1: clamp(1.5rem, 3vw, 2.25rem);
+  --font-h2: clamp(1.25rem, 2.5vw, 1.75rem);
+
+  --font-body-lg: clamp(1rem, 1.5vw, 1.125rem);
+  --font-body: 0.95rem;
+  --font-small: 0.85rem;
+
+  --leading-tight: 1.1;
+  --leading-normal: 1.6;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --container-padding: 1.25rem;
+  }
 }
 
 .dark {
