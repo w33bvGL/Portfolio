@@ -15,6 +15,7 @@ useSeoMeta({
     <IndexCta />
  <IndexExperience />
 <!--    <IndexEducation/>-->
+    <IndexFaq/>
   </div>
 </template>
 

@@ -19,6 +19,7 @@
   justify-content: center;
   background-color: var(--bg-body);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .layout-container {
@@ -28,14 +29,12 @@
   display: flex;
   flex-direction: column;
   position: relative;
-
   border-left: 1px solid var(--border-color);
   border-right: 1px solid var(--border-color);
 
   transition: border-color 0.3s ease;
   background-color: var(--bg-body);
-
-  overflow-x: hidden;
+  overflow: visible;
 }
 
 .content-area {
@@ -48,6 +47,7 @@
 @media (max-width: 640px) {
   .layout-container {
     border: none;
+    overflow-x: hidden;
   }
 
   .content-area {

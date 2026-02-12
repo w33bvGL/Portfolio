@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import type { TranslatedExperiences, Experience } from '~/types/experience' // Убедись, что типы существуют
+import type { TranslatedExperiences, Experience } from '~/types/experience'
 
 const { locale, t } = useI18n()
-const { experienceString } = useExperienceString() // Твой композабл
+const { experienceString } = useExperienceString()
+const { vIntersection } = useScrollObserver()
 
-// Получаем данные
+// Fetch Data
 const { data: experienceByLang } = await useAsyncData<TranslatedExperiences>(
   'experiences',
   () => $fetch('/api/experiences')
@@ -19,42 +20,56 @@ const experiences = computed<Experience[]>(() => {
 <template>
   <section class="experience-section">
 
-    <div class="section-header">
-      <h2 class="section-title">
-        {{ t('experience.title') }}
-        <span class="highlight">— {{ experienceString }}</span>
-      </h2>
+    <div class="section-header scroll-reveal" v-intersection>
+      <div class="title-row">
+        <h2 class="section-title">
+          {{ t('experience.title') }}
+        </h2>
+        <div class="exp-badge">
+          <span class="exp-count">{{ experienceString }}</span>
+        </div>
+      </div>
       <p class="section-desc">{{ t('experience.description') }}</p>
     </div>
 
-    <div class="timeline-container">
-      <div class="timeline-track" />
+    <div class="timeline-wrapper">
 
       <div
         v-for="(exp, index) in experiences"
         :key="index"
-        class="timeline-item"
+        class="timeline-row scroll-reveal"
+        v-intersection
         :style="{ '--delay': `${index * 0.1}s` }"
       >
-        <div class="timeline-dot">
-          <div class="pulse-ring" />
-          <div class="solid-point" />
+
+        <div class="connector-anchor">
+          <div class="connector-dot">
+            <div class="dot-core" />
+            <div class="dot-halo" />
+          </div>
         </div>
 
-        <div class="glass-card">
-          <div class="card-header">
-            <h3 class="job-title">{{ exp.title }}</h3>
-            <span class="period-badge">{{ exp.period || exp.year }}</span>
-          </div>
+        <div class="date-anchor">
+          <span class="desktop-period">{{ exp.period || exp.year }}</span>
+        </div>
 
-          <div class="company-row">
-            <span class="company-name">{{ exp.company }}</span>
-            <div class="line-separator" />
-          </div>
+        <div class="content-col">
+          <div class="exp-card glass-panel">
+            <div class="card-header">
+              <span class="mobile-period">{{ exp.period || exp.year }}</span>
 
-          <p class="job-desc">{{ exp.description }}</p>
+              <h3 class="job-title">{{ exp.title }}</h3>
+              <div class="company-info">
+                <span class="company-name">{{ exp.company }}</span>
+              </div>
+            </div>
+            <p class="job-desc">
+              {{ exp.description }}
+            </p>
+          </div>
         </div>
       </div>
+
     </div>
 
   </section>
@@ -62,196 +77,227 @@ const experiences = computed<Experience[]>(() => {
 
 <style scoped>
 .experience-section {
-  position: relative;
-  width: 100%;
-  max-width: 800px;
+  max-width: var(--container-width);
   margin: 0 auto;
+  position: relative;
+  padding: 0 1.5rem;
 }
 
-/* --- Headers --- */
+@media (min-width: 640px) {
+  .experience-section { padding: 0 2rem; }
+}
+
 .section-header {
-  margin-bottom: 3rem;
-  text-align: left;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .section-title {
-  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-size: var(--font-h1);
   font-weight: 800;
-  margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, var(--text-main) 0%, var(--text-muted) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  line-height: var(--leading-tight);
+  color: var(--text-main);
+  margin: 0;
 }
 
-.highlight {
-  font-weight: 400;
-  opacity: 0.6;
-  font-size: 0.8em;
-  -webkit-text-fill-color: var(--text-muted);
+.exp-badge {
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(125, 125, 125, 0.08);
+  border: 1px solid var(--border-color);
+}
+
+.exp-count {
+  font-size: var(--font-small);
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .section-desc {
+  font-size: var(--font-body-lg);
   color: var(--text-muted);
-  font-size: 1.1rem;
-  max-width: 500px;
+  max-width: 600px;
+  line-height: var(--leading-normal);
 }
 
-/* --- Timeline Structure --- */
-.timeline-container {
+.timeline-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
   position: relative;
-  padding-left: 2rem;
 }
 
-.timeline-track {
-  position: absolute;
-  left: 7px; /* Центр точки */
-  top: 1rem;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--primary-color) 0%, transparent 100%);
-  opacity: 0.2;
-}
-
-.timeline-item {
+.timeline-row {
   position: relative;
-  margin-bottom: 2.5rem;
-  opacity: 0;
-  transform: translateX(-20px);
-  animation: slide-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  animation-delay: var(--delay);
+  display: flex;
+  flex-direction: column;
 }
 
-@keyframes slide-in {
-  to { opacity: 1; transform: translateX(0); }
-}
 
-/* --- Dot --- */
-.timeline-dot {
+.connector-anchor {
   position: absolute;
-  left: -2.05rem; /* Выравнивание по линии */
+  left: -0.9rem;
   top: 1.5rem;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  width: 20px;
+}
+
+.date-anchor {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .connector-anchor {
+    left: calc(-2rem - 10px);
+  }
+
+  .date-anchor {
+    display: block;
+    position: absolute;
+    right: 100%;
+    top: 1.5rem;
+    padding-right: 3.5rem;
+    text-align: right;
+    width: 200px;
+    pointer-events: none;
+  }
+}
+
+.connector-dot {
+  position: relative;
   width: 1rem;
   height: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: visible;
 }
 
-.solid-point {
-  width: 0.5rem;
-  height: 0.5rem;
+.dot-core {
+  width: 0.6rem;
+  height: 0.6rem;
   background: var(--primary-color);
   border-radius: 50%;
   z-index: 2;
   box-shadow: 0 0 10px var(--primary-color);
+  border: 2px solid var(--bg-body);
 }
 
-.pulse-ring {
+.dot-halo {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
   border-radius: 50%;
   border: 1px solid var(--primary-color);
-  opacity: 0.5;
-  animation: pulse 2s infinite;
+  opacity: 0;
+  animation: pulse 3s infinite;
+  z-index: 1;
 }
 
-/* --- Glass Card --- */
-.glass-card {
-  position: relative;
+.desktop-period {
+  font-family: var(--font-sans);
+  font-size: var(--font-small);
+  font-weight: 600;
+  color: var(--text-muted);
+  opacity: 0.6;
+  white-space: nowrap;
+  transition: opacity 0.3s;
+}
+
+.timeline-row:hover .desktop-period {
+  opacity: 1;
+  color: var(--text-main);
+}
+
+.content-col {
+  width: 100%;
+}
+
+.exp-card {
   padding: 1.5rem;
-  border-radius: 1.5rem;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(12px);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  overflow: hidden;
+  border-radius: 1.25rem;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  z-index: 2;
 }
 
-/* Hover Effect */
-.glass-card:hover {
-  transform: translateY(-5px) scale(1.01);
-  background: rgba(255, 255, 255, 0.03); /* Чуть светлее */
+.timeline-row:hover .exp-card {
   border-color: var(--text-muted);
-  box-shadow:
-    0 10px 30px -10px rgba(0,0,0,0.1),
-    inset 0 0 0 1px rgba(255,255,255,0.05);
+  transform: translateX(5px);
 }
 
 .card-header {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.job-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--text-main);
-  margin: 0;
-  line-height: 1.3;
-}
-
-.period-badge {
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 0.25rem 0.75rem;
-  border-radius: 999px;
-  background: rgba(125, 125, 125, 0.1);
-  color: var(--text-muted);
-  white-space: nowrap;
-  border: 1px solid transparent;
-  transition: all 0.3s;
-}
-
-.glass-card:hover .period-badge {
-  background: var(--text-main);
-  color: var(--bg-body);
-}
-
-.company-row {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.25rem;
   margin-bottom: 1rem;
 }
 
-.company-name {
-  font-size: 0.95rem;
-  font-weight: 500;
+.mobile-period {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
   color: var(--primary-color);
+  margin-bottom: 0.25rem;
 }
 
-.line-separator {
-  height: 1px;
-  flex: 1;
-  background: var(--border-color);
-  opacity: 0.5;
+@media (min-width: 1024px) {
+  .mobile-period { display: none; }
+}
+
+.job-title {
+  font-size: var(--font-h2);
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.company-info {
+  font-size: var(--font-body);
+  color: var(--text-muted);
+  font-weight: 500;
 }
 
 .job-desc {
-  font-size: 0.95rem;
+  font-size: var(--font-body);
   line-height: 1.6;
   color: var(--text-muted);
   margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
-/* Mobile Fixes */
-@media (max-width: 640px) {
-  .timeline-container { padding-left: 1.5rem; }
-  .timeline-dot { left: -1.8rem; }
-  .card-header { flex-direction: column; gap: 0.5rem; }
-  .period-badge { align-self: flex-start; }
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--delay, 0s);
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @keyframes pulse {
-  0% { transform: scale(0.8); opacity: 0.8; }
-  100% { transform: scale(1.8); opacity: 0; }
+  0% { width: 100%; height: 100%; opacity: 0.5; border-width: 2px; }
+  100% { width: 250%; height: 250%; opacity: 0; border-width: 0px; }
 }
 </style>
