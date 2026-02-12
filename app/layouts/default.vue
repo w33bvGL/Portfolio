@@ -29,14 +29,12 @@
   flex-direction: column;
   position: relative;
 
-  /* Линии только если нужны, но для Hero лучше без жестких границ */
   border-left: 1px solid var(--border-color);
   border-right: 1px solid var(--border-color);
 
   transition: border-color 0.3s ease;
   background-color: var(--bg-body);
 
-  /* ВАЖНО: чтобы пятна (blobs) не вызывали горизонтальный скролл */
   overflow-x: hidden;
 }
 
@@ -44,12 +42,16 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  /* padding убран, перенесен в компоненты */
+  padding-bottom: 8rem;
 }
 
 @media (max-width: 640px) {
   .layout-container {
     border: none;
+  }
+
+  .content-area {
+    padding-bottom: 10rem;
   }
 }
 </style>

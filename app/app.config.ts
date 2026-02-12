@@ -8,7 +8,7 @@ export default defineAppConfig({
     phone: '+374(94) 161-331',
     address: 'Armenia, Ararat Vedi.vosketap i.hakobyan 28',
     telegram: '@w33bvGL',
-    available: true,
+    available: false,
     birthday: '2005-03-30',
     experienceStartDate: '2022-01-01'
   },
@@ -17,13 +17,13 @@ export default defineAppConfig({
     links: [
       {
         'icon': 'i-simple-icons-github',
-        'to': 'https://github.com/vahe-sargsyan2005',
+        'to': 'https://github.com/w33bvGL',
         'target': '_blank',
         'aria-label': 'Vahe on GitHub'
       },
       {
         'icon': 'i-simple-icons-telegram',
-        'to': 'https://t.me/Vahesargsyan2005',
+        'to': 'https://t.me/w33bvGL',
         'target': '_blank',
         'aria-label': 'Vahe on Telegram'
       },

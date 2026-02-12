@@ -13,8 +13,8 @@ useSeoMeta({
 <template>
   <div class="page-home">
     <IndexCta />
-    <IndexExperience />
-    <IndexEducation/>
+ <IndexExperience />
+<!--    <IndexEducation/>-->
   </div>
 </template>
 
