@@ -14,10 +14,11 @@
 
 <style scoped>
 .app-root {
-  position: relative;
   width: 100%;
   display: flex;
   justify-content: center;
+  background-color: var(--bg-body);
+  min-height: 100vh;
 }
 
 .layout-container {
@@ -28,24 +29,27 @@
   flex-direction: column;
   position: relative;
 
+  /* Линии только если нужны, но для Hero лучше без жестких границ */
   border-left: 1px solid var(--border-color);
   border-right: 1px solid var(--border-color);
-  background-color: var(--bg-body);
+
   transition: border-color 0.3s ease;
+  background-color: var(--bg-body);
+
+  /* ВАЖНО: чтобы пятна (blobs) не вызывали горизонтальный скролл */
+  overflow-x: hidden;
 }
 
 .content-area {
   flex: 1;
-  padding: 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  /* padding убран, перенесен в компоненты */
 }
 
 @media (max-width: 640px) {
   .layout-container {
-    border-left: none;
-    border-right: none;
-  }
-  .content-area {
-    padding: 1.5rem 1rem;
+    border: none;
   }
 }
 </style>

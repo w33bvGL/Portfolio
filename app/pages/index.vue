@@ -1,34 +1,25 @@
 <script setup lang="ts">
 const { t } = useI18n()
-
 const title = t('cta.title')
 const description = t('cta.description')
 
 useSeoMeta({
-  title,
-  description,
-  ogTitle: title,
-  ogDescription: description,
-
-  twitterTitle: title,
-  twitterDescription: description
+  title, description,
+  ogTitle: title, ogDescription: description,
+  twitterTitle: title, twitterDescription: description
 })
 </script>
 
 <template>
-  <div>
-    <!--    <section>-->
-    <!--      <IndexCta />-->
-    <!--      <IndexExperience />-->
-
-    <!--      <section class="grid md:grid-cols-2 md:gap-5">-->
-    <!--        <div class="mb-10 md:mb-0">-->
-    <!--          <IndexEducationAndCertificates />-->
-    <!--        </div>-->
-    <!--        <div>-->
-    <!--          <IndexActivities />-->
-    <!--        </div>-->
-    <!--      </section>-->
-    <!--    </section>-->
+  <div class="page-home">
+    <IndexCta />
   </div>
 </template>
+
+<style scoped>
+.page-home {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+</style>
