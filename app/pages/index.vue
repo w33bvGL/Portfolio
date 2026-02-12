@@ -13,6 +13,8 @@ useSeoMeta({
 <template>
   <div class="page-home">
     <IndexCta />
+    <IndexExperience />
+    <IndexEducation/>
   </div>
 </template>
 
@@ -20,6 +22,5 @@ useSeoMeta({
 .page-home {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
 }
 </style>
