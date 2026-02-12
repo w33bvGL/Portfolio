@@ -34,6 +34,8 @@ const experiences = computed<Experience[]>(() => {
 
     <div class="timeline-wrapper">
 
+      <div class="mobile-track" />
+
       <div
         v-for="(exp, index) in experiences"
         :key="index"
@@ -88,10 +90,14 @@ const experiences = computed<Experience[]>(() => {
 }
 
 .section-header {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .section-header { margin-bottom: 4rem; }
 }
 
 .title-row {
@@ -134,8 +140,29 @@ const experiences = computed<Experience[]>(() => {
 .timeline-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
   position: relative;
+  padding-left: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .timeline-wrapper {
+    padding-left: 0;
+    gap: 3rem;
+  }
+}
+
+.mobile-track {
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--border-color) 0%, transparent 100%);
+  z-index: 0;
+}
+
+@media (min-width: 1024px) {
+  .mobile-track { display: none; }
 }
 
 .timeline-row {
@@ -144,15 +171,21 @@ const experiences = computed<Experience[]>(() => {
   flex-direction: column;
 }
 
-
 .connector-anchor {
   position: absolute;
-  left: -0.9rem;
-  top: 1.5rem;
   z-index: 10;
   display: flex;
   justify-content: center;
   width: 20px;
+
+  left: -32px;
+  top: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .connector-anchor {
+    left: calc(-2rem - 10px);
+  }
 }
 
 .date-anchor {
@@ -160,10 +193,6 @@ const experiences = computed<Experience[]>(() => {
 }
 
 @media (min-width: 1024px) {
-  .connector-anchor {
-    left: calc(-2rem - 10px);
-  }
-
   .date-anchor {
     display: block;
     position: absolute;
@@ -230,11 +259,15 @@ const experiences = computed<Experience[]>(() => {
 }
 
 .exp-card {
-  padding: 1.5rem;
+  padding: 1.25rem;
   border-radius: 1.25rem;
   transition: transform 0.3s ease, border-color 0.3s ease;
   position: relative;
   z-index: 2;
+}
+
+@media (min-width: 640px) {
+  .exp-card { padding: 1.5rem; }
 }
 
 .timeline-row:hover .exp-card {
