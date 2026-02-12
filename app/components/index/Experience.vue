@@ -97,7 +97,7 @@ const experiences = computed<Experience[]>(() => {
 }
 
 @media (min-width: 1024px) {
-  .section-header { margin-bottom: 4rem; }
+  .section-header { margin-bottom: 3rem; }
 }
 
 .title-row {
@@ -108,11 +108,10 @@ const experiences = computed<Experience[]>(() => {
 }
 
 .section-title {
-  font-size: var(--font-h1);
-  font-weight: 800;
-  line-height: var(--leading-tight);
+  font-size: var(--font-h2);
   color: var(--text-main);
-  margin: 0;
+  line-height: var(--leading-tight);
+  margin-bottom: 0.5rem;
 }
 
 .exp-badge {
@@ -133,7 +132,6 @@ const experiences = computed<Experience[]>(() => {
 .section-desc {
   font-size: var(--font-body-lg);
   color: var(--text-muted);
-  max-width: 600px;
   line-height: var(--leading-normal);
 }
 

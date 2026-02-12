@@ -23,5 +23,6 @@ useSeoMeta({
 .page-home {
   display: flex;
   flex-direction: column;
+  gap: 3rem;
 }
 </style>
