@@ -3,17 +3,11 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
     '@nuxt/image',
-    '@nuxt/ui',
-    '@vueuse/nuxt',
     'nuxt-og-image',
-    'motion-v/nuxt',
     '@nuxtjs/i18n',
-    'nuxt-gtag'
+    '@nuxtjs/color-mode',
+    '@nuxt/icon'
   ],
-
-  devtools: {
-    enabled: true
-  },
 
   app: {
     pageTransition: { name: 'page', mode: 'out-in' }

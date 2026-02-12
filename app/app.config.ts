@@ -12,32 +12,8 @@ export default defineAppConfig({
     birthday: '2005-03-30',
     experienceStartDate: '2022-01-01'
   },
-  ui: {
-    colors: {
-      primary: 'blue',
-      neutral: 'neutral'
-    },
-    card: {
-      slots: {
-        header: 'p-2 sm:px-4',
-        body: 'p-2 sm:p-4',
-        footer: 'p-2 sm:px-4'
-      },
-      variants: {
-        variant: {
-          subtle: {
-            root: 'bg-elevated/50 ring ring-default divide-y divide-default'
-          }
-        }
-      },
-      defaultVariants: {
-        variant: 'subtle'
-      }
-    }
-  },
   footer: {
     credits: `Copyright © 2024 - ${new Date().getFullYear()}`,
-    colorMode: false,
     links: [
       {
         'icon': 'i-simple-icons-github',
@@ -63,12 +39,6 @@ export default defineAppConfig({
         'target': '_blank',
         'aria-label': 'Send email to Vahe'
       },
-      {
-        'icon': 'i-simple-icons-npm',
-        'to': 'https://www.npmjs.com/~vahesargsyan',
-        'target': '_blank',
-        'aria-label': 'Vahe on NPM'
-      }
     ]
   }
 })

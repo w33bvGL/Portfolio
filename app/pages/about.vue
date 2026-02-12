@@ -16,19 +16,19 @@ useSeoMeta({
 </script>
 
 <template>
-  <UPage>
-    <AboutHeading />
-    <AboutStack />
+<!--  <UPage>-->
+<!--    <AboutHeading />-->
+<!--    <AboutStack />-->
 
-    <section class="grid md:grid-cols-2 md:gap-5">
-      <div>
-        <About />
-      </div>
-      <div>
-        <AboutAchievements />
-      </div>
-    </section>
+<!--    <section class="grid md:grid-cols-2 md:gap-5">-->
+<!--      <div>-->
+<!--        <About />-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        <AboutAchievements />-->
+<!--      </div>-->
+<!--    </section>-->
 
-    <ProjectsCta />
-  </UPage>
+<!--    <ProjectsCta />-->
+<!--  </UPage>-->
 </template>
