@@ -152,8 +152,8 @@ const experiences = computed<Experience[]>(() => {
 
 .connector-dot {
   position: relative;
-  width: 1rem;
-  height: 1rem;
+  width: 1.2rem;
+  height: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -161,8 +161,8 @@ const experiences = computed<Experience[]>(() => {
 }
 
 .dot-core {
-  width: 0.6rem;
-  height: 0.6rem;
+  width: 0.8rem;
+  height: 0.8rem;
   background: var(--primary-color);
   border-radius: 50%;
   z-index: 2;
@@ -184,7 +184,6 @@ const experiences = computed<Experience[]>(() => {
   z-index: 1;
 }
 
-/* --- Date Anchor --- */
 .date-anchor {
   display: none;
 }
@@ -193,28 +192,30 @@ const experiences = computed<Experience[]>(() => {
   .date-anchor {
     display: block;
     position: absolute;
-    right: 100%;
-    top: 1.5rem;
-    padding-right: 3.5rem;
-    text-align: right;
+    left: -250px;
+    top: 1.2rem;
     width: 200px;
+    text-align: right;
     pointer-events: none;
+    z-index: 1;
   }
 }
 
 .desktop-period {
-  font-family: var(--font-sans),sans-serif;
+  font-family: var(--font-sans), sans-serif;
   font-size: var(--font-small);
   font-weight: 600;
   color: var(--text-muted);
   opacity: 0.6;
   white-space: nowrap;
-  transition: opacity 0.3s;
+  transition: all 0.3s ease;
+  display: inline-block;
 }
 
 .timeline-row:hover .desktop-period {
   opacity: 1;
   color: var(--text-main);
+  transform: translateX(-5px);
 }
 
 .content-col {
