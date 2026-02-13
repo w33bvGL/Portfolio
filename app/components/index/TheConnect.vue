@@ -16,7 +16,10 @@ const { elementX, elementY } = useMouseInElement(target)
 </script>
 
 <template>
-  <section class="cta-section" ref="target">
+  <section
+    ref="target"
+    class="cta-section"
+  >
     <div class="ambient-glow">
       <div
         class="glow-spot spot-1"
@@ -51,7 +54,10 @@ const { elementX, elementY } = useMouseInElement(target)
             class="telegram-btn"
           >
             <template #icon>
-              <Icon name="simple-icons:telegram" class="tg-icon" />
+              <Icon
+                name="simple-icons:telegram"
+                class="tg-icon"
+              />
             </template>
             {{ t('projects.contact_telegram') }}
           </UiButton>

@@ -9,10 +9,12 @@ const img = useImage()
 </script>
 
 <template>
-  <a
+  <component
+    :is="project.url ? 'a' : 'div'"
     :href="project.url"
-    target="_blank"
+    :target="project.url ? '_blank' : undefined"
     class="project-card glass-panel group"
+    :class="{ 'is-link': project.url }"
   >
     <div class="image-wrapper">
       <div class="overlay" />
@@ -27,7 +29,10 @@ const img = useImage()
         loading="lazy"
       />
 
-      <div class="hover-icon">
+      <div
+        v-if="project.url"
+        class="hover-icon"
+      >
         <Icon
           name="lucide:arrow-up-right"
           class="icon"
@@ -36,85 +41,114 @@ const img = useImage()
     </div>
 
     <div class="card-content">
-      <h3 class="project-title">
-        {{ project.name }}
-      </h3>
+      <div class="title-row">
+        <h3 class="project-title">
+          {{ project.name }}
+        </h3>
+        <div
+          v-if="project.tags"
+          class="project-tags"
+        >
+          <span
+            v-for="tag in project.tags.slice(0, 3)"
+            :key="tag"
+            class="tag"
+          >
+            {{ tag }}
+          </span>
+        </div>
+      </div>
+
       <p class="project-desc">
         {{ project.description }}
       </p>
+
+      <div
+        v-if="project.url"
+        class="card-footer"
+      >
+        <span class="view-link">{{ $t('projects.view_project') || 'View Project' }}</span>
+      </div>
     </div>
-  </a>
+  </component>
 </template>
 
 <style scoped>
 .project-card {
   display: flex;
   flex-direction: column;
-  border-radius: 1.5rem;
+  border-radius: 2rem;
   overflow: hidden;
   text-decoration: none;
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  border: 1px solid var(--glass-border);
-  background: var(--glass-bg);
-  height: 100%; /* Для одинаковой высоты в гриде */
+  /* Приглушаем фон: меньше белого, больше прозрачности */
+  background: rgba(20, 20, 20, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  height: 100%;
+  position: relative;
 }
 
-.project-card:hover {
-  transform: translateY(-5px);
-  background: rgba(125, 125, 125, 0.08);
-  border-color: var(--text-muted);
+.is-link:hover {
+  transform: translateY(-6px);
+  /* На ховере граница не должна светиться как неонка */
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(30, 30, 30, 0.6);
   box-shadow:
-    0 15px 30px -5px rgba(0,0,0,0.1),
-    inset 0 0 0 1px rgba(255,255,255,0.05);
+    0 20px 40px -12px rgba(0, 0, 0, 0.6),
+    inset 0 0 12px rgba(255, 255, 255, 0.01);
 }
 
-/* --- Image Area --- */
 .image-wrapper {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .project-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* Чуть притеняем картинку в базе, чтобы текст лучше читался */
+  filter: brightness(0.9);
 }
 
 .group:hover .project-img {
   transform: scale(1.05);
+  filter: brightness(1);
 }
 
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.05), transparent);
+  /* Затемнение снизу вверх для читаемости заголовка */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 60%);
   z-index: 1;
-  pointer-events: none;
+  opacity: 0.7;
 }
 
-/* --- Hover Icon --- */
 .hover-icon {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  /* Кнопка теперь не чисто белая, а стеклянная */
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--text-main);
   z-index: 2;
-
   opacity: 0;
-  transform: translate(-10px, 10px) scale(0.8);
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: translate(-5px, 5px) scale(0.9);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .group:hover .hover-icon {
@@ -122,42 +156,52 @@ const img = useImage()
   transform: translate(0, 0) scale(1);
 }
 
-.icon { width: 1.25rem; height: 1.25rem; }
-
-/* --- Content Area --- */
 .card-content {
-  padding: 1.5rem;
+  padding: 1.75rem;
   flex: 1;
   display: flex;
   flex-direction: column;
+  gap: 0.75rem;
+}
+
+.title-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .project-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin: 0 0 0.5rem 0;
+  font-size: 1.35rem;
+  font-weight: 800;
   color: var(--text-main);
-  transition: color 0.3s;
-}
-
-.group:hover .project-title {
-  color: var(--primary-color);
+  letter-spacing: -0.02em;
 }
 
 .project-desc {
   font-size: 0.95rem;
   line-height: 1.6;
   color: var(--text-muted);
-  margin: 0;
-
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  opacity: 0.8; /* Чуть приглушаем описание */
 }
 
-@media (max-width: 640px) {
-  .card-content { padding: 1.25rem; }
-  .project-title { font-size: 1.1rem; }
+.view-link {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.group:hover .view-link {
+  opacity: 1;
+}
+
+.tag {
+  font-size: 0.65rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-muted);
 }
 </style>

@@ -7,12 +7,16 @@ const { elementX, elementY } = useMouseInElement(target)
 
 const blobStyle = computed(() => ({
   '--x': `${elementX.value}px`,
-  '--y': `${elementY.value}px`,
+  '--y': `${elementY.value}px`
 }))
 </script>
 
 <template>
-  <section class="hero-section" ref="target" :style="blobStyle">
+  <section
+    ref="target"
+    class="hero-section"
+    :style="blobStyle"
+  >
     <div class="ambient-glow">
       <div class="glow-spot spot-1" />
       <div class="glow-spot spot-2" />

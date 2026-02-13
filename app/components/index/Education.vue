@@ -26,14 +26,17 @@ const educations = computed<Education[]>(() => {
       <a
         v-for="(item, index) in educations"
         :key="index"
+        v-intersection
         :href="item.url || '#'"
         target="_blank"
-        v-intersection
         class="edu-card glass-panel scroll-reveal"
         :style="{ '--delay': `${index * 0.15}s` }"
       >
         <div class="card-icon">
-          <Icon name="lucide:graduation-cap" class="icon" />
+          <Icon
+            name="lucide:graduation-cap"
+            class="icon"
+          />
         </div>
 
         <div class="card-content">
