@@ -2,31 +2,25 @@
 import type { Education, TranslatedEducation } from '~/types/education'
 
 const { t, locale } = useI18n()
+const { vIntersection } = useScrollObserver()
 
-// Получаем данные
 const { data: educationByLang } = await useAsyncData<TranslatedEducation>('education', () =>
   $fetch('/api/education')
 )
 
 const educations = computed<Education[]>(() => {
   if (!educationByLang.value) return []
-  if (locale.value in educationByLang.value) {
-    return educationByLang.value[locale.value as keyof TranslatedEducation]
-  }
-  return []
+  const lang = locale.value as keyof TranslatedEducation
+  return educationByLang.value[lang] || []
 })
 </script>
 
 <template>
   <section class="education-section">
-    <div class="section-header">
-      <h2 class="section-title">
-        {{ t('education.title') }}
-      </h2>
-      <p class="section-desc">
-        {{ t('education.description') }}
-      </p>
-    </div>
+    <UiSectionHeader
+      :title="t('education.title')"
+      :description="t('education.description')"
+    />
 
     <div class="grid-container">
       <a
@@ -34,14 +28,12 @@ const educations = computed<Education[]>(() => {
         :key="index"
         :href="item.url || '#'"
         target="_blank"
-        class="edu-card glass-panel"
-        :style="{ '--delay': `${index * 0.1}s` }"
+        v-intersection
+        class="edu-card glass-panel scroll-reveal"
+        :style="{ '--delay': `${index * 0.15}s` }"
       >
         <div class="card-icon">
-          <Icon
-            name="lucide:graduation-cap"
-            class="icon"
-          />
+          <Icon name="lucide:graduation-cap" class="icon" />
         </div>
 
         <div class="card-content">
@@ -60,32 +52,36 @@ const educations = computed<Education[]>(() => {
 <style scoped>
 .education-section {
   width: 100%;
-  max-width: 800px;
+  max-width: var(--container-width);
   margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-.section-header {
-  margin-bottom: 2rem;
-}
-
-.section-title {
-  font-size: 2rem;
-  font-weight: 800;
-  margin-bottom: 0.5rem;
-  color: var(--text-main);
-}
-
-.section-desc {
-  color: var(--text-muted);
+@media (min-width: 640px) {
+  .education-section { padding: 0 2rem; }
 }
 
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
+  margin-top: 3rem;
 }
 
-/* Card Styles */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--delay, 0s);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .edu-card {
   position: relative;
   display: flex;
@@ -94,27 +90,17 @@ const educations = computed<Education[]>(() => {
   padding: 1.5rem;
   border-radius: 1.5rem;
   text-decoration: none;
-
-  /* Glass Styles */
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   backdrop-filter: blur(12px);
-
-  transition: all 0.3s ease;
-  opacity: 0;
-  animation: fade-up 0.6s ease forwards;
-  animation-delay: var(--delay);
-}
-
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
 }
 
 .edu-card:hover {
   background: rgba(125, 125, 125, 0.08);
-  border-color: var(--text-main);
+  border-color: var(--text-muted);
   transform: translateY(-4px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
 }
 
 .card-icon {
@@ -126,7 +112,7 @@ const educations = computed<Education[]>(() => {
   border-radius: 12px;
   background: rgba(125, 125, 125, 0.1);
   color: var(--text-main);
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
 
 .edu-card:hover .card-icon {
@@ -136,21 +122,19 @@ const educations = computed<Education[]>(() => {
 
 .icon { width: 1.25rem; height: 1.25rem; }
 
-.card-content {
-  flex: 1;
-}
+.card-content { flex: 1; }
 
 .edu-title {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 700;
   color: var(--text-main);
   margin: 0 0 0.5rem;
 }
 
 .edu-desc {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--text-muted);
-  line-height: 1.5;
+  line-height: 1.6;
   margin: 0;
 }
 
@@ -161,7 +145,7 @@ const educations = computed<Education[]>(() => {
   color: var(--text-muted);
   opacity: 0;
   transform: translate(-10px, 10px);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .edu-card:hover .hover-arrow {

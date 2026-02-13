@@ -150,7 +150,6 @@ const img = useImage()
   color: var(--text-muted);
   margin: 0;
 
-  /* Line Clamp */
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;

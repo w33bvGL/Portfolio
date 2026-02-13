@@ -53,10 +53,10 @@ onMounted(() => {
 
 <style scoped>
 .section-header {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .align-left { text-align: left; align-items: flex-start; }

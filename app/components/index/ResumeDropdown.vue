@@ -105,7 +105,6 @@ onUnmounted(() => document.removeEventListener('click', close))
   gap: 2px;
   z-index: 50;
 
-  /* Glass Styles inherited from global .glass-panel but refined */
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
