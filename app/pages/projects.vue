@@ -50,10 +50,6 @@ useSeoMeta({
           :style="{ '--delay': `${index * 0.1}s` }"
         />
       </div>
-
-      <ProjectsCta />
-
-      <div class="spacer" />
     </div>
   </div>
 </template>

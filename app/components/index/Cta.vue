@@ -1,10 +1,18 @@
 <script setup lang="ts">
 const { global } = useAppConfig()
 const { t } = useI18n()
+
+const target = ref(null)
+const { elementX, elementY } = useMouseInElement(target)
+
+const blobStyle = computed(() => ({
+  '--x': `${elementX.value}px`,
+  '--y': `${elementY.value}px`,
+}))
 </script>
 
 <template>
-  <section class="hero-section">
+  <section class="hero-section" ref="target" :style="blobStyle">
     <div class="ambient-glow">
       <div class="glow-spot spot-1" />
       <div class="glow-spot spot-2" />
@@ -52,40 +60,68 @@ const { t } = useI18n()
   padding: 8rem 1.5rem 6rem;
   display: flex;
   justify-content: center;
+  --x: 50%;
+  --y: 50%;
 }
 
 .ambient-glow {
   position: absolute;
-  inset: 0;
+  inset: -100px;
   pointer-events: none;
   z-index: 0;
+  overflow: hidden;
 }
 
 .glow-spot {
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.35;
-  will-change: transform;
+  will-change: transform, opacity, filter;
+  animation: blob-wake-up 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
 }
 
 .spot-1 {
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 600px;
   background: var(--primary-color);
-  opacity: 0.12;
-  top: -20%;
+  top: -10%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(calc(-50% + (var(--x) / 15)), calc(var(--y) / 15));
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  filter: blur(120px);
 }
 
 .spot-2 {
-  width: 300px;
-  height: 300px;
+  width: 450px;
+  height: 450px;
   background: var(--text-muted);
-  opacity: 0.08;
-  bottom: 0;
-  right: 10%;
+  bottom: 5%;
+  right: 15%;
+  transform: translate(calc(var(--x) / -25), calc(var(--y) / -25));
+  transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1);
+  filter: blur(100px);
+  animation-delay: 0.3s;
+}
+
+@keyframes blob-wake-up {
+  0% {
+    opacity: 0;
+    filter: blur(40px);
+    transform: translate(-50%, 40px) scale(0.7);
+  }
+  100% {
+    opacity: 0.12;
+    filter: blur(120px);
+  }
+}
+
+.spot-2 {
+  animation-name: blob-wake-up-alt;
+}
+
+@keyframes blob-wake-up-alt {
+  0% { opacity: 0; transform: scale(0.7); filter: blur(40px); }
+  100% { opacity: 0.08; filter: blur(100px); }
 }
 
 .glass-container {
@@ -142,7 +178,6 @@ const { t } = useI18n()
   line-height: var(--leading-tight);
   letter-spacing: -0.04em;
   margin: 0 0 1rem 0;
-
   background: linear-gradient(180deg, var(--text-main) 30%, rgba(125,125,125,0.5) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -180,9 +215,9 @@ const { t } = useI18n()
   will-change: opacity, transform;
 }
 
-.stagger-item:nth-child(1) { animation-delay: 0.1s; }
-.stagger-item:nth-child(2) { animation-delay: 0.2s; }
-.stagger-item:nth-child(3) { animation-delay: 0.3s; }
+.stagger-item:nth-child(1) { animation-delay: 0.3s; }
+.stagger-item:nth-child(2) { animation-delay: 0.5s; }
+.stagger-item:nth-child(3) { animation-delay: 0.7s; }
 
 @keyframes fade-up {
   to {
