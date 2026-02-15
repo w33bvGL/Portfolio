@@ -9,6 +9,7 @@ const blobStyle = computed(() => ({
   '--x': `${elementX.value}px`,
   '--y': `${elementY.value}px`
 }))
+
 </script>
 
 <template>
@@ -19,7 +20,6 @@ const blobStyle = computed(() => ({
   >
     <div class="ambient-glow">
       <div class="glow-spot spot-1" />
-      <div class="glow-spot spot-2" />
     </div>
 
     <div class="glass-container">
@@ -95,17 +95,6 @@ const blobStyle = computed(() => ({
   filter: blur(120px);
 }
 
-.spot-2 {
-  width: 450px;
-  height: 450px;
-  background: var(--text-muted);
-  bottom: 5%;
-  right: 15%;
-  transform: translate(calc(var(--x) / -25), calc(var(--y) / -25));
-  transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1);
-  filter: blur(100px);
-  animation-delay: 0.3s;
-}
 
 @keyframes blob-wake-up {
   0% {
@@ -119,9 +108,6 @@ const blobStyle = computed(() => ({
   }
 }
 
-.spot-2 {
-  animation-name: blob-wake-up-alt;
-}
 
 @keyframes blob-wake-up-alt {
   0% { opacity: 0; transform: scale(0.7); filter: blur(40px); }

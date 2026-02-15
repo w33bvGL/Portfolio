@@ -5,6 +5,7 @@
 .nitro
 .cache
 dist
+public/resume
 
 # Node dependencies
 node_modules

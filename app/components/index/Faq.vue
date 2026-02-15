@@ -15,38 +15,12 @@ const faqItems = computed<FaqItem[]>(() => {
 </script>
 
 <template>
-  <section class="faq-section">
+  <UiLayoutContainer class="faq-section">
     <UiSectionHeader
       :title="t('faq.title')"
       :description="t('faq.description')"
       align="center"
     />
-
     <UiAccordion :items="faqItems" />
-  </section>
+  </UiLayoutContainer>
 </template>
-
-<style scoped>
-.faq-section {
-  padding: 0 2rem;
-  position: relative;
-}
-
-.section-header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.section-title {
-  font-size: var(--font-h2);
-  font-weight: 800;
-  color: var(--text-main);
-  line-height: var(--leading-tight);
-  margin-bottom: 0.5rem;
-}
-
-.section-desc {
-  font-size: var(--font-body);
-  color: var(--text-muted);
-}
-</style>

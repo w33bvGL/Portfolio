@@ -32,12 +32,12 @@ useSeoMeta({
 <style scoped>
 .page-enter-active,
 .page-leave-active {
-  transition: all 0.2s;
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-
 .page-enter-from,
 .page-leave-to {
   opacity: 0;
-  filter: blur(1rem);
+  filter: blur(10px);
+  transform: translateY(50px);
 }
 </style>

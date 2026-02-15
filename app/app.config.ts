@@ -6,7 +6,7 @@ export default defineAppConfig({
     },
     email: 'w33bv.gl@gmail.com',
     phone: '+374(94) 161-331',
-    address: 'Armenia, Ararat Vedi.vosketap i.hakobyan 28',
+    location: 'Yerevan, Armenia',
     telegram: '@w33bvGL',
     available: false,
     birthday: '2005-03-30',

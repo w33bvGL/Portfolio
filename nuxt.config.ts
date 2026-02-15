@@ -1,4 +1,9 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import { spawn } from 'child_process'
+import http from 'http'
+import fs from 'fs-extra'
+import { resolve } from 'path'
+import puppeteer from 'puppeteer'
+
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
@@ -63,6 +68,80 @@ export default defineNuxtConfig({
     inject: true,
     alias: {
       tech: '/tech'
+    }
+  },
+
+  hooks: {
+    // Хук запускается после того, как Nuxt сгенерировал статику в .output/public
+    'close': async () => {
+      // Запускаем этот процесс ТОЛЬКО при полной статической генерации
+      if (process.env.npm_lifecycle_event !== 'generate') return
+
+      console.log('✨ Starting PDF Resume Generation...')
+
+      const distDir = resolve('.output/public')
+      const port = 3001 // Используем свободный порт для временного сервера
+      const langs = ['en', 'ru', 'hy', 'uk'] // Твои языки
+
+      // 1. Запускаем временный статик-сервер для сгенерированных файлов
+      const server = spawn('npx', ['serve', distDir, '-l', String(port)], {
+        stdio: 'ignore', // Чтобы не мусорить в логи
+        shell: true
+      })
+
+      // Хелпер ожидания сервера
+      const waitForServer = () => new Promise<void>((resolve, reject) => {
+        let attempts = 0
+        const interval = setInterval(() => {
+          http.get(`http://localhost:${port}`, (res) => {
+            if (res.statusCode === 200) {
+              clearInterval(interval)
+              resolve()
+            }
+          }).on('error', () => {})
+
+          if (++attempts > 20) {
+            clearInterval(interval)
+            reject(new Error('Server timeout'))
+          }
+        }, 500)
+      })
+
+      try {
+        await waitForServer()
+        console.log('🚀 PDF Server ready. Launching Browser...')
+
+        const browser = await puppeteer.launch({ args: ['--no-sandbox'] })
+        const page = await browser.newPage()
+
+        for (const lang of langs) {
+          const url = `http://localhost:${port}/${lang}/resume`
+          // Куда сохранять (в папку resume внутри билда)
+          const outputDir = resolve(distDir, 'resume')
+          const outputPath = resolve(outputDir, `${lang}.pdf`)
+
+          await fs.ensureDir(outputDir)
+
+          await page.goto(url, { waitUntil: 'networkidle0' })
+
+          // PDF A4
+          await page.pdf({
+            path: outputPath,
+            format: 'A4',
+            printBackground: true,
+            margin: { top: 0, bottom: 0, left: 0, right: 0 }
+          })
+
+          console.log(`✅ Generated: /resume/${lang}.pdf`)
+        }
+
+        await browser.close()
+      } catch (e) {
+        console.error('❌ PDF Generation Failed:', e)
+      } finally {
+        server.kill()
+        console.log('🛑 PDF Generation finished.')
+      }
     }
   }
 })

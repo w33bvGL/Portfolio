@@ -1,187 +1,44 @@
 <script setup lang="ts">
-import type { Experience, TranslatedExperiences } from '~/types/experience'
-import type { Education, TranslatedEducation } from '~/types/education'
-
 definePageMeta({ layout: 'resume' })
-
-const { global } = useAppConfig()
-const { t, locale } = useI18n()
-const img = useImage()
-const isAvailable = global.available
-const { experienceString } = useExperienceString()
-
-const { data: experienceByLang } = await useAsyncData<TranslatedExperiences>('experiences', () =>
-  $fetch('/api/experiences')
-)
-
-const { data: techs } = await useAsyncData('technologies', () =>
-  $fetch('/api/technologies')
-)
-
-const { data: educationByLang } = await useAsyncData<TranslatedEducation>('education', () =>
-  $fetch('/api/education')
-)
-
-function getByLocale<T>(data: Record<string, T[]> | undefined): T[] {
-  if (!data) return []
-  return data[locale.value as keyof typeof data] || []
-}
-
-const experiences = computed(() => getByLocale<Experience>(experienceByLang.value))
-const educations = computed(() => getByLocale<Education>(educationByLang.value))
-const combinedTechs = computed(() => [...(techs.value?.frontend || []), ...(techs.value?.backend || [])])
 </script>
 
 <template>
-  <main>
-    <header class="flex justify-between gap-3">
-      <div class="w-full bg-neutral-200 p-3 rounded-3xl">
-        <div class="flex items-start mb-5 gap-3">
-          <div class="relative">
-            <NuxtImg
-              class="rounded-3xl pointer-events-none select-none min-w-[100px] min-h-[100px]"
-              width="100"
-              height="100"
-              format="webp"
-              :src="global.picture.src"
-              :alt="global.picture.alt"
-              :placeholder="img(global.picture.src, { h: 10, f: 'png', blur: 0.3, q: 50 })"
-            />
-            <div class="absolute -bottom-2 -right-4">
-              <div
-                class="inline-flex items-center gap-2 text-sm font-medium transition-all"
-                :class="isAvailable ? 'text-green-500' : 'text-red-500'"
-              >
-                <span class="relative flex h-4 w-4">
-                  <span
-                    class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
-                    :class="isAvailable ? 'bg-green-400' : 'bg-red-400'"
-                  />
-                  <span
-                    class="relative inline-flex rounded-full h-4 w-4"
-                    :class="isAvailable ? 'bg-green-500 shadow-green-500/60' : 'bg-red-500 shadow-red-500/60'"
-                    style="box-shadow: 0 0 8px currentColor;"
-                  />
-                </span>
-              </div>
-            </div>
-          </div>
+  <div class="resume-content">
 
-          <div class="w-full flex flex-col gap-1">
-            <div class="flex items-center w-full justify-between">
-              <h1 class="font-bold text-2xl">
-                {{ t('resume.name') }} {{ t('resume.surname') }}
-              </h1>
-              <div class="border border-neutral-700 px-2 py-1 rounded-full text-xs">
-                {{ experienceString }}
-              </div>
-            </div>
-            <div>
-              <h3 class="font-semibold text-xl">
-                {{ t('resume.position') }}
-              </h3>
-              <h5 class="font-semibold text-neutral-700">
-                ({{ t('resume.stack') }})
-              </h5>
-            </div>
-          </div>
-        </div>
+    <ResumeHeader />
 
-        <p class="text-neutral-700 text-sm line-clamp-4">
-          {{ $t('about.intro') }}
-        </p>
+    <div class="resume-body">
+      <div class="main-column">
+        <ResumeExperience />
+        <ResumeEducation />
       </div>
 
-      <div class="w-1/3 bg-neutral-200 p-3 rounded-3xl flex flex-col justify-between">
-        <div>
-          <h5 class="font-semibold">
-            {{ $t('resume.contacts') }}
-          </h5>
-          <div class="text-neutral-700">
-            {{ global.phone }}<br>{{ global.email }}<br>{{ global.telegram }}
-          </div>
-        </div>
-        <div>
-          <h5 class="font-semibold">
-            {{ $t('resume.portfolio') }}
-          </h5>
-          <div class="text-neutral-700">
-            vahe.anidzen.com
-          </div>
-        </div>
+      <div class="sidebar-column">
+        <ResumeSkills />
+        <ResumeLanguages />
       </div>
-    </header>
+    </div>
 
-    <section class="mt-3 border border-neutral-700 rounded-3xl flex-1 px-3 py-5">
-      <div class="flex gap-3">
-        <div class="w-full flex flex-col space-y-4">
-          <div>
-            <h4 class="font-semibold text-xl mb-1">
-              {{ t('experience.title') }} — {{ experienceString }}
-            </h4>
-            <h6 class="text-neutral-700 text-sm">
-              {{ t('experience.description') }}
-            </h6>
-          </div>
-
-          <ul class="space-y-3">
-            <li
-              v-for="(exp, i) in experiences"
-              :key="i"
-            >
-              <div class="text-sm text-neutral-700 flex justify-between mb-2 items-center gap-5">
-                <span class="font-medium text-nowrap">{{ exp.company }}</span>
-                <hr class="w-full border-neutral-200 hidden lg:block">
-                <span class="text-nowrap">{{ exp.period }}</span>
-              </div>
-              <h3 class="font-semibold text-xl">
-                {{ exp.title }}
-              </h3>
-              <p class="text-base text-neutral-700 text-sm line-clamp-4">
-                {{ exp.description }}
-              </p>
-            </li>
-          </ul>
-        </div>
-
-        <div class="w-1/3 flex flex-col">
-          <h3 class="font-semibold text-xl mb-1">
-            {{ $t('resume.skills') }}
-          </h3>
-          <div class="flex flex-wrap gap-1.5">
-            <div
-              v-for="tech in combinedTechs"
-              :key="tech.name"
-              class="border border-neutral-400 px-1 py-0.1 rounded-full text-xs"
-            >
-              <span class="text-[10px] text-black">{{ tech.name }}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-4 border-t border-neutral-200 pt-4 md:gap-5 space-y-4 border-neutral-200">
-        <div>
-          <h4 class="font-semibold text-xl">
-            {{ t('education.title') }}
-          </h4>
-          <h6 class="text-neutral-700 text-sm">
-            {{ t('education.description') }}
-          </h6>
-        </div>
-        <div
-          v-for="(edu, i) in educations"
-          :key="i"
-          class="border-l pl-4 border-neutral-200"
-        >
-          <h5 class="font-semibold text-base">
-            {{ edu.title }}
-          </h5>
-          <p class="text-sm text-neutral-700">
-            {{ edu.description }}
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
+  </div>
 </template>
+
+<style scoped>
+.resume-content {
+  padding: 10mm 12mm;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.resume-body {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  flex: 1;
+}
+
+@media print {
+  a { text-decoration: none; color: inherit; }
+}
+</style>

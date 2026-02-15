@@ -17,7 +17,7 @@ const experiences = computed<Experience[]>(() => {
 </script>
 
 <template>
-  <section class="experience-section">
+  <UiLayoutContainer class="experience-section">
     <UiSectionHeader
       :title="t('experience.title')"
       :description="t('experience.description')"
@@ -29,61 +29,48 @@ const experiences = computed<Experience[]>(() => {
       </template>
     </UiSectionHeader>
 
-    <div class="timeline-wrapper">
-      <div class="timeline-track" />
+    <UiLayoutGrid class="timeline-wrapper">
+        <div
+          v-for="(exp, index) in experiences"
+          :key="index"
+          v-intersection
+          class="timeline-row scroll-reveal"
+          :style="{ '--delay': `${index * 0.1}s` }"
+        >
+          <div class="connector-anchor">
+            <div class="connector-dot">
+              <div class="dot-core" />
+              <div class="dot-halo" />
+            </div>
+          </div>
 
-      <div
-        v-for="(exp, index) in experiences"
-        :key="index"
-        v-intersection
-        class="timeline-row scroll-reveal"
-        :style="{ '--delay': `${index * 0.1}s` }"
-      >
-        <div class="connector-anchor">
-          <div class="connector-dot">
-            <div class="dot-core" />
-            <div class="dot-halo" />
+          <div class="date-anchor">
+            <span class="desktop-period">{{ exp.period || exp.year }}</span>
+          </div>
+
+          <div class="content-col">
+            <UiCard class="exp-card">
+              <UiCardHeader class="exp-header">
+                <span class="mobile-period">{{ exp.period || exp.year }}</span>
+                <UiCardTitle as="h3">{{ exp.title }}</UiCardTitle>
+                <div class="company-info">
+                  <span class="company-name">{{ exp.company }}</span>
+                </div>
+              </UiCardHeader>
+
+              <UiCardContent >
+                <UiCardDescription class="job-desc">
+                  {{ exp.description }}
+                </UiCardDescription>
+              </UiCardContent>
+            </UiCard>
           </div>
         </div>
-
-        <div class="date-anchor">
-          <span class="desktop-period">{{ exp.period || exp.year }}</span>
-        </div>
-
-        <div class="content-col">
-          <UiCard class="exp-card">
-            <UiCardHeader class="exp-header">
-              <span class="mobile-period">{{ exp.period || exp.year }}</span>
-              <UiCardTitle as="h3">{{ exp.title }}</UiCardTitle>
-              <div class="company-info">
-                <span class="company-name">{{ exp.company }}</span>
-              </div>
-            </UiCardHeader>
-
-            <UiCardContent >
-              <UiCardDescription class="job-desc">
-                {{ exp.description }}
-              </UiCardDescription>
-            </UiCardContent>
-          </UiCard>
-        </div>
-      </div>
-    </div>
-  </section>
+    </UiLayoutGrid>
+  </UiLayoutContainer>
 </template>
 
 <style scoped>
-.experience-section {
-  max-width: var(--container-width);
-  margin: 0 auto;
-  position: relative;
-  padding: 0 1.5rem;
-}
-
-@media (min-width: 640px) {
-  .experience-section { padding: 0 2rem; }
-}
-
 .exp-badge {
   padding: 0.35rem 0.85rem;
   border-radius: 9999px;
@@ -97,37 +84,6 @@ const experiences = computed<Experience[]>(() => {
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-}
-
-.timeline-wrapper {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  padding-left: 1.5rem;
-  gap: 2rem;
-}
-
-@media (min-width: 1024px) {
-  .timeline-wrapper {
-    padding-left: 0;
-    gap: 3.5rem;
-  }
-}
-
-.timeline-track {
-  position: absolute;
-  left: 0;
-  top: 1rem;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--border-color) 0%, transparent 100%);
-  z-index: 0;
-}
-
-@media (min-width: 1024px) {
-  .timeline-track {
-    left: -2rem;
-  }
 }
 
 .timeline-row {
