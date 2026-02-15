@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import type { TranslatedProjects, Project } from '~/types/project'
+// Импортируем модалку
+import AdultConfirmationModal from '~/components/ui/AdultConfirmationModal.vue'
 
 const { t, locale } = useI18n()
 const { vIntersection } = useScrollObserver()
 
-// Fetch Data
+// --- Data Fetching ---
 const { data: projectsByLang } = await useAsyncData<TranslatedProjects>('projects', () =>
   $fetch('/api/projects')
 )
@@ -15,7 +17,39 @@ const projects = computed<Project[]>(() => {
   return projectsByLang.value[currentKey] ?? []
 })
 
-// SEO
+// --- Adult Logic ---
+const showAdultModal = ref(false)
+const pendingProject = ref<Project | null>(null)
+
+// Функция обработки клика по проекту
+const handleProjectClick = (project: Project) => {
+  if (!project.url) return
+
+  // Если проект 18+, стопаем и открываем модалку
+  if (project.isAdult) {
+    pendingProject.value = project
+    showAdultModal.value = true
+    return
+  }
+
+  // Иначе открываем сразу
+  window.open(project.url, '_blank')
+}
+
+// Подтверждение возраста
+const onAdultConfirm = () => {
+  if (pendingProject.value?.url) {
+    window.open(pendingProject.value.url, '_blank')
+  }
+  closeModal()
+}
+
+const closeModal = () => {
+  showAdultModal.value = false
+  pendingProject.value = null
+}
+
+// --- SEO ---
 const title = t('projects.title')
 const description = t('projects.description')
 useSeoMeta({
@@ -27,8 +61,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="page-projects">
-    <div class="container">
+  <UiLayoutContainer class="page-projects">
       <header class="header-section">
         <h1 class="page-title">
           {{ t('projects.title') }}<span class="dot">.</span>
@@ -38,7 +71,7 @@ useSeoMeta({
         </p>
       </header>
 
-      <div class="projects-grid">
+      <UiLayoutGrid :cols-md="2">
         <ProjectsCard
           v-for="(project, index) in projects"
           :key="project.name"
@@ -46,30 +79,29 @@ useSeoMeta({
           :project="project"
           class="scroll-reveal"
           :style="{ '--delay': `${index * 0.05}s` }"
+          @click.prevent="handleProjectClick(project)"
         />
-      </div>
-    </div>
-  </div>
+      </UiLayoutGrid>
+
+    <AdultConfirmationModal
+      :is-open="showAdultModal"
+      :project-name="pendingProject?.name"
+      @confirm="onAdultConfirm"
+      @cancel="closeModal"
+    />
+  </UiLayoutContainer>
 </template>
 
 <style scoped>
 .page-projects {
   position: relative;
+  padding-top: 7rem;
   width: 100%;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 10rem 1.5rem 5rem;
-  position: relative;
-  z-index: 10;
-}
-
-/* --- Typography --- */
 .header-section {
   text-align: center;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
@@ -81,8 +113,6 @@ useSeoMeta({
   line-height: var(--leading-tight);
   letter-spacing: -0.04em;
   margin: 0 0 1rem 0;
-
-  /* Градиент в стиле Hero */
   background: linear-gradient(180deg, var(--text-main) 30%, rgba(125,125,125,0.5) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -100,18 +130,6 @@ useSeoMeta({
   margin: 0 auto;
 }
 
-.projects-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
-}
-
-@media (min-width: 768px) {
-  .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 .scroll-reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -119,6 +137,7 @@ useSeoMeta({
   transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   transition-delay: var(--delay, 0s);
   will-change: transform, opacity;
+  cursor: pointer;
 }
 
 .scroll-reveal.is-visible {

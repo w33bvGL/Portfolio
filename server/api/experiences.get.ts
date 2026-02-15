@@ -1,95 +1,129 @@
 export default defineEventHandler(() => {
   return {
-    ru: [
+    de: [
       {
-        year: '2024',
         company: 'Nsoft',
-        title: 'Middle Full-Stack Разработчик',
-        period: 'Октябрь 2024',
-        description: 'Писал код для микросервисов, занимался фронтендом и backend. Поддерживал работоспособность и корректную работу системы. Создал уникальную систему получения курсов валют.'
+        title: 'Middle Full-Stack Engineer',
+        period: 'Okt 2024 — Heute',
+        description: 'Verantwortlich für die End-to-End-Infrastruktur: Entwicklung skalierbarer RabbitMQ-Mikroservices und hochperformanter Nuxt.js-Frontends. Entwurf eines universellen Billing-Moduls, komplexer Admin-Panels und Echtzeit-Kurssysteme. Implementierung von CI/CD-Pipelines und Optimierung der PostgreSQL/Redis-Performance.'
       },
       {
-        year: '2023 — 2024',
-        company: 'DevinIt',
-        title: 'Middle Full-Stack Разработчик',
-        period: 'Февраль 2023 — Сентябрь 2024',
-        description: 'Разрабатывал внутренние корпоративные системы: API, админ-панели, интеграции с внешними сервисами. Интегрировал платёжные шлюзы (Stripe, BTC, LTC), обеспечил безопасную и стабильную обработку транзакций. Повысил скорость отклика приложений на 25% за счёт оптимизации backend.'
-      },
-      {
-        year: '2022 — 2023',
-        company: 'Фриланс / Стартапы',
-        title: 'Full-Stack Разработчик',
-        period: 'Январь 2022 — Февраль 2023',
-        description: 'Создавал MVP под ключ для стартапов: дизайн, разработка, деплой, поддержка. Внедрил CI/CD, автоматические тесты и систему мониторинга. Улучшил UX и процессы взаимодействия с заказчиками, что ускорило запуск продуктов на рынок на 40%.'
+        company: 'Independent Contractor',
+        title: 'Full-Stack Software Engineer',
+        period: 'Jan 2023 — Sept 2024',
+        description: 'Architektur von Event-gesteuerten Fintech-Systemen auf Basis von Kafka und WebSockets. Aufbau von Full-Stack-Monitoring mit dem ELK-Stack (Kibana/Elasticsearch). Integration globaler Payment-Gateways (Stripe/Crypto) über modulare Adapter-Patterns.'
       }
     ],
     en: [
       {
-        year: '2024',
         company: 'Nsoft',
-        title: 'Middle Full-Stack Developer',
-        period: 'October 2024',
-        description: 'Wrote code for microservices, worked on frontend and backend. Maintained system functionality and stability. Created a unique currency rates retrieval system.'
+        title: 'Middle Full-Stack Engineer',
+        period: 'Oct 2024 — Present',
+        description: 'Driving end-to-end infrastructure: from scalable RabbitMQ microservices to high-performance Nuxt.js frontends. Engineered a Unified Billing Module, advanced administrative dashboards, and real-time exchange engines. Established CI/CD pipelines and optimized PostgreSQL/Redis layers.'
       },
       {
-        year: '2023 — 2024',
-        company: 'DevinIt',
-        title: 'Middle Full-Stack Developer',
-        period: 'February 2023 — September 2024',
-        description: 'Developed internal corporate systems: APIs, admin panels, integrations with external services. Integrated payment gateways (Stripe, BTC, LTC), ensured secure and stable transaction processing. Improved application response speed by 25% through backend optimization.'
+        company: 'Independent Contractor',
+        title: 'Full-Stack Software Engineer',
+        period: 'Jan 2023 — Sep 2024',
+        description: 'Architecting event-driven Fintech ecosystems using Kafka and WebSockets. Implemented comprehensive observability via ELK Stack (Kibana). Specialized in modular payment gateway integrations (Stripe/Crypto) and orchestrated Docker-based delivery workflows.'
+      }
+    ],
+    es: [
+      {
+        company: 'Nsoft',
+        title: 'Middle Full-Stack Engineer',
+        period: 'Oct 2024 — Presente',
+        description: 'Liderazgo de infraestructura de ciclo completo: desde microservicios escalables en RabbitMQ hasta frontends Nuxt.js. Diseño de un Módulo de Facturación Unificado, paneles de administración complejos y sistemas de divisas en tiempo real. Implementación de CI/CD y optimización de PostgreSQL/Redis.'
       },
       {
-        year: '2022 — 2023',
-        company: 'Freelance / Startups',
-        title: 'Full-Stack Developer',
-        period: 'January 2022 — February 2023',
-        description: 'Built end-to-end MVPs for startups: design, development, deployment, support. Implemented CI/CD, automated tests, and monitoring. Improved UX and client processes, accelerating product launch to market by 40%.'
+        company: 'Independent Contractor',
+        title: 'Full-Stack Software Engineer',
+        period: 'Ene 2023 — Sep 2024',
+        description: 'Arquitectura de sistemas Fintech basados en eventos con Kafka y WebSockets. Implementación de observabilidad total con el stack ELK (Kibana). Integración masiva de pasarelas de pago y estandarización de entornos Docker.'
+      }
+    ],
+    fr: [
+      {
+        company: 'Nsoft',
+        title: 'Middle Full-Stack Engineer',
+        period: 'Oct 2024 — Présent',
+        description: 'Responsable de l’infrastructure de bout en bout : des microservices RabbitMQ aux frontends Nuxt.js haute performance. Conception d’un Module de Facturation Unifié, de dashboards administratifs et de moteurs de devises. Mise en place de pipelines CI/CD.'
+      },
+      {
+        company: 'Independent Contractor',
+        title: 'Full-Stack Software Engineer',
+        period: 'Jan 2023 — Sep 2024',
+        description: 'Architecture d’écosystèmes Fintech pilotés par les événements via Kafka et WebSockets. Mise en œuvre d’une observabilité complète avec ELK (Kibana). Intégration modulaire de passerelles Stripe/Crypto.'
       }
     ],
     hy: [
       {
-        year: '2024',
         company: 'Nsoft',
-        title: 'Միջին Full-Stack Ծրագրավորող',
-        period: 'Հոկտեմբեր 2024',
-        description: 'Գրել եմ կոդ միկրոսերվիսների համար, զբաղվել frontend և backend-ով։ Պահպանել եմ համակարգի աշխատանքը և կայունությունը։ Ստեղծել եմ եզակի արժույթների փոխարժեքների ստացման համակարգ։'
+        title: 'Middle Full-Stack Engineer',
+        period: 'Հոկտ 2024 — Ներկա',
+        description: 'Ամբողջական ենթակառուցվածքների պատասխանատու՝ RabbitMQ միկրոսերվիսներից մինչև Nuxt.js բարձր արդյունավետությամբ ֆրոնթենդ: Միասնական բիլինգային մոդուլի, ադմինիստրատիվ վահանակների և իրական ժամանակի համակարգերի նախագծում:'
       },
       {
-        year: '2023 — 2024',
-        company: 'DevinIt',
-        title: 'Միջին Full-Stack Ծրագրավորող',
-        period: 'Փետրվար 2023 — Սեպտեմբեր 2024',
-        description: 'Ամենօրյա աշխատանքն ներառում էր ներքին կորպորատիվ համակարգեր՝ API-ներ, ադմին պանելներ, ինտեգրացիաներ արտաքին ծառայությունների հետ։ Ինտեգրել է վճարային անցուղիներ (Stripe, BTC, LTC), ապահովել անվտանգ և կայուն գործարքների պրոցեսավորում։ Ապահովել ծրագրերի արձագանքի արագության 25% աճ՝ backend-ի օպտիմիզացիայի միջոցով։'
+        company: 'Independent Contractor',
+        title: 'Full-Stack Software Engineer',
+        period: 'Հուն 2023 — Սեպտ 2024',
+        description: 'Event-driven Fintech էկոհամակարգերի մշակում Kafka-ի և WebSockets-ի միջոցով: Օբսերվաբիլիթիի ապահովում ELK Stack-ի (Kibana) միջոցով: Stripe/Crypto վճարային համակարգերի ինտեգրում:'
+      }
+    ],
+    nl: [
+      {
+        company: 'Nsoft',
+        title: 'Middle Full-Stack Engineer',
+        period: 'Okt 2024 — Heden',
+        description: 'Verantwoordelijk voor de end-to-end infrastructuur: van RabbitMQ microservices tot high-performance Nuxt.js frontends. Ontwerp van een Unified Billing Module, geavanceerde admin-dashboards und real-time engines.'
       },
       {
-        year: '2022 — 2023',
-        company: 'Ֆրիլանս / Ստարտափներ',
-        title: 'Full-Stack Ծրագրավորող',
-        period: 'Հունվար 2022 — Փետրվար 2023',
-        description: 'Ստեղծել եմ ամբողջական MVP-ներ ստարտափների համար՝ դիզայն, մշակություն, տեղադրում և աջակցություն։ Ներմուծել եմ CI/CD, ավտոմատացված թեստեր և մոնիթորինգ։ բարելավել UX-ը և հաճախորդների հետ համագործակցությունը, արագացնելով արտադրանքի շուկա դուրս գալը 40%-ով։'
+        company: 'Independent Contractor',
+        title: 'Full-Stack Software Engineer',
+        period: 'Jan 2023 — Sep 2024',
+        description: 'Architectuur van event-driven Fintech-systemen met Kafka en WebSockets. Implementatie van volledige observability via ELK Stack (Kibana). Modulaire integratie van Stripe/Crypto gateways.'
+      }
+    ],
+    pl: [
+      {
+        company: 'Nsoft',
+        title: 'Middle Full-Stack Engineer',
+        period: 'Paź 2024 — Obecnie',
+        description: 'Odpowiedzialny za infrastrukturę end-to-end: od mikroserwisów RabbitMQ po wysokowydajne frontendy Nuxt.js. Projektowanie Zunifikowanego Modułu Bilingowego, zaawansowanych paneli administracyjnych i systemów walutowych.'
+      },
+      {
+        company: 'Independent Contractor',
+        title: 'Full-Stack Software Engineer',
+        period: 'Sty 2023 — Wrz 2024',
+        description: 'Architektura systemów Fintech sterowanych zdarzeniami (Kafka) i komunikacji WebSockets. Wdrażanie pełnej obserwowalności za pomocą ELK Stack (Kibana). Modułowa integracja Stripe/Crypto.'
+      }
+    ],
+    ru: [
+      {
+        company: 'Nsoft',
+        title: 'Middle Full-Stack Engineer',
+        period: 'Окт 2024 — Наст. время',
+        description: 'Ответственность за инфраструктуру полного цикла: от масштабируемых микросервисов на RabbitMQ до высокопроизводительных фронтендов на Nuxt.js. Проектирование единого биллингового модуля, сложных админ-панелей и систем котировок в реальном времени.'
+      },
+      {
+        company: 'Independent Contractor',
+        title: 'Full-Stack Software Engineer',
+        period: 'Янв 2023 — Сент 2024',
+        description: 'Архитектура event-driven Fintech-экосистем на базе Kafka и WebSockets. Внедрение комплексной обсервабилити через ELK Stack (Kibana). Модульная интеграция Stripe/Crypto шлюзов и стандартизация Docker-инфраструктуры.'
       }
     ],
     uk: [
       {
-        year: '2024',
         company: 'Nsoft',
-        title: 'Middle Full-Stack Розробник',
-        period: 'Жовтень 2024',
-        description: 'Писав код для мікросервісів, займався фронтендом і backend. Підтримував працездатність та стабільну роботу системи. Створив унікальну систему отримання курсів валют.'
+        title: 'Middle Full-Stack Engineer',
+        period: 'Жовт 2024 — Тепер. час',
+        description: 'Відповідальність за інфраструктуру повного циклу: від мікросервісів на RabbitMQ до високонавантажених фронтендів на Nuxt.js. Проектування єдиного білінгового модуля, складних адмін-панелей та систем реального часу.'
       },
       {
-        year: '2023 — 2024',
-        company: 'DevinIt',
-        title: 'Middle Full-Stack Розробник',
-        period: 'Лютий 2023 — Вересень 2024',
-        description: 'Розробляв внутрішні корпоративні системи: API, адмін-панелі, інтеграції з зовнішніми сервісами. Інтегрував платіжні шлюзи (Stripe, BTC, LTC), забезпечив безпечну і стабільну обробку транзакцій. Підвищив швидкість відгуку додатків на 25% за рахунок оптимізації backend.'
-      },
-      {
-        year: '2022 — 2023',
-        company: 'Фріланс / Стартапи',
-        title: 'Full-Stack Розробник',
-        period: 'Січень 2022 — Лютий 2023',
-        description: 'Створював MVP під ключ для стартапів: дизайн, розробка, деплой, підтримка. Впровадив CI/CD, автоматичні тести та систему моніторингу. Покращив UX і процеси взаємодії з клієнтами, що прискорило запуск продуктів на ринок на 40%.'
+        company: 'Independent Contractor',
+        title: 'Full-Stack Software Engineer',
+        period: 'Січ 2023 — Вер 2024',
+        description: 'Архітектура event-driven Fintech-екосистем за допомогою Kafka та WebSockets. Впровадження обсервабіліті через ELK Stack (Kibana). Модульна інтеграція Stripe/Crypto та стандартизація Docker-інфраструктури.'
       }
     ]
   }

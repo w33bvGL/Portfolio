@@ -4,7 +4,8 @@ import { NuxtLink } from '#components'
 interface Props {
   to?: string
   href?: string
-  variant?: 'primary' | 'ghost' | 'outline'
+  variant?: 'primary' | 'ghost' | 'outline' | 'danger'
+  size?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
   icon?: string
   loading?: boolean
   block?: boolean
@@ -12,58 +13,58 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   variant: 'primary',
+  size: 'md',
   loading: false,
   block: false
 })
+
+const slots = useSlots()
+const isOnlyIcon = computed(() => !slots.default && props.icon)
 
 const componentTag = computed(() => {
   if (props.to) return NuxtLink
   if (props.href) return 'a'
   return 'button'
 })
+
+const linkProps = computed(() => {
+  if (props.to) return { to: props.to }
+  if (props.href) return { href: props.href, target: '_blank', rel: 'noopener noreferrer' }
+  return {}
+})
 </script>
 
 <template>
   <component
     :is="componentTag"
-    :to="to"
-    :href="href"
+    v-bind="linkProps"
     class="ui-btn"
-    :class="[`variant-${variant}`, { 'is-loading': loading, 'is-block': block }]"
+    :class="[
+      `variant-${variant}`,
+      `size-${size}`,
+      {
+        'is-loading': loading,
+        'is-block': block,
+        'is-only-icon': isOnlyIcon
+      }
+    ]"
   >
-    <Icon
-      v-if="icon && !loading"
-      :name="icon"
-      class="btn-icon"
-    />
+    <div v-if="icon && !loading" class="icon-wrapper">
+      <Icon :name="icon" class="btn-icon" />
+    </div>
 
     <span
+      v-if="slots.default"
       class="btn-text"
       :class="{ 'is-hidden': loading }"
     >
       <slot />
     </span>
 
-    <div
-      v-if="loading"
-      class="spinner"
-    >
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-        <circle
-          cx="12"
-          cy="12"
-          r="10"
-          stroke-opacity="0.1"
-        />
-        <path
-          d="M12 2a10 10 0 0 1 10 10"
-          stroke-opacity="1"
-        />
+    <div v-if="loading" class="spinner">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <circle cx="12" cy="12" r="10" stroke-opacity="0.1" />
+        <path d="M12 2a10 10 0 0 1 10 10" stroke-opacity="1" stroke-linecap="round" />
       </svg>
     </div>
   </component>
@@ -71,17 +72,24 @@ const componentTag = computed(() => {
 
 <style scoped>
 .ui-btn {
+  --btn-height: 2.75rem;
+  --btn-px: 1.5rem;
+  --btn-font: 0.95rem;
+  --btn-icon-size: 1.15rem;
+  --btn-gap: 0.5rem;
+
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
+  gap: var(--btn-gap);
+  height: var(--btn-height);
+  padding: 0 var(--btn-px);
   border-radius: 9999px;
   font-family: inherit;
-  font-size: 0.95rem;
-  font-weight: 500;
-  line-height: 1;
+  font-size: var(--btn-font);
+  font-weight: 600;
+  line-height: 1; /* Жестко 1, чтобы не было смещений по вертикали */
   text-decoration: none;
   cursor: pointer;
   border: 1px solid transparent;
@@ -89,80 +97,69 @@ const componentTag = computed(() => {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   overflow: hidden;
   user-select: none;
+  white-space: nowrap;
   -webkit-tap-highlight-color: transparent;
 }
 
-.ui-btn:active {
-  transform: scale(0.96);
+/* --- Sizes Logic --- */
+.size-sm  { --btn-height: 2.25rem; --btn-px: 1rem; --btn-font: 0.85rem; --btn-icon-size: 1rem; --btn-gap: 0.35rem; }
+.size-md  { /* Default */ }
+.size-lg  { --btn-height: 3.25rem; --btn-px: 2rem; --btn-font: 1.05rem; --btn-icon-size: 1.25rem; }
+.size-xl  { --btn-height: 4rem; --btn-px: 2.5rem; --btn-font: 1.25rem; --btn-icon-size: 1.5rem; --btn-gap: 0.75rem; }
+.size-xxl { --btn-height: 5.5rem; --btn-px: 4rem; --btn-font: 1.75rem; --btn-icon-size: 2rem; --btn-gap: 1rem; }
+
+/* Идеальный круг и центрирование */
+.is-only-icon {
+  padding: 0 !important;
+  width: var(--btn-height);
+  min-width: var(--btn-height);
+  justify-content: center;
+  gap: 0;
 }
 
-.is-block {
-  width: 100%;
+.icon-wrapper {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 0; /* Убирает лишнее пространство под инлайновыми элементами */
 }
 
 .btn-icon {
-  width: 1.15rem;
-  height: 1.15rem;
+  width: var(--btn-icon-size);
+  height: var(--btn-icon-size);
   transition: transform 0.3s ease;
 }
 
-.variant-primary {
-  background: var(--text-main);
-  color: var(--bg-body);
-  border-color: var(--text-main);
-}
+.ui-btn:active { transform: scale(0.96); }
+.is-block { width: 100%; display: flex; }
 
-.variant-primary:hover {
-  background: transparent;
-  color: var(--text-main);
-  box-shadow: 0 0 20px -5px rgba(0,0,0,0.1);
-}
+/* --- Variants --- */
+.variant-primary { background: var(--text-main); color: var(--bg-body); border-color: var(--text-main); }
+.variant-primary:hover { background: transparent; color: var(--text-main); box-shadow: 0 0 20px -5px rgba(255, 255, 255, 0.1); }
 
-.variant-ghost {
-  background: rgba(125, 125, 125, 0.05);
-  color: var(--text-main);
-  border-color: rgba(125, 125, 125, 0.1);
-  backdrop-filter: blur(8px);
-}
+.variant-ghost { background: rgba(125, 125, 125, 0.05); color: var(--text-main); border-color: rgba(125, 125, 125, 0.1); backdrop-filter: blur(8px); }
+.variant-ghost:hover { background: rgba(125, 125, 125, 0.1); border-color: rgba(255, 255, 255, 0.1); transform: translateY(-1px); }
 
-.variant-ghost:hover {
-  background: rgba(125, 125, 125, 0.1);
-  border-color: var(--text-muted);
-  transform: translateY(-1px);
-}
+.variant-outline { background: transparent; border-color: var(--border-color); color: var(--text-muted); }
+.variant-outline:hover { border-color: var(--text-main); color: var(--text-main); }
 
-.variant-outline {
-  background: transparent;
-  border-color: var(--border-color);
-  color: var(--text-muted);
-}
+.variant-danger { background: rgba(255, 51, 51, 0.1); color: #ff3333; border-color: rgba(255, 51, 51, 0.2); }
+.variant-danger:hover { background: #ff3333; color: #fff; box-shadow: 0 4px 15px rgba(255, 51, 51, 0.3); }
 
-.variant-outline:hover {
-  border-color: var(--text-main);
-  color: var(--text-main);
-}
+/* Анимации ховера */
+.ui-btn:hover .btn-icon { transform: translateX(-1px); }
+.is-only-icon:hover .btn-icon { transform: scale(1.1); }
 
-.ui-btn:hover .btn-icon {
-  transform: translateX(-2px);
-}
-
-.is-hidden {
-  opacity: 0;
-  pointer-events: none;
-}
+.is-hidden { opacity: 0; pointer-events: none; }
 
 .spinner {
   position: absolute;
-  left: 50%;
-  top: 50%;
+  left: 50%; top: 50%;
   transform: translate(-50%, -50%);
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.25rem; height: 1.25rem;
   animation: spin 0.8s linear infinite;
 }
 
-@keyframes spin {
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
+@keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
 </style>

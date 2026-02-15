@@ -114,7 +114,7 @@ export default defineNuxtConfig({
         const browser = await puppeteer.launch({ args: ['--no-sandbox'] })
         const page = await browser.newPage()
 
-        for (const lang of langs) {
+        for (const lang of langCodes) {
           const url = `http://localhost:${port}/${lang}/resume`
           const outputDir = resolve(distDir, 'resume')
           const outputPath = resolve(outputDir, `${lang}.pdf`)

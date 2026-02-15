@@ -1,260 +1,112 @@
 export default defineEventHandler(() => {
   return {
-    en: [
-      {
-        name: 'Cyberhack Pro',
-        image: '/projects/cyberhack-pro.png',
-        description: 'A professional platform offering a wide range of cheats for popular games. Reliable, secure, and designed for gamers seeking enhanced gameplay experience.',
-        url: 'https://cyberhack.pro'
-      },
-      {
-        name: 'Ota-ku',
-        image: '/projects/ota-ku.png',
-        description: 'Free online anime streaming with Russian voice acting. Explore unlimited anime adventures on ota-ku.am — the ultimate portal for anime lovers.',
-        url: 'https://ota-ku.am'
-      },
-      {
-        name: 'W33bvgl Portfolio',
-        image: '/projects/portfolio.png',
-        description: 'Personal portfolio demonstrating full-stack projects, skills, and development experience. Open-source and built with modern technologies.',
-        url: 'https://vahe.anidzen.com'
-      },
-      {
-        name: 'Omex Proxy',
-        image: '/projects/omex-proxy.png',
-        description: 'A full-featured platform to sell and manage proxy servers via web and Telegram app, with automated activation, renewal, and user-friendly management.',
-        url: 'https://omexai.com'
-      },
-      {
-        name: 'Currzy — Currency Library',
-        image: '/projects/currzy.png',
-        description: 'Open-source library to fetch, manage, and convert exchange rates from multiple reliable providers. Easy to integrate into any project with up-to-date data.',
-        url: 'https://currzy.anidzen.com'
-      },
-      {
-        name: 'Mari Karkas',
-        image: '/projects/mari-karkas.png',
-        description: 'Turnkey construction of frame houses and baths with guaranteed quality. Modern, fast, and reliable solutions with completion in under 30 days.',
-        url: 'https://quiz.mari-karkas.ru'
-      },
-      {
-        name: 'Drive Fit',
-        image: '/projects/drive-fit.png',
-        description: 'Fitness club website offering yoga, cardio, and strength training programs. Focused on health, endurance, and improving physical performance.'
-      },
-      {
-        name: 'Rus Military Badges',
-        image: '/projects/rus-military-badges.png',
-        description: 'Resource pack replacing default icons with Russian Army insignias. Perfect for servers, mods, personal projects, or custom templates.',
-        url: 'https://github.com/Zone-13/rus-military-badges'
-      },
-      {
-        name: 'Crito',
-        image: '/projects/crito.png',
-        description: 'Landing page for a CRM system showcasing features, advantages, and calls-to-action. Designed with responsive layout for optimal UX.'
-      },
-      {
-        name: 'TG Quick Click',
-        image: '/projects/tg-quick-click.png',
-        description: 'Telegram Web App clicker with store and pyramid mechanics. Quick deployment and easy customization for users.'
-      },
-      {
-        name: 'Podarok.ru',
-        image: '/projects/podarokru.png',
-        description: 'Personalized video greetings voiced by famous actors. Creative, memorable gifts starting from 1999₽.',
-        url: 'https://podarokru.ru'
-      },
-      {
-        name: 'UDP Logistics',
-        image: '/projects/udp-logistics.png',
-        description: 'Reliable logistics solutions for shipping parcels and cargo between Uzbekistan and Europe.'
-      }
+    de: [
+      { name: 'Cyberhack Pro', image: '/projects/cyberhack-pro.png', description: 'Professionelle Plattform für Game-Enhancement-Utilities. Sichere Architektur für Gamer, die ein erstklassiges Spielerlebnis suchen.', url: 'https://cyberhack.pro' },
+      { name: 'Omex Proxy', image: '/projects/omex-proxy.png', description: 'Proxy-Management-Ökosystem für Unternehmen mit automatisierter Aktivierung und Telegram-Bot-Integration.', url: 'https://cyberhack.pro' },
+      { name: 'HentaiVoice', image: '/projects/hentai-voice.png', description: 'Hentai-Streaming-Dienst mit eigenem nativen MSE-Player. Unterstützt HLS/M3U8, Multi-Track-Audio/Video und Chunk-basierte Untertitel ohne externe Bibliotheken.', url: 'https://hentaivoice.top', isAdult: true },
+      { name: 'W33bvgl Portfolio', image: '/projects/portfolio-2.png', description: 'Persönliches Portfolio mit Fokus auf Full-Stack-Engineering, Nuxt 3 und modulare Architektur.', url: 'https://vahe.anidzen.com' },
+      { name: 'Mari Karkas', image: '/projects/mari-karkas.png', description: 'Plattform für schlüsselfertigen Skelettbau. Lead-Gen optimierte UX mit integrierter Berechnungslogik für Fachwerkhäuser.', url: 'https://quiz.mari-karkas.ru' },
+      { name: 'Ota-ku legacy', image: '/projects/ota-ku.png', description: 'Anime-Streaming-Portal mit massiver lokalisierter Bibliothek und optimiertem Content Delivery Network.' },
+      { name: 'Drive Fit', image: '/projects/drive-fit.png', description: 'Moderne Fitnessclub-SPA mit dynamischer Terminverwaltung, Trainerprofilen und Mitgliederintegration.' },
+      { name: 'Crito', image: '/projects/crito.png', description: 'Hochkonvertierende Landingpage für ein CRM-System. Responsive Design mit Fokus auf Feature-Präsentation und Lead-Capture.' },
+      { name: 'TG Quick Click', image: '/projects/tg-quick-click.png', description: 'Telegram Mini App mit Clicker-Mechanik und Ökonomie. Optimiert für Hochlast-Szenarien innerhalb des Messengers.' },
+      { name: 'Podarok.ru', image: '/projects/podarokru.png', description: 'Personalisierter Videogruß-Service. Komplexe Backend-Infrastruktur für Videorendering und Auftragsabwicklung.', url: 'https://podarokru.ru' }
     ],
-    ru: [
-      {
-        name: 'Cyberhack Pro',
-        image: '/projects/cyberhack-pro.png',
-        description: 'Профессиональная платформа с широким выбором читов для популярных игр. Надёжно, безопасно и для геймеров, ищущих улучшенный игровой опыт.'
-      },
-      {
-        name: 'Ota-ku',
-        image: '/projects/ota-ku.png',
-        description: 'Бесплатный онлайн просмотр аниме с русской озвучкой. Погружайтесь в неограниченные аниме-приключения на ota-ku.am — портале для настоящих фанатов аниме.'
-      },
-      {
-        name: 'W33bvgl Portfolio',
-        image: '/projects/portfolio.png',
-        description: 'Личное портфолио с демонстрацией full-stack проектов, навыков и опыта разработки. Open-source, современный стек технологий.'
-      },
-      {
-        name: 'Omex Proxy',
-        image: '/projects/omex-proxy.png',
-        description: 'Полнофункциональная платформа для продажи и управления прокси-серверами через веб и Telegram с автоматической активацией и продлением.'
-      },
-      {
-        name: 'Currzy — Currency Library',
-        image: '/projects/currzy.png',
-        description: 'Open-source библиотека для получения, управления и конвертации актуальных курсов валют от нескольких надёжных провайдеров. Легко интегрируется в проекты.'
-      },
-      {
-        name: 'Mari Karkas',
-        image: '/projects/mari-karkas.png',
-        description: 'Строительство каркасных домов и бань под ключ с гарантией качества. Современные, быстрые и надёжные решения со сроком до 30 дней.'
-      },
-      {
-        name: 'Drive Fit',
-        image: '/projects/drive-fit.png',
-        description: 'Сайт фитнес-клуба с программами йоги, кардио и силовых тренировок. Фокус на здоровье, выносливость и улучшение физической формы.'
-      },
-      {
-        name: 'Rus Military Badges',
-        image: '/projects/rus-military-badges.png',
-        description: 'Пакет ресурсов заменяет стандартные иконки на знаки различия российской армии. Идеально для серверов, модов, личных проектов и шаблонов.'
-      },
-      {
-        name: 'Crito',
-        image: '/projects/crito.png',
-        description: 'Лендинг для CRM-системы, демонстрирующий функции, преимущества и призывы к действию. Адаптивный дизайн для лучшего UX.'
-      },
-      {
-        name: 'TG Quick Click',
-        image: '/projects/tg-quick-click.png',
-        description: 'Telegram Web App кликер с магазином и пирамидальной механикой. Быстрое развертывание и простая настройка для пользователей.'
-      },
-      {
-        name: 'Podarok.ru',
-        image: '/projects/podarokru.png',
-        description: 'Персонализированные видеопоздравления с голосами известных актёров. Креативные и запоминающиеся подарки от 1999₽.'
-      },
-      {
-        name: 'UDP Logistics',
-        image: '/projects/udp-logistics.png',
-        description: 'Надёжные логистические решения для отправки посылок и грузов между Узбекистаном и Европой.'
-      }
+    en: [
+      { name: 'Cyberhack Pro', image: '/projects/cyberhack-pro.png', description: 'A professional platform offering a wide range of game enhancement utilities. Reliable, secure architecture designed for gamers.', url: 'https://cyberhack.pro' },
+      { name: 'Omex Proxy', image: '/projects/omex-proxy.png', description: 'Enterprise-grade proxy management ecosystem. Features automated activation and Telegram bot integration.', url: 'https://cyberhack.pro' },
+      { name: 'HentaiVoice', image: '/projects/hentai-voice.png', description: 'Hentai streaming service with a custom-built native MSE player. Supports HLS/M3U8, multi-track audio/video, and chunked subtitles without external libraries.', url: 'https://hentaivoice.top', isAdult: true },
+      { name: 'W33bvgl Portfolio', image: '/projects/portfolio-2.png', description: 'Personal portfolio showcasing full-stack engineering skills. Built with Nuxt 3, featuring modular architecture.', url: 'https://vahe.anidzen.com' },
+      { name: 'Mari Karkas', image: '/projects/mari-karkas.png', description: 'Turnkey construction service platform. Lead generation optimized UX with integrated calculation logic for frame houses.', url: 'https://quiz.mari-karkas.ru' },
+      { name: 'Ota-ku legacy', image: '/projects/ota-ku.png', description: 'Anime streaming portal with a massive localized library. Custom video player implementation and optimized CDN.' },
+      { name: 'Drive Fit', image: '/projects/drive-fit.png', description: 'Modern fitness club SPA. Features dynamic schedule management, trainer profiles, and membership integration.' },
+      { name: 'Crito', image: '/projects/crito.png', description: 'High-conversion landing page for a CRM system. Responsive design focused on feature showcasing and lead capture.' },
+      { name: 'TG Quick Click', image: '/projects/tg-quick-click.png', description: 'Telegram Mini App with clicker mechanics and economy. Optimized for high-load integration within the messenger.' },
+      { name: 'Podarok.ru', image: '/projects/podarokru.png', description: 'Personalized video greeting service. Complex backend for video rendering and order processing workflow.', url: 'https://podarokru.ru' }
+    ],
+    es: [
+      { name: 'Cyberhack Pro', image: '/projects/cyberhack-pro.png', description: 'Plataforma profesional de utilidades para juegos. Arquitectura segura diseñada para gamers.', url: 'https://cyberhack.pro' },
+      { name: 'Omex Proxy', image: '/projects/omex-proxy.png', description: 'Ecosistema de gestión de proxies empresariales con activación automática e integración de bots de Telegram.', url: 'https://cyberhack.pro' },
+      { name: 'HentaiVoice', image: '/projects/hentai-voice.png', description: 'Servicio de streaming de Hentai con reproductor MSE nativo personalizado. Soporta HLS/M3U8 y subtítulos segmentados sin librerías externas.', url: 'https://hentaivoice.top', isAdult: true },
+      { name: 'W33bvgl Portfolio', image: '/projects/portfolio-2.png', description: 'Portafolio personal que muestra habilidades de ingeniería full-stack con Nuxt 3.', url: 'https://vahe.anidzen.com' },
+      { name: 'Mari Karkas', image: '/projects/mari-karkas.png', description: 'Plataforma de construcción llave en mano. UX optimizada para leads con lógica de cálculo para casas de madera.', url: 'https://quiz.mari-karkas.ru' },
+      { name: 'Ota-ku legacy', image: '/projects/ota-ku.png', description: 'Portal de streaming de anime con una biblioteca masiva y red de entrega de contenido optimizada.' },
+      { name: 'Drive Fit', image: '/projects/drive-fit.png', description: 'SPA para club de fitness con gestión dinámica de horarios e integración de miembros.' },
+      { name: 'Crito', image: '/projects/crito.png', description: 'Landing page de alta conversión para un sistema CRM. Diseño responsivo enfocado en captación de leads.' },
+      { name: 'TG Quick Click', image: '/projects/tg-quick-click.png', description: 'Telegram Mini App con mecánicas de clicker. Optimizado para alta carga dentro del mensajero.' },
+      { name: 'Podarok.ru', image: '/projects/podarokru.png', description: 'Servicio de saludos en video personalizados. Backend complejo para renderizado de video y flujo de pedidos.', url: 'https://podarokru.ru' }
+    ],
+    fr: [
+      { name: 'Cyberhack Pro', image: '/projects/cyberhack-pro.png', description: 'Plateforme professionnelle d’outils de jeu. Architecture sécurisée conçue pour les gamers.', url: 'https://cyberhack.pro' },
+      { name: 'Omex Proxy', image: '/projects/omex-proxy.png', description: 'Écosystème de gestion de proxies avec activation automatisée et intégration Telegram.', url: 'https://cyberhack.pro' },
+      { name: 'HentaiVoice', image: '/projects/hentai-voice.png', description: 'Service de streaming Hentai avec lecteur MSE natif personnalisé. Supporte HLS/M3U8 et sous-titres segmentés sans bibliothèques externes.', url: 'https://hentaivoice.top', isAdult: true },
+      { name: 'W33bvgl Portfolio', image: '/projects/portfolio-2.png', description: 'Portfolio personnel présentant des compétences en ingénierie full-stack sous Nuxt 3.', url: 'https://vahe.anidzen.com' },
+      { name: 'Mari Karkas', image: '/projects/mari-karkas.png', description: 'Plateforme de construction clé en main. UX optimisée pour les leads avec moteur de calcul intégré.', url: 'https://quiz.mari-karkas.ru' },
+      { name: 'Ota-ku legacy', image: '/projects/ota-ku.png', description: 'Portail de streaming anime avec bibliothèque massive et CDN optimisé.' },
+      { name: 'Drive Fit', image: '/projects/drive-fit.png', description: 'SPA pour club de fitness avec gestion dynamique des plannings et profils d’entraîneurs.' },
+      { name: 'Crito', image: '/projects/crito.png', description: 'Landing page à haute conversion pour un système CRM. Design responsive axé sur la capture de leads.' },
+      { name: 'TG Quick Click', image: '/projects/tg-quick-click.png', description: 'Mini App Telegram avec mécanique de clicker. Optimisé pour les charges élevées.' },
+      { name: 'Podarok.ru', image: '/projects/podarokru.png', description: 'Service de messages vidéo personnalisés. Backend complexe pour le rendu vidéo et la gestion des commandes.', url: 'https://podarokru.ru' }
     ],
     hy: [
-      {
-        name: 'Cyberhack Pro',
-        image: '/projects/cyberhack-pro.png',
-        description: 'Մասնագիտական հարթակ՝ լայն ընտրությամբ չիթերով հայտնի խաղերի համար: Հուսալի և անվտանգ լուծումներ՝ խաղացողների համար, ովքեր ցանկանում են բարելավել խաղային փորձը։'
-      },
-      {
-        name: 'Ota-ku',
-        image: '/projects/ota-ku.png',
-        description: 'Անվճար անիմե դիտում ռուսերեն ձայնավորմամբ: Մուտքեք անսահմանափակ անիմե արկածներ ota-ku.am-ում՝ անիմե սիրողների համար։'
-      },
-      {
-        name: 'W33bvgl Portfolio',
-        image: '/projects/portfolio.png',
-        description: 'Անձնական պորտֆոլիո՝ ցույց տալով իմ full-stack նախագծերը, հմտությունները և փորձը: Open-source, ժամանակակից տեխնոլոգիաներով կառուցված։'
-      },
-      {
-        name: 'Omex Proxy',
-        image: '/projects/omex-proxy.png',
-        description: 'Ամբողջական հարթակ պրոքսի սերվերների վաճառքի և կառավարման համար՝ վեբ և Telegram հավելվածով, ավտոմատացված ակտիվացում և երկարացումով։'
-      },
-      {
-        name: 'Currzy — Currency Library',
-        image: '/projects/currzy.png',
-        description: 'Բաց կոդով գրադարան՝ արժութային փոխարժեքները ստանալու, կառավարելու և փոխակերպելու համար՝ մի քանի վստահելի աղբյուրներից, հեշտ ինտեգրում ցանկացած նախագծում։'
-      },
-      {
-        name: 'Mari Karkas',
-        image: '/projects/mari-karkas.png',
-        description: 'Աշխատանք turnkey տարբերակով՝ տնային և լոգարանային շինություններ, որակի երաշխիքով: Նորարար, արագ և հուսալի լուծումներ մինչև 30 օրում։'
-      },
-      {
-        name: 'Drive Fit',
-        image: '/projects/drive-fit.png',
-        description: 'Ֆիթնես ակումբի կայք՝ յոգա, կարդիո և ուժային մարզումների ծրագրերով: Ուղղված առողջությանը, տոկունությանը և ֆիզիկական ձևի բարելավմանը։'
-      },
-      {
-        name: 'Rus Military Badges',
-        image: '/projects/rus-military-badges.png',
-        description: 'Ռեսուրսների փաթեթ՝ փոխարինում է ստանդարտ նշանները ռուսական բանակի դասական նշաններով: Հարմար սերվերների, մոդերի և անձնական նախագծերի համար։'
-      },
-      {
-        name: 'Crito',
-        image: '/projects/crito.png',
-        description: 'Landing page CRM համակարգի համար՝ առանձնացնելով ֆունկցիաները, առավելությունները և գործողությունների կոչերը, ադապտիվ դիզայնով։'
-      },
-      {
-        name: 'TG Quick Click',
-        image: '/projects/tg-quick-click.png',
-        description: 'Telegram Web App կլիքեր՝ խանութով և հիերարխիկ մեխանիզմով: Արագ տեղադրում և հեշտ կարգավորում օգտագործողների համար։'
-      },
-      {
-        name: 'Podarok.ru',
-        image: '/projects/podarokru.png',
-        description: 'Անհատականացված տեսագրություններ՝ հայտնի դերասանների ձայներով: Կրեատիվ և հիշվող նվերներ։'
-      },
-      {
-        name: 'UDP Logistics',
-        image: '/projects/udp-logistics.png',
-        description: 'Հուսալի լոգիստիկ լուծումներ՝ փաթեթների և բեռնափոխադրումների համար Ուզբեկստանից դեպի Եվրոպա։'
-      }
+      { name: 'Cyberhack Pro', image: '/projects/cyberhack-pro.png', description: 'Խաղային գործիքների պրոֆեսիոնալ հարթակ: Հուսալի և անվտանգ ճարտարապետություն՝ նախատեսված գեյմերների համար:', url: 'https://cyberhack.pro' },
+      { name: 'Omex Proxy', image: '/projects/omex-proxy.png', description: 'Պրոքսի սերվերների կառավարման էկոհամակարգ՝ ավտոմատացված ակտիվացմամբ և Telegram բոտի ինտեգրմամբ:', url: 'https://cyberhack.pro' },
+      { name: 'HentaiVoice', image: '/projects/hentai-voice.png', description: 'Hentai սթրիմինգային ծառայություն սեփական MSE փլեյերով: HLS/M3U8 աջակցություն և սուբտիտրերի չանկային բեռնում առանց գրադարանների:', url: 'https://hentaivoice.top', isAdult: true },
+      { name: 'W33bvgl Portfolio', image: '/projects/portfolio-2.png', description: 'Անհատական պորտֆոլիո, որը ներկայացնում է full-stack ինժեներական հմտությունները Nuxt 3-ով:', url: 'https://vahe.anidzen.com' },
+      { name: 'Mari Karkas', image: '/projects/mari-karkas.png', description: 'Կառուցապատման հարթակ: Օպտիմալացված UX՝ տների հաշվարկման ներդրված տրամաբանությամբ:', url: 'https://quiz.mari-karkas.ru' },
+      { name: 'Ota-ku legacy', image: '/projects/ota-ku.png', description: 'Անիմե սթրիմինգային պորտալ մեծ գրադարանով և օպտիմալացված CDN-ով:' },
+      { name: 'Drive Fit', image: '/projects/drive-fit.png', description: 'Ֆիտնես ակումբի SPA՝ ժամանակացույցի դինամիկ կառավարմամբ և մարզիչների պրոֆիլներով:' },
+      { name: 'Crito', image: '/projects/crito.png', description: 'CRM համակարգի համար բարձր կոնվերսիայով լենդինգ: Ռեսպոնսիվ դիզայն՝ ուղղված լիդերի հավաքագրմանը:' },
+      { name: 'TG Quick Click', image: '/projects/tg-quick-click.png', description: 'Telegram Mini App քլիքերային մեխանիկայով: Օպտիմալացված է բարձր բեռնվածության համար:' },
+      { name: 'Podarok.ru', image: '/projects/podarokru.png', description: 'Անհատականացված վիդեո շնորհավորանքների ծառայություն: Բարդ բեքենդ՝ վիդեո ռենդերինգի համար:', url: 'https://podarokru.ru' }
+    ],
+    nl: [
+      { name: 'Cyberhack Pro', image: '/projects/cyberhack-pro.png', description: 'Professioneel platform voor game-utilities. Veilige architectuur ontworpen voor serieuze gamers.', url: 'https://cyberhack.pro' },
+      { name: 'Omex Proxy', image: '/projects/omex-proxy.png', description: 'Proxy-beheerecosysteem voor bedrijven met geautomatiseerde activering en Telegram-integratie.', url: 'https://cyberhack.pro' },
+      { name: 'HentaiVoice', image: '/projects/hentai-voice.png', description: 'Hentai-streamingservice met een eigen native MSE-speler. Ondersteunt HLS/M3U8 en chunked ondertitels zonder externe bibliotheken.', url: 'https://hentaivoice.top', isAdult: true },
+      { name: 'W33bvgl Portfolio', image: '/projects/portfolio-2.png', description: 'Persoonlijk portfolio met full-stack engineering skills gebouwd met Nuxt 3.', url: 'https://vahe.anidzen.com' },
+      { name: 'Mari Karkas', image: '/projects/mari-karkas.png', description: 'Sleutelklaar bouwplatform. Lead-gen geoptimaliseerde UX met berekeningslogica voor houtskeletbouw.', url: 'https://quiz.mari-karkas.ru' },
+      { name: 'Ota-ku legacy', image: '/projects/ota-ku.png', description: 'Anime-streamingportal met een enorme bibliotheek en geoptimaliseerd CDN.' },
+      { name: 'Drive Fit', image: '/projects/drive-fit.png', description: 'Moderne fitnessclub-SPA met dynamisch roosterbeheer en ledenintegratie.' },
+      { name: 'Crito', image: '/projects/crito.png', description: 'Landingpagina voor een CRM-systeem met hoge conversie. Responsief ontwerp gericht op leadgeneratie.' },
+      { name: 'TG Quick Click', image: '/projects/tg-quick-click.png', description: 'Telegram Mini App met clicker-mechanica. Geoptimaliseerd voor hoge belasting.' },
+      { name: 'Podarok.ru', image: '/projects/podarokru.png', description: 'Gepersonaliseerde videogroetendienst. Complex backend voor videorendering en orderverwerking.', url: 'https://podarokru.ru' }
+    ],
+    pl: [
+      { name: 'Cyberhack Pro', image: '/projects/cyberhack-pro.png', description: 'Profesjonalna platforma narzędzi do gier. Bezpieczna architektura zaprojektowana dla graczy.', url: 'https://cyberhack.pro' },
+      { name: 'Omex Proxy', image: '/projects/omex-proxy.png', description: 'Ekosystem zarządzania proxy z automatyczną aktywacją i integracją z botem Telegram.', url: 'https://cyberhack.pro' },
+      { name: 'HentaiVoice', image: '/projects/hentai-voice.png', description: 'Serwis streamingowy Hentai z autorskim odtwarzaczem MSE. Obsługa HLS/M3U8 i napisów chunked bez zewnętrznych bibliotek.', url: 'https://hentaivoice.top', isAdult: true },
+      { name: 'W33bvgl Portfolio', image: '/projects/portfolio-2.png', description: 'Osobiste portfolio prezentujące umiejętności full-stack inżynierii w Nuxt 3.', url: 'https://vahe.anidzen.com' },
+      { name: 'Mari Karkas', image: '/projects/mari-karkas.png', description: 'Platforma budowlana pod klucz. UX zoptymalizowany pod kątem leadów z logiką obliczeń dla domów szkieletowych.', url: 'https://quiz.mari-karkas.ru' },
+      { name: 'Ota-ku legacy', image: '/projects/ota-ku.png', description: 'Portal streamingowy anime z ogromną biblioteką i zoptymalizowaną siecią CDN.' },
+      { name: 'Drive Fit', image: '/projects/drive-fit.png', description: 'SPA dla klubu fitness z dynamicznym zarządzaniem grafikami i profilami trenerów.' },
+      { name: 'Crito', image: '/projects/crito.png', description: 'Landing page dla systemu CRM o wysokiej konwersji. Responsywny design skupiony na pozyskiwaniu leadów.' },
+      { name: 'TG Quick Click', image: '/projects/tg-quick-click.png', description: 'Telegram Mini App z mechaniką clickera. Zoptymalizowany pod kątem wysokiego obciążenia.' },
+      { name: 'Podarok.ru', image: '/projects/podarokru.png', description: 'Serwis spersonalizowanych życzeń wideo. Złożony backend do renderowania wideo.', url: 'https://podarokru.ru' }
+    ],
+    ru: [
+      { name: 'Cyberhack Pro', image: '/projects/cyberhack-pro.png', description: 'Профессиональная платформа игровых утилит. Надежная и безопасная архитектура для геймеров.', url: 'https://cyberhack.pro' },
+      { name: 'Omex Proxy', image: '/projects/omex-proxy.png', description: 'Экосистема управления прокси-серверами с автоматизированной активацией и Telegram-ботом.', url: 'https://cyberhack.pro' },
+      { name: 'HentaiVoice', image: '/projects/hentai-voice.png', description: 'Hentai-стриминг с нативным MSE-плеером собственной разработки. Поддержка HLS/M3U8 и чанковая загрузка субтитров без сторонних библиотек.', url: 'https://hentaivoice.top', isAdult: true },
+      { name: 'W33bvgl Portfolio', image: '/projects/portfolio-2.png', description: 'Личное портфолио, демонстрирующее навыки full-stack разработки на стеке Nuxt 3.', url: 'https://vahe.anidzen.com' },
+      { name: 'Mari Karkas', image: '/projects/mari-karkas.png', description: 'Платформа строительства каркасных домов под ключ. Оптимизированный UX с логикой расчета конструкций.', url: 'https://quiz.mari-karkas.ru' },
+      { name: 'Ota-ku legacy', image: '/projects/ota-ku.png', description: 'Портал аниме-стриминга с огромной библиотекой и оптимизированной сетью доставки контента.' },
+      { name: 'Drive Fit', image: '/projects/drive-fit.png', description: 'SPA фитнес-клуба с динамическим управлением расписанием и профилями тренеров.' },
+      { name: 'Crito', image: '/projects/crito.png', description: 'Высококонверсионный лендинг для CRM-системы. Респонсив-дизайн с фокусом на презентацию фич и захват лидов.' },
+      { name: 'TG Quick Click', image: '/projects/tg-quick-click.png', description: 'Telegram Mini App с кликер-механикой. Оптимизировано для высоких нагрузок внутри мессенджера.' },
+      { name: 'Podarok.ru', image: '/projects/podarokru.png', description: 'Сервис персональных видеопоздравлений. Сложный бэкенд для рендеринга видео и обработки заказов.', url: 'https://podarokru.ru' }
     ],
     uk: [
-      {
-        name: 'Cyberhack Pro',
-        image: '/projects/cyberhack-pro.png',
-        description: 'Професійна платформа з широким вибором читів для популярних ігор. Надійно, безпечно і для геймерів, які прагнуть покращити ігровий досвід.'
-      },
-      {
-        name: 'Ota-ku',
-        image: '/projects/ota-ku.png',
-        description: 'Безкоштовний онлайн-перегляд аніме з російським озвученням. Пориньте у безмежні аніме-пригоди на ota-ku.am — порталі для справжніх шанувальників аніме.'
-      },
-      {
-        name: 'W33bvgl Portfolio',
-        image: '/projects/portfolio.png',
-        description: 'Особисте портфоліо з демонстрацією full-stack проєктів, навичок і досвіду розробки. Open-source, сучасний технологічний стек.'
-      },
-      {
-        name: 'Omex Proxy',
-        image: '/projects/omex-proxy.png',
-        description: 'Повнофункціональна платформа для продажу та керування проксі-серверами через веб і Telegram з автоматичною активацією та продовженням.'
-      },
-      {
-        name: 'Currzy — Currency Library',
-        image: '/projects/currzy.png',
-        description: 'Open-source бібліотека для отримання, керування та конвертації актуальних валютних курсів від кількох надійних провайдерів. Легко інтегрується у проєкти.'
-      },
-      {
-        name: 'Mari Karkas',
-        image: '/projects/mari-karkas.png',
-        description: 'Будівництво каркасних будинків і лазень під ключ із гарантією якості. Сучасні, швидкі та надійні рішення з терміном виконання до 30 днів.'
-      },
-      {
-        name: 'Drive Fit',
-        image: '/projects/drive-fit.png',
-        description: 'Сайт фітнес-клубу з програмами йоги, кардіо та силових тренувань. Акцент на здоров’я, витривалість та покращення фізичної форми.'
-      },
-      {
-        name: 'Rus Military Badges',
-        image: '/projects/rus-military-badges.png',
-        description: 'Пакет ресурсів замінює стандартні іконки на знаки розрізнення російської армії. Ідеально підходить для серверів, модів, персональних проєктів і шаблонів.'
-      },
-      {
-        name: 'Crito',
-        image: '/projects/crito.png',
-        description: 'Лендінг для CRM-системи, який демонструє функції, переваги та заклики до дії. Адаптивний дизайн для кращого користувацького досвіду.'
-      },
-      {
-        name: 'TG Quick Click',
-        image: '/projects/tg-quick-click.png',
-        description: 'Telegram Web App клікер із магазином і пірамідальною механікою. Швидке розгортання та проста настройка для користувачів.'
-      },
-      {
-        name: 'Podarok.ru',
-        image: '/projects/podarokru.png',
-        description: 'Персоналізовані відеопривітання з голосами відомих акторів. Креативні та незабутні подарунки від 1999₽.'
-      },
-      {
-        name: 'UDP Logistics',
-        image: '/projects/udp-logistics.png',
-        description: 'Надійні логістичні рішення для доставки посилок і вантажів між Узбекистаном і Європою.'
-      }
+      { name: 'Cyberhack Pro', image: '/projects/cyberhack-pro.png', description: 'Професійна платформа ігрових утиліт. Надійна та безпечна архітектура для геймерів.', url: 'https://cyberhack.pro' },
+      { name: 'Omex Proxy', image: '/projects/omex-proxy.png', description: 'Екосистема управління проքсі-серверами з автоматизованою активацією та Telegram-ботом.', url: 'https://cyberhack.pro' },
+      { name: 'HentaiVoice', image: '/projects/hentai-voice.png', description: 'Hentai-стримінг із нативним MSE-плеєром власної розробки. Підтримка HLS/M3U8 та чанкове завантаження субтитрів без бібліотек.', url: 'https://hentaivoice.top', isAdult: true },
+      { name: 'W33bvgl Portfolio', image: '/projects/portfolio-2.png', description: 'Особиստе портфоліо, що демонструє навички full-stack розробки на Nuxt 3.', url: 'https://vahe.anidzen.com' },
+      { name: 'Mari Karkas', image: '/projects/mari-karkas.png', description: 'Платформа будівництва каркасних будинків під ключ. UX з вбудованою логікою розрахунків.', url: 'https://quiz.mari-karkas.ru' },
+      { name: 'Ota-ku legacy', image: '/projects/ota-ku.png', description: 'Портал аніме-стримінгу з великою бібліотекою та оптимізованим CDN.' },
+      { name: 'Drive Fit', image: '/projects/drive-fit.png', description: 'SPA фітнес-клубу з динамічним розкладом та профілями тренерів.' },
+      { name: 'Crito', image: '/projects/crito.png', description: 'Лендинг з високою конверсією для CRM-системи. Дизайн зосереджений на презентації функцій та залученні лідів.' },
+      { name: 'TG Quick Click', image: '/projects/tg-quick-click.png', description: 'Telegram Mini App з клікер-механікою. Оптимізовано для високих навантажень.' },
+      { name: 'Podarok.ru', image: '/projects/podarokru.png', description: 'Сервіս персональних відеопривітань. Складний бекенд для рендерингу відео.', url: 'https://podarokru.ru' }
     ]
   }
 })

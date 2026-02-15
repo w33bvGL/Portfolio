@@ -1,11 +1,14 @@
 <script setup lang="ts">
 const { t, locales } = useI18n()
-const config = useRuntimeConfig()
 
 const isOpen = ref(false)
+const isDownloading = ref(false) // Стейт для лоадинга
 const containerRef = ref<HTMLElement | null>(null)
 
-const toggle = () => isOpen.value = !isOpen.value
+const toggle = () => {
+  if (isDownloading.value) return
+  isOpen.value = !isOpen.value
+}
 
 const close = (e: MouseEvent) => {
   if (containerRef.value && !containerRef.value.contains(e.target as Node)) {
@@ -13,23 +16,43 @@ const close = (e: MouseEvent) => {
   }
 }
 
-function download(code: string): void {
-  const isStatic = config.public.appEnv === 'production'
-  const url = isStatic ? `/resume/resume-${code}.pdf` : `/api/resume-pdf?lang=${code}`
+async function download(code: string): Promise<void> {
+  if (isDownloading.value) return
 
-  const link = document.createElement('a')
-  link.href = url
-  link.download = `resume-${code}.pdf`
-  document.body.appendChild(link)
-  link.click()
-  document.body.removeChild(link)
   isOpen.value = false
+  isDownloading.value = true
+
+  const url = `/resume/${code}.pdf`
+  const fileName = `Vahe_Sargsyan_Resume_${code.toUpperCase()}.pdf`
+
+  try {
+    const response = await fetch(url)
+
+    if (!response.ok) throw new Error('File not found')
+
+    const blob = await response.blob()
+    const blobUrl = window.URL.createObjectURL(blob)
+
+    const link = document.createElement('a')
+    link.href = blobUrl
+    link.setAttribute('download', fileName)
+    document.body.appendChild(link)
+    link.click()
+
+    document.body.removeChild(link)
+    window.URL.revokeObjectURL(blobUrl)
+  } catch (error) {
+    console.error('Download failed:', error)
+  } finally {
+    setTimeout(() => {
+      isDownloading.value = false
+    }, 600)
+  }
 }
 
 onMounted(() => document.addEventListener('click', close))
 onUnmounted(() => document.removeEventListener('click', close))
 </script>
-
 <template>
   <div
     ref="containerRef"
@@ -39,6 +62,7 @@ onUnmounted(() => document.removeEventListener('click', close))
       variant="primary"
       icon="lucide:file-down"
       class="trigger-btn"
+      :loading="isDownloading"
       @click.stop="toggle"
     >
       {{ t('cta.resume.download') || 'Download CV' }}

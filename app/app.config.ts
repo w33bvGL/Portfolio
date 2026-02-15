@@ -9,7 +9,7 @@ export default defineAppConfig({
     telegram: '@w33bvGL',
     available: false,
     birthday: '2005-03-30',
-    experienceStartDate: '2022-01-01'
+    experienceStartDate: '2023-01-01'
   },
   footer: {
     credits: `Copyright © 2024 - ${new Date().getFullYear()}`,

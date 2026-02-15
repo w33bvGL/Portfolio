@@ -18,9 +18,10 @@ const currentYear = new Date().getFullYear()
       <div class="spacer" />
 
       <div class="actions">
-        <div
+        <UiLayoutFlex
           v-if="links.length"
           class="socials"
+          :gap="0.3"
         >
           <UiButton
             v-for="(link, idx) in links"
@@ -28,15 +29,10 @@ const currentYear = new Date().getFullYear()
             :href="link.to"
             target="_blank"
             variant="ghost"
-            class="social-btn"
+            :icon="link.icon.replace('i-simple-icons-', 'simple-icons:')"
             :aria-label="link['aria-label']"
-          >
-            <Icon
-              :name="link.icon.replace('i-simple-icons-', 'simple-icons:')"
-              class="social-icon"
-            />
-          </UiButton>
-        </div>
+          />
+        </UiLayoutFlex>
 
         <div class="divider-vertical" />
 
@@ -114,12 +110,6 @@ const currentYear = new Date().getFullYear()
   gap: 0.5rem;
 }
 
-.socials {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
 .divider-vertical {
   width: 1px;
   height: 1.25rem;
@@ -141,10 +131,6 @@ const currentYear = new Date().getFullYear()
   color: var(--text-main);
 }
 
-.social-icon {
-  width: 1.1rem;
-  height: 1.1rem;
-}
 
 @media (max-width: 640px) {
   .footer-wrapper {

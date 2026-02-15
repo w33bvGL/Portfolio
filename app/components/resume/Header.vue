@@ -22,7 +22,7 @@ const { t } = useI18n()
         </li>
         <li>
           <span class="label">Telegram:</span>
-          <a :href="global.telegram" target="_blank" class="value">{{ global.telegram }}</a>
+          <a :href="`https://t.me/${global.telegram}`" target="_blank" class="value">{{ global.telegram }}</a>
         </li>
         <li>
           <span class="label">Web:</span>
