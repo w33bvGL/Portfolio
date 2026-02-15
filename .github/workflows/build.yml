@@ -30,13 +30,19 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # Установка системных либ для Chrome, чтобы Puppeteer не подох
       - name: Install Puppeteer system dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libgbm-dev libnss3 libatk-bridge2.0-0 libgtk-3-0 libasound2
+          run: |
+            sudo apt-get update
+            sudo apt-get install -y \
+              libgbm-dev \
+              libnss3 \
+              libatk-bridge2.0-0 \
+              libgtk-3-0 \
+              libasound2t64 \
+              libxss1 \
+              libxtst6 \
+              libxshmfence1
 
-      # Явная установка браузера для Puppeteer
       - name: Install Chrome for Puppeteer
         run: npx puppeteer browsers install chrome
 
@@ -44,16 +50,13 @@ jobs:
         run: pnpm run generate
         env:
           APP_ENV: production
-          # Puppeteer может требовать этот флаг в некоторых окружениях
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
           PUPPETEER_EXECUTABLE_PATH: ${{ env.PUPPETEER_EXECUTABLE_PATH }}
 
-      # Деплой на GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .output/public
-          # Оставляем .dotfiles (важно для .nojekyll)
           allow_empty_commit: false
           keep_files: false
