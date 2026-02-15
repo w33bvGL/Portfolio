@@ -34,7 +34,9 @@ const groups = computed(() => [
               <div class="group-icon">
                 <Icon :name="group.icon" />
               </div>
-              <h3 class="group-label">{{ group.title }}</h3>
+              <h3 class="group-label">
+                {{ group.title }}
+              </h3>
             </div>
 
             <div class="tech-cloud">
@@ -44,7 +46,11 @@ const groups = computed(() => [
                 class="tech-pill"
                 :style="{ '--p-delay': `${(gIdx * 5 + tIdx) * 0.03}s` }"
               >
-                <img :src="tech.icon" :alt="tech.name" class="p-icon" />
+                <img
+                  :src="tech.icon"
+                  :alt="tech.name"
+                  class="p-icon"
+                >
                 <span class="p-name">{{ tech.name }}</span>
                 <div class="p-glow" />
               </div>

@@ -31,8 +31,12 @@ const experiences = computed(() => {
           <span class="company">{{ exp.company }}</span>
           <span class="period">{{ exp.period }}</span>
         </div>
-        <div class="role">{{ exp.title }}</div>
-        <p class="description">{{ exp.description }}</p>
+        <div class="role">
+          {{ exp.title }}
+        </div>
+        <p class="description">
+          {{ exp.description }}
+        </p>
       </div>
     </div>
   </section>

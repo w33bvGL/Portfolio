@@ -16,11 +16,14 @@ const achievements = computed<Achievement[]>(() => achData.value?.[locale.value]
   <section class="story-section">
     <div class="grid-layout">
       <div
-        class="column bio-col scroll-reveal"
         v-intersection
+        class="column bio-col scroll-reveal"
       >
         <h2 class="col-title">
-          <Icon name="lucide:book-open" class="title-icon" />
+          <Icon
+            name="lucide:book-open"
+            class="title-icon"
+          />
           {{ t('about.title') }}
         </h2>
 
@@ -41,12 +44,15 @@ const achievements = computed<Achievement[]>(() => achData.value?.[locale.value]
       </div>
 
       <div
-        class="column ach-col scroll-reveal"
         v-intersection
+        class="column ach-col scroll-reveal"
         style="--delay: 0.2s"
       >
         <h2 class="col-title">
-          <Icon name="lucide:trophy" class="title-icon" />
+          <Icon
+            name="lucide:trophy"
+            class="title-icon"
+          />
           {{ t('achievements.title') }}
         </h2>
 

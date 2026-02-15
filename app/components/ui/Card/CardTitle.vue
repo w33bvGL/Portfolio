@@ -5,7 +5,10 @@ defineProps<{
 </script>
 
 <template>
-  <component :is="as || 'h3'" class="card-title">
+  <component
+    :is="as || 'h3'"
+    class="card-title"
+  >
     <slot />
   </component>
 </template>

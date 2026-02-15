@@ -30,42 +30,44 @@ const experiences = computed<Experience[]>(() => {
     </UiSectionHeader>
 
     <UiLayoutGrid class="timeline-wrapper">
-        <div
-          v-for="(exp, index) in experiences"
-          :key="index"
-          v-intersection
-          class="timeline-row scroll-reveal"
-          :style="{ '--delay': `${index * 0.1}s` }"
-        >
-          <div class="connector-anchor">
-            <div class="connector-dot">
-              <div class="dot-core" />
-              <div class="dot-halo" />
-            </div>
-          </div>
-
-          <div class="date-anchor">
-            <span class="desktop-period">{{ exp.period || exp.year }}</span>
-          </div>
-
-          <div class="content-col">
-            <UiCard class="exp-card">
-              <UiCardHeader class="exp-header">
-                <span class="mobile-period">{{ exp.period || exp.year }}</span>
-                <UiCardTitle as="h3">{{ exp.title }}</UiCardTitle>
-                <div class="company-info">
-                  <span class="company-name">{{ exp.company }}</span>
-                </div>
-              </UiCardHeader>
-
-              <UiCardContent >
-                <UiCardDescription class="job-desc">
-                  {{ exp.description }}
-                </UiCardDescription>
-              </UiCardContent>
-            </UiCard>
+      <div
+        v-for="(exp, index) in experiences"
+        :key="index"
+        v-intersection
+        class="timeline-row scroll-reveal"
+        :style="{ '--delay': `${index * 0.1}s` }"
+      >
+        <div class="connector-anchor">
+          <div class="connector-dot">
+            <div class="dot-core" />
+            <div class="dot-halo" />
           </div>
         </div>
+
+        <div class="date-anchor">
+          <span class="desktop-period">{{ exp.period || exp.year }}</span>
+        </div>
+
+        <div class="content-col">
+          <UiCard class="exp-card">
+            <UiCardHeader class="exp-header">
+              <span class="mobile-period">{{ exp.period || exp.year }}</span>
+              <UiCardTitle as="h3">
+                {{ exp.title }}
+              </UiCardTitle>
+              <div class="company-info">
+                <span class="company-name">{{ exp.company }}</span>
+              </div>
+            </UiCardHeader>
+
+            <UiCardContent>
+              <UiCardDescription class="job-desc">
+                {{ exp.description }}
+              </UiCardDescription>
+            </UiCardContent>
+          </UiCard>
+        </div>
+      </div>
     </UiLayoutGrid>
   </UiLayoutContainer>
 </template>
@@ -196,7 +198,6 @@ const experiences = computed<Experience[]>(() => {
 @media (min-width: 1024px) {
   .mobile-period { display: none; }
 }
-
 
 .company-info {
   font-size: 0.95rem;

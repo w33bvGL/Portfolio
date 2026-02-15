@@ -14,12 +14,24 @@ const skills = computed(() => ({
 
 <template>
   <section class="section">
-    <h3 class="section-title">{{ $t('resume.skills') }}</h3>
+    <h3 class="section-title">
+      {{ $t('resume.skills') }}
+    </h3>
 
-    <div v-for="(items, category) in skills" :key="category" class="skills-group">
-      <h4 class="skill-category">{{ category }}</h4>
+    <div
+      v-for="(items, category) in skills"
+      :key="category"
+      class="skills-group"
+    >
+      <h4 class="skill-category">
+        {{ category }}
+      </h4>
       <div class="skill-tags">
-        <span v-for="tag in items" :key="tag.name" class="tag">{{ tag.name }}</span>
+        <span
+          v-for="tag in items"
+          :key="tag.name"
+          class="tag"
+        >{{ tag.name }}</span>
       </div>
     </div>
   </section>

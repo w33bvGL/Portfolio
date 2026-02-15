@@ -51,33 +51,8 @@ export default defineNuxtConfig({
     }
   },
 
-  eslint: {
-    config: {
-      stylistic: {
-        commaDangle: 'never',
-        braceStyle: '1tbs'
-      }
-    }
-  },
-
-  i18n: {
-    bundle: { optimizeTranslationDirective: false },
-    locales,
-    lazy: false,
-    defaultLocale: 'en',
-    strategy: 'prefix_and_default',
-    vueI18n: './i18n.config.ts'
-  },
-
-  image: {
-    inject: true,
-    alias: {
-      tech: '/tech'
-    }
-  },
-
   hooks: {
-    'close': async () => {
+    close: async () => {
       if (process.env.npm_lifecycle_event !== 'generate') return
 
       console.log('✨ Starting PDF Resume Generation...')
@@ -140,6 +115,31 @@ export default defineNuxtConfig({
         server.kill()
         console.log('🛑 PDF Generation finished.')
       }
+    }
+  },
+
+  eslint: {
+    config: {
+      stylistic: {
+        commaDangle: 'never',
+        braceStyle: '1tbs'
+      }
+    }
+  },
+
+  i18n: {
+    bundle: { optimizeTranslationDirective: false },
+    locales,
+    lazy: false,
+    defaultLocale: 'en',
+    strategy: 'prefix_and_default',
+    vueI18n: './i18n.config.ts'
+  },
+
+  image: {
+    inject: true,
+    alias: {
+      tech: '/tech'
     }
   }
 })

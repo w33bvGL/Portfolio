@@ -33,19 +33,31 @@ const educations = computed<Education[]>(() => {
         :style="{ '--delay': `${index * 0.15}s` }"
       >
         <UiCardHeader class="edu-header">
-          <UiLayoutFlex justify="between" full align="center">
+          <UiLayoutFlex
+            justify="between"
+            full
+            align="center"
+          >
             <div class="card-icon">
-              <Icon name="lucide:graduation-cap" class="icon" />
+              <Icon
+                name="lucide:graduation-cap"
+                class="icon"
+              />
             </div>
 
-            <div v-if="item.url" class="hover-arrow">
+            <div
+              v-if="item.url"
+              class="hover-arrow"
+            >
               <Icon name="lucide:arrow-up-right" />
             </div>
           </UiLayoutFlex>
         </UiCardHeader>
 
         <UiCardContent>
-          <UiCardTitle as="h5">{{ item.title }}</UiCardTitle>
+          <UiCardTitle as="h5">
+            {{ item.title }}
+          </UiCardTitle>
           <UiCardDescription>{{ item.description }}</UiCardDescription>
         </UiCardContent>
       </UiCard>

@@ -49,8 +49,14 @@ const linkProps = computed(() => {
       }
     ]"
   >
-    <div v-if="icon && !loading" class="icon-wrapper">
-      <Icon :name="icon" class="btn-icon" />
+    <div
+      v-if="icon && !loading"
+      class="icon-wrapper"
+    >
+      <Icon
+        :name="icon"
+        class="btn-icon"
+      />
     </div>
 
     <span
@@ -61,10 +67,27 @@ const linkProps = computed(() => {
       <slot />
     </span>
 
-    <div v-if="loading" class="spinner">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-        <circle cx="12" cy="12" r="10" stroke-opacity="0.1" />
-        <path d="M12 2a10 10 0 0 1 10 10" stroke-opacity="1" stroke-linecap="round" />
+    <div
+      v-if="loading"
+      class="spinner"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+          stroke-opacity="0.1"
+        />
+        <path
+          d="M12 2a10 10 0 0 1 10 10"
+          stroke-opacity="1"
+          stroke-linecap="round"
+        />
       </svg>
     </div>
   </component>

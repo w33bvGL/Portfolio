@@ -62,26 +62,26 @@ useSeoMeta({
 
 <template>
   <UiLayoutContainer class="page-projects">
-      <header class="header-section">
-        <h1 class="page-title">
-          {{ t('projects.title') }}<span class="dot">.</span>
-        </h1>
-        <p class="page-desc">
-          {{ t('projects.description') }}
-        </p>
-      </header>
+    <header class="header-section">
+      <h1 class="page-title">
+        {{ t('projects.title') }}<span class="dot">.</span>
+      </h1>
+      <p class="page-desc">
+        {{ t('projects.description') }}
+      </p>
+    </header>
 
-      <UiLayoutGrid :cols-md="2">
-        <ProjectsCard
-          v-for="(project, index) in projects"
-          :key="project.name"
-          v-intersection
-          :project="project"
-          class="scroll-reveal"
-          :style="{ '--delay': `${index * 0.05}s` }"
-          @click.prevent="handleProjectClick(project)"
-        />
-      </UiLayoutGrid>
+    <UiLayoutGrid :cols-md="2">
+      <ProjectsCard
+        v-for="(project, index) in projects"
+        :key="project.name"
+        v-intersection
+        :project="project"
+        class="scroll-reveal"
+        :style="{ '--delay': `${index * 0.05}s` }"
+        @click.prevent="handleProjectClick(project)"
+      />
+    </UiLayoutGrid>
 
     <AdultConfirmationModal
       :is-open="showAdultModal"

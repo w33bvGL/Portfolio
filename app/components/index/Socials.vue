@@ -16,7 +16,6 @@ const { footer } = useAppConfig()
       variant="ghost"
       :icon="link.icon.replace('i-simple-icons-', 'simple-icons:')"
       :aria-label="link['aria-label']"
-    >
-    </UiButton>
+    />
   </UiLayoutFlex>
 </template>

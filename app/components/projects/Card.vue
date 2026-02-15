@@ -29,26 +29,48 @@ const img = useImage()
         loading="lazy"
       />
 
-      <div v-if="project.isAdult" class="adult-badge-overlay">
+      <div
+        v-if="project.isAdult"
+        class="adult-badge-overlay"
+      >
         <UiButton variant="ghost">
-          <Icon name="lucide:eye-off" class="w-5 h-5" />
+          <Icon
+            name="lucide:eye-off"
+            class="w-5 h-5"
+          />
           <span>Sensitive Content</span>
         </UiButton>
       </div>
 
-      <div v-if="project.url" class="hover-icon">
-        <UiButton icon="lucide:arrow-up-right" variant="outline"/>
+      <div
+        v-if="project.url"
+        class="hover-icon"
+      >
+        <UiButton
+          icon="lucide:arrow-up-right"
+          variant="outline"
+        />
       </div>
     </div>
 
     <UiCardHeader>
       <div class="title-row">
         <UiCardTitle>{{ project.name }}</UiCardTitle>
-        <span v-if="project.isAdult" class="age-limit">18+</span>
+        <span
+          v-if="project.isAdult"
+          class="age-limit"
+        >18+</span>
       </div>
 
-      <div v-if="project.tags" class="project-tags">
-        <span v-for="tag in project.tags.slice(0, 3)" :key="tag" class="tag">
+      <div
+        v-if="project.tags"
+        class="project-tags"
+      >
+        <span
+          v-for="tag in project.tags.slice(0, 3)"
+          :key="tag"
+          class="tag"
+        >
           {{ tag }}
         </span>
       </div>

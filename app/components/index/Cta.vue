@@ -9,7 +9,6 @@ const blobStyle = computed(() => ({
   '--x': `${elementX.value}px`,
   '--y': `${elementY.value}px`
 }))
-
 </script>
 
 <template>
@@ -95,7 +94,6 @@ const blobStyle = computed(() => ({
   filter: blur(120px);
 }
 
-
 @keyframes blob-wake-up {
   0% {
     opacity: 0;
@@ -107,7 +105,6 @@ const blobStyle = computed(() => ({
     filter: blur(120px);
   }
 }
-
 
 @keyframes blob-wake-up-alt {
   0% { opacity: 0; transform: scale(0.7); filter: blur(40px); }

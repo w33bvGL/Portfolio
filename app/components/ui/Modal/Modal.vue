@@ -28,7 +28,11 @@ onKeyStroke('Escape', () => close())
 <template>
   <Teleport to="body">
     <Transition name="modal-system">
-      <div v-if="modelValue" class="modal-overlay" @click.self="close">
+      <div
+        v-if="modelValue"
+        class="modal-overlay"
+        @click.self="close"
+      >
         <UiCard
           class="modal-glass"
           :style="{ maxWidth: maxWidth }"

@@ -131,7 +131,6 @@ const currentYear = new Date().getFullYear()
   color: var(--text-main);
 }
 
-
 @media (max-width: 640px) {
   .footer-wrapper {
     bottom: 1.5rem;

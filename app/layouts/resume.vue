@@ -1,6 +1,9 @@
 <template>
   <div class="resume-viewer">
-    <div id="resume-content" class="resume-page">
+    <div
+      id="resume-content"
+      class="resume-page"
+    >
       <slot />
     </div>
   </div>
@@ -27,7 +30,6 @@
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 }
-
 
 @media print {
   .resume-viewer {

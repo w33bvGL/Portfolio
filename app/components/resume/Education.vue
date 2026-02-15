@@ -15,13 +15,21 @@ const educations = computed(() => {
 
 <template>
   <section class="section mt-section">
-    <h3 class="section-title">{{ t('education.title') }}</h3>
+    <h3 class="section-title">
+      {{ t('education.title') }}
+    </h3>
     <div class="education-grid">
-      <div v-for="(edu, i) in educations" :key="i" class="edu-item">
+      <div
+        v-for="(edu, i) in educations"
+        :key="i"
+        class="edu-item"
+      >
         <div class="edu-head">
           <span class="edu-title">{{ edu.title }}</span>
         </div>
-        <p class="edu-desc">{{ edu.description }}</p>
+        <p class="edu-desc">
+          {{ edu.description }}
+        </p>
       </div>
     </div>
   </section>

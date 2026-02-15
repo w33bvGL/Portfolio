@@ -4,7 +4,6 @@ definePageMeta({ layout: 'resume' })
 
 <template>
   <div class="resume-content">
-
     <ResumeHeader />
 
     <div class="resume-body">
@@ -18,7 +17,6 @@ definePageMeta({ layout: 'resume' })
         <ResumeLanguages />
       </div>
     </div>
-
   </div>
 </template>
 

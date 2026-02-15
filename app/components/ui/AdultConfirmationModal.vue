@@ -8,7 +8,11 @@ const emit = defineEmits(['confirm', 'cancel'])
 </script>
 
 <template>
-  <UiModal :model-value="isOpen" :persistent="true" @close="emit('cancel')">
+  <UiModal
+    :model-value="isOpen"
+    :persistent="true"
+    @close="emit('cancel')"
+  >
     <div class="adult-guard">
       <div class="adult-glow" />
 
@@ -17,7 +21,9 @@ const emit = defineEmits(['confirm', 'cancel'])
           <span>18+</span>
         </div>
 
-        <h2 class="guard-title">Restricted Content</h2>
+        <h2 class="guard-title">
+          Restricted Content
+        </h2>
 
         <p class="guard-text">
           Project <span>{{ projectName }}</span> contains adult material.
@@ -25,10 +31,18 @@ const emit = defineEmits(['confirm', 'cancel'])
         </p>
 
         <UiLayoutFlex full>
-          <UiButton variant="ghost" block @click="emit('cancel')">
+          <UiButton
+            variant="ghost"
+            block
+            @click="emit('cancel')"
+          >
             Go Back
           </UiButton>
-          <UiButton block @click="emit('confirm')" variant="danger">
+          <UiButton
+            block
+            variant="danger"
+            @click="emit('confirm')"
+          >
             I am 18+
           </UiButton>
         </UiLayoutFlex>

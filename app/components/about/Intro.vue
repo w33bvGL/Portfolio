@@ -16,7 +16,10 @@ const { t } = useI18n()
           {{ t('about.intro') }}
         </p>
 
-        <div v-if="footer?.links" class="socials">
+        <div
+          v-if="footer?.links"
+          class="socials"
+        >
           <UiButton
             v-for="(link, index) of footer.links"
             :key="index"

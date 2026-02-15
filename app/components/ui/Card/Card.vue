@@ -38,7 +38,10 @@ const linkProps = computed(() => {
       { 'is-interactive': (to || href) && !noHover, 'no-hover': noHover }
     ]"
   >
-    <div v-if="variant === 'glass'" class="card-gradient" />
+    <div
+      v-if="variant === 'glass'"
+      class="card-gradient"
+    />
 
     <div class="card-inner">
       <slot />

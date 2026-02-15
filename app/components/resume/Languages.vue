@@ -10,10 +10,18 @@ const { data: languages } = await useAsyncData<Language[]>('languages', () =>
 </script>
 
 <template>
-  <section v-if="languages?.length" class="section mt-section">
-    <h3 class="section-title">{{ $t('languages.title')}}</h3>
+  <section
+    v-if="languages?.length"
+    class="section mt-section"
+  >
+    <h3 class="section-title">
+      {{ $t('languages.title') }}
+    </h3>
     <ul class="lang-list">
-      <li v-for="lang in languages" :key="lang.name">
+      <li
+        v-for="lang in languages"
+        :key="lang.name"
+      >
         <span class="lang-name">{{ lang.name }}</span>
         <span class="lang-lvl">{{ lang.level }}</span>
       </li>

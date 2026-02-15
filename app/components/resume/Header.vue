@@ -6,27 +6,42 @@ const { t } = useI18n()
 <template>
   <header class="resume-header">
     <div class="header-left">
-      <h1 class="name">{{ t('resume.name') }} {{ t('resume.surname') }}</h1>
+      <h1 class="name">
+        {{ t('resume.name') }} {{ t('resume.surname') }}
+      </h1>
       <h2 class="position">
         {{ t('resume.position') }}
         <span class="stack-badge">{{ t('resume.stack') }}</span>
       </h2>
-      <p class="summary">{{ $t('about.intro') }}</p>
+      <p class="summary">
+        {{ $t('about.intro') }}
+      </p>
     </div>
 
     <div class="header-right">
       <ul class="contacts-list">
         <li>
           <span class="label">Email:</span>
-          <a :href="`mailto:${global.email}`" class="value">{{ global.email }}</a>
+          <a
+            :href="`mailto:${global.email}`"
+            class="value"
+          >{{ global.email }}</a>
         </li>
         <li>
           <span class="label">Telegram:</span>
-          <a :href="`https://t.me/${global.telegram}`" target="_blank" class="value">{{ global.telegram }}</a>
+          <a
+            :href="`https://t.me/${global.telegram}`"
+            target="_blank"
+            class="value"
+          >{{ global.telegram }}</a>
         </li>
         <li>
           <span class="label">Web:</span>
-          <a href="https://vahe.anidzen.com" target="_blank" class="value">vahe.anidzen.com</a>
+          <a
+            href="https://vahe.anidzen.com"
+            target="_blank"
+            class="value"
+          >vahe.anidzen.com</a>
         </li>
         <li class="location">
           <span class="label">Loc:</span>

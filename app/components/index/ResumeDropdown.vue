@@ -53,6 +53,7 @@ async function download(code: string): Promise<void> {
 onMounted(() => document.addEventListener('click', close))
 onUnmounted(() => document.removeEventListener('click', close))
 </script>
+
 <template>
   <div
     ref="containerRef"

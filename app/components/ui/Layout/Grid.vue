@@ -25,7 +25,11 @@ const style = computed(() => ({
 </script>
 
 <template>
-  <component :is="as" class="ui-grid" :style="style">
+  <component
+    :is="as"
+    class="ui-grid"
+    :style="style"
+  >
     <slot />
   </component>
 </template>

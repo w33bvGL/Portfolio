@@ -11,7 +11,10 @@ watch(isVisible, (val) => {
 </script>
 
 <template>
-  <UiLayoutContainer ref="target" class="cta-section">
+  <UiLayoutContainer
+    ref="target"
+    class="cta-section"
+  >
     <UiCard
       variant="glass"
       no-hover
