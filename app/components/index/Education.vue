@@ -16,13 +16,13 @@ const educations = computed<Education[]>(() => {
 </script>
 
 <template>
-  <section class="education-section">
+  <UiLayoutContainer class="education-section">
     <UiSectionHeader
       :title="t('education.title')"
       :description="t('education.description')"
     />
 
-    <div class="grid-container">
+    <UiLayoutGrid :cols="2">
       <UiCard
         v-for="(item, index) in educations"
         :key="index"
@@ -46,29 +46,11 @@ const educations = computed<Education[]>(() => {
           <UiCardDescription>{{ item.description }}</UiCardDescription>
         </UiCardContent>
       </UiCard>
-    </div>
-  </section>
+    </UiLayoutGrid>
+  </UiLayoutContainer>
 </template>
 
 <style scoped>
-.education-section {
-  width: 100%;
-  max-width: var(--container-width);
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-@media (min-width: 640px) {
-  .education-section { padding: 0 2rem; }
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 3rem;
-}
-
 .scroll-reveal {
   opacity: 0;
   transform: translateY(30px);
