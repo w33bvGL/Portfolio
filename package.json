@@ -11,8 +11,7 @@
     "postinstall": "nuxt prepare && puppeteer browsers install chrome",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "generate-resumes": "dotenv -e .env.prod -- node scripts/generate-resumes.js",
-    "gh-build": "dotenv -e .env.prod -- npx nuxt build --preset github_pages && npm run generate-resumes",
+    "gh-build": "npx nuxt build --preset github_pages",
     "gh-publish": "npx gh-pages --dotfiles -d .output/public",
     "prod": "npm run gh-build && npm run gh-publish",
     "typecheck": "nuxt typecheck"
