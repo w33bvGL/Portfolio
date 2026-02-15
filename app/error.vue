@@ -11,18 +11,14 @@ const props = defineProps({
 const handleError = () => clearError({ redirect: '/' })
 
 useHead({
-  title: `${props.error.statusCode} - Page not found`,
+  title: `${props.error.statusCode} — Error`,
   htmlAttrs: { lang: 'en' }
 })
 </script>
 
 <template>
   <div class="error-view">
-    <div class="fx-background">
-      <div class="orb orb-1" />
-      <div class="orb orb-2" />
-      <div class="grid-overlay" />
-    </div>
+    <Background />
 
     <div class="glass-container">
       <div class="content-stagger">
@@ -67,50 +63,7 @@ useHead({
   overflow: hidden;
 }
 
-.fx-background {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.4;
-  animation: float 20s infinite ease-in-out alternate;
-  will-change: transform;
-}
-
-.orb-1 {
-  width: 60vh;
-  height: 60vh;
-  background: var(--text-muted);
-  top: -10%;
-  left: -10%;
-}
-
-.orb-2 {
-  width: 50vh;
-  height: 50vh;
-  background: var(--text-main);
-  bottom: -10%;
-  right: -10%;
-  animation-delay: -10s;
-  opacity: 0.2;
-}
-
-.grid-overlay {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(var(--border-color) 1px, transparent 1px),
-  linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
-  background-size: 4rem 4rem;
-  opacity: 0.03;
-  mask-image: radial-gradient(circle at center, black, transparent 80%);
-}
-
+/* Стеклянная карточка */
 .glass-container {
   position: relative;
   z-index: 10;
@@ -121,7 +74,6 @@ useHead({
 
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow);
   border-radius: 2rem;
@@ -131,6 +83,7 @@ useHead({
   transform: scale(0.95);
 }
 
+/* Стаггер-анимация появления */
 .content-stagger > * {
   opacity: 0;
   transform: translateY(10px);
@@ -144,15 +97,15 @@ useHead({
 .content-stagger > *:nth-child(5) { animation-delay: 0.5s; } /* Button */
 
 .code {
-  font-size: 8rem;
+  font-size: clamp(5rem, 15vw, 8rem);
   font-weight: 800;
   line-height: 0.85;
   margin: 0;
   letter-spacing: -0.04em;
+  /* Градиент из твоей Hero-секции */
   background: linear-gradient(180deg, var(--text-main) 0%, rgba(125,125,125,0) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.05));
 }
 
 .separator {
@@ -168,7 +121,6 @@ useHead({
   font-size: 1.5rem;
   font-weight: 600;
   margin: 0 0 1rem;
-  letter-spacing: -0.02em;
 }
 
 .description {
@@ -183,13 +135,6 @@ useHead({
   justify-content: center;
 }
 
-@keyframes float {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  33% { transform: translate(30px, -50px) rotate(10deg); }
-  66% { transform: translate(-20px, 20px) rotate(-5deg); }
-  100% { transform: translate(0, 0) rotate(0deg); }
-}
-
 @keyframes scale-in {
   to { opacity: 1; transform: scale(1); }
 }
@@ -199,8 +144,6 @@ useHead({
 }
 
 @media (max-width: 640px) {
-  .code { font-size: 5rem; }
   .glass-container { padding: 2.5rem 1.5rem; }
-  .orb { filter: blur(60px); opacity: 0.3; }
 }
 </style>

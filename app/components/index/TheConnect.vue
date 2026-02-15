@@ -2,48 +2,33 @@
 const { t } = useI18n()
 const target = ref(null)
 
-// Используем VueUse для отслеживания видимости
+// Слежка за видимостью для стаггер-анимации
 const isVisible = useElementVisibility(target)
 const hasPlayed = ref(false)
 
-// Фиксируем появление один раз
 watch(isVisible, (val) => {
   if (val) hasPlayed.value = true
 })
-
-// Интерактив для параллакса свечения
-const { elementX, elementY } = useMouseInElement(target)
 </script>
 
 <template>
-  <section
-    ref="target"
-    class="cta-section"
-  >
-    <div class="ambient-glow">
-      <div
-        class="glow-spot spot-1"
-        :style="{
-          transform: `translate(calc(-50% + ${elementX / 25}px), calc(-50% + ${elementY / 25}px))`
-        }"
-      />
-      <div class="glow-spot spot-2" />
-    </div>
-
+  <section ref="target" class="cta-section">
     <div class="cta-grid-pattern" />
 
-    <div
-      class="glass-card glass-panel"
+    <UiCard
+      variant="glass"
+      no-hover
+      class="cta-card"
       :class="{ 'is-visible': hasPlayed }"
     >
-      <div class="content-wrapper">
+      <UiCardContent class="content-wrapper">
         <div class="text-group">
-          <h2 class="cta-title stagger-item">
+          <UiCardTitle as="h2" class="cta-title stagger-item">
             {{ t('projects.have_idea') }}
-          </h2>
-          <p class="cta-desc stagger-item">
+          </UiCardTitle>
+          <UiCardDescription class="cta-desc stagger-item">
             {{ t('projects.what_i_offer') }}
-          </p>
+          </UiCardDescription>
         </div>
 
         <div class="actions-group stagger-item">
@@ -54,16 +39,13 @@ const { elementX, elementY } = useMouseInElement(target)
             class="telegram-btn"
           >
             <template #icon>
-              <Icon
-                name="simple-icons:telegram"
-                class="tg-icon"
-              />
+              <Icon name="simple-icons:telegram" class="tg-icon" />
             </template>
             {{ t('projects.contact_telegram') }}
           </UiButton>
         </div>
-      </div>
-    </div>
+      </UiCardContent>
+    </UiCard>
   </section>
 </template>
 
@@ -76,39 +58,6 @@ const { elementX, elementY } = useMouseInElement(target)
   justify-content: center;
 }
 
-.ambient-glow {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.glow-spot {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
-  will-change: transform;
-}
-
-.spot-1 {
-  width: 400px;
-  height: 400px;
-  background: var(--primary-color);
-  opacity: 0.12;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.spot-2 {
-  width: 250px;
-  height: 250px;
-  background: var(--text-muted);
-  opacity: 0.08;
-  bottom: -10%;
-  right: 5%;
-}
-
 .cta-grid-pattern {
   position: absolute;
   inset: 0;
@@ -118,27 +67,22 @@ const { elementX, elementY } = useMouseInElement(target)
   mask-image: radial-gradient(circle at center, black, transparent 80%);
 }
 
-.glass-card {
-  position: relative;
-  z-index: 1;
+/* --- Настройка нашей UiCard под CTA --- */
+.cta-card {
   width: 100%;
-  padding: 5rem 3rem;
-  border-radius: 2.5rem;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(24px);
-  box-shadow: var(--glass-shadow);
+  max-width: var(--container-width);
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.glass-card.is-visible {
+.cta-card.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
 .content-wrapper {
+  padding: 5rem 3rem !important; /* Перебиваем дефолтный паддинг контента для CTA */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -153,12 +97,9 @@ const { elementX, elementY } = useMouseInElement(target)
 }
 
 .cta-title {
-  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-size: clamp(2.25rem, 6vw, 3.5rem);
   font-weight: 800;
-  line-height: var(--leading-tight);
-  letter-spacing: -0.04em;
-  margin: 0;
-
+  line-height: 1.1;
   background: linear-gradient(180deg, var(--text-main) 30%, rgba(125,125,125,0.5) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -166,35 +107,16 @@ const { elementX, elementY } = useMouseInElement(target)
 
 .cta-desc {
   font-size: var(--font-body-lg);
-  line-height: var(--leading-normal);
-  color: var(--text-muted);
   max-width: 560px;
   margin: 0 auto;
 }
 
-.telegram-btn {
-  padding: 1.25rem 2.75rem;
-  font-size: 1.15rem;
-  font-weight: 700;
-  border-radius: 999px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.telegram-btn:hover {
-  transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 20px 40px -10px var(--primary-color);
-}
-
-.tg-icon {
-  width: 1.3rem;
-  height: 1.3rem;
-}
+.tg-icon { width: 1.3rem; height: 1.3rem; }
 
 .stagger-item {
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-  will-change: opacity, transform;
 }
 
 .is-visible .stagger-item {
@@ -207,11 +129,7 @@ const { elementX, elementY } = useMouseInElement(target)
 .is-visible .actions-group.stagger-item { transition-delay: 0.6s; }
 
 @media (max-width: 640px) {
-  .glass-card {
-    padding: 3.5rem 1.5rem;
-    border-radius: 2rem;
-  }
-  .content-wrapper { gap: 2.5rem; }
+  .content-wrapper { padding: 3.5rem 1.5rem !important; }
   .cta-title { font-size: 2.25rem; }
 }
 </style>

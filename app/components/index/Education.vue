@@ -23,31 +23,29 @@ const educations = computed<Education[]>(() => {
     />
 
     <div class="grid-container">
-      <a
+      <UiCard
         v-for="(item, index) in educations"
         :key="index"
         v-intersection
-        :href="item.url || '#'"
-        target="_blank"
-        class="edu-card glass-panel scroll-reveal"
+        :href="item.url"
+        class="scroll-reveal"
         :style="{ '--delay': `${index * 0.15}s` }"
       >
-        <div class="card-icon">
-          <Icon
-            name="lucide:graduation-cap"
-            class="icon"
-          />
-        </div>
+        <UiCardHeader class="edu-header">
+          <div class="card-icon">
+            <Icon name="lucide:graduation-cap" class="icon" />
+          </div>
 
-        <div class="card-content">
-          <h5 class="edu-title">{{ item.title }}</h5>
-          <p class="edu-desc">{{ item.description }}</p>
-        </div>
+          <div v-if="item.url" class="hover-arrow">
+            <Icon name="lucide:arrow-up-right" />
+          </div>
+        </UiCardHeader>
 
-        <div class="hover-arrow">
-          <Icon name="lucide:arrow-up-right" />
-        </div>
-      </a>
+        <UiCardContent>
+          <UiCardTitle as="h5">{{ item.title }}</UiCardTitle>
+          <UiCardDescription>{{ item.description }}</UiCardDescription>
+        </UiCardContent>
+      </UiCard>
     </div>
   </section>
 </template>
@@ -85,25 +83,10 @@ const educations = computed<Education[]>(() => {
   transform: translateY(0);
 }
 
-.edu-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 1.5rem;
-  border-radius: 1.5rem;
-  text-decoration: none;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(12px);
-  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
-}
-
-.edu-card:hover {
-  background: rgba(125, 125, 125, 0.08);
-  border-color: var(--text-muted);
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
+.edu-header {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .card-icon {
@@ -118,40 +101,21 @@ const educations = computed<Education[]>(() => {
   transition: all 0.3s ease;
 }
 
-.edu-card:hover .card-icon {
+.ui-card:hover .card-icon {
   background: var(--text-main);
   color: var(--bg-body);
 }
 
 .icon { width: 1.25rem; height: 1.25rem; }
 
-.card-content { flex: 1; }
-
-.edu-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--text-main);
-  margin: 0 0 0.5rem;
-}
-
-.edu-desc {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  line-height: 1.6;
-  margin: 0;
-}
-
 .hover-arrow {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
   color: var(--text-muted);
   opacity: 0;
   transform: translate(-10px, 10px);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.edu-card:hover .hover-arrow {
+.ui-card:hover .hover-arrow {
   opacity: 1;
   transform: translate(0, 0);
   color: var(--text-main);

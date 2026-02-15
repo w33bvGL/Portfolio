@@ -30,7 +30,7 @@ const experiences = computed<Experience[]>(() => {
     </UiSectionHeader>
 
     <div class="timeline-wrapper">
-      <div class="mobile-track" />
+      <div class="timeline-track" />
 
       <div
         v-for="(exp, index) in experiences"
@@ -51,21 +51,21 @@ const experiences = computed<Experience[]>(() => {
         </div>
 
         <div class="content-col">
-          <div class="exp-card glass-panel">
-            <div class="card-header">
+          <UiCard class="exp-card">
+            <UiCardHeader class="exp-header">
               <span class="mobile-period">{{ exp.period || exp.year }}</span>
-
-              <h3 class="job-title">
-                {{ exp.title }}
-              </h3>
+              <UiCardTitle as="h3">{{ exp.title }}</UiCardTitle>
               <div class="company-info">
                 <span class="company-name">{{ exp.company }}</span>
               </div>
-            </div>
-            <p class="job-desc">
-              {{ exp.description }}
-            </p>
-          </div>
+            </UiCardHeader>
+
+            <UiCardContent >
+              <UiCardDescription class="job-desc">
+                {{ exp.description }}
+              </UiCardDescription>
+            </UiCardContent>
+          </UiCard>
         </div>
       </div>
     </div>
@@ -110,11 +110,11 @@ const experiences = computed<Experience[]>(() => {
 @media (min-width: 1024px) {
   .timeline-wrapper {
     padding-left: 0;
-    gap: 3rem;
+    gap: 3.5rem;
   }
 }
 
-.mobile-track {
+.timeline-track {
   position: absolute;
   left: 0;
   top: 1rem;
@@ -125,7 +125,9 @@ const experiences = computed<Experience[]>(() => {
 }
 
 @media (min-width: 1024px) {
-  .mobile-track { display: none; }
+  .timeline-track {
+    left: -2rem;
+  }
 }
 
 .timeline-row {
@@ -141,7 +143,7 @@ const experiences = computed<Experience[]>(() => {
   justify-content: center;
   width: 20px;
   left: -9px;
-  top: 1.5rem;
+  top: 2rem;
 }
 
 @media (min-width: 1024px) {
@@ -157,7 +159,6 @@ const experiences = computed<Experience[]>(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: visible;
 }
 
 .dot-core {
@@ -172,16 +173,12 @@ const experiences = computed<Experience[]>(() => {
 
 .dot-halo {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
   border-radius: 50%;
   border: 1px solid var(--primary-color);
   opacity: 0;
   animation: pulse 3s infinite;
-  z-index: 1;
 }
 
 .date-anchor {
@@ -192,24 +189,20 @@ const experiences = computed<Experience[]>(() => {
   .date-anchor {
     display: block;
     position: absolute;
-    left: -250px;
-    top: 1.2rem;
-    width: 200px;
+    left: -300px;
+    top: 1.8rem;
+    width: 250px;
     text-align: right;
     pointer-events: none;
-    z-index: 1;
   }
 }
 
 .desktop-period {
-  font-family: var(--font-sans), sans-serif;
   font-size: var(--font-small);
   font-weight: 600;
   color: var(--text-muted);
   opacity: 0.6;
-  white-space: nowrap;
   transition: all 0.3s ease;
-  display: inline-block;
 }
 
 .timeline-row:hover .desktop-period {
@@ -218,32 +211,21 @@ const experiences = computed<Experience[]>(() => {
   transform: translateX(-5px);
 }
 
-.content-col {
-  width: 100%;
-}
-
 .exp-card {
-  padding: 1.25rem;
-  border-radius: 1.25rem;
-  transition: transform 0.3s ease, border-color 0.3s ease;
-  position: relative;
-  z-index: 2;
-}
-
-@media (min-width: 640px) {
-  .exp-card { padding: 1.5rem; }
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
 }
 
 .timeline-row:hover .exp-card {
-  border-color: var(--text-muted);
-  transform: translateX(5px);
+  transform: translateX(8px);
 }
 
-.card-header {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  margin-bottom: 1rem;
+:deep(.exp-header) {
+  padding: 1.5rem 1.5rem 0.5rem 1.5rem !important;
+}
+
+:deep(.exp-content) {
+  margin-top: 0 !important;
+  padding: 0 1.5rem 1.5rem 1.5rem !important;
 }
 
 .mobile-period {
@@ -252,32 +234,23 @@ const experiences = computed<Experience[]>(() => {
   font-weight: 600;
   text-transform: uppercase;
   color: var(--primary-color);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
 @media (min-width: 1024px) {
   .mobile-period { display: none; }
 }
 
-.job-title {
-  font-size: var(--font-h2);
-  font-weight: 700;
-  color: var(--text-main);
-  margin: 0;
-  line-height: 1.2;
-}
 
 .company-info {
-  font-size: var(--font-body);
+  font-size: 0.95rem;
   color: var(--text-muted);
   font-weight: 500;
 }
 
 .job-desc {
-  font-size: var(--font-body);
+  font-size: 0.95rem;
   line-height: 1.6;
-  color: var(--text-muted);
-  margin: 0;
 }
 
 .scroll-reveal {
@@ -286,6 +259,7 @@ const experiences = computed<Experience[]>(() => {
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
   transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   transition-delay: var(--delay, 0s);
+  will-change: opacity, transform;
 }
 
 .scroll-reveal.is-visible {
@@ -294,7 +268,7 @@ const experiences = computed<Experience[]>(() => {
 }
 
 @keyframes pulse {
-  0% { width: 100%; height: 100%; opacity: 0.5; border-width: 2px; }
-  100% { width: 250%; height: 250%; opacity: 0; border-width: 0; }
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(2.5); opacity: 0; }
 }
 </style>

@@ -9,12 +9,9 @@ const img = useImage()
 </script>
 
 <template>
-  <component
-    :is="project.url ? 'a' : 'div'"
+  <UiCard
     :href="project.url"
-    :target="project.url ? '_blank' : undefined"
-    class="project-card glass-panel group"
-    :class="{ 'is-link': project.url }"
+    class="group"
   >
     <div class="image-wrapper">
       <div class="overlay" />
@@ -40,64 +37,39 @@ const img = useImage()
       </div>
     </div>
 
-    <div class="card-content">
-      <div class="title-row">
-        <h3 class="project-title">
-          {{ project.name }}
-        </h3>
-        <div
-          v-if="project.tags"
-          class="project-tags"
-        >
-          <span
-            v-for="tag in project.tags.slice(0, 3)"
-            :key="tag"
-            class="tag"
-          >
-            {{ tag }}
-          </span>
-        </div>
-      </div>
-
-      <p class="project-desc">
-        {{ project.description }}
-      </p>
+    <UiCardHeader>
+      <UiCardTitle>{{ project.name }}</UiCardTitle>
 
       <div
-        v-if="project.url"
-        class="card-footer"
+        v-if="project.tags"
+        class="project-tags"
       >
-        <span class="view-link">{{ $t('projects.view_project') || 'View Project' }}</span>
+        <span
+          v-for="tag in project.tags.slice(0, 3)"
+          :key="tag"
+          class="tag"
+        >
+          {{ tag }}
+        </span>
       </div>
-    </div>
-  </component>
+    </UiCardHeader>
+
+    <UiCardContent>
+      <UiCardDescription>
+        {{ project.description }}
+      </UiCardDescription>
+    </UiCardContent>
+
+    <UiCardFooter v-if="project.url">
+      <span class="view-link">
+        {{ $t('projects.view_project') || 'View Project' }}
+      </span>
+    </UiCardFooter>
+  </UiCard>
 </template>
 
 <style scoped>
-.project-card {
-  display: flex;
-  flex-direction: column;
-  border-radius: 2rem;
-  overflow: hidden;
-  text-decoration: none;
-  /* Приглушаем фон: меньше белого, больше прозрачности */
-  background: rgba(20, 20, 20, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(16px);
-  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-  height: 100%;
-  position: relative;
-}
-
-.is-link:hover {
-  transform: translateY(-6px);
-  /* На ховере граница не должна светиться как неонка */
-  border-color: rgba(255, 255, 255, 0.12);
-  background: rgba(30, 30, 30, 0.6);
-  box-shadow:
-    0 20px 40px -12px rgba(0, 0, 0, 0.6),
-    inset 0 0 12px rgba(255, 255, 255, 0.01);
-}
+/* Специфичные стили только для ProjectsCard */
 
 .image-wrapper {
   position: relative;
@@ -112,7 +84,6 @@ const img = useImage()
   height: 100%;
   object-fit: cover;
   transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-  /* Чуть притеняем картинку в базе, чтобы текст лучше читался */
   filter: brightness(0.9);
 }
 
@@ -124,7 +95,6 @@ const img = useImage()
 .overlay {
   position: absolute;
   inset: 0;
-  /* Затемнение снизу вверх для читаемости заголовка */
   background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 60%);
   z-index: 1;
   opacity: 0.7;
@@ -136,7 +106,6 @@ const img = useImage()
   right: 1.25rem;
   width: 2.75rem;
   height: 2.75rem;
-  /* Кнопка теперь не чисто белая, а стеклянная */
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
@@ -156,44 +125,11 @@ const img = useImage()
   transform: translate(0, 0) scale(1);
 }
 
-.card-content {
-  padding: 1.75rem;
-  flex: 1;
+.project-tags {
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.title-row {
-  display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 0.5rem;
-}
-
-.project-title {
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: var(--text-main);
-  letter-spacing: -0.02em;
-}
-
-.project-desc {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: var(--text-muted);
-  opacity: 0.8; /* Чуть приглушаем описание */
-}
-
-.view-link {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  opacity: 0.6;
-  transition: opacity 0.3s;
-}
-
-.group:hover .view-link {
-  opacity: 1;
+  margin-top: 0.25rem;
 }
 
 .tag {
@@ -203,5 +139,19 @@ const img = useImage()
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.05);
   color: var(--text-muted);
+}
+
+.view-link {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  opacity: 0.6;
+  transition: opacity 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.group:hover .view-link {
+  opacity: 1;
 }
 </style>

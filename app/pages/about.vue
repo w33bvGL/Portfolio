@@ -21,7 +21,6 @@ useSeoMeta({
       <AboutIntro />
       <AboutStack />
       <AboutStory />
-      <AboutFaq />
     </div>
   </div>
 </template>
