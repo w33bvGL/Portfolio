@@ -1,0 +1,74 @@
+{
+  "routes": {
+    "home": "Home",
+    "projects": "Cases",
+    "blog": "Log",
+    "shop": "Oplossingen",
+    "about": "Profiel"
+  },
+  "availability": {
+    "available": "Beschikbaar voor werk",
+    "unavailable": "Momenteel bezet"
+  },
+  "cta": {
+    "title": "Vahe Sargsyan. Full Stack Engineer.",
+    "description": "Bouwen van schaalbare webapplicaties en microservices. Expert in Laravel architectuur en Nuxt.js.",
+    "resume": {
+      "label": "CV / Resume",
+      "download": "Download PDF",
+      "languages": {
+        "en": "Engels",
+        "hy": "Armeens",
+        "ru": "Russisch",
+        "uk": "Oekraïens",
+        "de": "Duits",
+        "pl": "Pools",
+        "es": "Spaans",
+        "fr": "Frans",
+        "nl": "Nederlands"
+      }
+    }
+  },
+  "about": {
+    "title": "Technisch Profiel",
+    "description": "Hard skills & Aanpak",
+    "intro": "Full Stack developer met een sterke focus op Backend architectuur. Ik ontwerp REST/GraphQL API's en werk met high-load systemen."
+  },
+  "experience": {
+    "title": "Ervaring",
+    "description": "Commerciële ontwikkelingservaring. Belangrijke projecten en tech stack.",
+    "years": ["jaar", "jaar", "jaar"],
+    "months": ["maand", "maanden", "maanden"],
+    "lessThanMonth": "< 1 maand"
+  },
+  "education": {
+    "title": "Achtergrond",
+    "description": "Academische opleiding en kwalificaties."
+  },
+  "projects": {
+    "title": "Projecten",
+    "description": "Van databaseontwerp tot productie-deployment. Implementatie van complexe bedrijfslogica.",
+    "have_idea": "Een technische taak?",
+    "what_i_offer": "Klaar om in te stappen bij ontwerp of ontwikkeling. Audits и architecturale oplossingen.",
+    "contact_telegram": "Bespreek Project"
+  },
+  "shop": {
+    "title": "Oplossingen",
+    "description": "Bibliotheek van eigen ontwikkelingen: modules, templates en microservices.",
+    "discount": "SALE",
+    "free": "GRATIS",
+    "watch": "Demo",
+    "download": "Downloaden"
+  },
+  "languages": { "title": "Talen" },
+  "faq": { "title": "V&A", "description": "Over processen, stack en samenwerkingsvoorwaarden." },
+  "resume": {
+    "name": "Vahe",
+    "surname": "Sargsyan",
+    "position": "Full Stack Engineer",
+    "stack": "Nuxt.js / Laravel",
+    "contacts": "Contact",
+    "portfolio": "Portfolio",
+    "skills": "Motor"
+  }
+}

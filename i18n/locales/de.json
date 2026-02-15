@@ -1,0 +1,74 @@
+{
+  "routes": {
+    "home": "Startseite",
+    "projects": "Projekte",
+    "blog": "Log",
+    "shop": "Lösungen",
+    "about": "Profil"
+  },
+  "availability": {
+    "available": "Verfügbar für Projekte",
+    "unavailable": "Derzeit beschäftigt"
+  },
+  "cta": {
+    "title": "Vahe Sargsyan. Full Stack Engineer.",
+    "description": "Entwicklung skalierbarer Webanwendungen und Microservices. Spezialisierung auf Laravel-Architektur und reaktive Nuxt.js-Schnittstellen.",
+    "resume": {
+      "label": "Lebenslauf / CV",
+      "download": "PDF herunterladen",
+      "languages": {
+        "en": "Englisch",
+        "hy": "Armenisch",
+        "ru": "Russisch",
+        "uk": "Ukrainisch",
+        "de": "Deutsch",
+        "pl": "Polnisch",
+        "es": "Spanisch",
+        "fr": "Französisch",
+        "nl": "Niederländisch"
+      }
+    }
+  },
+  "about": {
+    "title": "Ingenieurprofil",
+    "description": "Hard Skills & Ansatz",
+    "intro": "Full Stack Entwickler mit Schwerpunkt auf Backend-Architektur. Ich entwerfe REST/GraphQL-APIs und arbeite mit Hochlastsystemen. Im Frontend erstelle ich wartbare SPA/SSR-Anwendungen."
+  },
+  "experience": {
+    "title": "Erfahrung",
+    "description": "Kommerzielle Entwicklungserfahrung. Schlüsselprojekte und Tech-Stack.",
+    "years": ["Jahr", "Jahre", "Jahre"],
+    "months": ["Monat", "Monate", "Monate"],
+    "lessThanMonth": "< 1 Monat"
+  },
+  "education": {
+    "title": "Hintergrund",
+    "description": "Akademische Ausbildung und Qualifikationen."
+  },
+  "projects": {
+    "title": "Projekte",
+    "description": "Vom DB-Schema-Design bis zum Production-Deployment. Umsetzung komplexer Business-Logik.",
+    "have_idea": "Haben Sie eine technische Aufgabe?",
+    "what_i_offer": "Bereit zum Einstieg in der Design- oder Entwicklungsphase. Ich biete Audits und Architekturlösungen an.",
+    "contact_telegram": "Projekt besprechen"
+  },
+  "shop": {
+    "title": "Lösungen",
+    "description": "Bibliothek mit Eigenentwicklungen: Module, Templates und Microservices.",
+    "discount": "SALE",
+    "free": "GRATIS",
+    "watch": "Demo",
+    "download": "Holen"
+  },
+  "languages": { "title": "Sprachen" },
+  "faq": { "title": "Q&A", "description": "Prozesse, Stack und Kooperationsbedingungen." },
+  "resume": {
+    "name": "Vahe",
+    "surname": "Sargsyan",
+    "position": "Full Stack Engineer",
+    "stack": "Nuxt.js / Laravel",
+    "contacts": "Kontakt",
+    "portfolio": "Portfolio",
+    "skills": "Engine"
+  }
+}

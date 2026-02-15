@@ -1,0 +1,74 @@
+{
+  "routes": {
+    "home": "Home",
+    "projects": "Cases",
+    "blog": "Log",
+    "shop": "Assets",
+    "about": "Profile"
+  },
+  "availability": {
+    "available": "Available for work",
+    "unavailable": "Currently busy"
+  },
+  "cta": {
+    "title": "Vahe Sargsyan. Full Stack Engineer.",
+    "description": "Building scalable web applications and microservices. Specialist in complex Laravel architecture and reactive Nuxt.js interfaces. Focused on performance, resilience, and clean code.",
+    "resume": {
+      "label": "CV / Resume",
+      "download": "Download PDF",
+      "languages": {
+        "en": "English",
+        "hy": "Armenian",
+        "ru": "Russian",
+        "uk": "Ukrainian",
+        "de": "German",
+        "pl": "Polish",
+        "es": "Spanish",
+        "fr": "French",
+        "nl": "Dutch"
+      }
+    }
+  },
+  "about": {
+    "title": "Engineering Profile",
+    "description": "Hard skills & Approach",
+    "intro": "Full Stack developer with a strong focus on Backend architecture. I design REST/GraphQL APIs, work with message queues, caching, and high-load systems. On the frontend, I build maintainable SPA/SSR applications. I follow SOLID, DRY principles, and modular architecture. Solving business challenges with technical precision while minimizing technical debt."
+  },
+  "experience": {
+    "title": "Experience",
+    "description": "Commercial development experience. Key projects, roles, and tech stack.",
+    "years": ["year", "years", "years"],
+    "months": ["month", "months", "months"],
+    "lessThanMonth": "< 1 month"
+  },
+  "education": {
+    "title": "Background",
+    "description": "Academic education and qualifications."
+  },
+  "projects": {
+    "title": "Featured Cases",
+    "description": "Commercial and pet projects. From DB design to production deployment. Complex business logic and integrations implementation.",
+    "have_idea": "Have a technical task?",
+    "what_i_offer": "Ready to join at the design or development stage. I provide audits, suggest optimal stacks, and architectural solutions. Full cycle development: from MVP to scalable systems. No bureaucracy, focus on results and deadlines.",
+    "contact_telegram": "Discuss Project"
+  },
+  "shop": {
+    "title": "Solutions",
+    "description": "Library of proprietary developments: modules, templates, and microservices. Battle-tested code ready for integration.",
+    "discount": "SALE",
+    "free": "FREE",
+    "watch": "Demo",
+    "download": "Get it"
+  },
+  "languages": { "title": "Languages" },
+  "faq": { "title": "Q&A", "description": "Briefly about processes, stack, and cooperation terms." },
+  "resume": {
+    "name": "Vahe",
+    "surname": "Sargsyan",
+    "position": "Full Stack Engineer",
+    "stack": "Nuxt.js / Laravel",
+    "contacts": "Contact",
+    "portfolio": "Portfolio",
+    "skills": "Engine"
+  }
+}

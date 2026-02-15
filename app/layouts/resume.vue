@@ -14,7 +14,7 @@
   justify-content: center;
   align-items: flex-start;
   padding: 40px 0;
-  background-color: #525659;
+  background-color: #afacac;
   overflow-y: auto;
 }
 

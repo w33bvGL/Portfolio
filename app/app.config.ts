@@ -5,7 +5,6 @@ export default defineAppConfig({
       alt: 'Vahe — Full Stack Developer'
     },
     email: 'w33bv.gl@gmail.com',
-    phone: '+374(94) 161-331',
     location: 'Yerevan, Armenia',
     telegram: '@w33bvGL',
     available: false,

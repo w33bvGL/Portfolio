@@ -21,10 +21,6 @@ const { t } = useI18n()
           <a :href="`mailto:${global.email}`" class="value">{{ global.email }}</a>
         </li>
         <li>
-          <span class="label">Phone:</span>
-          <a :href="`tel:${global.phone.replace(/\D/g, '')}`" class="value">{{ global.phone }}</a>
-        </li>
-        <li>
           <span class="label">Telegram:</span>
           <a :href="global.telegram" target="_blank" class="value">{{ global.telegram }}</a>
         </li>

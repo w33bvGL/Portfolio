@@ -67,7 +67,7 @@ body {
 
   --container-width: 56rem;
 
-  --font-hero: clamp(2rem, 5vw, 3.5rem);
+  --font-hero: clamp(2rem, 5vw, 3rem);
 
   --font-h1: clamp(1.5rem, 3vw, 2.25rem);
   --font-h2: clamp(1.25rem, 2.5vw, 1.75rem);

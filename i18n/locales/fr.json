@@ -1,0 +1,74 @@
+{
+  "routes": {
+    "home": "Accueil",
+    "projects": "Projets",
+    "blog": "Log",
+    "shop": "Solutions",
+    "about": "Profil"
+  },
+  "availability": {
+    "available": "Disponible",
+    "unavailable": "Actuellement occupé"
+  },
+  "cta": {
+    "title": "Vahe Sargsyan. Full Stack Engineer.",
+    "description": "Développement d'applications web scalables et de microservices. Spécialiste de l'architecture Laravel et Nuxt.js.",
+    "resume": {
+      "label": "CV / Résumé",
+      "download": "Télécharger PDF",
+      "languages": {
+        "en": "Anglais",
+        "hy": "Arménien",
+        "ru": "Russe",
+        "uk": "Ukrainien",
+        "de": "Allemand",
+        "pl": "Polonais",
+        "es": "Espagnol",
+        "fr": "Français",
+        "nl": "Néerlandais"
+      }
+    }
+  },
+  "about": {
+    "title": "Profil d'ingénierie",
+    "description": "Compétences & Approche",
+    "intro": "Développeur Full Stack avec un accent sur l'architecture Backend. Je conçois des API REST/GraphQL et travaille sur des systèmes à haute charge."
+  },
+  "experience": {
+    "title": "Parcours",
+    "description": "Expérience en développement commercial. Projets clés et stack technique.",
+    "years": ["an", "ans", "ans"],
+    "months": ["mois", "mois", "mois"],
+    "lessThanMonth": "< 1 mois"
+  },
+  "education": {
+    "title": "Formation",
+    "description": "Éducation académique et qualifications."
+  },
+  "projects": {
+    "title": "Projets",
+    "description": "De la conception de la base de données au déploiement. Logique métier complexe.",
+    "have_idea": "Un défi technique ?",
+    "what_i_offer": "Prêt à rejoindre au stade du design ou du développement. Audit и architecture.",
+    "contact_telegram": "Discuter du projet"
+  },
+  "shop": {
+    "title": "Solutions",
+    "description": "Bibliothèque de développements : modules, templates et microservices.",
+    "discount": "SALE",
+    "free": "GRATUIT",
+    "watch": "Démo",
+    "download": "Obtenir"
+  },
+  "languages": { "title": "Langues" },
+  "faq": { "title": "Q&R", "description": "Processus, stack et conditions de collaboration." },
+  "resume": {
+    "name": "Vahe",
+    "surname": "Sargsyan",
+    "position": "Full Stack Engineer",
+    "stack": "Nuxt.js / Laravel",
+    "contacts": "Contact",
+    "portfolio": "Portfolio",
+    "skills": "Moteur"
+  }
+}

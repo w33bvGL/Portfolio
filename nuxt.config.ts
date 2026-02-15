@@ -4,6 +4,18 @@ import fs from 'fs-extra'
 import { resolve } from 'path'
 import puppeteer from 'puppeteer'
 
+const locales = [
+  { code: 'de', language: 'de-DE', name: 'Deutsch' },
+  { code: 'en', language: 'en-US', name: 'English' },
+  { code: 'es', language: 'es-ES', name: 'Español' },
+  { code: 'fr', language: 'fr-FR', name: 'Français' },
+  { code: 'hy', language: 'hy-AM', name: 'Հայերեն' },
+  { code: 'nl', language: 'nl-NL', name: 'Nederlands' },
+  { code: 'pl', language: 'pl-PL', name: 'Polski' },
+  { code: 'ru', language: 'ru-RU', name: 'Русский' },
+  { code: 'uk', language: 'uk-UA', name: 'Українська' }
+]
+
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
@@ -49,15 +61,8 @@ export default defineNuxtConfig({
   },
 
   i18n: {
-    bundle: {
-      optimizeTranslationDirective: false
-    },
-    locales: [
-      { code: 'en', language: 'en-US', name: 'English' },
-      { code: 'ru', language: 'ru-RU', name: 'Русский' },
-      { code: 'hy', language: 'hy-AM', name: 'Հայերեն' },
-      { code: 'uk', language: 'uk-UA', name: 'Українська' }
-    ],
+    bundle: { optimizeTranslationDirective: false },
+    locales,
     lazy: false,
     defaultLocale: 'en',
     strategy: 'prefix_and_default',
@@ -72,24 +77,19 @@ export default defineNuxtConfig({
   },
 
   hooks: {
-    // Хук запускается после того, как Nuxt сгенерировал статику в .output/public
     'close': async () => {
-      // Запускаем этот процесс ТОЛЬКО при полной статической генерации
       if (process.env.npm_lifecycle_event !== 'generate') return
 
       console.log('✨ Starting PDF Resume Generation...')
 
       const distDir = resolve('.output/public')
-      const port = 3001 // Используем свободный порт для временного сервера
-      const langs = ['en', 'ru', 'hy', 'uk'] // Твои языки
-
-      // 1. Запускаем временный статик-сервер для сгенерированных файлов
+      const port = 3001
+      const langCodes = locales.map(l => l.code)
       const server = spawn('npx', ['serve', distDir, '-l', String(port)], {
-        stdio: 'ignore', // Чтобы не мусорить в логи
+        stdio: 'ignore',
         shell: true
       })
 
-      // Хелпер ожидания сервера
       const waitForServer = () => new Promise<void>((resolve, reject) => {
         let attempts = 0
         const interval = setInterval(() => {
@@ -116,7 +116,6 @@ export default defineNuxtConfig({
 
         for (const lang of langs) {
           const url = `http://localhost:${port}/${lang}/resume`
-          // Куда сохранять (в папку resume внутри билда)
           const outputDir = resolve(distDir, 'resume')
           const outputPath = resolve(outputDir, `${lang}.pdf`)
 
@@ -124,7 +123,6 @@ export default defineNuxtConfig({
 
           await page.goto(url, { waitUntil: 'networkidle0' })
 
-          // PDF A4
           await page.pdf({
             path: outputPath,
             format: 'A4',
