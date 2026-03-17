@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import { NuxtLink } from '#components'
-
 interface Props {
-  to?: string
-  href?: string
   noHover?: boolean
   as?: string
   variant?: 'glass' | 'ghost' | 'filled'
@@ -12,30 +8,17 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   as: 'div',
   variant: 'glass',
-  noHover: false
-})
-
-const componentIs = computed(() => {
-  if (props.to) return NuxtLink
-  if (props.href) return 'a'
-  return props.as
-})
-
-const linkProps = computed(() => {
-  if (props.to) return { to: props.to }
-  if (props.href) return { href: props.href, target: '_blank', rel: 'noopener noreferrer' }
-  return {}
+  noHover: true
 })
 </script>
 
 <template>
   <component
-    :is="componentIs"
-    v-bind="linkProps"
+    :is="as"
     class="ui-card"
     :class="[
       `variant-${variant}`,
-      { 'is-interactive': (to || href) && !noHover, 'no-hover': noHover }
+      { 'is-interactive': !noHover }
     ]"
   >
     <div
