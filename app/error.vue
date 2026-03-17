@@ -86,7 +86,7 @@ useHead({
   z-index: 10;
   width: 90%;
   max-width: 480px;
-  padding: 3.5rem 2.5rem;
+  padding: 2rem;
   text-align: center;
   animation: var(--animation-scale-in);
 }

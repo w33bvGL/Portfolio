@@ -75,16 +75,14 @@ const props = withDefaults(defineProps<Props>(), {
 
 .divider-root.orientation-horizontal {
   flex-direction: column;
+  min-height: 1px;
 }
 
 .divider-root.orientation-vertical {
   flex-direction: row;
   width: auto;
   height: 100%;
-}
 
-.divider-root.with-content {
-  margin: 0;
 }
 
 .divider-content {
@@ -115,7 +113,6 @@ const props = withDefaults(defineProps<Props>(), {
 
 /* Orientation */
 .orientation-horizontal .divider-line {
-  width: 100%;
   height: 1px;
 }
 
@@ -127,17 +124,14 @@ const props = withDefaults(defineProps<Props>(), {
 /* Sizes */
 .size-sm {
   height: 1px;
-  opacity: 0.5;
 }
 
 .size-md {
   height: 1px;
-  opacity: 0.8;
 }
 
 .size-lg {
   height: 2px;
-  opacity: 1;
 }
 
 /* Variants */
@@ -147,19 +141,21 @@ const props = withDefaults(defineProps<Props>(), {
 
 .variant-gradient {
   background: linear-gradient(
-    90deg,
-    transparent,
-    var(--border-color),
-    transparent
+    to right,
+    transparent 0%,
+    var(--border-color) 20%,
+    var(--border-color) 80%,
+    transparent 100%
   );
 }
 
 .orientation-vertical .variant-gradient {
   background: linear-gradient(
-    180deg,
-    transparent,
-    var(--border-color),
-    transparent
+    to bottom,
+    transparent 0%,
+    var(--border-color) 20%,
+    var(--border-color) 80%,
+    transparent 100%
   );
 }
 
@@ -167,7 +163,6 @@ const props = withDefaults(defineProps<Props>(), {
   background-image: radial-gradient(circle, var(--border-color) 1px, transparent 1px);
   background-size: 4px 4px;
   background-repeat: repeat-x;
-  height: 1px;
 }
 
 .orientation-vertical .variant-dotted {
@@ -177,7 +172,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 .variant-dashed {
   background-image: linear-gradient(
-    90deg,
+    to right,
     var(--border-color) 50%,
     transparent 50%
   );
@@ -187,7 +182,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 .orientation-vertical .variant-dashed {
   background-image: linear-gradient(
-    180deg,
+    to bottom,
     var(--border-color) 50%,
     transparent 50%
   );
@@ -197,21 +192,21 @@ const props = withDefaults(defineProps<Props>(), {
 
 .variant-fade {
   background: linear-gradient(
-    90deg,
-    transparent,
-    var(--border-color),
-    var(--border-color),
-    transparent
+    to right,
+    transparent 0%,
+    var(--border-color) 10%,
+    var(--border-color) 90%,
+    transparent 100%
   );
 }
 
 .orientation-vertical .variant-fade {
   background: linear-gradient(
-    180deg,
-    transparent,
-    var(--border-color),
-    var(--border-color),
-    transparent
+    to bottom,
+    transparent 0%,
+    var(--border-color) 10%,
+    var(--border-color) 90%,
+    transparent 100%
   );
 }
 
