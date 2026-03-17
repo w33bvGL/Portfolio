@@ -2,7 +2,6 @@
 import type { Education, TranslatedEducation } from '~/types/education'
 
 const { t, locale } = useI18n()
-const { vIntersection } = useScrollObserver()
 
 const { data: educationByLang } = await useAsyncData<TranslatedEducation>('education', () =>
   $fetch('/api/education')
@@ -27,10 +26,11 @@ const educations = computed<Education[]>(() => {
       <UiCard
         v-for="(item, index) in educations"
         :key="index"
-        v-intersection
         :href="item.url"
-        class="scroll-reveal"
-        :style="{ '--delay': `${index * 0.15}s` }"
+        :class="[
+          { 'animate-slide-up': true },
+          `stagger-delay-${(index % 10) + 3}`
+        ]"
       >
         <UiCardHeader class="edu-header">
           <UiLayoutFlex
@@ -66,20 +66,6 @@ const educations = computed<Education[]>(() => {
 </template>
 
 <style scoped>
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: var(--delay, 0s);
-  will-change: opacity, transform;
-}
-
-.scroll-reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .card-icon {
   width: 2.5rem;
   height: 2.5rem;

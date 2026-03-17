@@ -32,7 +32,7 @@ useHead({
   <div class="error-view">
     <Background />
 
-    <UiCard class="error-card">
+    <UiCard class="error-card" variant="glass">
       <UiCardContent>
         <UiLayoutFlex col justify="center">
           <span class="code animate-slide-up stagger-delay-1">
@@ -70,15 +70,11 @@ useHead({
 
 <style scoped>
 .error-view {
-  position: relative;
   min-height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--bg-body);
-  color: var(--text-main);
-  overflow: hidden;
 }
 
 .error-card {

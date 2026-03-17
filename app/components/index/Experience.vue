@@ -30,7 +30,10 @@ const { data: experiences } = await useAsyncData<Experience[]>(
         :key="index"
         v-intersection
         class="timeline-row animate-slide-up"
-        :class="`stagger-delay-${index + 1}`"
+        :class="[
+          { 'animate-slide-up': true },
+          `stagger-delay-${(index % 10) + 3}`
+        ]"
       >
         <div class="connector-anchor">
           <div class="connector-dot">
@@ -56,7 +59,7 @@ const { data: experiences } = await useAsyncData<Experience[]>(
             </UiCardHeader>
 
             <UiCardContent>
-              <UiCardDescription class="job-desc">
+              <UiCardDescription>
                 {{ exp.description }}
               </UiCardDescription>
             </UiCardContent>
@@ -176,10 +179,6 @@ const { data: experiences } = await useAsyncData<Experience[]>(
   padding: 1.5rem 1.5rem 0.5rem 1.5rem !important;
 }
 
-:deep(.exp-content) {
-  margin-top: 0 !important;
-  padding: 0 1.5rem 1.5rem 1.5rem !important;
-}
 
 .mobile-period {
   display: inline-block;
@@ -198,11 +197,6 @@ const { data: experiences } = await useAsyncData<Experience[]>(
   font-size: 0.95rem;
   color: var(--text-muted);
   font-weight: 500;
-}
-
-.job-desc {
-  font-size: 0.95rem;
-  line-height: 1.6;
 }
 
 @keyframes pulse {

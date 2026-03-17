@@ -1,13 +1,20 @@
 <script setup lang="ts">
-defineProps<{
+interface Props {
   as?: string
-}>()
+  align?: 'left' | 'center' | 'right'
+}
+
+withDefaults(defineProps<Props>(), {
+  as: 'h3',
+  align: 'left'
+})
 </script>
 
 <template>
   <component
-    :is="as || 'h3'"
+    :is="as"
     class="card-title"
+    :class="`text-${align}`"
   >
     <slot />
   </component>
@@ -15,11 +22,14 @@ defineProps<{
 
 <style scoped>
 .card-title {
-  font-size: 1.15rem;
+  font-size: var(--font-body-lg);
   font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
+  line-height: var(--leading-normal);
   color: var(--text-main);
   margin: 0;
 }
+
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
 </style>

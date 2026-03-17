@@ -1,14 +1,28 @@
+<script setup lang="ts">
+interface Props {
+  align?: 'left' | 'center' | 'right'
+}
+
+withDefaults(defineProps<Props>(), {
+  align: 'left'
+})
+</script>
+
 <template>
-  <p class="card-description">
+  <p
+    class="card-description"
+    :class="`text-${align}`"
+  >
     <slot />
   </p>
 </template>
 
 <style scoped>
 .card-description {
-  font-size: 0.95rem;
-  line-height: 1.6;
   color: var(--text-muted);
-  margin: 0;
 }
+
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
 </style>

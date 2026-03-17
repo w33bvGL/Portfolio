@@ -22,7 +22,7 @@ const blobStyle = computed(() => ({
     </div>
 
     <div class="glass-container">
-      <div class="avatar-block stagger-item">
+      <div class="avatar-block animate-slide-up stagger-delay-1">
         <div class="avatar-wrapper">
           <div class="avatar-ring" />
           <div class="avatar-clip">
@@ -40,7 +40,7 @@ const blobStyle = computed(() => ({
         </div>
       </div>
 
-      <div class="content stagger-item">
+      <div class="content animate-slide-up stagger-delay-2">
         <h1 class="hero-title">
           {{ t('cta.title') }}
         </h1>
@@ -49,7 +49,7 @@ const blobStyle = computed(() => ({
         </p>
       </div>
 
-      <div class="actions-wrapper stagger-item">
+      <div class="actions-wrapper animate-slide-up stagger-delay-3">
         <IndexResumeDropdown />
         <IndexSocials />
       </div>
@@ -161,9 +161,8 @@ const blobStyle = computed(() => ({
 
 .hero-title {
   font-size: var(--font-hero);
-  font-weight: 800;
   line-height: var(--leading-tight);
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
   margin: 0 0 1rem 0;
   background: linear-gradient(180deg, var(--text-main) 30%, rgba(125,125,125,0.5) 100%);
   -webkit-background-clip: text;
@@ -192,24 +191,6 @@ const blobStyle = computed(() => ({
   .actions-wrapper {
     flex-direction: row;
     gap: 1.5rem;
-  }
-}
-
-.stagger-item {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fade-up 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  will-change: opacity, transform;
-}
-
-.stagger-item:nth-child(1) { animation-delay: 0.3s; }
-.stagger-item:nth-child(2) { animation-delay: 0.5s; }
-.stagger-item:nth-child(3) { animation-delay: 0.7s; }
-
-@keyframes fade-up {
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 </style>
