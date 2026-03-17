@@ -1,19 +1,14 @@
 <script setup lang="ts">
-import type { TranslatedExperiences, Experience } from '~/types/experience'
+import type { Experience } from '~/types/experience'
 
 const { locale, t } = useI18n()
 const { experienceString } = useExperienceString()
 const { vIntersection } = useScrollObserver()
 
-const { data: experienceByLang } = await useAsyncData<TranslatedExperiences>(
+const { data: experiences } = await useAsyncData<Experience[]>(
   'experiences',
-  () => $fetch('/api/experiences')
+  () => $fetch('/api/experiences', { query: { lang: locale.value } })
 )
-
-const experiences = computed<Experience[]>(() => {
-  const data = experienceByLang.value
-  return data?.[locale.value as keyof TranslatedExperiences] ?? []
-})
 </script>
 
 <template>

@@ -1,9 +1,19 @@
 export interface Experience {
-  year: string
+  id: number
   company: string
   title: string
   period: string
   description: string
 }
 
-export type TranslatedExperiences = Translated<Experience>
+export interface ExperienceData {
+  period: string
+  description: string
+}
+
+export interface ExperienceRaw {
+  id: number
+  company: string
+  title: string
+  data: Record<string, ExperienceData>
+}

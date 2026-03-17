@@ -5,13 +5,9 @@ import { resolve } from 'path'
 import puppeteer from 'puppeteer'
 
 const locales = [
-  { code: 'de', language: 'de-DE', name: 'Deutsch' },
   { code: 'en', language: 'en-US', name: 'English' },
-  { code: 'es', language: 'es-ES', name: 'Español' },
   { code: 'fr', language: 'fr-FR', name: 'Français' },
   { code: 'hy', language: 'hy-AM', name: 'Հայերեն' },
-  { code: 'nl', language: 'nl-NL', name: 'Nederlands' },
-  { code: 'pl', language: 'pl-PL', name: 'Polski' },
   { code: 'ru', language: 'ru-RU', name: 'Русский' },
   { code: 'uk', language: 'uk-UA', name: 'Українська' }
 ]
@@ -55,7 +51,7 @@ export default defineNuxtConfig({
     close: async () => {
       if (process.env.npm_lifecycle_event !== 'generate') return
 
-      console.log('✨ Starting PDF Resume Generation...')
+      console.log('Starting PDF Resume Generation...')
 
       const distDir = resolve('.output/public')
       const port = 3001
@@ -105,15 +101,15 @@ export default defineNuxtConfig({
             margin: { top: 0, bottom: 0, left: 0, right: 0 }
           })
 
-          console.log(`✅ Generated: /resume/${lang}.pdf`)
+          console.log(`Generated: /resume/${lang}.pdf`)
         }
 
         await browser.close()
       } catch (e) {
-        console.error('❌ PDF Generation Failed:', e)
+        console.error('PDF Generation Failed:', e)
       } finally {
         server.kill()
-        console.log('🛑 PDF Generation finished.')
+        console.log('PDF Generation finished.')
       }
     }
   },
@@ -130,7 +126,7 @@ export default defineNuxtConfig({
   i18n: {
     bundle: { optimizeTranslationDirective: false },
     locales,
-    lazy: false,
+    lazy: true,
     defaultLocale: 'en',
     strategy: 'prefix_and_default',
     vueI18n: './i18n.config.ts'
