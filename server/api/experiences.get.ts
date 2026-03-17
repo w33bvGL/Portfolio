@@ -1,31 +1,31 @@
 export default defineEventHandler(() => {
   return {
-    de: [
-      {
-        company: 'Nsoft',
-        title: 'Middle Full-Stack Engineer',
-        period: 'Okt 2024 — Heute',
-        description: 'Verantwortlich für die End-to-End-Infrastruktur: Entwicklung skalierbarer RabbitMQ-Mikroservices und hochperformanter Nuxt.js-Frontends. Entwurf eines universellen Billing-Moduls, komplexer Admin-Panels und Echtzeit-Kurssysteme. Implementierung von CI/CD-Pipelines und Optimierung der PostgreSQL/Redis-Performance.'
-      },
-      {
-        company: 'Independent Contractor',
-        title: 'Full-Stack Software Engineer',
-        period: 'Jan 2023 — Sept 2024',
-        description: 'Architektur von Event-gesteuerten Fintech-Systemen auf Basis von Kafka und WebSockets. Aufbau von Full-Stack-Monitoring mit dem ELK-Stack (Kibana/Elasticsearch). Integration globaler Payment-Gateways (Stripe/Crypto) über modulare Adapter-Patterns.'
-      }
-    ],
     en: [
       {
         company: 'Nsoft',
         title: 'Middle Full-Stack Engineer',
         period: 'Oct 2024 — Present',
-        description: 'Driving end-to-end infrastructure: from scalable RabbitMQ microservices to high-performance Nuxt.js frontends. Engineered a Unified Billing Module, advanced administrative dashboards, and real-time exchange engines. Established CI/CD pipelines and optimized PostgreSQL/Redis layers.'
+        description: 'Building and maintaining full-stack features across microservices and frontend. Designed a billing module used across multiple products, built admin dashboards for internal teams, and developed a real-time currency exchange engine. Set up CI/CD pipelines from scratch and improved database performance on PostgreSQL and Redis.'
       },
       {
         company: 'Independent Contractor',
         title: 'Full-Stack Software Engineer',
         period: 'Jan 2023 — Sep 2024',
-        description: 'Architecting event-driven Fintech ecosystems using Kafka and WebSockets. Implemented comprehensive observability via ELK Stack (Kibana). Specialized in modular payment gateway integrations (Stripe/Crypto) and orchestrated Docker-based delivery workflows.'
+        description: 'Developed event-driven backend systems for fintech clients using Kafka and WebSockets. Integrated Stripe and crypto payment gateways. Set up centralized logging and monitoring with the ELK stack. Managed containerized deployments with Docker.'
+      }
+    ],
+    de: [
+      {
+        company: 'Nsoft',
+        title: 'Middle Full-Stack Engineer',
+        period: 'Okt 2024 — Heute',
+        description: 'Entwicklung und Wartung von Full-Stack-Features über Microservices und Frontend. Entwurf eines Billing-Moduls für mehrere Produkte, Aufbau von Admin-Dashboards und Entwicklung einer Echtzeit-Wechselkurs-Engine. CI/CD-Pipelines von Grund auf aufgebaut und die Performance von PostgreSQL und Redis optimiert.'
+      },
+      {
+        company: 'Independent Contractor',
+        title: 'Full-Stack Software Engineer',
+        period: 'Jan 2023 — Sep 2024',
+        description: 'Entwicklung event-gesteuerter Backend-Systeme für Fintech-Kunden mit Kafka und WebSockets. Integration von Stripe- und Krypto-Zahlungsgateways. Zentrales Logging und Monitoring mit dem ELK-Stack aufgebaut. Containerisierte Deployments mit Docker verwaltet.'
       }
     ],
     es: [
@@ -33,13 +33,13 @@ export default defineEventHandler(() => {
         company: 'Nsoft',
         title: 'Middle Full-Stack Engineer',
         period: 'Oct 2024 — Presente',
-        description: 'Liderazgo de infraestructura de ciclo completo: desde microservicios escalables en RabbitMQ hasta frontends Nuxt.js. Diseño de un Módulo de Facturación Unificado, paneles de administración complejos y sistemas de divisas en tiempo real. Implementación de CI/CD y optimización de PostgreSQL/Redis.'
+        description: 'Desarrollo y mantenimiento de funcionalidades full-stack en microservicios y frontend. Diseño de un módulo de facturación usado en varios productos, dashboards de administración para equipos internos y un motor de cambio de divisas en tiempo real. Configuración de pipelines CI/CD y mejora del rendimiento en PostgreSQL y Redis.'
       },
       {
         company: 'Independent Contractor',
         title: 'Full-Stack Software Engineer',
         period: 'Ene 2023 — Sep 2024',
-        description: 'Arquitectura de sistemas Fintech basados en eventos con Kafka y WebSockets. Implementación de observabilidad total con el stack ELK (Kibana). Integración masiva de pasarelas de pago y estandarización de entornos Docker.'
+        description: 'Desarrollo de sistemas backend orientados a eventos para clientes fintech con Kafka y WebSockets. Integración de pasarelas de pago Stripe y cripto. Configuración de logging y monitoreo centralizado con ELK Stack. Gestión de despliegues en contenedores con Docker.'
       }
     ],
     fr: [
@@ -47,13 +47,13 @@ export default defineEventHandler(() => {
         company: 'Nsoft',
         title: 'Middle Full-Stack Engineer',
         period: 'Oct 2024 — Présent',
-        description: 'Responsable de l’infrastructure de bout en bout : des microservices RabbitMQ aux frontends Nuxt.js haute performance. Conception d’un Module de Facturation Unifié, de dashboards administratifs et de moteurs de devises. Mise en place de pipelines CI/CD.'
+        description: 'Développement et maintenance de fonctionnalités full-stack sur microservices et frontend. Conception d\'un module de facturation utilisé dans plusieurs produits, de dashboards d\'administration et d\'un moteur de taux de change en temps réel. Mise en place de pipelines CI/CD et optimisation des performances PostgreSQL et Redis.'
       },
       {
         company: 'Independent Contractor',
         title: 'Full-Stack Software Engineer',
         period: 'Jan 2023 — Sep 2024',
-        description: 'Architecture d’écosystèmes Fintech pilotés par les événements via Kafka et WebSockets. Mise en œuvre d’une observabilité complète avec ELK (Kibana). Intégration modulaire de passerelles Stripe/Crypto.'
+        description: 'Développement de systèmes backend event-driven pour des clients fintech avec Kafka et WebSockets. Intégration de passerelles de paiement Stripe et crypto. Mise en place d\'un logging et monitoring centralisés via ELK Stack. Gestion des déploiements conteneurisés avec Docker.'
       }
     ],
     hy: [
@@ -61,13 +61,13 @@ export default defineEventHandler(() => {
         company: 'Nsoft',
         title: 'Middle Full-Stack Engineer',
         period: 'Հոկտ 2024 — Ներկա',
-        description: 'Ամբողջական ենթակառուցվածքների պատասխանատու՝ RabbitMQ միկրոսերվիսներից մինչև Nuxt.js բարձր արդյունավետությամբ ֆրոնթենդ: Միասնական բիլինգային մոդուլի, ադմինիստրատիվ վահանակների և իրական ժամանակի համակարգերի նախագծում:'
+        description: 'Full-stack ֆունկցիոնալությունների մշակում և պահպանում միկրոսերվիսների և ֆրոնթենդի վրա: Մի քանի արտադրանքներում օգտագործվող բիլինգային մոդուլի նախագծում, ներքին թիմերի համար ադմինիստրատիվ վահանակների ստեղծում և իրական ժամանակի արժույթի փոխանակման շարժիչի մշակում: CI/CD փողօղակների կառուցում և PostgreSQL/Redis-ի կատարողականի բարելավում:'
       },
       {
         company: 'Independent Contractor',
         title: 'Full-Stack Software Engineer',
         period: 'Հուն 2023 — Սեպտ 2024',
-        description: 'Event-driven Fintech էկոհամակարգերի մշակում Kafka-ի և WebSockets-ի միջոցով: Օբսերվաբիլիթիի ապահովում ELK Stack-ի (Kibana) միջոցով: Stripe/Crypto վճարային համակարգերի ինտեգրում:'
+        description: 'Event-driven backend համակարգերի մշակում ֆինտեք հաճախորդների համար Kafka-ի և WebSockets-ի օգտագործմամբ: Stripe-ի և կրիպտո վճարային դարպասների ինտեգրում: ELK Stack-ի միջոցով կենտրոնացված լոգինգի և մոնիտորինգի կարգաբերում: Docker-ով կոնթեյներային տեղակայումների կառավարում:'
       }
     ],
     nl: [
@@ -75,13 +75,13 @@ export default defineEventHandler(() => {
         company: 'Nsoft',
         title: 'Middle Full-Stack Engineer',
         period: 'Okt 2024 — Heden',
-        description: 'Verantwoordelijk voor de end-to-end infrastructuur: van RabbitMQ microservices tot high-performance Nuxt.js frontends. Ontwerp van een Unified Billing Module, geavanceerde admin-dashboards und real-time engines.'
+        description: 'Ontwikkeling en onderhoud van full-stack functionaliteiten over microservices en frontend. Ontwerp van een billing module gebruikt in meerdere producten, admin dashboards voor interne teams en een realtime wisselkoersmotor. CI/CD-pipelines opgezet en de prestaties van PostgreSQL en Redis verbeterd.'
       },
       {
         company: 'Independent Contractor',
         title: 'Full-Stack Software Engineer',
         period: 'Jan 2023 — Sep 2024',
-        description: 'Architectuur van event-driven Fintech-systemen met Kafka en WebSockets. Implementatie van volledige observability via ELK Stack (Kibana). Modulaire integratie van Stripe/Crypto gateways.'
+        description: 'Ontwikkeling van event-driven backendsystemen voor fintech-klanten met Kafka en WebSockets. Integratie van Stripe en crypto betaalgateways. Gecentraliseerde logging en monitoring opgezet met de ELK Stack. Beheer van gecontaineriseerde deployments met Docker.'
       }
     ],
     pl: [
@@ -89,13 +89,13 @@ export default defineEventHandler(() => {
         company: 'Nsoft',
         title: 'Middle Full-Stack Engineer',
         period: 'Paź 2024 — Obecnie',
-        description: 'Odpowiedzialny za infrastrukturę end-to-end: od mikroserwisów RabbitMQ po wysokowydajne frontendy Nuxt.js. Projektowanie Zunifikowanego Modułu Bilingowego, zaawansowanych paneli administracyjnych i systemów walutowych.'
+        description: 'Tworzenie i utrzymanie funkcjonalności full-stack w mikroserwisach i frontendzie. Zaprojektowanie modułu rozliczeniowego używanego w wielu produktach, paneli administracyjnych dla zespołów wewnętrznych oraz silnika kursów walut w czasie rzeczywistym. Wdrożenie pipeline\'ów CI/CD i optymalizacja wydajności PostgreSQL i Redis.'
       },
       {
         company: 'Independent Contractor',
         title: 'Full-Stack Software Engineer',
         period: 'Sty 2023 — Wrz 2024',
-        description: 'Architektura systemów Fintech sterowanych zdarzeniami (Kafka) i komunikacji WebSockets. Wdrażanie pełnej obserwowalności za pomocą ELK Stack (Kibana). Modułowa integracja Stripe/Crypto.'
+        description: 'Tworzenie systemów backendowych opartych na zdarzeniach dla klientów fintech z użyciem Kafka i WebSockets. Integracja bramek płatności Stripe i krypto. Konfiguracja scentralizowanego logowania i monitoringu za pomocą ELK Stack. Zarządzanie wdrożeniami kontenerowymi z Docker.'
       }
     ],
     ru: [
@@ -103,13 +103,13 @@ export default defineEventHandler(() => {
         company: 'Nsoft',
         title: 'Middle Full-Stack Engineer',
         period: 'Окт 2024 — Наст. время',
-        description: 'Ответственность за инфраструктуру полного цикла: от масштабируемых микросервисов на RabbitMQ до высокопроизводительных фронтендов на Nuxt.js. Проектирование единого биллингового модуля, сложных админ-панелей и систем котировок в реальном времени.'
+        description: 'Разработка и поддержка full-stack функциональности в микросервисах и фронтенде. Спроектировал биллинговый модуль, используемый в нескольких продуктах, административные дашборды для внутренних команд и движок котировок в реальном времени. Настроил CI/CD пайплайны и улучшил производительность PostgreSQL и Redis.'
       },
       {
         company: 'Independent Contractor',
         title: 'Full-Stack Software Engineer',
         period: 'Янв 2023 — Сент 2024',
-        description: 'Архитектура event-driven Fintech-экосистем на базе Kafka и WebSockets. Внедрение комплексной обсервабилити через ELK Stack (Kibana). Модульная интеграция Stripe/Crypto шлюзов и стандартизация Docker-инфраструктуры.'
+        description: 'Разработка event-driven бэкенд-систем для финтех-клиентов на базе Kafka и WebSockets. Интеграция платёжных шлюзов Stripe и крипто. Настройка централизованного логирования и мониторинга через ELK Stack. Управление контейнерными деплоями на Docker.'
       }
     ],
     uk: [
@@ -117,13 +117,13 @@ export default defineEventHandler(() => {
         company: 'Nsoft',
         title: 'Middle Full-Stack Engineer',
         period: 'Жовт 2024 — Тепер. час',
-        description: 'Відповідальність за інфраструктуру повного циклу: від мікросервісів на RabbitMQ до високонавантажених фронтендів на Nuxt.js. Проектування єдиного білінгового модуля, складних адмін-панелей та систем реального часу.'
+        description: 'Розробка та підтримка full-stack функціональності в мікросервісах і фронтенді. Спроектував білінговий модуль, що використовується в кількох продуктах, адміністративні дашборди для внутрішніх команд і рушій котирувань у реальному часі. Налаштував CI/CD пайплайни та покращив продуктивність PostgreSQL і Redis.'
       },
       {
         company: 'Independent Contractor',
         title: 'Full-Stack Software Engineer',
         period: 'Січ 2023 — Вер 2024',
-        description: 'Архітектура event-driven Fintech-екосистем за допомогою Kafka та WebSockets. Впровадження обсервабіліті через ELK Stack (Kibana). Модульна інтеграція Stripe/Crypto та стандартизація Docker-інфраструктури.'
+        description: 'Розробка event-driven бекенд-систем для фінтех-клієнтів на базі Kafka та WebSockets. Інтеграція платіжних шлюзів Stripe і крипто. Налаштування централізованого логування та моніторингу через ELK Stack. Управління контейнерними деплоями на Docker.'
       }
     ]
   }

@@ -34,8 +34,8 @@ const experiences = computed<Experience[]>(() => {
         v-for="(exp, index) in experiences"
         :key="index"
         v-intersection
-        class="timeline-row scroll-reveal"
-        :style="{ '--delay': `${index * 0.1}s` }"
+        class="timeline-row animate-slide-up"
+        :class="`stagger-delay-${index + 1}`"
       >
         <div class="connector-anchor">
           <div class="connector-dot">
@@ -208,20 +208,6 @@ const experiences = computed<Experience[]>(() => {
 .job-desc {
   font-size: 0.95rem;
   line-height: 1.6;
-}
-
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: var(--delay, 0s);
-  will-change: opacity, transform;
-}
-
-.scroll-reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 @keyframes pulse {
