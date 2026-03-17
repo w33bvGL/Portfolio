@@ -4,18 +4,20 @@ import { NuxtLink } from '#components'
 interface Props {
   to?: string
   href?: string
-  variant?: 'primary' | 'ghost' | 'outline' | 'danger'
+  variant?: 'primary' | 'ghost' | 'outline' | 'danger' | 'soft'
   size?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
   icon?: string
   loading?: boolean
   block?: boolean
+  disabled?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   variant: 'primary',
   size: 'md',
   loading: false,
-  block: false
+  block: false,
+  disabled: false
 })
 
 const slots = useSlots()
@@ -45,9 +47,11 @@ const linkProps = computed(() => {
       {
         'is-loading': loading,
         'is-block': block,
-        'is-only-icon': isOnlyIcon
+        'is-only-icon': isOnlyIcon,
+        'is-disabled': disabled
       }
     ]"
+    :disabled="componentTag === 'button' ? disabled : null"
   >
     <div
       v-if="icon && !loading"
@@ -112,7 +116,7 @@ const linkProps = computed(() => {
   font-family: inherit;
   font-size: var(--btn-font);
   font-weight: 600;
-  line-height: 1; /* Жестко 1, чтобы не было смещений по вертикали */
+  line-height: 1;
   text-decoration: none;
   cursor: pointer;
   border: 1px solid transparent;
@@ -124,14 +128,12 @@ const linkProps = computed(() => {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* --- Sizes Logic --- */
 .size-sm  { --btn-height: 2.25rem; --btn-px: 1rem; --btn-font: 0.85rem; --btn-icon-size: 1rem; --btn-gap: 0.35rem; }
 .size-md  { /* Default */ }
 .size-lg  { --btn-height: 3.25rem; --btn-px: 2rem; --btn-font: 1.05rem; --btn-icon-size: 1.25rem; }
 .size-xl  { --btn-height: 4rem; --btn-px: 2.5rem; --btn-font: 1.25rem; --btn-icon-size: 1.5rem; --btn-gap: 0.75rem; }
 .size-xxl { --btn-height: 5.5rem; --btn-px: 4rem; --btn-font: 1.75rem; --btn-icon-size: 2rem; --btn-gap: 1rem; }
 
-/* Идеальный круг и центрирование */
 .is-only-icon {
   padding: 0 !important;
   width: var(--btn-height);
@@ -145,7 +147,7 @@ const linkProps = computed(() => {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  line-height: 0; /* Убирает лишнее пространство под инлайновыми элементами */
+  line-height: 0;
 }
 
 .btn-icon {
@@ -157,22 +159,33 @@ const linkProps = computed(() => {
 .ui-btn:active { transform: scale(0.96); }
 .is-block { width: 100%; display: flex; }
 
-/* --- Variants --- */
+.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.is-disabled .btn-icon {
+  transform: none;
+}
+
 .variant-primary { background: var(--text-main); color: var(--bg-body); border-color: var(--text-main); }
-.variant-primary:hover { background: transparent; color: var(--text-main); box-shadow: 0 0 20px -5px rgba(255, 255, 255, 0.1); }
+.variant-primary:hover:not(.is-disabled) { background: transparent; color: var(--text-main); box-shadow: 0 0 20px -5px rgba(255, 255, 255, 0.1); }
 
 .variant-ghost { background: rgba(125, 125, 125, 0.05); color: var(--text-main); border-color: rgba(125, 125, 125, 0.1); backdrop-filter: blur(8px); }
-.variant-ghost:hover { background: rgba(125, 125, 125, 0.1); border-color: rgba(255, 255, 255, 0.1); transform: translateY(-1px); }
+.variant-ghost:hover:not(.is-disabled) { background: rgba(125, 125, 125, 0.1); border-color: rgba(255, 255, 255, 0.1); transform: translateY(-1px); }
 
 .variant-outline { background: transparent; border-color: var(--border-color); color: var(--text-muted); }
-.variant-outline:hover { border-color: var(--text-main); color: var(--text-main); }
+.variant-outline:hover:not(.is-disabled) { border-color: var(--text-main); color: var(--text-main); }
 
 .variant-danger { background: rgba(255, 51, 51, 0.1); color: #ff3333; border-color: rgba(255, 51, 51, 0.2); }
-.variant-danger:hover { background: #ff3333; color: #fff; box-shadow: 0 4px 15px rgba(255, 51, 51, 0.3); }
+.variant-danger:hover:not(.is-disabled) { background: #ff3333; color: #fff; box-shadow: 0 4px 15px rgba(255, 51, 51, 0.3); }
 
-/* Анимации ховера */
-.ui-btn:hover .btn-icon { transform: translateX(-1px); }
-.is-only-icon:hover .btn-icon { transform: scale(1.1); }
+.variant-soft { background: rgba(125, 125, 125, 0.1); color: var(--text-main); border-color: transparent; }
+.variant-soft:hover:not(.is-disabled) { background: rgba(125, 125, 125, 0.15); border-color: transparent; transform: translateY(-1px); }
+
+.ui-btn:not(.is-disabled):hover .btn-icon { transform: translateX(-1px); }
+.is-only-icon:not(.is-disabled):hover .btn-icon { transform: scale(1.1); }
 
 .is-hidden { opacity: 0; pointer-events: none; }
 

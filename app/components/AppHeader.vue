@@ -84,26 +84,23 @@ const isActive = (path: string) => {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- Glass Bar --- */
 .nav-bar {
-  pointer-events: auto; /* Включаем клики */
+  pointer-events: auto;
   border-radius: 9999px;
-  padding: 0.35rem; /* Чуть компактнее */
+  padding: 0.35rem;
   display: flex;
   align-items: center;
   gap: 0.25rem;
 
-  /* Senior Glass Effect */
   background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(26px);
+  -webkit-backdrop-filter: blur(26px);
   border: 1px solid var(--glass-border);
   box-shadow:
     var(--glass-shadow),
     0 4px 20px -5px rgba(0,0,0,0.05);
 }
 
-/* --- Nav Link Item --- */
 .nav-link {
   position: relative;
   text-decoration: none;
@@ -114,7 +111,6 @@ const isActive = (path: string) => {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Контент ссылки */
 .nav-content {
   position: relative;
   z-index: 2;
