@@ -1,25 +1,14 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 const { t, locales } = useI18n()
 
-const isOpen = ref(false)
-const isDownloading = ref(false) // Стейт для лоадинга
-const containerRef = ref<HTMLElement | null>(null)
-
-const toggle = () => {
-  if (isDownloading.value) return
-  isOpen.value = !isOpen.value
-}
-
-const close = (e: MouseEvent) => {
-  if (containerRef.value && !containerRef.value.contains(e.target as Node)) {
-    isOpen.value = false
-  }
-}
+const isDownloading = ref(false)
+const dropdownRef = ref<any>(null)
 
 async function download(code: string): Promise<void> {
   if (isDownloading.value) return
 
-  isOpen.value = false
+  dropdownRef.value?.close()
   isDownloading.value = true
 
   const url = `/resume/${code}.pdf`
@@ -27,7 +16,6 @@ async function download(code: string): Promise<void> {
 
   try {
     const response = await fetch(url)
-
     if (!response.ok) throw new Error('File not found')
 
     const blob = await response.blob()
@@ -49,59 +37,42 @@ async function download(code: string): Promise<void> {
     }, 600)
   }
 }
-
-onMounted(() => document.addEventListener('click', close))
-onUnmounted(() => document.removeEventListener('click', close))
 </script>
 
 <template>
-  <div
-    ref="containerRef"
-    class="resume-wrapper"
-  >
-    <UiButton
-      variant="primary"
-      icon="lucide:file-down"
-      class="trigger-btn"
-      :loading="isDownloading"
-      @click.stop="toggle"
-    >
-      {{ t('cta.resume.download') || 'Download CV' }}
-      <Icon
-        name="lucide:chevron-down"
-        class="chevron"
-        :class="{ 'is-rotated': isOpen }"
-      />
-    </UiButton>
-
-    <Transition name="fade-drop">
-      <div
-        v-if="isOpen"
-        class="dropdown-menu glass-panel"
+  <UiDropdown ref="dropdownRef" placement="bottom">
+    <template #trigger="{ isOpen }">
+      <UiButton
+        variant="primary"
+        icon="lucide:file-down"
+        class="trigger-btn"
+        :loading="isDownloading"
       >
-        <button
-          v-for="l in locales"
-          :key="l.code"
-          class="menu-item"
-          @click="download(l.code)"
-        >
-          <span class="lang-code">{{ l.code.toUpperCase() }}</span>
-          <span class="lang-label">{{ l.name }}</span>
-          <Icon
-            name="lucide:download"
-            class="dl-icon"
-          />
-        </button>
-      </div>
-    </Transition>
-  </div>
+        {{ t('cta.resume.download') || 'Download CV' }}
+        <Icon
+          name="lucide:chevron-down"
+          class="chevron"
+          :class="{ 'is-rotated': isOpen }"
+        />
+      </UiButton>
+    </template>
+
+    <template #default>
+      <button
+        v-for="l in locales"
+        :key="l.code"
+        class="menu-item"
+        @click="download(l.code)"
+      >
+        <span class="lang-code">{{ l.code.toUpperCase() }}</span>
+        <span class="lang-label">{{ l.name }}</span>
+        <Icon name="lucide:download" class="dl-icon" />
+      </button>
+    </template>
+  </UiDropdown>
 </template>
 
 <style scoped>
-.resume-wrapper {
-  position: relative;
-}
-
 .trigger-btn {
   min-width: 200px;
   justify-content: space-between;
@@ -114,29 +85,7 @@ onUnmounted(() => document.removeEventListener('click', close))
   opacity: 0.6;
 }
 
-.chevron.is-rotated {
-  transform: rotate(180deg);
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: calc(100% + 0.5rem);
-  left: 0;
-  width: 100%;
-  padding: 0.5rem;
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  z-index: 50;
-
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
-  transform-origin: top center;
-}
+.chevron.is-rotated { transform: rotate(180deg); }
 
 .menu-item {
   display: flex;
@@ -162,7 +111,4 @@ onUnmounted(() => document.removeEventListener('click', close))
 .lang-label { flex: 1; font-weight: 500; }
 .dl-icon { width: 1rem; height: 1rem; opacity: 0; transform: translateX(-5px); transition: all 0.2s; }
 .menu-item:hover .dl-icon { opacity: 1; transform: translateX(0); }
-
-.fade-drop-enter-active, .fade-drop-leave-active { transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
-.fade-drop-enter-from, .fade-drop-leave-to { opacity: 0; transform: translateY(-5px) scale(0.98); }
 </style>

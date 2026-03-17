@@ -1,6 +1,5 @@
 <script setup lang="ts">
 interface Props {
-  noHover?: boolean
   as?: string
   variant?: 'glass' | 'ghost' | 'filled'
 }
@@ -8,7 +7,6 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   as: 'div',
   variant: 'glass',
-  noHover: true
 })
 </script>
 
@@ -18,7 +16,6 @@ const props = withDefaults(defineProps<Props>(), {
     class="ui-card"
     :class="[
       `variant-${variant}`,
-      { 'is-interactive': !noHover }
     ]"
   >
     <div
@@ -60,19 +57,6 @@ const props = withDefaults(defineProps<Props>(), {
 .variant-filled {
   background: var(--bg-body);
   border: 1px solid var(--border-color);
-}
-
-.is-interactive {
-  cursor: pointer;
-}
-
-.is-interactive:hover {
-  transform: translateY(-5px);
-  border-color: rgba(255, 255, 255, 0.12);
-  background: rgba(30, 30, 30, 0.6);
-  box-shadow:
-    0 20px 40px -12px rgba(0, 0, 0, 0.6),
-    inset 0 0 12px rgba(255, 255, 255, 0.01);
 }
 
 .card-inner {
