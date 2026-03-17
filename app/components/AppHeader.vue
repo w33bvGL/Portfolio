@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-
 const { t, locale } = useI18n()
 const route = useRoute()
 
@@ -12,8 +10,8 @@ const localizedPath = (path: string) => {
 const links = computed(() => [
   { key: 'home', icon: 'lucide:home', to: localizedPath('/') },
   { key: 'projects', icon: 'lucide:folder', to: localizedPath('/projects') },
-   { key: 'shop', icon: 'lucide:pen-tool', to: localizedPath('/shop') },
-   { key: 'about', icon: 'lucide:user', to: localizedPath('/about') }
+  { key: 'shop', icon: 'lucide:pen-tool', to: localizedPath('/shop') },
+  { key: 'about', icon: 'lucide:user', to: localizedPath('/about') }
 ])
 
 const isActive = (path: string) => {
@@ -24,46 +22,51 @@ const isActive = (path: string) => {
 
 <template>
   <header class="header-wrapper">
-    <nav class="nav-bar">
-      <NuxtLink
-        v-for="link in links"
-        :key="link.key"
-        :to="link.to"
-        class="nav-link"
-        :class="{ 'is-active': isActive(link.to) }"
-      >
-        <div
-          v-if="isActive(link.to)"
-          class="nav-pill"
-          layoutId="nav-pill"
-        />
+    <UiCard
+      variant="glass"
+      class="nav-bar"
+    >
+      <template #default>
+        <UiLayoutFlex :gap="0.5" align="center" >
+          <NuxtLink
+            v-for="link in links"
+            :key="link.key"
+            :to="link.to"
+            class="nav-link"
+            :class="{ 'is-active': isActive(link.to) }"
+          >
+            <div
+              v-if="isActive(link.to)"
+              class="nav-pill"
+            />
 
-        <div class="nav-content">
-          <Icon
-            :name="link.icon"
-            class="nav-icon"
-          />
+            <div class="nav-content">
+              <Icon
+                :name="link.icon"
+                class="nav-icon"
+              />
 
-          <span class="nav-text">{{ t(`routes.${link.key}`) }}</span>
-        </div>
+              <span class="nav-text">{{ t(`routes.${link.key}`) }}</span>
+            </div>
 
-        <div
-          class="active-dot"
-          :class="{ 'dot-visible': isActive(link.to) }"
-        />
-      </NuxtLink>
+            <div
+              class="active-dot"
+              :class="{ 'dot-visible': isActive(link.to) }"
+            />
+          </NuxtLink>
 
-      <div class="divider" />
+          <div class="divider" />
 
-      <div class="theme-switch-wrapper">
-        <UiColorModeButton />
-      </div>
-    </nav>
+          <div class="theme-switch-wrapper">
+            <UiColorModeButton />
+          </div>
+        </UiLayoutFlex>
+      </template>
+    </UiCard>
   </header>
 </template>
 
 <style scoped>
-/* --- Layout & Position --- */
 .header-wrapper {
   position: fixed;
   z-index: 50;
@@ -72,9 +75,8 @@ const isActive = (path: string) => {
   right: 0;
   display: flex;
   justify-content: center;
-  pointer-events: none; /* Пропускаем клики мимо обертки */
+  pointer-events: none;
 
-  /* Анимация появления хедера */
   animation: slide-down 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   opacity: 0;
   transform: translateY(-20px);
@@ -91,14 +93,10 @@ const isActive = (path: string) => {
   display: flex;
   align-items: center;
   gap: 0.25rem;
-
-  background: var(--glass-bg);
-  backdrop-filter: blur(26px);
-  -webkit-backdrop-filter: blur(26px);
-  border: 1px solid var(--glass-border);
-  box-shadow:
-    var(--glass-shadow),
-    0 4px 20px -5px rgba(0,0,0,0.05);
+  width: fit-content;
+  margin: 0 auto;
+  backdrop-filter: blur(40px) !important;
+  -webkit-backdrop-filter: blur(40px) !important;
 }
 
 .nav-link {
