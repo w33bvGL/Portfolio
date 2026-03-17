@@ -2,37 +2,51 @@
 const route = useRoute()
 const target = ref(null)
 
-// Слежка за мышью через VueUse
+// VueUse — слежка за мышью
 const { elementX, elementY } = useMouseInElement(target)
 
-// Базовые позиции блобов
-const blobA = ref({ x: -10, y: -10 })
-const blobB = ref({ x: 80, y: 70 })
+// Жесткие дефолты для SSR, чтобы сервер и клиент совпали в первый миг
+const blobA = ref({ x: 5, y: 5 })
+const blobB = ref({ x: 75, y: 65 })
+const isMounted = ref(false)
 
 const randomizeBlobs = () => {
+  // На сервере Math.random() не вызовется, так как функция сработает только в watch на клиенте
   blobA.value = {
-    x: Math.floor(Math.random() * 30) - 15,
-    y: Math.floor(Math.random() * 30) - 15
+    x: Math.floor(Math.random() * 40) - 10,
+    y: Math.floor(Math.random() * 40) - 10
   }
   blobB.value = {
     x: Math.floor(Math.random() * 40) + 50,
-    y: Math.floor(Math.random() * 40) + 40
+    y: Math.floor(Math.random() * 40) + 30
   }
 }
 
-// Рандомим при каждом переходе
-watch(() => route.path, () => {
+// Рандомим только на клиенте
+onMounted(() => {
+  isMounted.value = true
   randomizeBlobs()
-}, { immediate: true })
+})
 
-const dynamicStyle = computed(() => ({
-  '--mx': `${elementX.value}px`,
-  '--my': `${elementY.value}px`,
-  '--ax': `${blobA.value.x}%`,
-  '--ay': `${blobA.value.y}%`,
-  '--bx': `${blobB.value.x}%`,
-  '--by': `${blobB.value.y}%`
-}))
+// Следим за роутом, но пропускаем первый запуск на сервере
+watch(() => route.path, () => {
+  if (process.client) {
+    randomizeBlobs()
+  }
+})
+
+const dynamicStyle = computed(() => {
+  // Если мы еще не на клиенте, отдаем пустые значения или дефолты
+  // Это предотвращает Hydration Mismatch
+  return {
+    '--mx': isMounted.value ? `${elementX.value}px` : '50%',
+    '--my': isMounted.value ? `${elementY.value}px` : '50%',
+    '--ax': `${blobA.value.x}%`,
+    '--ay': `${blobA.value.y}%`,
+    '--bx': `${blobB.value.x}%`,
+    '--by': `${blobB.value.y}%`
+  }
+})
 </script>
 
 <template>
@@ -42,8 +56,8 @@ const dynamicStyle = computed(() => ({
     :style="dynamicStyle"
   >
     <div class="layout-fx">
-      <div class="blob b-1" />
-      <div class="blob b-2" />
+      <div class="blob b-1" :class="{ 'is-visible': isMounted }" />
+      <div class="blob b-2" :class="{ 'is-visible': isMounted }" />
       <div class="grid-overlay" />
     </div>
   </div>

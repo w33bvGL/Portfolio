@@ -19,17 +19,12 @@ useSeoMeta({
 </script>
 
 <template>
-  <NuxtLoadingIndicator
-    :height="2"
-  />
   <NuxtLayout>
-    <main class="relative">
       <NuxtPage />
-    </main>
   </NuxtLayout>
 </template>
 
-<style scoped>
+<style>
 .page-enter-active,
 .page-leave-active {
   transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);

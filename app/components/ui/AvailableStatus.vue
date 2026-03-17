@@ -37,7 +37,7 @@ defineProps({
   gap: 0.6rem;
   padding: 0.35rem 0.85rem;
   border-radius: 9999px;
-  background: rgba(125, 125, 125, 0.05); /* Легкая подложка */
+  background: rgba(125, 125, 125, 0.05);
   border: 1px solid rgba(125, 125, 125, 0.1);
   backdrop-filter: blur(4px);
   transition: all 0.3s ease;
@@ -46,7 +46,6 @@ defineProps({
   line-height: 1;
 }
 
-/* Компактный режим (просто точка без текста и фона) */
 .status-pill.is-compact {
   padding: 0;
   background: transparent;
@@ -62,14 +61,14 @@ defineProps({
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0; /* ЗАПРЕЩАЕМ сплющиваться */
+  flex-shrink: 0;
 }
 
 .solid-dot {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
-  aspect-ratio: 1 / 1; /* ГАРАНТИРУЕТ круг */
+  aspect-ratio: 1 / 1;
   position: relative;
   z-index: 2;
 }

@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import { computed, nextTick } from 'vue'
-
 const colorMode = useColorMode()
 
-// Формат для @nuxt/icon. Убедись, что модуль установлен.
 const nextTheme = computed(() => colorMode.value === 'dark' ? 'light' : 'dark')
 const iconName = computed(() => colorMode.value === 'dark' ? 'lucide:sun' : 'lucide:moon')
 
@@ -12,9 +9,6 @@ const switchTheme = () => {
 }
 
 const startViewTransition = (event: MouseEvent) => {
-  console.log('Клик зафиксирован, меняем тему на:', nextTheme.value)
-
-  // Если браузер не поддерживает View Transitions API
   if (!document.startViewTransition) {
     switchTheme()
     return
@@ -29,7 +23,6 @@ const startViewTransition = (event: MouseEvent) => {
 
   const transition = document.startViewTransition(async () => {
     switchTheme()
-    // Ждем, пока Vue обновит DOM (добавит класс .dark)
     await nextTick()
   })
 
@@ -52,70 +45,30 @@ const startViewTransition = (event: MouseEvent) => {
 </script>
 
 <template>
-  <div class="theme-switch-root">
-    <ClientOnly>
-      <button
-        type="button"
-        class="theme-btn"
-        @click="startViewTransition"
-      >
-        <Icon
-          :name="iconName"
-          class="theme-icon"
-        />
-      </button>
+  <ClientOnly>
+    <UiButton
+      variant="soft"
+      size="sm"
+      :icon="iconName"
+      @click="startViewTransition"
+    />
 
-      <template #fallback>
-        <div class="theme-btn skeleton" />
-      </template>
-    </ClientOnly>
-  </div>
+    <template #fallback>
+      <div class="theme-btn skeleton" />
+    </template>
+  </ClientOnly>
 </template>
 
 <style scoped>
-.theme-switch-root {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.theme-btn {
-  appearance: none;
-  background: transparent;
-  border: none;
-  cursor: pointer;
+.skeleton {
   width: 2.25rem;
   height: 2.25rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-muted);
-  transition: all 0.2s ease;
-  padding: 0;
-  position: relative;
-  z-index: 10;
-  pointer-events: auto; /* Чтобы точно кликалось */
-}
-
-.theme-btn:hover {
-  color: var(--text-main);
-  background-color: rgba(125, 125, 125, 0.1);
-}
-
-.theme-icon {
-  width: 1.25rem;
-  height: 1.25rem;
-  pointer-events: none;
-}
-
-.skeleton {
+  border-radius: 9999px;
   background-color: rgba(125, 125, 125, 0.1);
 }
 </style>
 
 <style>
-/* Обязательно глобально для View Transition API */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;

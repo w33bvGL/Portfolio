@@ -4,7 +4,6 @@ on:
   push:
     branches: [ main ]
 
-# Даем права на запись в репозиторий для деплоя
 permissions:
   contents: write
 
