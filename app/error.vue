@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import type { NuxtError } from '#app'
 
+const { t } = useI18n()
+const localeRoute = useLocaleRoute()
+
 const props = defineProps({
   error: {
     type: Object as PropType<NuxtError>,
@@ -8,11 +11,20 @@ const props = defineProps({
   }
 })
 
-const handleError = () => clearError({ redirect: '/' })
+const handleError = () => clearError({ redirect: localeRoute('/') })
+
+const errorTitle = computed(() => {
+  if (props.error.statusCode === 404) return t('error.404_title')
+  return t('error.default_title')
+})
+
+const errorMessage = computed(() => {
+  if (props.error.statusCode === 404) return t('error.404_message')
+  return props.error.message || t('error.default_message')
+})
 
 useHead({
-  title: `${props.error.statusCode} — Error`,
-  htmlAttrs: { lang: 'en' }
+  title: errorTitle,
 })
 </script>
 
@@ -20,33 +32,39 @@ useHead({
   <div class="error-view">
     <Background />
 
-    <div class="glass-container">
-      <div class="content-stagger">
-        <h1 class="code">
-          {{ error.statusCode }}
-        </h1>
+    <UiCard class="error-card">
+      <UiCardContent>
+        <UiLayoutFlex col justify="center">
+          <span class="code animate-slide-up stagger-delay-1">
+            {{ error.statusCode }}
+          </span>
 
-        <div class="separator" />
+          <UiDivider
+            variant="gradient"
+            class="animate-fade stagger-delay-2"
+          />
 
-        <h2 class="title">
-          {{ error.statusCode === 404 ? 'Lost in the Void' : 'System Critical' }}
-        </h2>
+          <h1 class="title animate-slide-up stagger-delay-3">
+            {{ errorTitle }}
+          </h1>
 
-        <p class="description">
-          {{ error.message || 'The coordinates you are looking for do not exist in this sector. They may have been moved or deleted.' }}
-        </p>
+          <p class="description animate-slide-up stagger-delay-4">
+            {{ errorMessage }}
+          </p>
 
-        <div class="actions">
-          <UiButton
-            variant="ghost"
-            icon="lucide:arrow-left"
-            @click="handleError"
-          >
-            Return to Base
-          </UiButton>
-        </div>
-      </div>
-    </div>
+          <UiLayoutFlex justify="center">
+            <UiButton
+              variant="ghost"
+              icon="lucide:arrow-left"
+              class="animate-slide-up stagger-delay-5"
+              @click="handleError"
+            >
+              {{ t('error.return') }}
+            </UiButton>
+          </UiLayoutFlex>
+        </UiLayoutFlex>
+      </UiCardContent>
+    </UiCard>
   </div>
 </template>
 
@@ -63,38 +81,15 @@ useHead({
   overflow: hidden;
 }
 
-/* Стеклянная карточка */
-.glass-container {
+.error-card {
   position: relative;
   z-index: 10;
   width: 90%;
   max-width: 480px;
   padding: 3.5rem 2.5rem;
   text-align: center;
-
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
-  border-radius: 2rem;
-
-  animation: scale-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  opacity: 0;
-  transform: scale(0.95);
+  animation: var(--animation-scale-in);
 }
-
-/* Стаггер-анимация появления */
-.content-stagger > * {
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.content-stagger > *:nth-child(1) { animation-delay: 0.1s; } /* Code */
-.content-stagger > *:nth-child(2) { animation-delay: 0.2s; } /* Separator */
-.content-stagger > *:nth-child(3) { animation-delay: 0.3s; } /* Title */
-.content-stagger > *:nth-child(4) { animation-delay: 0.4s; } /* Desc */
-.content-stagger > *:nth-child(5) { animation-delay: 0.5s; } /* Button */
 
 .code {
   font-size: clamp(5rem, 15vw, 8rem);
@@ -102,25 +97,15 @@ useHead({
   line-height: 0.85;
   margin: 0;
   letter-spacing: -0.04em;
-  /* Градиент из твоей Hero-секции */
   background: linear-gradient(180deg, var(--text-main) 0%, rgba(125,125,125,0) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.separator {
-  width: 40px;
-  height: 3px;
-  background: var(--text-main);
-  opacity: 0.2;
-  margin: 1.5rem auto;
-  border-radius: 10px;
-}
-
 .title {
   font-size: 1.5rem;
   font-weight: 600;
-  margin: 0 0 1rem;
+  margin: 0;
 }
 
 .description {
@@ -130,20 +115,7 @@ useHead({
   margin: 0 0 2rem;
 }
 
-.actions {
-  display: flex;
-  justify-content: center;
-}
-
-@keyframes scale-in {
-  to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes fade-up {
-  to { opacity: 1; transform: translateY(0); }
-}
-
 @media (max-width: 640px) {
-  .glass-container { padding: 2.5rem 1.5rem; }
+  .error-card { padding: 2.5rem 1.5rem; }
 }
 </style>

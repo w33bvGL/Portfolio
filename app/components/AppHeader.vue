@@ -76,14 +76,7 @@ const isActive = (path: string) => {
   display: flex;
   justify-content: center;
   pointer-events: none;
-
-  animation: slide-down 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  opacity: 0;
-  transform: translateY(-20px);
-}
-
-@keyframes slide-down {
-  to { opacity: 1; transform: translateY(0); }
+  animation: var(--animation-slide-down);
 }
 
 .nav-bar {

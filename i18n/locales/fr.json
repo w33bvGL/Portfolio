@@ -10,6 +10,13 @@
     "available": "Disponible",
     "unavailable": "Actuellement occupé"
   },
+  "error": {
+    "404_title": "Perdu dans le vide",
+    "default_title": "Critique système",
+    "404_message": "Les coordonnées que vous recherchez n'existent pas dans ce secteur.",
+    "default_message": "Une erreur inattendue s'est produite. Le système a rencontré une panne critique.",
+    "return": "Retour à la base"
+  },
   "cta": {
     "title": "Vahe Sargsyan. Full Stack Engineer.",
     "description": "Développement d'applications web scalables et de microservices. Spécialiste de l'architecture Laravel et Nuxt.js.",

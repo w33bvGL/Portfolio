@@ -10,6 +10,13 @@
     "available": "Beschikbaar voor werk",
     "unavailable": "Momenteel bezet"
   },
+  "error": {
+    "404_title": "Verloren in de leegte",
+    "default_title": "Systeemkritisch",
+    "404_message": "De coördinaten die je zoekt, bestaan niet in deze sector.",
+    "default_message": "Er is een onverwachte fout opgetreden. Het systeem heeft een kritieke fout ondervonden.",
+    "return": "Terug naar de basis"
+  },
   "cta": {
     "title": "Vahe Sargsyan. Full Stack Engineer.",
     "description": "Bouwen van schaalbare webapplicaties en microservices. Expert in Laravel architectuur en Nuxt.js.",

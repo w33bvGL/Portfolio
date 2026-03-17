@@ -10,6 +10,13 @@
     "available": "Available for work",
     "unavailable": "Currently busy"
   },
+  "error": {
+    "404_title": "Lost in the Void",
+    "default_title": "System Critical",
+    "404_message": "The coordinates you are looking for do not exist in this sector.",
+    "default_message": "An unexpected error occurred. The system encountered a critical failure.",
+    "return": "Return to Base"
+  },
   "cta": {
     "title": "Vahe Sargsyan. Full Stack Engineer.",
     "description": "Building scalable web applications and microservices. Specialist in complex Laravel architecture and reactive Nuxt.js interfaces. Focused on performance, resilience, and clean code.",

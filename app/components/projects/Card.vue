@@ -6,85 +6,100 @@ defineProps<{
 }>()
 
 const img = useImage()
+
 </script>
 
 <template>
-  <UiCard
+  <a
     :href="project.url"
+    target="_blank"
+    rel="noopener noreferrer"
     class="group"
     :class="{ 'is-adult-card': project.isAdult }"
   >
-    <div class="image-wrapper">
-      <div class="overlay" />
+    <UiCard class="card-inner">
+      <div class="image-wrapper">
+        <div class="overlay" />
 
-      <NuxtImg
-        :src="project.image"
-        :alt="project.name"
-        width="600"
-        height="340"
-        format="webp"
-        class="project-img"
-        :class="{ 'adult-blur': project.isAdult }"
-        :placeholder="img(project.image, { h: 10, f: 'png', blur: 2, q: 50 })"
-        loading="lazy"
-      />
-
-      <div
-        v-if="project.isAdult"
-        class="adult-badge-overlay"
-      >
-        <UiButton variant="ghost">
-          <Icon
-            name="lucide:eye-off"
-            class="w-5 h-5"
-          />
-          <span>Sensitive Content</span>
-        </UiButton>
-      </div>
-
-      <div
-        v-if="project.url"
-        class="hover-icon"
-      >
-        <UiButton
-          icon="lucide:arrow-up-right"
-          variant="outline"
+        <NuxtImg
+          :src="project.image"
+          :alt="project.name"
+          width="600"
+          height="340"
+          format="webp"
+          class="project-img"
+          :class="{ 'adult-blur': project.isAdult }"
+          :placeholder="img(project.image, { h: 10, f: 'png', blur: 2, q: 50 })"
+          loading="lazy"
         />
-      </div>
-    </div>
 
-    <UiCardHeader>
-      <div class="title-row">
-        <UiCardTitle>{{ project.name }}</UiCardTitle>
-        <span
+        <div
           v-if="project.isAdult"
-          class="age-limit"
-        >18+</span>
-      </div>
-
-      <div
-        v-if="project.tags"
-        class="project-tags"
-      >
-        <span
-          v-for="tag in project.tags.slice(0, 3)"
-          :key="tag"
-          class="tag"
+          class="adult-badge-overlay"
         >
-          {{ tag }}
-        </span>
-      </div>
-    </UiCardHeader>
+          <UiButton variant="ghost">
+            <Icon
+              name="lucide:eye-off"
+              class="w-5 h-5"
+            />
+            <span>Sensitive Content</span>
+          </UiButton>
+        </div>
 
-    <UiCardContent>
-      <UiCardDescription>
-        {{ project.description }}
-      </UiCardDescription>
-    </UiCardContent>
-  </UiCard>
+        <div
+          v-if="project.url"
+          class="hover-icon"
+        >
+          <UiButton
+            icon="lucide:arrow-up-right"
+            variant="outline"
+          />
+        </div>
+      </div>
+
+      <UiCardHeader>
+        <div class="title-row">
+          <UiCardTitle>{{ project.name }}</UiCardTitle>
+          <span
+            v-if="project.isAdult"
+            class="age-limit"
+          >18+</span>
+        </div>
+
+        <div
+          v-if="project.tags"
+          class="project-tags"
+        >
+          <span
+            v-for="tag in project.tags.slice(0, 3)"
+            :key="tag"
+            class="tag"
+          >
+            {{ tag }}
+          </span>
+        </div>
+      </UiCardHeader>
+
+      <UiCardContent>
+        <UiCardDescription>
+          {{ project.description }}
+        </UiCardDescription>
+      </UiCardContent>
+    </UiCard>
+  </a>
 </template>
 
 <style scoped>
+.card-inner {
+  height: 100%;
+}
+
+.group {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
 .image-wrapper {
   position: relative;
   width: 100%;
@@ -98,7 +113,7 @@ const img = useImage()
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.4s ease;
+  transition: transform var(--duration-slower) var(--ease-out-sine), filter var(--duration-normal) ease;
   filter: brightness(0.9);
 }
 

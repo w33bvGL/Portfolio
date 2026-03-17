@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import type { TranslatedProjects, Project } from '~/types/project'
-// Импортируем модалку
-import AdultConfirmationModal from '~/components/ui/AdultConfirmationModal.vue'
 
 const { t, locale } = useI18n()
 const { vIntersection } = useScrollObserver()
@@ -16,38 +14,6 @@ const projects = computed<Project[]>(() => {
   const currentKey = locale.value as keyof TranslatedProjects
   return projectsByLang.value[currentKey] ?? []
 })
-
-// --- Adult Logic ---
-const showAdultModal = ref(false)
-const pendingProject = ref<Project | null>(null)
-
-// Функция обработки клика по проекту
-const handleProjectClick = (project: Project) => {
-  if (!project.url) return
-
-  // Если проект 18+, стопаем и открываем модалку
-  if (project.isAdult) {
-    pendingProject.value = project
-    showAdultModal.value = true
-    return
-  }
-
-  // Иначе открываем сразу
-  window.open(project.url, '_blank')
-}
-
-// Подтверждение возраста
-const onAdultConfirm = () => {
-  if (pendingProject.value?.url) {
-    window.open(pendingProject.value.url, '_blank')
-  }
-  closeModal()
-}
-
-const closeModal = () => {
-  showAdultModal.value = false
-  pendingProject.value = null
-}
 
 // --- SEO ---
 const title = t('projects.title')
@@ -79,16 +45,8 @@ useSeoMeta({
         :project="project"
         class="scroll-reveal"
         :style="{ '--delay': `${index * 0.05}s` }"
-        @click.prevent="handleProjectClick(project)"
       />
     </UiLayoutGrid>
-
-    <AdultConfirmationModal
-      :is-open="showAdultModal"
-      :project-name="pendingProject?.name"
-      @confirm="onAdultConfirm"
-      @cancel="closeModal"
-    />
   </UiLayoutContainer>
 </template>
 
@@ -133,11 +91,10 @@ useSeoMeta({
 .scroll-reveal {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity var(--duration-slower) var(--ease-out-expo),
+  transform var(--duration-slower) var(--ease-out-expo);
   transition-delay: var(--delay, 0s);
   will-change: transform, opacity;
-  cursor: pointer;
 }
 
 .scroll-reveal.is-visible {
