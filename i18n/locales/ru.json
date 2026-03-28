@@ -77,5 +77,8 @@
     "contacts": "Связь",
     "portfolio": "Портфолио",
     "skills": "Стек"
+  },
+  "footer": {
+    "copyright": "Vahe Sargsyan. Все права защищены."
   }
 }

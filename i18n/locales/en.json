@@ -77,5 +77,8 @@
     "contacts": "Contact",
     "portfolio": "Portfolio",
     "skills": "Engine"
+  },
+  "footer": {
+    "copyright": "Vahe Sargsyan. All rights reserved."
   }
 }

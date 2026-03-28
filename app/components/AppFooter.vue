@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const appConfig = useAppConfig()
+const { t } = useI18n()
 
 const footerData = computed(() => appConfig.footer || {})
 const links = computed(() => footerData.value.links || [])
@@ -14,7 +15,7 @@ const currentYear = new Date().getFullYear()
           <div class="credits">
             <span class="copyright-symbol">©</span>
             <span class="year">{{ currentYear }}</span>
-            <span class="text">Vahe Sargsyan. All rights reserved.</span>
+            <span class="text">{{ t('footer.copyright') }}</span>
           </div>
 
           <UiLayoutFlex align="center">
