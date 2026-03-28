@@ -1,25 +1,52 @@
+<script lang="ts">
+const activeDropdownId = ref<symbol | null>(null)
+</script>
+
 <script setup lang="ts">
-import { ref, watch, onUnmounted, nextTick } from 'vue'
 
 const props = withDefaults(defineProps<{
-  placement?: 'top' | 'bottom' | 'top-end' | 'bottom-end'
+  placement?: 'top' | 'bottom' | 'top-end' | 'bottom-end' | 'top-start' | 'bottom-start'
   offset?: number
 }>(), {
   placement: 'bottom',
   offset: 8
 })
 
+const instanceId = Symbol('dropdown')
+
 const isOpen = ref(false)
 const triggerRef = ref<HTMLElement | null>(null)
 const menuRef = ref<HTMLElement | null>(null)
 
-// Сюда будем писать динамические координаты
-const menuStyle = ref({ top: '0px', left: '0px', minWidth: '0px' })
+const menuStyle = ref({
+  top: '0px',
+  left: '0px',
+  minWidth: '0px',
+  transformOrigin: 'top center'
+})
 
-const toggle = () => { isOpen.value = !isOpen.value }
-const close = () => { isOpen.value = false }
+const toggle = () => {
+  if (isOpen.value) {
+    close()
+  } else {
+    activeDropdownId.value = instanceId
+    isOpen.value = true
+  }
+}
 
-// Математика позиционирования
+const close = () => {
+  isOpen.value = false
+  if (activeDropdownId.value === instanceId) {
+    activeDropdownId.value = null
+  }
+}
+
+watch(activeDropdownId, (newId) => {
+  if (newId !== instanceId && isOpen.value) {
+    isOpen.value = false
+  }
+})
+
 const updatePosition = () => {
   if (!isOpen.value || !triggerRef.value || !menuRef.value) return
 
@@ -28,29 +55,35 @@ const updatePosition = () => {
 
   let top = 0
   let left = 0
+  let transformOrigin = 'top center'
 
-  // Вертикаль
   if (props.placement.startsWith('top')) {
     top = triggerRect.top - menuRect.height - props.offset
+    transformOrigin = 'bottom center'
   } else {
     top = triggerRect.bottom + props.offset
+    transformOrigin = 'top center'
   }
 
-  // Горизонталь
   if (props.placement.endsWith('-end')) {
     left = triggerRect.right - menuRect.width
-  } else {
+    transformOrigin = transformOrigin.replace('center', 'right')
+  } else if (props.placement.endsWith('-start')) {
     left = triggerRect.left
+    transformOrigin = transformOrigin.replace('center', 'left')
+  } else {
+    // По центру
+    left = triggerRect.left + (triggerRect.width / 2) - (menuRect.width / 2)
   }
 
   menuStyle.value = {
     top: `${top}px`,
     left: `${left}px`,
-    minWidth: `${triggerRect.width}px` // Меню не будет уже, чем кнопка
+    minWidth: `${triggerRect.width}px`,
+    transformOrigin
   }
 }
 
-// Закрытие по клику вне
 const handleClickOutside = (e: MouseEvent) => {
   if (
     isOpen.value &&
@@ -63,15 +96,13 @@ const handleClickOutside = (e: MouseEvent) => {
   }
 }
 
-// Следим за состоянием: открыли — посчитали позицию и повесили слушатели
 watch(isOpen, async (val) => {
   if (val) {
-    await nextTick() // Ждем рендера меню в DOM
+    await nextTick()
     updatePosition()
-    // true в слушателе скролла нужен, чтобы ловить скролл ЛЮБОГО контейнера
     window.addEventListener('scroll', updatePosition, true)
     window.addEventListener('resize', updatePosition)
-    document.addEventListener('click', handleClickOutside)
+    setTimeout(() => document.addEventListener('click', handleClickOutside), 0)
   } else {
     window.removeEventListener('scroll', updatePosition, true)
     window.removeEventListener('resize', updatePosition)
@@ -83,9 +114,11 @@ onUnmounted(() => {
   window.removeEventListener('scroll', updatePosition, true)
   window.removeEventListener('resize', updatePosition)
   document.removeEventListener('click', handleClickOutside)
+  if (activeDropdownId.value === instanceId) {
+    activeDropdownId.value = null
+  }
 })
 
-// Прокидываем методы наружу, если родитель захочет дернуть их через ref
 defineExpose({ toggle, close, isOpen })
 </script>
 
@@ -117,7 +150,7 @@ defineExpose({ toggle, close, isOpen })
 
 .ui-dropdown-menu {
   position: fixed;
-  z-index: 99999; /* Поверх всего */
+  z-index: 99999;
   padding: 0.5rem;
   border-radius: 1rem;
   display: flex;
@@ -127,12 +160,12 @@ defineExpose({ toggle, close, isOpen })
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.1));
-  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.2);
+  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.4);
 }
 
 .dropdown-fade-enter-active,
 .dropdown-fade-leave-active {
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .dropdown-fade-enter-from,

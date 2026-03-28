@@ -40,7 +40,7 @@ async function download(code: string): Promise<void> {
 </script>
 
 <template>
-  <UiDropdown ref="dropdownRef" placement="bottom">
+  <UiDropdown ref="dropdownRef" placement="bottom-start">
     <template #trigger="{ isOpen }">
       <UiButton
         variant="primary"
