@@ -19,7 +19,7 @@
   "dependencies": {
     "@iconify-json/lucide": "^1.2.44",
     "@iconify-json/simple-icons": "^1.2.35",
-    "fs-extra": "^11.3.0",
+    "fs-extra": "^11.3.4",
     "nuxt": "^4.1.2",
     "nuxt-og-image": "^5.1.4"
   },
