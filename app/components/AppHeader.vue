@@ -9,8 +9,8 @@ const localizedPath = (path: string) => {
 
 const links = computed(() => [
   { key: 'home', icon: 'lucide:home', to: localizedPath('/') },
-  { key: 'projects', icon: 'lucide:folder', to: localizedPath('/projects') },
-  { key: 'about', icon: 'lucide:user', to: localizedPath('/about') },
+  { key: 'projects', icon: 'lucide:pen-tool', to: localizedPath('/projects') },
+  { key: 'about', icon: 'lucide:user', to: localizedPath('/about') }
 ])
 
 const isActive = (path: string) => {
