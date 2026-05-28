@@ -80,6 +80,7 @@ async function download(code: string): Promise<void> {
 
 .chevron {
   width: 1rem;
+  margin-left: 0.4rem;
   height: 1rem;
   transition: transform 0.3s ease;
   opacity: 0.6;

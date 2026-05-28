@@ -116,7 +116,6 @@ const linkProps = computed(() => {
   font-family: inherit;
   font-size: var(--btn-font);
   font-weight: 600;
-  line-height: 1;
   text-decoration: none;
   cursor: pointer;
   border: 1px solid transparent;
@@ -128,16 +127,31 @@ const linkProps = computed(() => {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Фикс для кастомных кнопок со space-between: заставляем всех прямых потомков выравниваться жестко по центру высоты */
+.ui-btn > * {
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+}
+
+/* Стили для текста: убираем line-height: 1, центрируем через флекс */
+.btn-text {
+  display: inline-flex;
+  align-items: center;
+  line-height: normal;
+}
+
 .size-sm  { --btn-height: 2.25rem; --btn-px: 1rem; --btn-font: 0.85rem; --btn-icon-size: 1rem; --btn-gap: 0.35rem; }
-.size-md  { }
+.size-md  { --btn-height: 2.75rem; }
 .size-lg  { --btn-height: 3.25rem; --btn-px: 2rem; --btn-font: 1.05rem; --btn-icon-size: 1.25rem; }
 .size-xl  { --btn-height: 4rem; --btn-px: 2.5rem; --btn-font: 1.25rem; --btn-icon-size: 1.5rem; --btn-gap: 0.75rem; }
 .size-xxl { --btn-height: 5.5rem; --btn-px: 4rem; --btn-font: 1.75rem; --btn-icon-size: 2rem; --btn-gap: 1rem; }
 
 .is-only-icon {
   padding: 0 !important;
-  width: var(--btn-height);
-  min-width: var(--btn-height);
+  width: var(--btn-height) !important;
+  min-width: var(--btn-height) !important;
+  height: var(--btn-height) !important;
   justify-content: center;
   gap: 0;
 }
@@ -147,7 +161,6 @@ const linkProps = computed(() => {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  line-height: 0;
 }
 
 .btn-icon {
