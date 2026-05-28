@@ -19,14 +19,6 @@ export default defineEventHandler((event: H3Event) => {
           period: 'Հոկտ 2024 — Ներկա',
           description: 'Full-stack ֆունկցիոնալությունների մշակում և պահպանում միկրոսերվիսների և ֆրոնթենդի վրա: Մի քանի արտադրանքներում օգտագործվող բիլինգային մոդուլի նախագծում, ներքին թիմերի համար ադմինիստրատիվ վահանակների ստեղծում և իրական ժամանակի արժույթի փոխանակման շարժիչի մշակում: CI/CD փողօղակների կառուցում և PostgreSQL/Redis-ի կատարողականի բարելավում:'
         },
-        uk: {
-          period: 'Жовт 2024 — Тепер. час',
-          description: 'Розробка та підтримка full-stack функціональності в мікросервісах і фронтенді. Спроектував білінговий модуль, що використовується в кількох продуктах, адміністративні дашборди для внутрішніх команд і рушій котирувань у реальному часі. Налаштував CI/CD пайплайни та покращив продуктивність PostgreSQL і Redis.'
-        },
-        fr: {
-          period: 'Oct 2024 — Présent',
-          description: "Développement et maintenance de fonctionnalités full-stack sur microservices et frontend. Conception d'un module de facturation utilisé dans plusieurs produits, de dashboards d'administration et d'un moteur de taux de change en temps réel. Mise en place de pipelines CI/CD et optimisation des performances PostgreSQL et Redis."
-        }
       }
     },
     {
@@ -46,14 +38,6 @@ export default defineEventHandler((event: H3Event) => {
           period: 'Հուն 2023 — Սեպտ 2024',
           description: 'Event-driven backend համակարգերի մշակում ֆինտեք հաճախորդների համար Kafka-ի և WebSockets-ի օգտագործմամբ: Stripe-ի և կրիպտո վճարային դարպասների ինտեգրում: ELK Stack-ի միջոցով կենտրոնացված լոգինգի և մոնիտորինգի կարգաբերում: Docker-ով կոնթեյներային տեղակայումների կառավարում:'
         },
-        uk: {
-          period: 'Січ 2023 — Вер 2024',
-          description: 'Розробка event-driven бекенд-систем для фінтех-клієнтів на базі Kafka та WebSockets. Інтеграція платіжних шлюзів Stripe і крипто. Налаштування централізованого логування та моніторингу через ELK Stack. Управління контейнерними деплоями на Docker.'
-        },
-        fr: {
-          period: 'Jan 2023 — Sep 2024',
-          description: "Développement de systèmes backend event-driven pour des clients fintech avec Kafka et WebSockets. Intégration de passerelles de paiement Stripe et crypto. Mise en place d'un logging et monitoring centralisés via ELK Stack. Gestion des déploiements conteneurisés avec Docker."
-        }
       }
     }
   ]

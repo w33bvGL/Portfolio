@@ -14,12 +14,6 @@ export default defineEventHandler((): TranslatedAchievements => {
       { year: '2024', description: '1st place among GitHub contributors in Armenia 🇦🇲' },
       { year: '2023', description: 'Launched Ota-ku — platform for watching anime in Russian' }
     ],
-    uk: [
-      { year: '2025', description: 'Створення сайту проекту HentaiVoice та запуск бета-тесту сайту' },
-      { year: '2025', description: 'Запуск Currzy — відкритої бібліотеки валют для отримання та конвертації актуальних курсів' },
-      { year: '2024', description: '1-е місце серед GitHub-контриб’юторів в Вірменії 🇦🇲' },
-      { year: '2023', description: 'Запуск проєкту Ota-ku — платформи для перегляду аніме російською мовою' }
-    ],
     hy: [
       { year: '2025', description: 'Ստեղծվեց HentaiVoice նախագծի կայքը և սկսվեց բետա թեստը' },
       { year: '2025', description: 'Բաց կոդով արժութային գրադարանի Currzy-ի գործարկում՝ ընթացիկ փոխարժեքների ստացման և փոխարկման համար' },

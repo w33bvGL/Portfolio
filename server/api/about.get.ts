@@ -53,22 +53,5 @@ export default defineEventHandler((): TranslatedAbout => {
           'I value honesty, transparency, and the absence of bureaucracy. I appreciate stability, clean code, and clear goals. I prefer direct communication, precise tasks, and results that I can be proud of.'
       }
     ],
-    uk: [
-      {
-        title: 'Що я роблю',
-        content:
-          'Розробляю сучасні веб-застосунки на Nuxt.js і Laravel — від архітектури до продакшену. Відповідаю за повний цикл: проєктування, backend, frontend, інтеграції, деплой і оптимізацію. Працюю системно, з акцентом на продуктивність і масштабованість.'
-      },
-      {
-        title: 'Мій досвід',
-        content:
-          'Працюю з мікросервісною архітектурою, Kafka, RabbitMQ, KeyDB, Redis і чергами. Реалізую інтеграції з REST і GraphQL API, а також зовнішніми системами. Використовую Laravel (9–12), Nuxt.js (2–4), Octane, Inertia та TypeScript. Частково знайомий із Zend та його екосистемою. Створюю UI-компоненти, бібліотеки та високонавантажені системи.'
-      },
-      {
-        title: 'Цінності',
-        content:
-          'Люблю чесність, прозорість і відсутність бюрократії. Ціную стабільність, охайний код і чіткі цілі. Віддаю перевагу прямому спілкуванню, ясним завданням і результату, за який не соромно.'
-      }
-    ]
   }
 })

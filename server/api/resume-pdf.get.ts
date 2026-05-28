@@ -6,7 +6,7 @@ import fs from 'fs-extra'
 export default eventHandler(async (event: H3Event) => {
   try {
     const query = getQuery(event)
-    const supportedLangs = ['en', 'fr', 'hy', 'ru', 'uk']
+    const supportedLangs = ['en', 'hy', 'ru']
     const lang = supportedLangs.includes(<string>query.lang) ? query.lang : 'en'
 
     const fileName = `resume-${lang}.pdf`
@@ -19,12 +19,12 @@ export default eventHandler(async (event: H3Event) => {
       const fileAge = (now - stats.mtimeMs) / 1000 / 60
 
       if (fileAge < 60) {
-        console.log(`🚀 Serving cached PDF for [${lang}]`)
+        console.log(`Serving cached PDF for [${lang}]`)
         return sendPDF(event, filePath)
       }
     }
 
-    console.log(`🛠 Cache miss or expired. Generating PDF for [${lang}]...`)
+    console.log(`Cache miss or expired. Generating PDF for [${lang}]...`)
     await fs.ensureDir(dirPath)
 
     const browser = await puppeteer.launch({
@@ -67,7 +67,7 @@ export default eventHandler(async (event: H3Event) => {
 
     return sendPDF(event, filePath)
   } catch (error) {
-    console.error('❌ PDF Error:', error)
+    console.error('PDF Error:', error)
     return sendError(event, createError({ statusCode: 500, message: 'Generation failed' }))
   }
 })
