@@ -11,37 +11,31 @@ const currentYear = new Date().getFullYear()
   <footer class="footer-wrapper">
     <UiCard class="footer-bar">
       <template #default>
-        <UiLayoutFlex
-          :gap="0.5"
-          align="center"
-          justify="between"
-          class="footer-content"
-        >
+        <div class="footer-content">
           <div class="credits">
             <span class="copyright-symbol">©</span>
             <span class="year">{{ currentYear }}</span>
             <span class="text mobile-hidden">{{ t('footer.copyright') }}</span>
           </div>
 
-          <UiLayoutFlex
-            v-if="links.length"
-            :gap="0.3"
-            align="center"
-            class="mobile-hidden"
-          >
-            <UiButton
-              v-for="(link, idx) in links"
-              :key="idx"
-              :href="link.to"
-              target="_blank"
-              variant="ghost"
-              :icon="link.icon.replace('i-simple-icons-', 'simple-icons:')"
-              :aria-label="link['aria-label']"
-            />
-          </UiLayoutFlex>
+           <UiLayoutFlex align="center">
+             <div
+               v-if="links.length"
+               class="socials-box mobile-hidden"
+             >
+               <UiButton
+                 v-for="(link, idx) in links"
+                 :key="idx"
+                 :href="link.to"
+                 variant="ghost"
+                 :icon="link.icon.replace('i-simple-icons-', 'simple-icons:')"
+                 :aria-label="link['aria-label']"
+               />
+             </div>
 
-          <UiLanguageSwitcher />
-        </UiLayoutFlex>
+             <UiLanguageSwitcher />
+           </UiLayoutFlex>
+        </div>
       </template>
     </UiCard>
   </footer>
@@ -71,8 +65,18 @@ const currentYear = new Date().getFullYear()
   -webkit-backdrop-filter: blur(40px) !important;
 }
 
+.footer-bar :deep(> *) {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .footer-content {
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .credits {
@@ -83,6 +87,12 @@ const currentYear = new Date().getFullYear()
   font-size: 0.85rem;
   white-space: nowrap;
   font-weight: 500;
+}
+
+.socials-box {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 
 @media (max-width: 640px) {
