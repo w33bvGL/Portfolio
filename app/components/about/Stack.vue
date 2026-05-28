@@ -2,7 +2,6 @@
 const { vIntersection } = useScrollObserver()
 const { data: techs } = await useAsyncData('technologies', () => $fetch('/api/technologies'))
 
-// Группируем так, чтобы backend и frontend были в фокусе
 const groups = computed(() => [
   { key: 'frontend', title: 'Frontend', items: techs.value?.frontend, icon: 'lucide:layout' },
   { key: 'backend', title: 'Backend', items: techs.value?.backend, icon: 'lucide:database' },
@@ -84,7 +83,6 @@ const groups = computed(() => [
   gap: 3.5rem;
 }
 
-/* Группа (Frontend/Backend/etc) */
 .stack-group {
   display: grid;
   grid-template-columns: 200px 1fr;
@@ -127,7 +125,6 @@ const groups = computed(() => [
   letter-spacing: -0.02em;
 }
 
-/* Облако технологий */
 .tech-cloud {
   display: flex;
   flex-wrap: wrap;
@@ -146,7 +143,6 @@ const groups = computed(() => [
   transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   overflow: hidden;
   cursor: default;
-  /* Анимация проявления при скролле */
   opacity: 0;
   transform: scale(0.9);
   animation: pill-in 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
@@ -197,7 +193,6 @@ const groups = computed(() => [
 
 .tech-pill:hover .p-glow { opacity: 0.1; }
 
-/* Футер с подписью */
 .stack-footer {
   justify-content: center;
   padding: 2rem !important;
@@ -208,7 +203,7 @@ const groups = computed(() => [
 .signature-wrapper {
   opacity: 0.4;
   transition: opacity 0.5s ease, transform 0.5s ease;
-  filter: brightness(0) invert(1); /* Для темной темы */
+  filter: brightness(0) invert(1);
 }
 
 .main-stack-card:hover .signature-wrapper {

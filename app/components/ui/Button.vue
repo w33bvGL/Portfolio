@@ -129,7 +129,7 @@ const linkProps = computed(() => {
 }
 
 .size-sm  { --btn-height: 2.25rem; --btn-px: 1rem; --btn-font: 0.85rem; --btn-icon-size: 1rem; --btn-gap: 0.35rem; }
-.size-md  { /* Default */ }
+.size-md  { }
 .size-lg  { --btn-height: 3.25rem; --btn-px: 2rem; --btn-font: 1.05rem; --btn-icon-size: 1.25rem; }
 .size-xl  { --btn-height: 4rem; --btn-px: 2.5rem; --btn-font: 1.25rem; --btn-icon-size: 1.5rem; --btn-gap: 0.75rem; }
 .size-xxl { --btn-height: 5.5rem; --btn-px: 4rem; --btn-font: 1.75rem; --btn-icon-size: 2rem; --btn-gap: 1rem; }

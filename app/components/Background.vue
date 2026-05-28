@@ -2,16 +2,13 @@
 const route = useRoute()
 const target = ref(null)
 
-// VueUse — слежка за мышью
 const { elementX, elementY } = useMouseInElement(target)
 
-// Жесткие дефолты для SSR, чтобы сервер и клиент совпали в первый миг
 const blobA = ref({ x: 5, y: 5 })
 const blobB = ref({ x: 75, y: 65 })
 const isMounted = ref(false)
 
 const randomizeBlobs = () => {
-  // На сервере Math.random() не вызовется, так как функция сработает только в watch на клиенте
   blobA.value = {
     x: Math.floor(Math.random() * 40) - 10,
     y: Math.floor(Math.random() * 40) - 10
@@ -22,13 +19,11 @@ const randomizeBlobs = () => {
   }
 }
 
-// Рандомим только на клиенте
 onMounted(() => {
   isMounted.value = true
   randomizeBlobs()
 })
 
-// Следим за роутом, но пропускаем первый запуск на сервере
 watch(() => route.path, () => {
   if (process.client) {
     randomizeBlobs()
@@ -36,8 +31,6 @@ watch(() => route.path, () => {
 })
 
 const dynamicStyle = computed(() => {
-  // Если мы еще не на клиенте, отдаем пустые значения или дефолты
-  // Это предотвращает Hydration Mismatch
   return {
     '--mx': isMounted.value ? `${elementX.value}px` : '50%',
     '--my': isMounted.value ? `${elementY.value}px` : '50%',
@@ -70,7 +63,6 @@ const dynamicStyle = computed(() => {
   z-index: 0;
   pointer-events: none;
   background-color: var(--bg-body);
-  /* Дефолты для SSR */
   --mx: 50%;
   --my: 50%;
 }

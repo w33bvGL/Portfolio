@@ -72,7 +72,6 @@ const updatePosition = () => {
     left = triggerRect.left
     transformOrigin = transformOrigin.replace('center', 'left')
   } else {
-    // По центру
     left = triggerRect.left + (triggerRect.width / 2) - (menuRect.width / 2)
   }
 

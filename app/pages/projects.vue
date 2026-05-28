@@ -4,7 +4,6 @@ import type { TranslatedProjects, Project } from '~/types/project'
 const { t, locale } = useI18n()
 const { vIntersection } = useScrollObserver()
 
-// --- Data Fetching ---
 const { data: projectsByLang } = await useAsyncData<TranslatedProjects>('projects', () =>
   $fetch('/api/projects')
 )
@@ -15,7 +14,6 @@ const projects = computed<Project[]>(() => {
   return projectsByLang.value[currentKey] ?? []
 })
 
-// --- SEO ---
 const title = t('projects.title')
 const description = t('projects.description')
 useSeoMeta({
