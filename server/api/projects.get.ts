@@ -3,7 +3,7 @@ export default defineEventHandler(() => {
     en: [
       { name: 'Cyberhack Pro', image: '/projects/cyberhack-pro.png', description: 'A professional platform offering a wide range of game enhancement utilities. Reliable, secure architecture designed for gamers.', url: 'https://cyberhack.pro' },
       { name: 'Omex Proxy', image: '/projects/omex-proxy.png', description: 'Enterprise-grade proxy management ecosystem. Features automated activation and Telegram bot integration.', url: 'https://cyberhack.pro' },
-      { name: 'HentaiVoice', image: '/projects/hentai-voice.png', description: 'Hentai streaming service with a custom-built native MSE player. Supports HLS/M3U8, multi-track audio/video, and chunked subtitles without external libraries.', url: 'https://hentaivoice.top', isAdult: true },
+      { name: 'HentaiVoice', image: '/projects/hentai-voice.png', description: 'Hentai streaming service with a custom-built native MSE player. Supports HLS/M3U8, multi-track audio/video, and chunked subtitles without external libraries.', url: 'https://hentaivoice.com', isAdult: true },
       { name: 'W33bvgl Portfolio', image: '/projects/portfolio.png', description: 'Personal portfolio showcasing full-stack engineering skills. Built with Nuxt 3, featuring modular architecture.', url: 'https://vahe.anidzen.com' },
       { name: 'Mari Karkas', image: '/projects/mari-karkas.png', description: 'Turnkey construction service platform. Lead generation optimized UX with integrated calculation logic for frame houses.', url: 'https://quiz.mari-karkas.ru' },
       { name: 'Ota-ku legacy', image: '/projects/ota-ku.png', description: 'Anime streaming portal with a massive localized library. Custom video player implementation and optimized CDN.' },
@@ -15,7 +15,7 @@ export default defineEventHandler(() => {
     hy: [
       { name: 'Cyberhack Pro', image: '/projects/cyberhack-pro.png', description: 'Խաղային գործիքների պրոֆեսիոնալ հարթակ: Հուսալի և անվտանգ ճարտարապետություն՝ նախատեսված գեյմերների համար:', url: 'https://cyberhack.pro' },
       { name: 'Omex Proxy', image: '/projects/omex-proxy.png', description: 'Պրոքսի սերվերների կառավարման էկոհամակարգ՝ ավտոմատացված ակտիվացմամբ և Telegram բոտի ինտեգրմամբ:', url: 'https://cyberhack.pro' },
-      { name: 'HentaiVoice', image: '/projects/hentai-voice.png', description: 'Hentai սթրիմինգային ծառայություն սեփական MSE փլեյերով: HLS/M3U8 աջակցություն և սուբտիտրերի չանկային բեռնում առանց գրադարանների:', url: 'https://hentaivoice.top', isAdult: true },
+      { name: 'HentaiVoice', image: '/projects/hentai-voice.png', description: 'Hentai սթրիմինգային ծառայություն սեփական MSE փլեյերով: HLS/M3U8 աջակցություն և սուբտիտրերի չանկային բեռնում առանց գրադարանների:', url: 'https://hentaivoice.com', isAdult: true },
       { name: 'W33bvgl Portfolio', image: '/projects/portfolio.png', description: 'Անհատական պորտֆոլիո, որը ներկայացնում է full-stack ինժեներական հմտությունները Nuxt 3-ով:', url: 'https://vahe.anidzen.com' },
       { name: 'Mari Karkas', image: '/projects/mari-karkas.png', description: 'Կառուցապատման հարթակ: Օպտիմալացված UX՝ տների հաշվարկման ներդրված տրամաբանությամբ:', url: 'https://quiz.mari-karkas.ru' },
       { name: 'Ota-ku legacy', image: '/projects/ota-ku.png', description: 'Անիմե սթրիմինգային պորտալ մեծ գրադարանով և օպտիմալացված CDN-ով:' },
@@ -27,7 +27,7 @@ export default defineEventHandler(() => {
     ru: [
       { name: 'Cyberhack Pro', image: '/projects/cyberhack-pro.png', description: 'Профессиональная платформа игровых утилит. Надежная и безопасная архитектура для геймеров.', url: 'https://cyberhack.pro' },
       { name: 'Omex Proxy', image: '/projects/omex-proxy.png', description: 'Экосистема управления прокси-серверами с автоматизированной активацией и Telegram-ботом.', url: 'https://cyberhack.pro' },
-      { name: 'HentaiVoice', image: '/projects/hentai-voice.png', description: 'Hentai-стриминг с нативным MSE-плеером собственной разработки. Поддержка HLS/M3U8 и чанковая загрузка субтитров без сторонних библиотек.', url: 'https://hentaivoice.top', isAdult: true },
+      { name: 'HentaiVoice', image: '/projects/hentai-voice.png', description: 'Hentai-стриминг с нативным MSE-плеером собственной разработки. Поддержка HLS/M3U8 и чанковая загрузка субтитров без сторонних библиотек.', url: 'https://hentaivoice.com', isAdult: true },
       { name: 'W33bvgl Portfolio', image: '/projects/portfolio.png', description: 'Личное портфолио, демонстрирующее навыки full-stack разработки на стеке Nuxt 3.', url: 'https://vahe.anidzen.com' },
       { name: 'Mari Karkas', image: '/projects/mari-karkas.png', description: 'Платформа строительства каркасных домов под ключ. Оптимизированный UX с логикой расчета конструкций.', url: 'https://quiz.mari-karkas.ru' },
       { name: 'Ota-ku legacy', image: '/projects/ota-ku.png', description: 'Портал аниме-стриминга с огромной библиотекой и оптимизированной сетью доставки контента.' },
