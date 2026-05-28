@@ -37,12 +37,8 @@ const img = useImage()
           v-if="project.isAdult"
           class="adult-badge-overlay"
         >
-          <UiButton variant="ghost">
-            <Icon
-              name="lucide:eye-off"
-              class="w-5 h-5"
-            />
-            <span>Sensitive Content</span>
+          <UiButton variant="ghost" icon="lucide:eye-off">
+            Sensitive Content
           </UiButton>
         </div>
 
