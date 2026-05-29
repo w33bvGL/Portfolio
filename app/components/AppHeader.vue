@@ -26,7 +26,7 @@ const isActive = (path: string) => {
       class="nav-bar"
     >
       <template #default>
-        <UiLayoutFlex :gap="0.5" align="center" >
+        <UiLayoutFlex :gap="0.5" align="center">
           <NuxtLink
             v-for="link in links"
             :key="link.key"
@@ -47,11 +47,6 @@ const isActive = (path: string) => {
 
               <span class="nav-text">{{ t(`routes.${link.key}`) }}</span>
             </div>
-
-            <div
-              class="active-dot"
-              :class="{ 'dot-visible': isActive(link.to) }"
-            />
           </NuxtLink>
 
           <div class="divider" />
@@ -145,32 +140,12 @@ const isActive = (path: string) => {
   background-color: rgba(125, 125, 125, 0.08);
   border-radius: 9999px;
   z-index: 1;
-
   animation: scale-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes scale-in {
   from { opacity: 0; transform: scale(0.9); }
   to { opacity: 1; transform: scale(1); }
-}
-
-.active-dot {
-  position: absolute;
-  bottom: -4px;
-  left: 50%;
-  transform: translateX(-50%) scale(0);
-  width: 4px;
-  height: 4px;
-  background-color: var(--text-main);
-  border-radius: 50%;
-  box-shadow: 0 0 8px currentColor;
-  opacity: 0;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.dot-visible {
-  transform: translateX(-50%) scale(1);
-  opacity: 1;
 }
 
 .divider {
