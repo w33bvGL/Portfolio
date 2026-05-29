@@ -18,23 +18,23 @@ const currentYear = new Date().getFullYear()
             <span class="text mobile-hidden">{{ t('footer.copyright') }}</span>
           </div>
 
-           <UiLayoutFlex align="center">
-             <div
-               v-if="links.length"
-               class="socials-box mobile-hidden"
-             >
-               <UiButton
-                 v-for="(link, idx) in links"
-                 :key="idx"
-                 :href="link.to"
-                 variant="ghost"
-                 :icon="link.icon.replace('i-simple-icons-', 'simple-icons:')"
-                 :aria-label="link['aria-label']"
-               />
-             </div>
+          <UiLayoutFlex align="center">
+            <div
+              v-if="links.length"
+              class="socials-box mobile-hidden"
+            >
+              <UiButton
+                v-for="(link, idx) in links"
+                :key="idx"
+                :href="link.to"
+                variant="ghost"
+                :icon="link.icon.replace('i-simple-icons-', 'simple-icons:')"
+                :aria-label="link['aria-label']"
+              />
+            </div>
 
-             <UiLanguageSwitcher />
-           </UiLayoutFlex>
+            <UiLanguageSwitcher />
+          </UiLayoutFlex>
         </div>
       </template>
     </UiCard>

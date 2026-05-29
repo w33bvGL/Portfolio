@@ -7,6 +7,6 @@ export default defineI18nConfig(() => ({
   messages: {
     en,
     hy,
-    ru,
+    ru
   }
 }))

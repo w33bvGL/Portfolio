@@ -6,7 +6,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   as: 'div',
-  variant: 'glass',
+  variant: 'glass'
 })
 </script>
 
@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<Props>(), {
     :is="as"
     class="ui-card"
     :class="[
-      `variant-${variant}`,
+      `variant-${variant}`
     ]"
   >
     <div

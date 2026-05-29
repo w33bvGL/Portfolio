@@ -23,16 +23,25 @@ withDefaults(defineProps<Props>(), {
     ]"
   >
     <div class="s-hdr-row">
-      <component :is="as" class="s-hdr-title">
+      <component
+        :is="as"
+        class="s-hdr-title"
+      >
         {{ title }}
       </component>
 
-      <div v-if="$slots.badge" class="s-hdr-badge">
+      <div
+        v-if="$slots.badge"
+        class="s-hdr-badge"
+      >
         <slot name="badge" />
       </div>
     </div>
 
-    <p v-if="description" class="s-hdr-desc">
+    <p
+      v-if="description"
+      class="s-hdr-desc"
+    >
       {{ description }}
     </p>
   </div>

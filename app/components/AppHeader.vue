@@ -26,7 +26,10 @@ const isActive = (path: string) => {
       class="nav-bar"
     >
       <template #default>
-        <UiLayoutFlex :gap="0.5" align="center">
+        <UiLayoutFlex
+          :gap="0.5"
+          align="center"
+        >
           <NuxtLink
             v-for="link in links"
             :key="link.key"

@@ -48,7 +48,9 @@ const delayClass = (idx: number) => `scroll-delay-${Math.min(idx + 1, 5)}`
           <UiCard class="exp-card">
             <UiCardHeader class="exp-header">
               <span class="mobile-period">{{ exp.period || exp.year }}</span>
-              <UiCardTitle as="h3">{{ exp.title }}</UiCardTitle>
+              <UiCardTitle as="h3">
+                {{ exp.title }}
+              </UiCardTitle>
               <div class="company-info">
                 <span class="company-name">{{ exp.company }}</span>
               </div>

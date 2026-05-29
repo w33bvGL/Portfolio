@@ -24,8 +24,13 @@ const groups = computed(() => [
         class="stack-box scroll-animate-reveal"
       >
         <div class="stack-box-header">
-          <Icon :name="group.icon" class="stack-box-icon" />
-          <h3 class="stack-box-title">{{ group.title }}</h3>
+          <Icon
+            :name="group.icon"
+            class="stack-box-icon"
+          />
+          <h3 class="stack-box-title">
+            {{ group.title }}
+          </h3>
         </div>
 
         <div class="stack-items">
@@ -35,7 +40,12 @@ const groups = computed(() => [
             class="tech-card"
           >
             <div class="tech-icon-wrapper">
-              <img :src="tech.icon" :alt="tech.name" class="tech-icon" loading="lazy">
+              <img
+                :src="tech.icon"
+                :alt="tech.name"
+                class="tech-icon"
+                loading="lazy"
+              >
             </div>
             <span class="tech-name">{{ tech.name }}</span>
           </div>

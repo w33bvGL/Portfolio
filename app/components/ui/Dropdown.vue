@@ -3,7 +3,6 @@ const activeDropdownId = ref<symbol | null>(null)
 </script>
 
 <script setup lang="ts">
-
 const props = withDefaults(defineProps<{
   placement?: 'top' | 'bottom' | 'top-end' | 'bottom-end' | 'top-start' | 'bottom-start'
   offset?: number
@@ -85,11 +84,11 @@ const updatePosition = () => {
 
 const handleClickOutside = (e: MouseEvent) => {
   if (
-    isOpen.value &&
-    triggerRef.value &&
-    menuRef.value &&
-    !triggerRef.value.contains(e.target as Node) &&
-    !menuRef.value.contains(e.target as Node)
+    isOpen.value
+    && triggerRef.value
+    && menuRef.value
+    && !triggerRef.value.contains(e.target as Node)
+    && !menuRef.value.contains(e.target as Node)
   ) {
     close()
   }
@@ -122,8 +121,15 @@ defineExpose({ toggle, close, isOpen })
 </script>
 
 <template>
-  <div ref="triggerRef" class="ui-dropdown-trigger" @click.stop="toggle">
-    <slot name="trigger" :is-open="isOpen" />
+  <div
+    ref="triggerRef"
+    class="ui-dropdown-trigger"
+    @click.stop="toggle"
+  >
+    <slot
+      name="trigger"
+      :is-open="isOpen"
+    />
   </div>
 
   <Teleport to="body">

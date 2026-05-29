@@ -14,7 +14,10 @@ defineProps<{
     class="p-card"
     :class="{ 'is-adult': project.isAdult }"
   >
-    <UiCard class="p-inner" variant="glass">
+    <UiCard
+      class="p-inner"
+      variant="glass"
+    >
       <div class="p-img-box">
         <div class="p-overlay" />
 
@@ -29,13 +32,23 @@ defineProps<{
           loading="lazy"
         />
 
-        <div v-if="project.isAdult" class="p-adult-mask">
-          <UiButton variant="ghost" icon="lucide:eye-off" size="sm">
-            {{ $t('projects.sensitive_content')}}
+        <div
+          v-if="project.isAdult"
+          class="p-adult-mask"
+        >
+          <UiButton
+            variant="ghost"
+            icon="lucide:eye-off"
+            size="sm"
+          >
+            {{ $t('projects.sensitive_content') }}
           </UiButton>
         </div>
 
-        <div v-if="project.url" class="p-icon">
+        <div
+          v-if="project.url"
+          class="p-icon"
+        >
           <UiButton
             icon="lucide:arrow-up-right"
             variant="ghost"
@@ -48,11 +61,21 @@ defineProps<{
       <UiCardHeader>
         <div class="p-row">
           <UiCardTitle class="p-title">{{ project.name }}</UiCardTitle>
-          <span v-if="project.isAdult" class="p-badge">18+</span>
+          <span
+            v-if="project.isAdult"
+            class="p-badge"
+          >18+</span>
         </div>
 
-        <div v-if="project.tags?.length" class="p-tags">
-          <span v-for="tag in project.tags.slice(0, 3)" :key="tag" class="p-tag">
+        <div
+          v-if="project.tags?.length"
+          class="p-tags"
+        >
+          <span
+            v-for="tag in project.tags.slice(0, 3)"
+            :key="tag"
+            class="p-tag"
+          >
             {{ tag }}
           </span>
         </div>

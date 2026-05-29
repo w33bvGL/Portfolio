@@ -15,7 +15,10 @@ const { t } = useI18n()
         class="scroll-animate-fade"
       />
 
-      <div v-if="footer?.links" class="a-intro-socials scroll-animate-fade stagger-delay-2">
+      <div
+        v-if="footer?.links"
+        class="a-intro-socials scroll-animate-fade stagger-delay-2"
+      >
         <UiButton
           v-for="(link, index) of footer.links"
           :key="index"

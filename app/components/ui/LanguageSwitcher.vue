@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+
 const { locale, locales, setLocale } = useI18n()
 
 const dropdownRef = ref<any>(null)
@@ -20,14 +21,20 @@ const switchLocale = (code: string) => {
 </script>
 
 <template>
-  <UiDropdown ref="dropdownRef" placement="top-end">
+  <UiDropdown
+    ref="dropdownRef"
+    placement="top-end"
+  >
     <template #trigger="{ isOpen }">
       <button
         class="lang-btn"
         :class="{ 'is-active': isOpen }"
         aria-label="Change language"
       >
-        <Icon name="lucide:globe" class="globe-icon" />
+        <Icon
+          name="lucide:globe"
+          class="globe-icon"
+        />
         <span class="current-lang">{{ currentLocaleLabel }}</span>
         <Icon
           name="lucide:chevron-up"

@@ -43,7 +43,10 @@ async function download(code: string): Promise<void> {
 </script>
 
 <template>
-  <UiDropdown ref="dropdownRef" placement="bottom-start">
+  <UiDropdown
+    ref="dropdownRef"
+    placement="bottom-start"
+  >
     <template #trigger="{ isOpen }">
       <UiButton
         variant="primary"
@@ -69,7 +72,10 @@ async function download(code: string): Promise<void> {
       >
         <span class="lang-code">{{ l.code.toUpperCase() }}</span>
         <span class="lang-label">{{ l.name }}</span>
-        <Icon name="lucide:download" class="dl-icon" />
+        <Icon
+          name="lucide:download"
+          class="dl-icon"
+        />
       </button>
     </template>
   </UiDropdown>

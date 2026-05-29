@@ -25,7 +25,7 @@ onMounted(() => {
 })
 
 watch(() => route.path, () => {
-  if (process.client) {
+  if (import.meta.client) {
     randomizeBlobs()
   }
 })
@@ -49,8 +49,14 @@ const dynamicStyle = computed(() => {
     :style="dynamicStyle"
   >
     <div class="layout-fx">
-      <div class="blob b-1" :class="{ 'is-visible': isMounted }" />
-      <div class="blob b-2" :class="{ 'is-visible': isMounted }" />
+      <div
+        class="blob b-1"
+        :class="{ 'is-visible': isMounted }"
+      />
+      <div
+        class="blob b-2"
+        :class="{ 'is-visible': isMounted }"
+      />
       <div class="grid-overlay" />
     </div>
   </div>

@@ -14,7 +14,7 @@ export function useScrollReveal(options: ScrollRevealOptions = {}) {
     selector = '.scroll-animate-reveal, .scroll-animate-fade',
     rootMargin = '0px 0px -60px 0px',
     threshold = 0.1,
-    repeat = false,
+    repeat = false
   } = options
 
   const init = () => {

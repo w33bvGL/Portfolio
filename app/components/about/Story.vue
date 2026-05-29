@@ -3,7 +3,7 @@ import type { About } from '~/types/about'
 
 const { locale } = useI18n()
 
-const { data: about } = await useAsyncData<About[]>('about', () => $fetch('/api/about',{ query: { lang: locale.value } }))
+const { data: about } = await useAsyncData<About[]>('about', () => $fetch('/api/about', { query: { lang: locale.value } }))
 </script>
 
 <template>
@@ -23,8 +23,12 @@ const { data: about } = await useAsyncData<About[]>('about', () => $fetch('/api/
           class="story-block scroll-animate-reveal"
           :class="`stagger-delay-${Math.min(idx + 1, 5)}`"
         >
-          <h3 class="story-block-title">{{ item.title }}</h3>
-          <p class="story-block-text">{{ item.content }}</p>
+          <h3 class="story-block-title">
+            {{ item.title }}
+          </h3>
+          <p class="story-block-text">
+            {{ item.content }}
+          </p>
         </article>
       </div>
     </div>

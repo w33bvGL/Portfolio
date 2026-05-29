@@ -24,7 +24,7 @@ const errorMessage = computed(() => {
 })
 
 useHead({
-  title: errorTitle,
+  title: errorTitle
 })
 </script>
 
@@ -32,9 +32,15 @@ useHead({
   <div class="error-view">
     <Background />
 
-    <UiCard class="error-card" variant="glass">
+    <UiCard
+      class="error-card"
+      variant="glass"
+    >
       <UiCardContent>
-        <UiLayoutFlex col justify="center">
+        <UiLayoutFlex
+          col
+          justify="center"
+        >
           <span class="code animate-slide-up stagger-delay-1">
             {{ error.statusCode }}
           </span>

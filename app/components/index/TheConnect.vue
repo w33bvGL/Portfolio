@@ -5,7 +5,10 @@
   <UiLayoutContainer class="cta-section">
     <UiCard class="scroll-animate-reveal">
       <UiCardHeader>
-        <UiLayoutFlex col align="center">
+        <UiLayoutFlex
+          col
+          align="center"
+        >
           <UiCardTitle>
             {{ $t('index.the_connect.title') }}
           </UiCardTitle>

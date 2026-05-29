@@ -4,7 +4,7 @@ import type { Education } from '~/types/education'
 const { t, locale } = useI18n()
 
 const { data: educations } = await useAsyncData<Education[]>('education', () =>
-  $fetch('/api/education',{ query: { lang: locale.value } })
+  $fetch('/api/education', { query: { lang: locale.value } })
 )
 
 const delayClass = (idx: number) => `scroll-delay-${Math.min(idx + 1, 5)}`
@@ -28,18 +28,30 @@ const delayClass = (idx: number) => `scroll-delay-${Math.min(idx + 1, 5)}`
         :class="delayClass(index)"
       >
         <UiCardHeader class="edu-header">
-          <UiLayoutFlex justify="between" full align="center">
+          <UiLayoutFlex
+            justify="between"
+            full
+            align="center"
+          >
             <div class="card-icon">
-              <Icon name="lucide:graduation-cap" class="icon" />
+              <Icon
+                name="lucide:graduation-cap"
+                class="icon"
+              />
             </div>
-            <div v-if="item.url" class="hover-arrow">
+            <div
+              v-if="item.url"
+              class="hover-arrow"
+            >
               <Icon name="lucide:arrow-up-right" />
             </div>
           </UiLayoutFlex>
         </UiCardHeader>
 
         <UiCardContent>
-          <UiCardTitle as="h5">{{ item.title }}</UiCardTitle>
+          <UiCardTitle as="h5">
+            {{ item.title }}
+          </UiCardTitle>
           <UiCardDescription>{{ item.description }}</UiCardDescription>
         </UiCardContent>
       </UiCard>

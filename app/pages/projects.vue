@@ -7,7 +7,6 @@ const { data: projects } = await useAsyncData<Project[]>('projects', () =>
   $fetch('/api/projects', { query: { lang: locale.value } })
 )
 
-
 const title = t('projects.title')
 const description = t('projects.description')
 
@@ -33,7 +32,10 @@ useScrollReveal({ selector: '.scroll-animate-reveal, .scroll-animate-fade' })
       class="scroll-animate-fade"
     />
 
-    <UiLayoutGrid :cols-md="2" class="projects-grid">
+    <UiLayoutGrid
+      :cols-md="2"
+      class="projects-grid"
+    >
       <ProjectsCard
         v-for="project in projects"
         :key="project.name"
