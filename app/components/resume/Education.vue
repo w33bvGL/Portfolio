@@ -3,14 +3,9 @@ import type { Education, TranslatedEducation } from '~/types/education'
 
 const { t, locale } = useI18n()
 
-const { data: educationByLang } = await useAsyncData<TranslatedEducation>('education', () =>
-  $fetch('/api/education')
+const { data: educations } = await useAsyncData<TranslatedEducation>('education', () =>
+  $fetch('/api/education', { query: { lang: locale.value } })
 )
-
-const educations = computed(() => {
-  const data = educationByLang.value
-  return data?.[locale.value as keyof typeof data] || []
-})
 </script>
 
 <template>

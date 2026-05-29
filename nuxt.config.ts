@@ -28,6 +28,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     appEnv: process.env.APP_ENV || 'development',
+    appBaseUrl: process.env.APP_BASE_URL || 'http://localhost:3000',
     public: {
       appEnv: process.env.APP_ENV || 'development'
     }
@@ -37,9 +38,7 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      routes: [
-        '/'
-      ],
+      routes: ['/'],
       crawlLinks: true
     }
   },
@@ -53,33 +52,43 @@ export default defineNuxtConfig({
       const distDir = resolve('.output/public')
       const port = 3001
       const langCodes = locales.map(l => l.code)
+
       const server = spawn('npx', ['serve', distDir, '-l', String(port)], {
         stdio: 'ignore',
         shell: true
       })
 
-      const waitForServer = () => new Promise<void>((resolve, reject) => {
+      const waitForServer = () => new Promise<void>((res, rej) => {
         let attempts = 0
         const interval = setInterval(() => {
-          http.get(`http://localhost:${port}`, (res) => {
-            if (res.statusCode === 200) {
+          http.get(`http://localhost:${port}`, (response) => {
+            if (response.statusCode && response.statusCode < 500) {
               clearInterval(interval)
-              resolve()
+              res()
             }
           }).on('error', () => {})
 
-          if (++attempts > 20) {
+          if (++attempts > 30) {
             clearInterval(interval)
-            reject(new Error('Server timeout'))
+            rej(new Error('Server did not start in time'))
           }
         }, 500)
       })
 
       try {
         await waitForServer()
-        console.log('🚀 PDF Server ready. Launching Browser...')
+        console.log('PDF Server ready. Launching Browser...')
 
-        const browser = await puppeteer.launch({ args: ['--no-sandbox'] })
+        const browser = await puppeteer.launch({
+          args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--no-zygote',
+            '--disable-gpu'
+          ]
+        })
+
         const page = await browser.newPage()
 
         for (const lang of langCodes) {
@@ -89,13 +98,13 @@ export default defineNuxtConfig({
 
           await fs.ensureDir(outputDir)
 
-          await page.goto(url, { waitUntil: 'networkidle0' })
+          await page.goto(url, { waitUntil: 'networkidle0', timeout: 30000 })
 
           await page.pdf({
             path: outputPath,
             format: 'A4',
             printBackground: true,
-            margin: { top: 0, bottom: 0, left: 0, right: 0 }
+            margin: { top: '0mm', bottom: '0mm', left: '0mm', right: '0mm' }
           })
 
           console.log(`Generated: /resume/${lang}.pdf`)

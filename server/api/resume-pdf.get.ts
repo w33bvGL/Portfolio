@@ -9,7 +9,7 @@ export default eventHandler(async (event: H3Event) => {
     const supportedLangs = ['en', 'hy', 'ru']
     const lang = supportedLangs.includes(<string>query.lang) ? query.lang : 'en'
 
-    const fileName = `resume-${lang}.pdf`
+    const fileName = `${lang}.pdf`
     const dirPath = path.resolve(process.cwd(), 'public/resume')
     const filePath = path.resolve(dirPath, fileName)
 
@@ -52,7 +52,10 @@ export default eventHandler(async (event: H3Event) => {
       }
     })
 
-    const url = `http://localhost:3000/${lang}/resume`
+    // Use the runtime config host or fall back to localhost:3000
+    const runtimeConfig = useRuntimeConfig()
+    const baseUrl = runtimeConfig.appBaseUrl || 'http://localhost:3000'
+    const url = `${baseUrl}/${lang}/resume`
 
     await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 })
 

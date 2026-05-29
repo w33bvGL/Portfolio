@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { t, locales } = useI18n()
+const runtimeConfig = useRuntimeConfig()
 
 const isDownloading = ref(false)
 const dropdownRef = ref<any>(null)
@@ -10,12 +11,15 @@ async function download(code: string): Promise<void> {
   dropdownRef.value?.close()
   isDownloading.value = true
 
-  const url = `/resume/${code}.pdf`
+  const isDev = runtimeConfig.public.appEnv === 'development'
+  // In dev: hit the Nitro API route that runs Puppeteer on-demand
+  // In SSG/prod: fetch the pre-generated static file
+  const url = isDev ? `/api/resume-pdf?lang=${code}` : `/resume/${code}.pdf`
   const fileName = `Vahe_Sargsyan_Resume_${code.toUpperCase()}.pdf`
 
   try {
     const response = await fetch(url)
-    if (!response.ok) throw new Error('File not found')
+    if (!response.ok) throw new Error(`Failed to fetch PDF: ${response.status}`)
 
     const blob = await response.blob()
     const blobUrl = window.URL.createObjectURL(blob)
