@@ -7,7 +7,7 @@ export default defineAppConfig({
     email: 'w33bv.gl@gmail.com',
     location: 'Yerevan, Armenia',
     telegram: '@w33bvGL',
-    available: false,
+    available: true,
     birthday: '2005-03-30',
     experienceStartDate: '2023-01-01'
   },
