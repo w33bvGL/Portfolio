@@ -41,12 +41,13 @@ const blobStyle = computed(() => ({
       </div>
 
       <div class="content animate-slide-up stagger-delay-2">
-        <h1 class="hero-title">
-          {{ t('cta.title') }}
-        </h1>
-        <p class="hero-desc">
-          {{ t('cta.description') }}
-        </p>
+        <UiSectionHeader
+          as="h1"
+          variant="hero"
+          align="center"
+          :title="t('cta.title')"
+          :description="t('cta.description')"
+        />
       </div>
 
       <div class="actions-wrapper animate-slide-up stagger-delay-3">

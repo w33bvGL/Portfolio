@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { t } = useI18n()
 const title = t('about.title')
-const description = t('about.intro')
+const description = t('about.description')
 
 useSeoMeta({
   title, description,
@@ -11,7 +11,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <UiLayoutContainer class="about-page">
+  <UiLayoutContainer class="page">
     <AboutIntro />
     <AboutStack />
     <AboutStory />
@@ -19,7 +19,7 @@ useSeoMeta({
 </template>
 
 <style scoped>
-.about-page {
+.page {
   position: relative;
   width: 100%;
   display: flex;

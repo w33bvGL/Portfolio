@@ -6,13 +6,13 @@ const { t } = useI18n()
 <template>
   <section class="a-intro scroll-reveal">
     <div class="a-intro-box">
-      <h1 class="a-intro-title">
-        {{ t('about.title') }}
-      </h1>
-
-      <p class="a-intro-desc">
-        {{ t('about.intro') }}
-      </p>
+      <UiSectionHeader
+        as="h1"
+        variant="hero"
+        align="center"
+        :title="t('about.title')"
+        :description="t('about.description')"
+      />
 
       <div v-if="footer?.links" class="a-intro-socials">
         <UiButton
