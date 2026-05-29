@@ -2,7 +2,6 @@
 import type { TranslatedAbout, About } from '~/types/about'
 
 const { locale, t } = useI18n()
-const { vIntersection } = useScrollObserver()
 
 const { data: aboutData } = await useAsyncData<TranslatedAbout>('about', () => $fetch('/api/about'))
 
@@ -10,16 +9,22 @@ const bio = computed<About[]>(() => aboutData.value?.[locale.value] ?? [])
 </script>
 
 <template>
-  <section class="story scroll-reveal" v-intersection>
+  <section class="story">
     <div class="story-box">
       <UiSectionHeader
         :title="t('about.title')"
         :description="t('about.description')"
         align="center"
+        class="scroll-animate-fade"
       />
 
       <div class="story-flow">
-        <article v-for="(item, idx) in bio" :key="idx" class="story-block">
+        <article
+          v-for="(item, idx) in bio"
+          :key="idx"
+          class="story-block scroll-animate-reveal"
+          :class="`stagger-delay-${Math.min(idx + 1, 5)}`"
+        >
           <h3 class="story-block-title">{{ item.title }}</h3>
           <p class="story-block-text">{{ item.content }}</p>
         </article>

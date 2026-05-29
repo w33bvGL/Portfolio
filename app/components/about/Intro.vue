@@ -4,7 +4,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <section class="a-intro scroll-reveal">
+  <section class="a-intro">
     <div class="a-intro-box">
       <UiSectionHeader
         as="h1"
@@ -12,9 +12,10 @@ const { t } = useI18n()
         align="center"
         :title="t('about.title')"
         :description="t('about.description')"
+        class="scroll-animate-fade"
       />
 
-      <div v-if="footer?.links" class="a-intro-socials">
+      <div v-if="footer?.links" class="a-intro-socials scroll-animate-fade stagger-delay-2">
         <UiButton
           v-for="(link, index) of footer.links"
           :key="index"
@@ -39,17 +40,6 @@ const { t } = useI18n()
     align-items: center;
     text-align: center;
     gap: var(--space-md, 1rem);
-  }
-
-  & .a-intro-title {
-    font-size: var(--font-hero);
-  }
-
-  & .a-intro-desc {
-    font-size: var(--font-body-lg);
-    color: var(--color-text-subtle);
-    max-width: 42rem;
-    line-height: var(--leading-normal);
   }
 
   & .a-intro-socials {

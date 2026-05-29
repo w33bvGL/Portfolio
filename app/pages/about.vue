@@ -8,6 +8,8 @@ useSeoMeta({
   ogTitle: title, ogDescription: description,
   twitterTitle: title, twitterDescription: description
 })
+
+useScrollReveal({ selector: '.scroll-animate-reveal, .scroll-animate-fade' })
 </script>
 
 <template>

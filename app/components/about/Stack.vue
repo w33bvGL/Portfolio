@@ -1,5 +1,4 @@
 <script setup lang="ts">
-const { vIntersection } = useScrollObserver()
 const { data: techs } = await useAsyncData('technologies', () => $fetch('/api/technologies'))
 
 const groups = computed(() => [
@@ -10,18 +9,19 @@ const groups = computed(() => [
 </script>
 
 <template>
-  <section class="stack scroll-reveal" v-intersection>
+  <section class="stack">
     <UiSectionHeader
       :title="$t('stack.title')"
       :description="$t('stack.description')"
       align="center"
+      class="scroll-animate-fade"
     />
 
     <div class="stack-grid">
       <div
         v-for="group in groups"
         :key="group.key"
-        class="stack-box"
+        class="stack-box scroll-animate-reveal"
       >
         <div class="stack-box-header">
           <Icon :name="group.icon" class="stack-box-icon" />
