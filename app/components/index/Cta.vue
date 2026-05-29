@@ -61,7 +61,7 @@ const blobStyle = computed(() => ({
 <style scoped>
 .hero-section {
   position: relative;
-  padding: var(--space-4xl) var(--space-base) var(--space-3xl);
+  padding: var(--space-4xl) var(--space-base) 0;
   display: flex;
   justify-content: center;
   --x: 50%;
