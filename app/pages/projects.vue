@@ -24,6 +24,8 @@ useSeoMeta({
   twitterTitle: title,
   twitterDescription: description
 })
+
+useScrollReveal()
 </script>
 
 <template>
@@ -34,6 +36,7 @@ useSeoMeta({
       align="center"
       :title="t('projects.title')"
       :description="t('projects.description')"
+      class="animate-slide-up"
     />
 
     <UiLayoutGrid :cols-md="2" class="projects-grid">
@@ -41,7 +44,7 @@ useSeoMeta({
         v-for="project in projects"
         :key="project.name"
         :project="project"
-        class="project-reveal-card"
+        class="scroll-animate-reveal scroll-stagger-even"
       />
     </UiLayoutGrid>
   </UiLayoutContainer>
@@ -58,27 +61,5 @@ useSeoMeta({
 
 .projects-grid {
   width: 100%;
-}
-
-.project-reveal-card {
-  animation: fade-up-reveal both;
-  animation-timeline: view();
-  animation-range: entry 5% cover 22%;
-  will-change: transform, opacity;
-}
-
-.project-reveal-card:nth-child(even) {
-  animation-delay: 0.1s;
-}
-
-@keyframes fade-up-reveal {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 </style>
