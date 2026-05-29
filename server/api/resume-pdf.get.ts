@@ -52,7 +52,6 @@ export default eventHandler(async (event: H3Event) => {
       }
     })
 
-    // Use the runtime config host or fall back to localhost:3000
     const runtimeConfig = useRuntimeConfig()
     const baseUrl = runtimeConfig.appBaseUrl || 'http://localhost:3000'
     const url = `${baseUrl}/${lang}/resume`
