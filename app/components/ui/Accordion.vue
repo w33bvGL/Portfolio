@@ -57,7 +57,6 @@ const toggle = (idx: number) => {
   overflow: hidden;
   cursor: pointer;
   transition: background-color 0.3s ease, border-color 0.3s ease;
-  /* Наследует .glass-panel стили, но можно переопределить ховер */
 }
 
 .accordion-item:hover {
@@ -70,7 +69,6 @@ const toggle = (idx: number) => {
   border-color: var(--text-muted);
 }
 
-/* --- Header --- */
 .accordion-header {
   width: 100%;
   display: flex;
@@ -95,7 +93,6 @@ const toggle = (idx: number) => {
   color: var(--primary-color);
 }
 
-/* --- Icon --- */
 .icon-wrapper {
   display: flex;
   align-items: center;
@@ -115,18 +112,16 @@ const toggle = (idx: number) => {
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease;
 }
 
-/* Active State Icon */
 .is-open .icon-wrapper {
   background: var(--text-main);
-  transform: rotate(180deg); /* Для красоты вращения обертки */
+  transform: rotate(180deg);
 }
 
 .is-open .toggle-icon {
-  transform: rotate(45deg); /* Плюс превращается в крестик */
-  color: var(--bg-body); /* Инверсия цвета */
+  transform: rotate(45deg);
+  color: var(--bg-body);
 }
 
-/* --- Body Animation (Grid Trick) --- */
 .accordion-body {
   display: grid;
   grid-template-rows: 0fr;
@@ -147,7 +142,6 @@ const toggle = (idx: number) => {
   font-size: 0.95rem;
   line-height: 1.6;
   margin: 0;
-  /* Плавное появление текста */
   opacity: 0;
   transform: translateY(-10px);
   transition: all 0.3s ease;

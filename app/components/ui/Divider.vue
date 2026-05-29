@@ -111,7 +111,6 @@ const props = withDefaults(defineProps<Props>(), {
   transition: all 0.3s ease;
 }
 
-/* Orientation */
 .orientation-horizontal .divider-line {
   height: 1px;
 }
@@ -121,7 +120,6 @@ const props = withDefaults(defineProps<Props>(), {
   width: 1px;
 }
 
-/* Sizes */
 .size-sm {
   height: 1px;
 }
@@ -134,7 +132,6 @@ const props = withDefaults(defineProps<Props>(), {
   height: 2px;
 }
 
-/* Variants */
 .variant-solid {
   background: var(--border-color);
 }
@@ -210,7 +207,6 @@ const props = withDefaults(defineProps<Props>(), {
   );
 }
 
-/* Content */
 .content-wrapper {
   display: flex;
   align-items: center;
@@ -233,7 +229,6 @@ const props = withDefaults(defineProps<Props>(), {
   white-space: nowrap;
 }
 
-/* Margins */
 .margin-sm {
   margin: 1rem 0;
 }

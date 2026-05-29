@@ -1,55 +1,37 @@
 @layer base {
-  /* 1. Стандарт для современных браузеров (Firefox и др. в 2026 году) */
   html {
-    /* Формат: <цвет-ползунка> <цвет-дорожки> */
     scrollbar-color: var(--text-muted) transparent;
-    /* Тонкий скроллбар по умолчанию на уровне системы */
     scrollbar-width: thin;
-    /* Предотвращает дергание верстки при исчезновении/появлении скролла */
     scrollbar-gutter: stable;
   }
 
-  /* 2. Для движков WebKit (Chrome, Safari, iOS, Edge, Opera, новые версии Яндекс.Браузера) */
 
-  /* Контейнер всего скроллбара */
   ::-webkit-scrollbar {
-    width: 10px;  /* Ширина вертикального скроллбара */
-    height: 10px; /* Высота горизонтального скроллбара */
+    width: 10px;
+    height: 10px;
   }
 
-  /* Дорожка (рельсы), по которой бегает ползунок */
   ::-webkit-scrollbar-track {
-    background: transparent; /* Полностью прозрачная, чтобы не перекрывать фон страниц */
+    background: transparent;
     border-radius: 99px;
   }
 
-  /* Сам ползунок (бегунок) */
   ::-webkit-scrollbar-thumb {
-    /* Берем системный приглушенный текст или фоллбэк на oklch(68% 0 0) */
     background-color: var(--text-muted, var(--base-400));
     border-radius: 99px;
-
-    /* Сеньорский трюк: делаем внутренний отступ через прозрачные бордеры,
-       чтобы ползунок выглядел тоньше и элегантнее, но область клика оставалась широкой */
     border: 3px solid transparent;
     background-clip: padding-box;
-
-    /* Плавный переход цвета при наведении */
     transition: background-color var(--duration-fast, 0.2s) var(--ease-out-sine);
   }
 
-  /* Эффект ховера на ползунок */
   ::-webkit-scrollbar-thumb:hover {
-    /* Становится более контрастным (основной текст), когда юзер его задевает */
     background-color: var(--text-main, var(--base-600));
   }
 
-  /* Ползунок во время перетаскивания (активное нажатие) */
   ::-webkit-scrollbar-thumb:active {
-    background-color: var(--primary-color, #000000);
+    background-color: var(--primary-color);
   }
 
-  /* Выпиливаем уродливые дефолтные стрелки вверх/вниз в WebKit */
   ::-webkit-scrollbar-button {
     display: none;
     width: 0;

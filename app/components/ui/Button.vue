@@ -113,14 +113,12 @@ const linkProps = computed(() => {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Фикс для кастомных кнопок со space-between: заставляем всех прямых потомков выравниваться жестко по центру высоты */
 .ui-btn > * {
   display: inline-flex;
   align-items: center;
   height: 100%;
 }
 
-/* Стили для текста: убираем line-height: 1, центрируем через флекс */
 .btn-text {
   display: inline-flex;
   align-items: center;

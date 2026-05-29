@@ -82,7 +82,6 @@ defineProps({
   animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
-/* Цвета */
 .is-online {
   color: #22c55e;
   border-color: rgba(34, 197, 94, 0.2);
@@ -100,7 +99,7 @@ defineProps({
 .is-offline .ping-ring { background: #f87171; }
 
 .status-label {
-  padding-top: 1px; /* Оптическая компенсация текста */
+  padding-top: 1px;
   white-space: nowrap;
 }
 

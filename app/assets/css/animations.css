@@ -1,7 +1,3 @@
-/* ==========================================================================
-   1. СТАТИЧЕСКИЕ АНИМАЦИИ (первый экран, без скролла)
-   ========================================================================== */
-
 @keyframes fade {
   from { opacity: 0; }
   to   { opacity: 1; }
@@ -31,20 +27,11 @@
 .animate-slide-down{ animation: fade-down var(--duration-slow) var(--ease-out-expo) both; }
 .animate-scale-in  { animation: scale-in  var(--duration-slow) var(--ease-out-expo) both; }
 
-/* Stagger для статических анимаций */
 .stagger-delay-1 { animation-delay: 0.1s; }
 .stagger-delay-2 { animation-delay: 0.2s; }
 .stagger-delay-3 { animation-delay: 0.35s; }
 .stagger-delay-4 { animation-delay: 0.5s; }
 .stagger-delay-5 { animation-delay: 0.65s; }
-
-
-/* ==========================================================================
-   2. SCROLL-АНИМАЦИИ (IntersectionObserver, совместимо с Lenis)
-
-   Класс `is-visible` добавляет useScrollReveal() composable.
-   Вызывай его ОДИН РАЗ на уровне страницы — не в дочерних компонентах.
-   ========================================================================== */
 
 @keyframes scroll-reveal-up {
   from { opacity: 0; transform: translateY(40px) scale(0.98); }
@@ -56,7 +43,6 @@
   to   { opacity: 1; transform: translateY(0);    }
 }
 
-/* ── Карточки / блоки ── */
 .scroll-animate-reveal {
   opacity: 0;
   transform: translateY(40px) scale(0.98);
@@ -65,10 +51,9 @@
 
 .scroll-animate-reveal.is-visible {
   animation: scroll-reveal-up var(--duration-slow) var(--ease-out-expo) forwards;
-  /* stagger-delay задаётся через отдельные классы ниже */
+
 }
 
-/* ── Заголовки секций ── */
 .scroll-animate-fade {
   opacity: 0;
   transform: translateY(20px);
@@ -79,9 +64,6 @@
   animation: scroll-fade-up 0.7s var(--ease-out-expo) forwards;
 }
 
-/* ── Stagger для scroll-анимаций ──
-   Используй только на .scroll-animate-reveal / .scroll-animate-fade,
-   НЕ комбинируй с .animate-* классами                                  */
 .scroll-animate-reveal.scroll-delay-1,
 .scroll-animate-fade.scroll-delay-1  { animation-delay: 0.08s; }
 
@@ -97,7 +79,6 @@
 .scroll-animate-reveal.scroll-delay-5,
 .scroll-animate-fade.scroll-delay-5  { animation-delay: 0.4s;  }
 
-/* Автоматический stagger для чётных элементов в сетке */
 .scroll-animate-reveal.scroll-stagger-even:nth-child(even).is-visible {
   animation-delay: 0.08s;
 }
