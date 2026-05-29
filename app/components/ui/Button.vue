@@ -75,24 +75,10 @@ const linkProps = computed(() => {
       v-if="loading"
       class="spinner"
     >
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2.5"
-      >
-        <circle
-          cx="12"
-          cy="12"
-          r="10"
-          stroke-opacity="0.1"
-        />
-        <path
-          d="M12 2a10 10 0 0 1 10 10"
-          stroke-opacity="1"
-          stroke-linecap="round"
-        />
-      </svg>
+      <Icon
+        name="lucide:loader-circle"
+        class="spinner-icon"
+      />
     </div>
   </component>
 </template>
@@ -206,9 +192,17 @@ const linkProps = computed(() => {
   position: absolute;
   left: 50%; top: 50%;
   transform: translate(-50%, -50%);
-  width: 1.25rem; height: 1.25rem;
-  animation: spin 0.8s linear infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+.spinner-icon {
+  width: var(--btn-icon-size);
+  height: var(--btn-icon-size);
+  animation: spin 0.75s linear infinite;
+}
+@keyframes spin-icon {
+  to { transform: rotate(360deg); }
+}
 </style>

@@ -64,13 +64,14 @@ const blobStyle = computed(() => ({
   padding: var(--space-4xl) var(--space-base) 0;
   display: flex;
   justify-content: center;
+  overflow: hidden;
   --x: 50%;
   --y: 50%;
 }
 
 .ambient-glow {
   position: absolute;
-  inset: -100px;
+  inset: 0;
   pointer-events: none;
   z-index: 0;
   overflow: hidden;

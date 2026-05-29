@@ -3,7 +3,7 @@ import type { Project } from '~/types/project'
 
 const { t, locale } = useI18n()
 
-const { data: projects } = await useAsyncData<Project[]>('projects', () =>
+const { data: projects } = await useAsyncData<Project[]>(`projects-${locale.value}`, () =>
   $fetch('/api/projects', { query: { lang: locale.value } })
 )
 

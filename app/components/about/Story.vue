@@ -3,7 +3,7 @@ import type { About } from '~/types/about'
 
 const { locale } = useI18n()
 
-const { data: about } = await useAsyncData<About[]>('about', () => $fetch('/api/about', { query: { lang: locale.value } }))
+const { data: about } = await useAsyncData<About[]>(`about-${locale.value}`, () => $fetch('/api/about', { query: { lang: locale.value } }))
 </script>
 
 <template>

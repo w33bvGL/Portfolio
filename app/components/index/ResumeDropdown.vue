@@ -52,7 +52,7 @@ async function download(code: string): Promise<void> {
         variant="primary"
         icon="lucide:file-down"
         class="trigger-btn"
-        :loading="isDownloading"
+        :loading="!isDownloading"
       >
         {{ t('index.cta.resume.download') || 'Download CV' }}
         <Icon

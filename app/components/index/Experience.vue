@@ -5,7 +5,7 @@ const { locale, t } = useI18n()
 const { experienceString } = useExperienceString()
 
 const { data: experiences } = await useAsyncData<Experience[]>(
-  'experiences',
+  `experiences-${locale.value}`,
   () => $fetch('/api/experiences', { query: { lang: locale.value } })
 )
 

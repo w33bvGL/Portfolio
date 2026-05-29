@@ -4,7 +4,7 @@ import type { FaqItem } from '~/types/faq'
 const { locale } = useI18n()
 
 const { data: faq } = await useAsyncData<FaqItem[]>(
-  'faq',
+  `faq-${locale.value}`,
   () => $fetch('/api/faq', { query: { lang: locale.value } })
 )
 </script>
