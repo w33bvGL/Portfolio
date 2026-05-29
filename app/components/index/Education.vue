@@ -20,6 +20,7 @@ const educations = computed<Education[]>(() => {
       :title="t('education.title')"
       :description="t('education.description')"
       align="center"
+      class="scroll-animate-fade"
     />
 
     <UiLayoutGrid :cols="2">
@@ -27,37 +28,22 @@ const educations = computed<Education[]>(() => {
         v-for="(item, index) in educations"
         :key="index"
         :href="item.url"
-        :class="[
-          { 'animate-slide-up': true },
-          `stagger-delay-${(index % 10) + 3}`
-        ]"
+        class="scroll-animate-reveal scroll-stagger-even"
+        :class="`stagger-delay-${Math.min(index + 1, 5)}`"
       >
         <UiCardHeader class="edu-header">
-          <UiLayoutFlex
-            justify="between"
-            full
-            align="center"
-          >
+          <UiLayoutFlex justify="between" full align="center">
             <div class="card-icon">
-              <Icon
-                name="lucide:graduation-cap"
-                class="icon"
-              />
+              <Icon name="lucide:graduation-cap" class="icon" />
             </div>
-
-            <div
-              v-if="item.url"
-              class="hover-arrow"
-            >
+            <div v-if="item.url" class="hover-arrow">
               <Icon name="lucide:arrow-up-right" />
             </div>
           </UiLayoutFlex>
         </UiCardHeader>
 
         <UiCardContent>
-          <UiCardTitle as="h5">
-            {{ item.title }}
-          </UiCardTitle>
+          <UiCardTitle as="h5">{{ item.title }}</UiCardTitle>
           <UiCardDescription>{{ item.description }}</UiCardDescription>
         </UiCardContent>
       </UiCard>
@@ -72,10 +58,11 @@ const educations = computed<Education[]>(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
-  background: rgba(125, 125, 125, 0.1);
+  border-radius: var(--radius-base);
+  background: color-mix(in oklab, var(--text-muted) 10%, transparent);
   color: var(--text-main);
-  transition: all 0.3s ease;
+  transition: background var(--duration-fast) var(--ease-out-sine),
+  color var(--duration-fast) var(--ease-out-sine);
 }
 
 .ui-card:hover .card-icon {
@@ -83,13 +70,18 @@ const educations = computed<Education[]>(() => {
   color: var(--bg-body);
 }
 
-.icon { width: 1.25rem; height: 1.25rem; }
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
 
 .hover-arrow {
   color: var(--text-muted);
   opacity: 0;
   transform: translate(-10px, 10px);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity var(--duration-fast) var(--ease-out-expo),
+  transform var(--duration-fast) var(--ease-out-expo),
+  color var(--duration-fast) ease;
 }
 
 .ui-card:hover .hover-arrow {

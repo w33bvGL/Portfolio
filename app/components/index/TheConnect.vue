@@ -3,7 +3,7 @@
 
 <template>
   <UiLayoutContainer class="cta-section">
-    <UiCard>
+    <UiCard class="scroll-animate-reveal">
       <UiCardHeader>
         <UiLayoutFlex col align="center">
           <UiCardTitle>
@@ -15,16 +15,16 @@
         </UiLayoutFlex>
       </UiCardHeader>
       <UiCardContent>
-          <UiLayoutCenter>
-            <UiButton
-              href="https://t.me/w33bvGL"
-              target="_blank"
-              variant="primary"
-              icon="simple-icons-telegram"
-            >
-              {{ $t('projects.contact_telegram') }}
-            </UiButton>
-          </UiLayoutCenter>
+        <UiLayoutCenter>
+          <UiButton
+            href="https://t.me/w33bvGL"
+            target="_blank"
+            variant="primary"
+            icon="simple-icons-telegram"
+          >
+            {{ $t('projects.contact_telegram') }}
+          </UiButton>
+        </UiLayoutCenter>
       </UiCardContent>
     </UiCard>
   </UiLayoutContainer>

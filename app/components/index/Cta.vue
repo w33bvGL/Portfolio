@@ -22,6 +22,7 @@ const blobStyle = computed(() => ({
     </div>
 
     <div class="glass-container">
+      <!-- Аватар: статическая анимация при загрузке страницы -->
       <div class="avatar-block animate-slide-up stagger-delay-1">
         <div class="avatar-wrapper">
           <div class="avatar-ring" />
@@ -40,6 +41,7 @@ const blobStyle = computed(() => ({
         </div>
       </div>
 
+      <!-- Заголовок -->
       <div class="content animate-slide-up stagger-delay-2">
         <UiSectionHeader
           as="h1"
@@ -50,6 +52,7 @@ const blobStyle = computed(() => ({
         />
       </div>
 
+      <!-- Кнопки -->
       <div class="actions-wrapper animate-slide-up stagger-delay-3">
         <IndexResumeDropdown />
         <IndexSocials />
@@ -61,13 +64,14 @@ const blobStyle = computed(() => ({
 <style scoped>
 .hero-section {
   position: relative;
-  padding: 8rem 1.5rem 6rem;
+  padding: var(--space-4xl) var(--space-base) var(--space-3xl);
   display: flex;
   justify-content: center;
   --x: 50%;
   --y: 50%;
 }
 
+/* ── Фоновый глоу ── */
 .ambient-glow {
   position: absolute;
   inset: -100px;
@@ -80,8 +84,8 @@ const blobStyle = computed(() => ({
   position: absolute;
   border-radius: 50%;
   will-change: transform, opacity, filter;
-  animation: blob-wake-up 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   opacity: 0;
+  animation: blob-wake-up 2.2s var(--ease-out-expo) forwards;
 }
 
 .spot-1 {
@@ -96,22 +100,18 @@ const blobStyle = computed(() => ({
 }
 
 @keyframes blob-wake-up {
-  0% {
+  from {
     opacity: 0;
     filter: blur(40px);
     transform: translate(-50%, 40px) scale(0.7);
   }
-  100% {
+  to {
     opacity: 0.12;
     filter: blur(120px);
   }
 }
 
-@keyframes blob-wake-up-alt {
-  0% { opacity: 0; transform: scale(0.7); filter: blur(40px); }
-  100% { opacity: 0.08; filter: blur(100px); }
-}
-
+/* ── Контент ── */
 .glass-container {
   position: relative;
   z-index: 1;
@@ -120,27 +120,28 @@ const blobStyle = computed(() => ({
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 1.5rem;
+  gap: var(--space-base);
 }
 
+/* ── Аватар ── */
 .avatar-block {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: var(--space-base);
 }
 
 .avatar-wrapper {
   position: relative;
   width: 130px;
   height: 130px;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
 }
 
 .avatar-ring {
   position: absolute;
   inset: -10px;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   background: radial-gradient(circle, var(--text-main) 0%, transparent 65%);
   opacity: 0.08;
 }
@@ -148,10 +149,10 @@ const blobStyle = computed(() => ({
 .avatar-clip {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   overflow: hidden;
   background: var(--glass-bg);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
 }
 
 .user-avatar {
@@ -160,38 +161,18 @@ const blobStyle = computed(() => ({
   object-fit: cover;
 }
 
-.hero-title {
-  font-size: var(--font-hero);
-  line-height: var(--leading-tight);
-  letter-spacing: -0.02em;
-  margin: 0 0 1rem 0;
-  background: linear-gradient(180deg, var(--text-main) 30%, rgba(125,125,125,0.5) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-desc {
-  font-size: var(--font-body-lg);
-  line-height: var(--leading-normal);
-  color: var(--text-muted);
-  max-width: 580px;
-  margin: 0 auto;
-}
-
+/* ── Кнопки ── */
 .actions-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: var(--space-base);
   width: 100%;
   justify-content: center;
-  margin-top: 0.5rem;
-}
+  margin-top: var(--space-xs);
 
-@media (min-width: 640px) {
-  .actions-wrapper {
+  @media (width >= 640px) {
     flex-direction: row;
-    gap: 1.5rem;
   }
 }
 </style>

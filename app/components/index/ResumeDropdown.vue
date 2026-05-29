@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 const { t, locales } = useI18n()
 
 const isDownloading = ref(false)
@@ -26,15 +25,12 @@ async function download(code: string): Promise<void> {
     link.setAttribute('download', fileName)
     document.body.appendChild(link)
     link.click()
-
     document.body.removeChild(link)
     window.URL.revokeObjectURL(blobUrl)
   } catch (error) {
     console.error('Download failed:', error)
   } finally {
-    setTimeout(() => {
-      isDownloading.value = false
-    }, 600)
+    setTimeout(() => { isDownloading.value = false }, 600)
   }
 }
 </script>
@@ -80,36 +76,59 @@ async function download(code: string): Promise<void> {
 
 .chevron {
   width: 1rem;
-  margin-left: 0.4rem;
   height: 1rem;
-  transition: transform 0.3s ease;
+  margin-left: var(--space-xxs);
   opacity: 0.6;
+  transition: transform var(--duration-fast) var(--ease-out-sine);
 }
 
-.chevron.is-rotated { transform: rotate(180deg); }
+.chevron.is-rotated {
+  transform: rotate(180deg);
+}
 
 .menu-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  border-radius: 8px;
-  border: none;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-md);
   background: transparent;
   color: var(--text-muted);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: background var(--duration-fast) ease,
+  color var(--duration-fast) ease;
   text-align: left;
-  font-size: 0.9rem;
+  font-size: var(--font-small);
+
+  &:hover {
+    background: color-mix(in oklab, var(--text-muted) 8%, transparent);
+    color: var(--text-main);
+
+    & .dl-icon {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 }
 
-.menu-item:hover {
-  background: rgba(125, 125, 125, 0.08);
-  color: var(--text-main);
+.lang-code {
+  font-weight: var(--weight-bold);
+  font-size: var(--font-xs);
+  opacity: 0.5;
+  width: 1.5rem;
 }
 
-.lang-code { font-weight: 700; font-size: 0.75rem; opacity: 0.5; width: 1.5rem; }
-.lang-label { flex: 1; font-weight: 500; }
-.dl-icon { width: 1rem; height: 1rem; opacity: 0; transform: translateX(-5px); transition: all 0.2s; }
-.menu-item:hover .dl-icon { opacity: 1; transform: translateX(0); }
+.lang-label {
+  flex: 1;
+  font-weight: var(--weight-medium);
+}
+
+.dl-icon {
+  width: 1rem;
+  height: 1rem;
+  opacity: 0;
+  transform: translateX(-5px);
+  transition: opacity var(--duration-fast) ease,
+  transform var(--duration-fast) var(--ease-out-expo);
+}
 </style>

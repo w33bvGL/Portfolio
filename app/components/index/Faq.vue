@@ -20,7 +20,10 @@ const faqItems = computed<FaqItem[]>(() => {
       :title="t('faq.title')"
       :description="t('faq.description')"
       align="center"
+      class="scroll-animate-fade"
     />
-    <UiAccordion :items="faqItems" />
+    <div class="scroll-animate-reveal">
+      <UiAccordion :items="faqItems" />
+    </div>
   </UiLayoutContainer>
 </template>

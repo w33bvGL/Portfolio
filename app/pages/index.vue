@@ -8,6 +8,8 @@ useSeoMeta({
   ogTitle: title, ogDescription: description,
   twitterTitle: title, twitterDescription: description
 })
+
+useScrollReveal({ selector: '.scroll-animate-reveal, .scroll-animate-fade' })
 </script>
 
 <template>
@@ -24,6 +26,6 @@ useSeoMeta({
 .page-home {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: var(--space-xl);
 }
 </style>
