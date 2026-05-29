@@ -1,3 +1,14 @@
+/**
+ * useScrollReveal
+ *
+ * Singleton-composable для Lenis-совместимых scroll-анимаций.
+ * Вызывай ОДИН РАЗ на уровне страницы или layout — он найдёт
+ * все `.scroll-animate-reveal` и `.scroll-animate-fade` в DOM.
+ *
+ * Пример (в page-компоненте):
+ *   useScrollReveal()
+ */
+
 interface ScrollRevealOptions {
   selector?: string
   rootMargin?: string
@@ -5,31 +16,34 @@ interface ScrollRevealOptions {
   repeat?: boolean
 }
 
+// Глобальный singleton — один observer на всё приложение
+let globalObserver: IntersectionObserver | null = null
+
 export function useScrollReveal(options: ScrollRevealOptions = {}) {
+  if (!import.meta.client) return
+
   const {
-    selector = '.scroll-animate-reveal',
+    selector = '.scroll-animate-reveal, .scroll-animate-fade',
     rootMargin = '0px 0px -60px 0px',
     threshold = 0.1,
     repeat = false,
   } = options
 
-  if (!import.meta.client) return
-
-  let observer: IntersectionObserver | null = null
-
   const init = () => {
-    observer?.disconnect()
+    // Убиваем предыдущий observer перед переинициализацией
+    globalObserver?.disconnect()
+    globalObserver = null
 
     const elements = document.querySelectorAll<HTMLElement>(selector)
     if (!elements.length) return
 
-    observer = new IntersectionObserver(
+    globalObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible')
             if (!repeat) {
-              observer?.unobserve(entry.target)
+              globalObserver?.unobserve(entry.target)
             }
           } else if (repeat) {
             entry.target.classList.remove('is-visible')
@@ -39,19 +53,18 @@ export function useScrollReveal(options: ScrollRevealOptions = {}) {
       { rootMargin, threshold }
     )
 
-    elements.forEach(el => observer!.observe(el))
+    elements.forEach(el => globalObserver!.observe(el))
   }
 
-  onMounted(() => {
-    nextTick(init)
-  })
+  onMounted(() => nextTick(init))
 
   const nuxtApp = useNuxtApp()
-  nuxtApp.hook('page:transition:finish', () => {
-    nextTick(init)
-  })
+
+  // Переинициализируем после page transition — новые элементы в DOM
+  nuxtApp.hook('page:transition:finish', () => nextTick(init))
 
   onUnmounted(() => {
-    observer?.disconnect()
+    globalObserver?.disconnect()
+    globalObserver = null
   })
 }

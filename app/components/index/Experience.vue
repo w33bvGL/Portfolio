@@ -8,6 +8,8 @@ const { data: experiences } = await useAsyncData<Experience[]>(
   'experiences',
   () => $fetch('/api/experiences', { query: { lang: locale.value } })
 )
+
+const delayClass = (idx: number) => `scroll-delay-${Math.min(idx + 1, 5)}`
 </script>
 
 <template>
@@ -29,7 +31,7 @@ const { data: experiences } = await useAsyncData<Experience[]>(
         v-for="(exp, index) in experiences"
         :key="index"
         class="timeline-row scroll-animate-reveal"
-        :class="`stagger-delay-${Math.min(index + 1, 5)}`"
+        :class="delayClass(index)"
       >
         <div class="connector-anchor">
           <div class="connector-dot">
@@ -63,7 +65,6 @@ const { data: experiences } = await useAsyncData<Experience[]>(
 </template>
 
 <style scoped>
-/* ── Badge ── */
 .exp-badge {
   padding: 0.35rem 0.85rem;
   border-radius: var(--radius-full);
@@ -79,14 +80,12 @@ const { data: experiences } = await useAsyncData<Experience[]>(
   letter-spacing: 0.05em;
 }
 
-/* ── Timeline row ── */
 .timeline-row {
   position: relative;
   display: flex;
   flex-direction: column;
 }
 
-/* ── Dot ── */
 .connector-anchor {
   position: absolute;
   z-index: 10;
@@ -129,7 +128,6 @@ const { data: experiences } = await useAsyncData<Experience[]>(
   animation: pulse 3s infinite;
 }
 
-/* ── Date ── */
 .date-anchor {
   display: none;
 
@@ -160,7 +158,6 @@ const { data: experiences } = await useAsyncData<Experience[]>(
   transform: translateX(-5px);
 }
 
-/* ── Card ── */
 .exp-card {
   transition: transform var(--duration-normal) var(--ease-out-expo),
   border-color var(--duration-fast) var(--ease-out-sine);
@@ -194,7 +191,7 @@ const { data: experiences } = await useAsyncData<Experience[]>(
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); opacity: 0.5; }
-  100% { transform: scale(2.5); opacity: 0; }
+  0%   { transform: scale(1);   opacity: 0.5; }
+  100% { transform: scale(2.5); opacity: 0;   }
 }
 </style>

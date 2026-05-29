@@ -12,6 +12,8 @@ const educations = computed<Education[]>(() => {
   const lang = locale.value as keyof TranslatedEducation
   return educationByLang.value[lang] || []
 })
+
+const delayClass = (idx: number) => `scroll-delay-${Math.min(idx + 1, 5)}`
 </script>
 
 <template>
@@ -29,7 +31,7 @@ const educations = computed<Education[]>(() => {
         :key="index"
         :href="item.url"
         class="scroll-animate-reveal scroll-stagger-even"
-        :class="`stagger-delay-${Math.min(index + 1, 5)}`"
+        :class="delayClass(index)"
       >
         <UiCardHeader class="edu-header">
           <UiLayoutFlex justify="between" full align="center">
