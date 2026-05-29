@@ -10,105 +10,60 @@ const bio = computed<About[]>(() => aboutData.value?.[locale.value] ?? [])
 </script>
 
 <template>
-  <section class="story-section">
-    <div
-      v-intersection
-      class="bio-container scroll-reveal"
-    >
-      <h2 class="col-title">
-        <Icon
-          name="lucide:book-open"
-          class="title-icon"
-        />
-        {{ t('about.title') }}
-      </h2>
+  <section class="story scroll-reveal" v-intersection>
+    <div class="story-box">
+      <UiSectionHeader
+        :title="t('about.title')"
+        :description="t('about.description')"
+        align="center"
+      />
 
-      <div class="cards-stack">
-        <div
-          v-for="(item, idx) in bio"
-          :key="idx"
-          class="story-card glass-panel"
-        >
-          <h3 class="card-title">
-            {{ item.title }}
-          </h3>
-          <p class="card-text">
-            {{ item.content }}
-          </p>
-        </div>
+      <div class="story-flow">
+        <article v-for="(item, idx) in bio" :key="idx" class="story-block">
+          <h3 class="story-block-title">{{ item.title }}</h3>
+          <p class="story-block-text">{{ item.content }}</p>
+        </article>
       </div>
     </div>
   </section>
 </template>
 
 <style scoped>
-.story-section {
-  margin-bottom: 6rem;
-}
+.story {
+  & .story-flow {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
 
-.bio-container {
-  max-width: 800px; /* Ограничиваем ширину, чтобы текст не разъезжался на всю ширину UltraWide мониторов */
-  margin: 0 auto;
-}
+  & .story-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xxs);
+    position: relative;
 
-.col-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  color: var(--text-main);
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
+    padding-left: var(--space-sm);
+    border-left: 2px solid var(--color-border);
+    transition: border-color var(--duration-normal) var(--ease-out-expo);
 
-.title-icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  color: var(--primary-color);
-}
+    & .story-block-title {
+      font-size: var(--font-body-lg);
+      font-weight: var(--weight-bold);
+      color: var(--color-heading);
+      margin: 0;
+    }
 
-/* Bio Cards */
-.cards-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
+    & .story-block-text {
+      font-size: var(--font-body);
+      line-height: var(--leading-normal);
+      color: var(--color-text-subtle);
+      margin: 0;
+    }
 
-.story-card {
-  padding: 2rem;
-  border-radius: 1.5rem;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.story-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--text-muted);
-}
-
-.card-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-  color: var(--text-main);
-}
-
-.card-text {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--text-muted);
-}
-
-/* Scroll Reveal */
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.scroll-reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+    &:hover {
+      border-left-color: var(--color-primary);
+    }
+  }
 }
 </style>

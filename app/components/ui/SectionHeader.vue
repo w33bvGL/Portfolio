@@ -1,82 +1,75 @@
 <script setup lang="ts">
-const target = ref<HTMLElement | null>(null)
-
-defineProps<{
-  title: string
-  description?: string
-  align?: 'left' | 'center' | 'right'
-}>()
-
+withDefaults(
+  defineProps<{
+    title: string
+    description?: string
+    align?: 'left' | 'center' | 'right'
+  }>(),
+  {
+    align: 'left'
+  }
+)
 </script>
 
 <template>
-  <div
-    ref="target"
-    class="section-header animate-slide-up stagger-delay-2"
-    :class="[
-      `align-${align || 'left'}`,
-    ]"
-  >
-    <div class="title-row">
-      <h2 class="section-title">
+  <div class="s-hdr" :style="{ '--hdr-align': align }">
+    <div class="s-hdr-row">
+      <h2 class="s-hdr-title">
         {{ title }}
       </h2>
 
-      <div
-        v-if="$slots.badge"
-        class="badge-wrapper"
-      >
+      <div v-if="$slots.badge" class="s-hdr-badge">
         <slot name="badge" />
       </div>
     </div>
 
-    <p
-      v-if="description"
-      class="section-desc"
-    >
+    <p v-if="description" class="s-hdr-desc">
       {{ description }}
     </p>
   </div>
 </template>
 
 <style scoped>
-.section-header {
-  margin-bottom: 2rem;
+.s-hdr {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--space-xxs, 0.5rem);
+  margin-bottom: var(--space-md, 2rem);
+  text-align: var(--hdr-align);
+  align-items: cubic-bezier(0, 0, 0, 0);
+
+  &[style*="--hdr-align: left"] { align-items: flex-start; }
+  &[style*="--hdr-align: center"] { align-items: center; }
+  &[style*="--hdr-align: right"] { align-items: flex-end; }
+
+  & .s-hdr-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm, 1rem);
+    flex-wrap: wrap;
+    justify-content: inherit;
+  }
+
+  & .s-hdr-title {
+    font-size: var(--font-h2);
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-tight);
+    color: var(--color-heading);
+    margin: 0;
+  }
+
+  & .s-hdr-badge {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  & .s-hdr-desc {
+    font-size: var(--font-body);
+    line-height: var(--leading-normal);
+    color: var(--color-text-subtle);
+    margin: 0;
+    max-width: 48rem;
+  }
 }
-
-.align-left { text-align: left; align-items: flex-start; }
-.align-center { text-align: center; align-items: center; }
-.align-right { text-align: right; align-items: flex-end; }
-
-.title-row {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.align-center .title-row {
-  justify-content: center;
-}
-
-.section-title {
-  font-size: var(--font-h2);
-  line-height: var(--leading-tight);
-  color: var(--text-main);
-}
-
-.badge-wrapper {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.section-desc {
-  color: var(--text-muted);
-  margin: 0;
-}
-
 </style>

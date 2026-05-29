@@ -4,86 +4,58 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <section class="about-intro scroll-reveal">
-    <div class="content-wrapper">
-      <div class="text-side">
-        <h1 class="title">
-          {{ t('about.title') }}
-        </h1>
+  <section class="a-intro scroll-reveal">
+    <div class="a-intro-box">
+      <h1 class="a-intro-title">
+        {{ t('about.title') }}
+      </h1>
 
-        <p class="description">
-          {{ t('about.intro') }}
-        </p>
+      <p class="a-intro-desc">
+        {{ t('about.intro') }}
+      </p>
 
-        <div
-          v-if="footer?.links"
-          class="socials"
-        >
-          <UiButton
-            v-for="(link, index) of footer.links"
-            :key="index"
-            :href="link.to"
-            variant="ghost"
-            size="lg"
-            :icon="link.icon.replace('i-simple-icons-', 'simple-icons:')"
-            :aria-label="link['aria-label']"
-          />
-        </div>
+      <div v-if="footer?.links" class="a-intro-socials">
+        <UiButton
+          v-for="(link, index) of footer.links"
+          :key="index"
+          :href="link.to"
+          variant="ghost"
+          size="lg"
+          :icon="link.icon.replace('i-simple-icons-', 'simple-icons:')"
+          :aria-label="link['aria-label']"
+        />
       </div>
     </div>
   </section>
 </template>
 
 <style scoped>
-.about-intro {
-  opacity: 0;
-  padding: 0 2rem;
-  transform: translateY(30px);
-  animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
+.a-intro {
+  padding: 0 var(--space-md, 2rem);
 
-@keyframes fade-up {
-  to { opacity: 1; transform: translateY(0); }
-}
+  & .a-intro-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-md, 1rem);
+  }
 
-.content-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
+  & .a-intro-title {
+    font-size: var(--font-hero);
+  }
 
-.text-side {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: center;
-}
+  & .a-intro-desc {
+    font-size: var(--font-body-lg);
+    color: var(--color-text-subtle);
+    max-width: 42rem;
+    line-height: var(--leading-normal);
+  }
 
-.title {
-  font-size: var(--font-hero);
-  line-height: var(--leading-tight);
-  letter-spacing: -0.02em;
-  margin: 0 0 1rem 0;
-  background: linear-gradient(180deg, var(--text-main) 30%, rgba(125, 125, 125, 0.5) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.highlight {
-  color: var(--primary-color);
-}
-
-.description {
-  font-size: 1.15rem;
-  line-height: 1.7;
-  color: var(--text-muted);
-  max-width: 600px;
-}
-
-.socials {
-  display: flex;
-  gap: 1rem;
-  margin-top: 0.5rem;
+  & .a-intro-socials {
+    display: flex;
+    gap: var(--space-xs, 0.5rem);
+    margin-top: var(--space-sm, 1rem);
+  }
 }
 </style>

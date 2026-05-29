@@ -54,6 +54,7 @@
   },
   "languages": { "title": "Языки" },
   "faq": { "title": "Q&A", "description": "Коротко о процессах, стеке и условиях сотрудничества." },
+  "stack": { "title": "Стек технологий", "description": "Cтеке и условиях сотрудничества." },
   "resume": {
     "name": "Vahe",
     "surname": "Sargsyan",

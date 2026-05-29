@@ -4,9 +4,6 @@ import type { Project } from '~/types/project'
 defineProps<{
   project: Project
 }>()
-
-const img = useImage()
-
 </script>
 
 <template>
@@ -14,12 +11,12 @@ const img = useImage()
     :href="project.url"
     target="_blank"
     rel="noopener noreferrer"
-    class="group"
-    :class="{ 'is-adult-card': project.isAdult }"
+    class="p-card"
+    :class="{ 'is-adult': project.isAdult }"
   >
-    <UiCard class="card-inner">
-      <div class="image-wrapper">
-        <div class="overlay" />
+    <UiCard class="p-inner" variant="glass">
+      <div class="p-img-box">
+        <div class="p-overlay" />
 
         <NuxtImg
           :src="project.image"
@@ -27,57 +24,42 @@ const img = useImage()
           width="600"
           height="340"
           format="webp"
-          class="project-img"
-          :class="{ 'adult-blur': project.isAdult }"
-          :placeholder="img(project.image, { h: 10, f: 'png', blur: 2, q: 50 })"
+          class="p-img"
+          :class="{ 'p-blur': project.isAdult }"
           loading="lazy"
         />
 
-        <div
-          v-if="project.isAdult"
-          class="adult-badge-overlay"
-        >
-          <UiButton variant="ghost" icon="lucide:eye-off">
+        <div v-if="project.isAdult" class="p-adult-mask">
+          <UiButton variant="ghost" icon="lucide:eye-off" size="sm">
             Sensitive Content
           </UiButton>
         </div>
 
-        <div
-          v-if="project.url"
-          class="hover-icon"
-        >
+        <div v-if="project.url" class="p-icon">
           <UiButton
             icon="lucide:arrow-up-right"
-            variant="outline"
+            variant="ghost"
+            size="sm"
+            class="p-btn"
           />
         </div>
       </div>
 
       <UiCardHeader>
-        <div class="title-row">
-          <UiCardTitle>{{ project.name }}</UiCardTitle>
-          <span
-            v-if="project.isAdult"
-            class="age-limit"
-          >18+</span>
+        <div class="p-row">
+          <UiCardTitle class="p-title">{{ project.name }}</UiCardTitle>
+          <span v-if="project.isAdult" class="p-badge">18+</span>
         </div>
 
-        <div
-          v-if="project.tags"
-          class="project-tags"
-        >
-          <span
-            v-for="tag in project.tags.slice(0, 3)"
-            :key="tag"
-            class="tag"
-          >
+        <div v-if="project.tags?.length" class="p-tags">
+          <span v-for="tag in project.tags.slice(0, 3)" :key="tag" class="p-tag">
             {{ tag }}
           </span>
         </div>
       </UiCardHeader>
 
       <UiCardContent>
-        <UiCardDescription>
+        <UiCardDescription class="p-desc">
           {{ project.description }}
         </UiCardDescription>
       </UiCardContent>
@@ -86,130 +68,165 @@ const img = useImage()
 </template>
 
 <style scoped>
-.card-inner {
-  height: 100%;
-}
-
-.group {
+.p-card {
   display: block;
   text-decoration: none;
   color: inherit;
+  height: 100%;
+
+  & .p-inner {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    transition: all var(--duration-fast) var(--ease-out-sine);
+  }
+
+  &:hover .p-inner {
+    border-color: var(--color-border-strong);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+
+    @media (prefers-color-scheme: dark) {
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .dark & {
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    & .p-img:not(.p-blur) {
+      transform: scale(1.03);
+    }
+
+    & .p-icon {
+      opacity: 1;
+      transform: translate(0, 0) scale(1);
+    }
+
+    & .p-title {
+      color: var(--color-primary-hover);
+    }
+
+    & .p-tag {
+      border-color: var(--color-text-muted);
+    }
+  }
 }
 
-.image-wrapper {
+.p-img-box {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  background: #000;
+  border-bottom: 1px solid var(--glass-border);
+  background: var(--color-surface-raised);
 }
 
-.project-img {
+.p-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--duration-slower) var(--ease-out-sine), filter var(--duration-normal) ease;
-  filter: brightness(0.9);
+  transition: transform var(--duration-slow) var(--ease-out-expo), filter var(--duration-normal) ease;
+
+  &.p-blur {
+    filter: blur(30px) scale(1.1);
+  }
 }
 
-.adult-blur {
-  filter: blur(40px) brightness(0.5) !important;
-  transform: scale(1.1);
-}
-
-.group:hover .project-img:not(.adult-blur) {
-  transform: scale(1.05);
-  filter: brightness(1);
-}
-
-/* Плашка поверх блюра */
-.adult-badge-overlay {
+.p-overlay {
   position: absolute;
   inset: 0;
-  z-index: 5;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.15) 0%, transparent 60%);
+
+  .dark &, @media (prefers-color-scheme: dark) {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 60%);
+}
+}
+
+.p-adult-mask {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(4px);
+
+  .dark &, @media (prefers-color-scheme: dark) {
+  background: rgba(0, 0, 0, 0.3);
+}
 }
 
-.adult-content-warning {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.25rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 99px;
-  color: #fff;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+.p-badge {
+  font-size: var(--font-xs);
+  font-weight: var(--weight-bold);
+  padding: 0.15rem 0.4rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 50, 50, 0.08);
+  color: #ff3333;
+  border: 1px solid rgba(255, 50, 50, 0.15);
+  flex-shrink: 0;
 }
 
-.title-row {
+.p-icon {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  z-index: 2;
+  opacity: 0;
+  transform: translate(-4px, 4px) scale(0.9);
+  transition: all var(--duration-fast) var(--ease-out-expo);
+}
+
+.p-btn {
+  background: var(--color-surface-overlay) !important;
+  border: 1px solid var(--glass-border) !important;
+  color: var(--color-text) !important;
+  box-shadow: var(--glass-shadow);
+}
+
+.p-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--space-md);
+  width: 100%;
 }
 
-.age-limit {
-  font-size: 0.7rem;
-  font-weight: 800;
-  padding: 0.2rem 0.4rem;
-  border-radius: 4px;
-  background: rgba(255, 50, 50, 0.1);
-  color: #ff3333;
-  border: 1px solid rgba(255, 50, 50, 0.2);
+.p-title {
+  font-size: var(--font-body-lg);
+  font-weight: var(--weight-bold);
+  color: var(--color-heading);
+  transition: color var(--duration-fast) ease;
 }
 
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 60%);
-  z-index: 1;
-  opacity: 0.7;
+.p-desc {
+  font-size: var(--font-body);
+  line-height: var(--leading-normal);
+  color: var(--color-text-subtle);
 }
 
-.hover-icon {
-  position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
-  width: 2.75rem;
-  height: 2.75rem;
-  backdrop-filter: blur(8px);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  opacity: 0;
-  transform: translate(-5px, 5px) scale(0.9);
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.group:hover .hover-icon {
-  opacity: 1;
-  transform: translate(0, 0) scale(1);
-}
-
-.project-tags {
+.p-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
+  gap: var(--space-xxs);
+  margin-top: var(--space-xs);
 }
 
-.tag {
-  font-size: 0.65rem;
+.p-tag {
+  font-size: var(--font-xs);
+  font-weight: var(--weight-medium);
   padding: 0.15rem 0.5rem;
-  border-radius: 99px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  color: var(--text-muted);
+  border-radius: var(--radius-full);
+  background: var(--color-primary-subtle);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  transition: all var(--duration-fast) ease;
 }
 </style>
