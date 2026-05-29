@@ -1,14 +1,3 @@
-/**
- * useScrollReveal
- *
- * Singleton-composable для Lenis-совместимых scroll-анимаций.
- * Вызывай ОДИН РАЗ на уровне страницы или layout — он найдёт
- * все `.scroll-animate-reveal` и `.scroll-animate-fade` в DOM.
- *
- * Пример (в page-компоненте):
- *   useScrollReveal()
- */
-
 interface ScrollRevealOptions {
   selector?: string
   rootMargin?: string
@@ -16,7 +5,6 @@ interface ScrollRevealOptions {
   repeat?: boolean
 }
 
-// Глобальный singleton — один observer на всё приложение
 let globalObserver: IntersectionObserver | null = null
 
 export function useScrollReveal(options: ScrollRevealOptions = {}) {
@@ -30,7 +18,6 @@ export function useScrollReveal(options: ScrollRevealOptions = {}) {
   } = options
 
   const init = () => {
-    // Убиваем предыдущий observer перед переинициализацией
     globalObserver?.disconnect()
     globalObserver = null
 
@@ -59,8 +46,6 @@ export function useScrollReveal(options: ScrollRevealOptions = {}) {
   onMounted(() => nextTick(init))
 
   const nuxtApp = useNuxtApp()
-
-  // Переинициализируем после page transition — новые элементы в DOM
   nuxtApp.hook('page:transition:finish', () => nextTick(init))
 
   onUnmounted(() => {

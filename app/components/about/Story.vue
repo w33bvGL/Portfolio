@@ -1,26 +1,24 @@
 <script setup lang="ts">
-import type { TranslatedAbout, About } from '~/types/about'
+import type { About } from '~/types/about'
 
-const { locale, t } = useI18n()
+const { locale } = useI18n()
 
-const { data: aboutData } = await useAsyncData<TranslatedAbout>('about', () => $fetch('/api/about'))
-
-const bio = computed<About[]>(() => aboutData.value?.[locale.value] ?? [])
+const { data: about } = await useAsyncData<About[]>('about', () => $fetch('/api/about',{ query: { lang: locale.value } }))
 </script>
 
 <template>
   <section class="story">
     <div class="story-box">
       <UiSectionHeader
-        :title="t('about.story.title')"
-        :description="t('about.story.description')"
+        :title="$t('about.story.title')"
+        :description="$t('about.story.description')"
         align="center"
         class="scroll-animate-fade"
       />
 
       <div class="story-flow">
         <article
-          v-for="(item, idx) in bio"
+          v-for="(item, idx) in about"
           :key="idx"
           class="story-block scroll-animate-reveal"
           :class="`stagger-delay-${Math.min(idx + 1, 5)}`"

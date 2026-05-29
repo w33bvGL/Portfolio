@@ -1,5 +1,4 @@
-export default defineEventHandler(() => {
-  return {
+const PROJECTS = {
     en: [
       { name: 'Age of Astir', image: '/projects/age-of-astir.png', description: 'Immersive MMORPG universe featuring faction warfare, epic boss raids, and complex dungeon tracking systems.', url: 'https://ageofastir.com/' },
       { name: 'Cyberhack Pro', image: '/projects/cyberhack-pro.png', description: 'A professional platform offering a wide range of game enhancement utilities. Reliable, secure architecture designed for gamers.', url: 'https://cyberhack.pro' },
@@ -39,5 +38,8 @@ export default defineEventHandler(() => {
       { name: 'TG Quick Click', image: '/projects/tg-quick-click.png', description: 'Telegram Mini App с кликер-механикой. Оптимизировано для высоких нагрузок внутри мессенджера.' },
       { name: 'Podarok.ru', image: '/projects/podarokru.png', description: 'Сервис персональных видеопоздравлений. Сложный бэкенд для рендеринга видео и обработки заказов.', url: 'https://podarokru.ru' }
     ],
-  }
+}
+
+export default defineEventHandler((event) => {
+  return getLocalizedData(event, PROJECTS)
 })

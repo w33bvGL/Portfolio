@@ -1,17 +1,12 @@
 <script setup lang="ts">
-import type { TranslatedProjects, Project } from '~/types/project'
+import type { Project } from '~/types/project'
 
 const { t, locale } = useI18n()
 
-const { data: projectsByLang } = await useAsyncData<TranslatedProjects>('projects', () =>
-  $fetch('/api/projects')
+const { data: projects } = await useAsyncData<Project[]>('projects', () =>
+  $fetch('/api/projects', { query: { lang: locale.value } })
 )
 
-const projects = computed<Project[]>(() => {
-  if (!projectsByLang.value) return []
-  const currentKey = locale.value as keyof TranslatedProjects
-  return projectsByLang.value[currentKey] ?? []
-})
 
 const title = t('projects.title')
 const description = t('projects.description')
