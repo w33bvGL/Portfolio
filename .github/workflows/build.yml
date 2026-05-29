@@ -31,16 +31,16 @@ jobs:
 
       - name: Install Puppeteer system dependencies
         run: |
-            sudo apt-get update
-            sudo apt-get install -y \
-              libgbm-dev \
-              libnss3 \
-              libatk-bridge2.0-0 \
-              libgtk-3-0 \
-              libasound2t64 \
-              libxss1 \
-              libxtst6 \
-              libxshmfence1
+          sudo apt-get update
+          sudo apt-get install -y \
+            libgbm-dev \
+            libnss3 \
+            libatk-bridge2.0-0 \
+            libgtk-3-0 \
+            libasound2t64 \
+            libxss1 \
+            libxtst6 \
+            libxshmfence1
 
       - name: Install Chrome for Puppeteer
         run: npx puppeteer browsers install chrome
@@ -52,6 +52,9 @@ jobs:
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
           PUPPETEER_EXECUTABLE_PATH: ${{ env.PUPPETEER_EXECUTABLE_PATH }}
 
+      - name: Create .nojekyll
+        run: touch .output/public/.nojekyll
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
@@ -59,3 +62,4 @@ jobs:
           publish_dir: .output/public
           allow_empty_commit: false
           keep_files: false
+          cname: vahe-sargsyan.com
