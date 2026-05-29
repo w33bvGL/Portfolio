@@ -1,60 +1,154 @@
+@layer reset, tokens, base, components, utilities;
+
 @theme static {
   --font-sans: 'Public Sans', sans-serif;
   --font-serif: 'Instrument Serif', serif;
 }
 
-:root {
-  --bg-body: #ffffff;
-  --bg-elevated: rgba(255, 255, 255, 0.8);
-  --text-main: #1a1a1a;
-  --text-muted: #666666;
-  --border-color: #e5e5e5;
-  --primary-color: #000000;
+@layer tokens {
+  :root {
+    --font-header: var(--font-sans);
+    --font-body-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-size-root: 1rem;
 
-  --glass-bg: rgba(255, 255, 255, 0.65);
-  --glass-border: rgba(255, 255, 255, 0.4);
-  --glass-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.05);
-  --glass-highlight: rgba(255, 255, 255, 0.8);
+    --base-50: oklch(98.5% 0 0);
+    --base-100: oklch(96.5% 0 0);
+    --base-200: oklch(92% 0 0);
+    --base-300: oklch(86% 0 0);
+    --base-400: oklch(68% 0 0);
+    --base-500: oklch(52% 0 0);
+    --base-600: oklch(40% 0 0);
+    --base-700: oklch(28% 0 0);
+    --base-800: oklch(18% 0 0);
+    --base-900: oklch(12% 0 0);
+    --base-950: oklch(7% 0 0);
 
-  --container-width: 56rem;
-  --container-padding: 1.25rem;
+    --color-surface: var(--base-50);
+    --color-surface-raised: var(--base-100);
+    --color-surface-overlay: rgba(255, 255, 255, 0.85);
+    --color-surface-inverse: var(--base-950);
 
-  --font-hero: clamp(2rem, 5vw, 3rem);
-  --font-h1: clamp(1.5rem, 3vw, 2.25rem);
-  --font-h2: clamp(1.25rem, 2.5vw, 1.75rem);
-  --font-body-lg: clamp(1rem, 1.5vw, 1.125rem);
-  --font-body: 0.95rem;
-  --font-small: 0.85rem;
+    --color-border: var(--base-200);
+    --color-border-strong: var(--base-900);
 
-  --leading-tight: 1.1;
-  --leading-normal: 1.6;
+    --color-text: var(--base-900);
+    --color-text-subtle: var(--base-500);
+    --color-text-muted: var(--base-400);
+    --color-text-inverse: var(--base-50);
 
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-out-sine: cubic-bezier(0.37, 0, 0.63, 1);
-  --ease-in-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --color-heading: var(--base-950);
+    --color-heading-strong: #000000;
 
-  --duration-fast: 0.5s;
-  --duration-normal: 0.7s;
-  --duration-slow: 0.9s;
-  --duration-slower: 1s;
+    --color-primary: var(--base-950);
+    --color-primary-hover: var(--base-700);
+    --color-primary-active: var(--base-900);
+    --color-primary-subtle: var(--base-100);
+    --color-primary-fg: var(--base-50);
 
-  --animation-fade: fade var(--duration-slow) var(--ease-out-expo);
-  --animation-slide-up: fade-up var(--duration-slow) var(--ease-out-expo);
-  --animation-slide-down: slide-down var(--duration-slow) var(--ease-out-expo);
-  --animation-scale-in: scale-in var(--duration-slow) var(--ease-out-expo);
-}
+    --color-focus: var(--base-950);
+    --color-ring: color-mix(in oklab, var(--color-focus) 20%, transparent);
 
-.dark {
-  --bg-body: #0a0a0a;
-  --bg-elevated: rgba(20, 20, 20, 0.8);
-  --text-main: #ededed;
-  --text-muted: #a1a1a1;
-  --border-color: #262626;
-  --primary-color: #ffffff;
+    --container-width: 56rem;
+    --container-padding: 1.25rem;
 
-  --glass-bg: rgba(20, 20, 20, 0.6);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  --glass-highlight: rgba(255, 255, 255, 0.05);
+    --glass-bg: rgba(255, 255, 255, 0.65);
+    --glass-border: rgba(0, 0, 0, 0.06);
+    --glass-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.04);
+    --glass-highlight: rgba(255, 255, 255, 0.8);
+
+    --font-hero: clamp(2.25rem, 6vw, 3.5rem);
+    --font-h1: clamp(1.75rem, 4vw, 2.5rem);
+    --font-h2: clamp(1.2rem, 2.5vw, 1.6rem);
+    --font-body-lg: clamp(1rem, 1.5vw, 1.125rem);
+    --font-body: 0.95rem;
+    --font-small: 0.85rem;
+    --font-xs: 0.75rem;
+
+    --weight-light: 300;
+    --weight-normal: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+    --weight-extrabold: 800;
+
+    --leading-tight: 1.1;
+    --leading-normal: 1.6;
+
+    --space-xxs: 0.25rem;
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-base: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+
+    --radius-none: 0px;
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-base: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    --radius-full: 9999px;
+
+    --z-negative: -10;
+    --z-0: 0;
+    --z-base: 10;
+    --z-sticky: 40;
+    --z-overlay: 50;
+    --z-modal: 100;
+    --z-tooltip: 200;
+
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-out-sine: cubic-bezier(0.37, 0, 0.63, 1);
+    --ease-in-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --duration-fast: 0.5s;
+    --duration-normal: 0.7s;
+    --duration-slow: 0.9s;
+    --duration-slower: 1s;
+
+    --bg-body: var(--color-surface);
+    --bg-elevated: var(--color-surface-raised);
+    --text-main: var(--color-text);
+    --text-muted: var(--color-text-subtle);
+    --border-color: var(--color-border);
+    --primary-color: var(--color-primary);
+
+    --animation-fade: fade var(--duration-slow) var(--ease-out-expo);
+    --animation-slide-up: fade-up var(--duration-slow) var(--ease-out-expo);
+    --animation-slide-down: slide-down var(--duration-slow) var(--ease-out-expo);
+    --animation-scale-in: scale-in var(--duration-slow) var(--ease-out-expo);
+  }
+
+  .dark {
+    --glass-bg: rgba(10, 10, 10, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.06);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --glass-highlight: rgba(255, 255, 255, 0.03);
+
+    --color-surface: var(--base-950);
+    --color-surface-raised: var(--base-900);
+    --color-surface-overlay: rgba(15, 15, 15, 0.85);
+    --color-surface-inverse: var(--base-50);
+
+    --color-border: var(--base-800);
+    --color-border-strong: var(--base-100);
+
+    --color-text: var(--base-100);
+    --color-text-subtle: var(--base-400);
+    --color-text-muted: var(--base-500);
+    --color-text-inverse: var(--base-950);
+
+    --color-heading: var(--base-50);
+    --color-heading-strong: #ffffff;
+
+    --color-primary: var(--base-50);
+    --color-primary-hover: var(--base-300);
+    --color-primary-active: var(--base-100);
+    --color-primary-subtle: var(--base-900);
+    --color-primary-fg: var(--base-950);
+
+    --color-focus: var(--base-50);
+  }
 }

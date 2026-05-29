@@ -1,4 +1,3 @@
-
 @keyframes fade {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -74,51 +73,53 @@
   to { transform: rotate(360deg); }
 }
 
-.animate-fade {
-  animation: var(--animation-fade) forwards;
-}
+@layer utilities {
+  .animate-fade {
+    animation: var(--animation-fade) forwards;
+  }
 
-.animate-slide-up {
-  animation: var(--animation-slide-up) forwards;
-}
+  .animate-slide-up {
+    animation: var(--animation-slide-up) forwards;
+  }
 
-.animate-slide-down {
-  animation: var(--animation-slide-down) forwards;
-}
+  .animate-slide-down {
+    animation: var(--animation-slide-down) forwards;
+  }
 
-.animate-scale-in {
-  animation: var(--animation-scale-in) forwards;
-}
+  .animate-scale-in {
+    animation: var(--animation-scale-in) forwards;
+  }
 
-.animate-slide-in-right {
-  animation: slide-in-right var(--duration-slow) var(--ease-out-expo) forwards;
-}
+  .animate-slide-in-right {
+    animation: slide-in-right var(--duration-slow) var(--ease-out-expo) forwards;
+  }
 
-.animate-slide-in-left {
-  animation: slide-in-left var(--duration-slow) var(--ease-out-expo) forwards;
-}
+  .animate-slide-in-left {
+    animation: slide-in-left var(--duration-slow) var(--ease-out-expo) forwards;
+  }
 
-.stagger-delay-1,
-.stagger-delay-2,
-.stagger-delay-3,
-.stagger-delay-4,
-.stagger-delay-5,
-.stagger-delay-6,
-.stagger-delay-7,
-.stagger-delay-8,
-.stagger-delay-9,
-.stagger-delay-10 {
-  opacity: 0;
-  animation-fill-mode: forwards;
-}
+  .stagger-delay-1,
+  .stagger-delay-2,
+  .stagger-delay-3,
+  .stagger-delay-4,
+  .stagger-delay-5,
+  .stagger-delay-6,
+  .stagger-delay-7,
+  .stagger-delay-8,
+  .stagger-delay-9,
+  .stagger-delay-10 {
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
 
-.stagger-delay-1 { animation-delay: calc(var(--duration-fast) * 0.2); }
-.stagger-delay-2 { animation-delay: calc(var(--duration-fast) * 0.4); }
-.stagger-delay-3 { animation-delay: calc(var(--duration-fast) * 0.6); }
-.stagger-delay-4 { animation-delay: calc(var(--duration-fast) * 0.8); }
-.stagger-delay-5 { animation-delay: var(--duration-fast); }
-.stagger-delay-6 { animation-delay: calc(var(--duration-fast) * 1.2); }
-.stagger-delay-7 { animation-delay: calc(var(--duration-fast) * 1.4); }
-.stagger-delay-8 { animation-delay: calc(var(--duration-fast) * 1.6); }
-.stagger-delay-9 { animation-delay: calc(var(--duration-fast) * 1.8); }
-.stagger-delay-10 { animation-delay: calc(var(--duration-fast) * 2); }
+  .stagger-delay-1 { animation-delay: calc(var(--duration-fast) * 0.2); }
+  .stagger-delay-2 { animation-delay: calc(var(--duration-fast) * 0.4); }
+  .stagger-delay-3 { animation-delay: calc(var(--duration-fast) * 0.6); }
+  .stagger-delay-4 { animation-delay: calc(var(--duration-fast) * 0.8); }
+  .stagger-delay-5 { animation-delay: var(--duration-fast); }
+  .stagger-delay-6 { animation-delay: calc(var(--duration-fast) * 1.2); }
+  .stagger-delay-7 { animation-delay: calc(var(--duration-fast) * 1.4); }
+  .stagger-delay-8 { animation-delay: calc(var(--duration-fast) * 1.6); }
+  .stagger-delay-9 { animation-delay: calc(var(--duration-fast) * 1.8); }
+  .stagger-delay-10 { animation-delay: calc(var(--duration-fast) * 2); }
+}
