@@ -11,12 +11,12 @@ export default defineEventHandler(() => {
       { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
       { name: 'Vue 2-3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg' },
       { name: 'Nuxt 2-4', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg' },
-      { name: 'Pinia', icon: 'https://logolist.net/wp-content/uploads/2024/04/pinia.svg' },
+      { name: 'Pinia', icon: '/tech/pinia.svg' },
       { name: 'Vitest', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitest/vitest-original.svg' },
       { name: 'Vuetify', icon: 'https://bestofjs.org/logos/vuetify.svg' },
       { name: 'Nuxt UI', icon: 'https://nuxt.com/assets/design-kit/icon-green.svg' },
       { name: 'Prime Vue', icon: '/tech/prime-vue.png' },
-      { name: 'ShadCN', icon: 'https://avatars.githubusercontent.com/u/139895814?s=200&v=4' }
+      { name: 'ShadCN', icon: '/tech/shad-cn.png' },
     ],
     backend: [
       { name: 'PHP', icon: '/tech/php.svg' },
