@@ -11,8 +11,8 @@ const groups = computed(() => [
 <template>
   <section class="stack">
     <UiSectionHeader
-      :title="$t('stack.title')"
-      :description="$t('stack.description')"
+      :title="$t('about.stack.title')"
+      :description="$t('about.stack.description')"
       align="center"
       class="scroll-animate-fade"
     />

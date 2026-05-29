@@ -12,8 +12,8 @@ const bio = computed<About[]>(() => aboutData.value?.[locale.value] ?? [])
   <section class="story">
     <div class="story-box">
       <UiSectionHeader
-        :title="t('about.title')"
-        :description="t('about.description')"
+        :title="t('about.story.title')"
+        :description="t('about.story.description')"
         align="center"
         class="scroll-animate-fade"
       />

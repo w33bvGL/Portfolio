@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { t } = useI18n()
-const title = t('cta.title')
-const description = t('cta.description')
+const title = t('index.cta.title')
+const description = t('index.cta.description')
 
 useSeoMeta({
   title, description,

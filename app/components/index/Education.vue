@@ -19,8 +19,8 @@ const delayClass = (idx: number) => `scroll-delay-${Math.min(idx + 1, 5)}`
 <template>
   <UiLayoutContainer class="education-section">
     <UiSectionHeader
-      :title="t('education.title')"
-      :description="t('education.description')"
+      :title="t('index.education.title')"
+      :description="t('index.education.description')"
       align="center"
       class="scroll-animate-fade"
     />

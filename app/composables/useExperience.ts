@@ -10,8 +10,8 @@ export function useExperienceString() {
     const y = experience.years
     const m = experience.months
 
-    const yearsWords = tm('experience.years') as [string, string, string]
-    const monthsWords = tm('experience.months') as [string, string, string]
+    const yearsWords = tm('index.experience.years') as [string, string, string]
+    const monthsWords = tm('index.experience.months') as [string, string, string]
 
     const yearsWord = declOfNum(y, yearsWords)
     const monthsWord = declOfNum(m, monthsWords)

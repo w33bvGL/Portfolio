@@ -44,7 +44,7 @@ async function download(code: string): Promise<void> {
         class="trigger-btn"
         :loading="isDownloading"
       >
-        {{ t('cta.resume.download') || 'Download CV' }}
+        {{ t('index.cta.resume.download') || 'Download CV' }}
         <Icon
           name="lucide:chevron-down"
           class="chevron"
@@ -69,11 +69,6 @@ async function download(code: string): Promise<void> {
 </template>
 
 <style scoped>
-.trigger-btn {
-  min-width: 200px;
-  justify-content: space-between;
-}
-
 .chevron {
   width: 1rem;
   height: 1rem;

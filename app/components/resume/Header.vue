@@ -14,7 +14,7 @@ const { t } = useI18n()
         <span class="stack-badge">{{ t('resume.stack') }}</span>
       </h2>
       <p class="summary">
-        {{ $t('about.intro') }}
+        {{ $t('about.description') }}
       </p>
     </div>
 
@@ -38,10 +38,10 @@ const { t } = useI18n()
         <li>
           <span class="label">Web:</span>
           <a
-            href="https://vahe.anidzen.com"
+            href="https://vahe-sargsyan.com"
             target="_blank"
             class="value"
-          >vahe.anidzen.com</a>
+          >vahe-sargsyan.com</a>
         </li>
         <li class="location">
           <span class="label">Loc:</span>

@@ -22,7 +22,6 @@ const blobStyle = computed(() => ({
     </div>
 
     <div class="glass-container">
-      <!-- Аватар: статическая анимация при загрузке страницы -->
       <div class="avatar-block animate-slide-up stagger-delay-1">
         <div class="avatar-wrapper">
           <div class="avatar-ring" />
@@ -41,18 +40,16 @@ const blobStyle = computed(() => ({
         </div>
       </div>
 
-      <!-- Заголовок -->
       <div class="content animate-slide-up stagger-delay-2">
         <UiSectionHeader
           as="h1"
           variant="hero"
           align="center"
-          :title="t('cta.title')"
-          :description="t('cta.description')"
+          :title="t('index.cta.title')"
+          :description="t('index.cta.description')"
         />
       </div>
 
-      <!-- Кнопки -->
       <div class="actions-wrapper animate-slide-up stagger-delay-3">
         <IndexResumeDropdown />
         <IndexSocials />
@@ -71,7 +68,6 @@ const blobStyle = computed(() => ({
   --y: 50%;
 }
 
-/* ── Фоновый глоу ── */
 .ambient-glow {
   position: absolute;
   inset: -100px;
@@ -110,8 +106,6 @@ const blobStyle = computed(() => ({
     filter: blur(120px);
   }
 }
-
-/* ── Контент ── */
 .glass-container {
   position: relative;
   z-index: 1;
@@ -123,7 +117,6 @@ const blobStyle = computed(() => ({
   gap: var(--space-base);
 }
 
-/* ── Аватар ── */
 .avatar-block {
   display: flex;
   flex-direction: column;
@@ -161,7 +154,6 @@ const blobStyle = computed(() => ({
   object-fit: cover;
 }
 
-/* ── Кнопки ── */
 .actions-wrapper {
   display: flex;
   flex-direction: column;

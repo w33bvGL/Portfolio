@@ -7,10 +7,10 @@
       <UiCardHeader>
         <UiLayoutFlex col align="center">
           <UiCardTitle>
-            {{ $t('projects.have_idea') }}
+            {{ $t('index.the_connect.title') }}
           </UiCardTitle>
           <UiCardDescription align="center">
-            {{ $t('projects.what_i_offer') }}
+            {{ $t('index.the_connect.description') }}
           </UiCardDescription>
         </UiLayoutFlex>
       </UiCardHeader>
@@ -22,7 +22,7 @@
             variant="primary"
             icon="simple-icons-telegram"
           >
-            {{ $t('projects.contact_telegram') }}
+            {{ $t('index.the_connect.contact_telegram') }}
           </UiButton>
         </UiLayoutCenter>
       </UiCardContent>

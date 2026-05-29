@@ -17,8 +17,8 @@ const faqItems = computed<FaqItem[]>(() => {
 <template>
   <UiLayoutContainer class="faq-section">
     <UiSectionHeader
-      :title="t('faq.title')"
-      :description="t('faq.description')"
+      :title="t('index.faq.title')"
+      :description="t('index.faq.description')"
       align="center"
       class="scroll-animate-fade"
     />

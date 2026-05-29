@@ -31,7 +31,7 @@ defineProps<{
 
         <div v-if="project.isAdult" class="p-adult-mask">
           <UiButton variant="ghost" icon="lucide:eye-off" size="sm">
-            Sensitive Content
+            {{ $t('projects.sensitive_content')}}
           </UiButton>
         </div>
 
