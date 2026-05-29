@@ -24,8 +24,7 @@ useSeoMeta({
   twitterTitle: title,
   twitterDescription: description
 })
-
-useScrollReveal()
+useScrollReveal({ selector: '.scroll-animate-reveal, .scroll-animate-fade' })
 </script>
 
 <template>
@@ -36,7 +35,7 @@ useScrollReveal()
       align="center"
       :title="t('projects.title')"
       :description="t('projects.description')"
-      class="animate-slide-up"
+      class="scroll-animate-fade"
     />
 
     <UiLayoutGrid :cols-md="2" class="projects-grid">
