@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const { t, locales } = useI18n()
-const runtimeConfig = useRuntimeConfig()
 
 const isDownloading = ref(false)
 const dropdownRef = ref<any>(null)
@@ -11,26 +10,30 @@ async function download(code: string): Promise<void> {
   dropdownRef.value?.close()
   isDownloading.value = true
 
-  const isDev = runtimeConfig.public.appEnv === 'development'
-  // In dev: hit the Nitro API route that runs Puppeteer on-demand
-  // In SSG/prod: fetch the pre-generated static file
-  const url = isDev ? `/api/resume-pdf?lang=${code}` : `/resume/${code}.pdf`
   const fileName = `Vahe_Sargsyan_Resume_${code.toUpperCase()}.pdf`
 
   try {
-    const response = await fetch(url)
-    if (!response.ok) throw new Error(`Failed to fetch PDF: ${response.status}`)
+    if (import.meta.dev) {
+      const response = await fetch(`/api/resume-pdf?lang=${code}`)
+      if (!response.ok) throw new Error(`PDF generation failed: ${response.status}`)
 
-    const blob = await response.blob()
-    const blobUrl = window.URL.createObjectURL(blob)
-
-    const link = document.createElement('a')
-    link.href = blobUrl
-    link.setAttribute('download', fileName)
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-    window.URL.revokeObjectURL(blobUrl)
+      const blob = await response.blob()
+      const blobUrl = window.URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = blobUrl
+      link.setAttribute('download', fileName)
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+      window.URL.revokeObjectURL(blobUrl)
+    } else {
+      const link = document.createElement('a')
+      link.href = `/resume/${code}.pdf`
+      link.setAttribute('download', fileName)
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    }
   } catch (error) {
     console.error('Download failed:', error)
   } finally {

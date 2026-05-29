@@ -2,83 +2,84 @@
   "routes": {
     "home": "Home",
     "projects": "Cases",
-    "blog": "Log",
-    "shop": "Assets",
     "about": "Profile"
   },
   "availability": {
-    "available": "Available for work",
-    "unavailable": "Currently busy"
+    "available": "Available for projects",
+    "unavailable": "Busy"
   },
   "error": {
-    "404_title": "Lost in the Void",
-    "default_title": "System Critical",
-    "404_message": "The coordinates you are looking for do not exist in this sector.",
-    "default_message": "An unexpected error occurred. The system encountered a critical failure.",
-    "return": "Return to Base"
+    "404_title": "Page not found (ノ°益°)ノ",
+    "default_title": "System failure (｡•́︿•̀｡)",
+    "404_message": "Route does not exist. 404. (－_－) zzZ",
+    "default_message": "Critical runtime error. (╯°□°）╯",
+    "return": "Back to home"
   },
-  "cta": {
-    "title": "Vahe Sargsyan. Full Stack Engineer.",
-    "description": "Building scalable web applications and microservices. Specialist in complex Laravel architecture and reactive Nuxt.js interfaces. Focused on performance, resilience, and clean code.",
-    "resume": {
-      "label": "CV / Resume",
-      "download": "Download PDF",
-      "languages": {
-        "en": "English",
-        "hy": "Armenian",
-        "ru": "Russian",
-        "uk": "Ukrainian",
-        "de": "German",
-        "pl": "Polish",
-        "es": "Spanish",
-        "fr": "French",
-        "nl": "Dutch"
+  "index": {
+    "cta": {
+      "title": "Vahe Sargsyan. Full Stack Engineer.",
+      "description": "Designing fault-tolerant backends (async PHP, Swoole, DDD) and building complex SPA/SSR interfaces with modern stacks. Solving challenges from high-load DB architecture to client-side rendering optimization. (驾_驾)",
+      "resume": {
+        "label": "Resume / CV",
+        "download": "Download PDF",
+        "languages": {
+          "en": "English",
+          "hy": "Armenian",
+          "ru": "Russian"
+        }
       }
+    },
+    "experience": {
+      "title": "Work Experience",
+      "description": "Commercial development: realized tasks, architectural decisions, and stack. (⚙_⚙)",
+      "years": ["year", "years", "years"],
+      "months": ["month", "months", "months"],
+      "lessThanMonth": "< 1 mo."
+    },
+    "education": {
+      "title": "Background",
+      "description": "Formal education and qualifications. (o_O)"
+    },
+    "faq": {
+      "title": "Q&A",
+      "description": "Stack, processes, and technical collaboration terms. (￣ω￣;)"
+    },
+    "the_connect": {
+      "title": "Project Integration (ò_ó)",
+      "description": "Available for architectural design, code auditing, or developing complex modules. (＠_＠)",
+      "contact_telegram": "Message on Telegram"
     }
   },
   "about": {
     "title": "Engineering Profile",
-    "description": "Hard skills & Approach",
-    "intro": "Full Stack developer with a strong focus on Backend architecture. I design REST/GraphQL APIs, work with message queues, caching, and high-load systems. On the frontend, I build maintainable SPA/SSR applications. I follow SOLID, DRY principles, and modular architecture. Solving business challenges with technical precision while minimizing technical debt."
-  },
-  "experience": {
-    "title": "Experience",
-    "description": "Commercial development experience. Key projects, roles, and tech stack.",
-    "years": ["year", "years", "years"],
-    "months": ["month", "months", "months"],
-    "lessThanMonth": "< 1 month"
-  },
-  "education": {
-    "title": "Background",
-    "description": "Academic education and qualifications."
+    "description": "Full Stack Engineer. Designing fault-tolerant backend architectures (Swoole, DDD) and creating performant SPA/SSR interfaces. Optimizing databases, writing clean code, and handling the full product lifecycle.",
+    "stack": {
+      "title": "Tech Stack",
+      "description": "Working tools: languages, frameworks, DBMS, and automation infrastructure. (⌐■_■)凸"
+    },
+    "story": {
+      "title": "Engineering Principles ( ` ω ` )",
+      "description": "Solving business problems with code. No spaghetti, automating routine, ensuring performance. (￣▽￣)b"
+    }
   },
   "projects": {
-    "title": "Featured Cases",
-    "description": "Commercial and pet projects. From DB design to production deployment. Complex business logic and integrations implementation.",
-    "have_idea": "Have a technical task?",
-    "what_i_offer": "Ready to join at the design or development stage. I provide audits, suggest optimal stacks, and architectural solutions. Full cycle development: from MVP to scalable systems. No bureaucracy, focus on results and deadlines.",
-    "contact_telegram": "Discuss Project"
+    "title": "Cases & Projects",
+    "description": "Commercial production solutions. Full cycle: from interactive SPA/SSR interface design to DB architecture and CI/CD deployment. (∠_∠)",
+    "sensitive_content": "NDA / Private code (递_递)"
   },
-  "shop": {
-    "title": "Solutions",
-    "description": "Library of proprietary developments: modules, templates, and microservices. Battle-tested code ready for integration.",
-    "discount": "SALE",
-    "free": "FREE",
-    "watch": "Demo",
-    "download": "Get it"
+  "languages": {
+    "title": "Languages"
   },
-  "languages": { "title": "Languages" },
-  "faq": { "title": "Q&A", "description": "Briefly about processes, stack, and cooperation terms." },
   "resume": {
     "name": "Vahe",
     "surname": "Sargsyan",
-    "position": "Full Stack Engineer",
-    "stack": "Nuxt.js / Laravel",
-    "contacts": "Contact",
+    "position": "Full Stack Developer",
+    "stack": "PHP (Swoole) / DDD / PostgreSQL",
+    "contacts": "Contacts",
     "portfolio": "Portfolio",
-    "skills": "Engine"
+    "skills": "Skills"
   },
   "footer": {
-    "copyright": "Vahe Sargsyan"
+    "copyright": "Vahe Sargsyan. (￣▽￣)b"
   }
 }
