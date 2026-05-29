@@ -1,17 +1,11 @@
 <script setup lang="ts">
-import type { Education, TranslatedEducation } from '~/types/education'
+import type { Education } from '~/types/education'
 
 const { t, locale } = useI18n()
 
-const { data: educationByLang } = await useAsyncData<TranslatedEducation>('education', () =>
-  $fetch('/api/education')
+const { data: educations } = await useAsyncData<Education[]>('education', () =>
+  $fetch('/api/education',{ query: { lang: locale.value } })
 )
-
-const educations = computed<Education[]>(() => {
-  if (!educationByLang.value) return []
-  const lang = locale.value as keyof TranslatedEducation
-  return educationByLang.value[lang] || []
-})
 
 const delayClass = (idx: number) => `scroll-delay-${Math.min(idx + 1, 5)}`
 </script>

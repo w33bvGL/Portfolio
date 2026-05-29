@@ -16,7 +16,7 @@ const educations = computed(() => {
 <template>
   <section class="section mt-section">
     <h3 class="section-title">
-      {{ t('education.title') }}
+      {{ t('index.education.title') }}
     </h3>
     <div class="education-grid">
       <div

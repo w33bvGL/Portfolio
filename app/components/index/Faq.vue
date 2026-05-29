@@ -1,29 +1,24 @@
 <script setup lang="ts">
-import type { TranslatedFaq, FaqItem } from '~/types/faq'
+import type { FaqItem } from '~/types/faq'
 
-const { locale, t } = useI18n()
+const { locale } = useI18n()
 
-const { data: faqByLang } = await useAsyncData<TranslatedFaq>(
+const { data: faq } = await useAsyncData<FaqItem[]>(
   'faq',
-  () => $fetch('/api/faq')
+  () => $fetch('/api/faq', { query: { lang: locale.value } })
 )
-
-const faqItems = computed<FaqItem[]>(() => {
-  const data = faqByLang.value
-  return data?.[locale.value as keyof TranslatedFaq] ?? []
-})
 </script>
 
 <template>
   <UiLayoutContainer class="faq-section">
     <UiSectionHeader
-      :title="t('index.faq.title')"
-      :description="t('index.faq.description')"
+      :title="$t('index.faq.title')"
+      :description="$t('index.faq.description')"
       align="center"
       class="scroll-animate-fade"
     />
     <div class="scroll-animate-reveal">
-      <UiAccordion :items="faqItems" />
+      <UiAccordion :items="faq" />
     </div>
   </UiLayoutContainer>
 </template>

@@ -4,20 +4,16 @@ import type { Experience, TranslatedExperiences } from '~/types/experience'
 const { t, locale } = useI18n()
 const { experienceString } = useExperienceString()
 
-const { data: experienceByLang } = await useAsyncData<TranslatedExperiences>('experiences', () =>
-  $fetch('/api/experiences')
+const { data: experiences } = await useAsyncData<Experience[]>(
+  'experiences',
+  () => $fetch('/api/experiences', { query: { lang: locale.value } })
 )
-
-const experiences = computed(() => {
-  const data = experienceByLang.value
-  return data?.[locale.value as keyof typeof data] || []
-})
 </script>
 
 <template>
   <section class="section">
     <h3 class="section-title">
-      {{ t('experience.title') }}
+      {{ t('index.experience.title') }}
       <span class="exp-total">({{ experienceString }})</span>
     </h3>
 
