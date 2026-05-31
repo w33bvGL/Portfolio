@@ -15,34 +15,34 @@ const formatCurrency = (value: number) => {
 </script>
 
 <template>
-  <div class="a4-document-sheet">
-    <div class="invoice-header">
-      <h1 class="invoice-title">INVOICE</h1>
-      <div class="invoice-meta">
+  <div class="a4-sheet-canvas">
+    <div class="doc-header">
+      <h1 class="doc-title">INVOICE</h1>
+      <div class="meta-block">
         <p><strong>Invoice No:</strong> #{{ data.invoiceNo }}</p>
         <p><strong>Date:</strong> {{ data.date }}</p>
         <p><strong>Due Date:</strong> {{ data.dueDate }}</p>
       </div>
     </div>
 
-    <div class="parties-grid">
-      <div class="party-block">
+    <div class="sides-grid">
+      <div class="side-box">
         <h3>From (Contractor)</h3>
-        <p class="party-name">IE Vahe Sargsyan</p>
-        <p class="party-sub">Reg No: 286.1571600 | TIN: 20218056</p>
-        <p class="party-sub">28 I. Hakobyan st., Vosketap, Ararat reg., 0617, Armenia</p>
-        <p class="party-sub">w33bv.gl@gmail.com</p>
+        <p class="company-name">IE Vahe Sargsyan</p>
+        <p class="company-details">Reg No: 286.1571600 | TIN: 20218056</p>
+        <p class="company-details">28 I. Hakobyan st., Vosketap, Ararat reg., 0617, Armenia</p>
+        <p class="company-details">w33bv.gl@gmail.com</p>
       </div>
 
-      <div class="party-block">
+      <div class="side-box">
         <h3>To (Client)</h3>
-        <p class="party-name" v-p-text="data.client.name">{{ data.client.name || '—' }}</p>
-        <p class="party-address">{{ data.client.address || '—' }}</p>
-        <p class="party-sub">{{ data.client.email || '—' }}</p>
+        <p class="company-name">{{ data.client.name || '—' }}</p>
+        <p class="company-address">{{ data.client.address || '—' }}</p>
+        <p class="company-details">{{ data.client.email || '—' }}</p>
       </div>
     </div>
 
-    <table class="services-table">
+    <table class="items-table">
       <thead>
       <tr>
         <th>Description of Services</th>
@@ -51,238 +51,228 @@ const formatCurrency = (value: number) => {
       </thead>
       <tbody>
       <tr v-for="(item, index) in data.items" :key="index">
-        <td class="desc-cell">{{ item.description || 'No description' }}</td>
-        <td class="text-right amount-cell">{{ formatCurrency(item.amount) }}</td>
+        <td class="desc-cell">{{ item.description || '—' }}</td>
+        <td class="text-right val-cell">{{ formatCurrency(item.amount) }}</td>
       </tr>
-      <tr class="total-row">
-        <td class="total-label">Total Due:</td>
-        <td class="text-right total-value">{{ formatCurrency(totalAmount) }} USD</td>
+      <tr class="summary-row">
+        <td class="sum-label">Total Due:</td>
+        <td class="text-right sum-value">{{ formatCurrency(totalAmount) }} USD</td>
       </tr>
       </tbody>
     </table>
 
-    <div class="crypto-payment-box">
+    <div class="crypto-details-card">
       <h3>Cryptocurrency Payment Details</h3>
-      <div class="crypto-values">
-        <p><span class="bold-lbl">Network:</span> {{ data.crypto.network }}</p>
-        <p><span class="bold-lbl">Wallet Address:</span> <span class="mono-address">{{ data.crypto.wallet }}</span></p>
+      <div class="crypto-lines">
+        <p><span class="label-bold">Network:</span> {{ data.crypto.network }}</p>
+        <p><span class="label-bold">Wallet Address:</span> <span class="wallet-string">{{ data.crypto.wallet }}</span></p>
       </div>
-      <p class="crypto-warning">
-        * The payment amount in {{ data.crypto.network.split(' ')[0] }} must exactly match the USD total stated above at the moment of transfer.
+      <p class="crypto-disclaimer">
+        * The payment amount in {{ data.crypto.network.split(' ')[0] || 'USDT' }} must exactly match the USD total stated above at the moment of transfer.
       </p>
     </div>
 
-    <div class="signature-block">
+    <div class="signature-area">
       <p>Authorized Signature:</p>
-      <div class="signature-line"></div>
-      <p class="signature-name">IE Vahe Sargsyan</p>
+      <div class="sig-line"></div>
+      <p class="sig-author">IE Vahe Sargsyan</p>
     </div>
 
-    <footer class="document-footer">
+    <footer class="sheet-footer">
       Thank you for your business!
     </footer>
   </div>
 </template>
 
 <style scoped>
-.a4-document-sheet {
+.a4-sheet-canvas {
   background: #ffffff;
   width: 210mm;
   min-height: 297mm;
   padding: 20mm;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
   box-sizing: border-box;
-  color: #1a1a1a;
+  color: #111827;
   display: flex;
   flex-direction: column;
 }
 
-.invoice-header {
+.doc-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  border-bottom: 2px solid #edf2f7;
-  padding-bottom: 24px;
-  margin-bottom: 36px;
+  border-bottom: 2px solid #f4f4f5;
+  padding-bottom: 20px;
+  margin-bottom: 32px;
 }
 
-.invoice-title {
-  font-size: 38px;
-  font-weight: 900;
-  letter-spacing: -1.5px;
+.doc-title {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -1px;
   margin: 0;
   color: #0f172a;
 }
 
-.invoice-meta {
+.meta-block {
   text-align: right;
   font-size: 13px;
-  color: #4a5568;
+  color: #4b5563;
   line-height: 1.6;
 }
 
-.invoice-meta strong {
+.meta-block strong {
   color: #0f172a;
 }
 
-.parties-grid {
+.sides-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  gap: 40px;
   margin-bottom: 40px;
 }
 
-.party-block h3 {
+.side-box h3 {
   font-size: 11px;
   font-weight: 700;
-  color: #94a3b8;
+  color: #9ca3af;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin: 0 0 12px 0;
+  letter-spacing: 0.5px;
+  margin: 0 0 10px 0;
 }
 
-.party-name {
-  font-size: 15px;
+.company-name {
+  font-size: 14px;
   font-weight: 700;
   color: #0f172a;
-  margin: 0 0 6px 0;
+  margin: 0 0 4px 0;
 }
 
-.party-sub {
+.company-details {
   font-size: 13px;
-  color: #475569;
+  color: #374151;
   margin: 2px 0;
   line-height: 1.5;
 }
 
-.party-address {
+.company-address {
   font-size: 13px;
-  color: #475569;
+  color: #374151;
   margin: 2px 0;
   line-height: 1.5;
   white-space: pre-line;
 }
 
-.services-table {
+.items-table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 40px;
 }
 
-.services-table th {
-  background: #f8fafc;
-  border-bottom: 1px solid #e2e8f0;
-  padding: 12px 16px;
+.items-table th {
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 12px;
   font-size: 11px;
   font-weight: 700;
-  color: #64748b;
+  color: #4b5563;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
   text-align: left;
 }
 
-.services-table td {
-  padding: 16px;
-  border-bottom: 1px solid #f1f5f9;
-  font-size: 14px;
+.items-table td {
+  padding: 16px 12px;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 13px;
 }
 
 .text-right {
-  text-align: right !important;
+  text-align: right;
 }
 
-.amount-cell {
+.val-cell {
   font-weight: 500;
 }
 
-.total-row td {
-  background: #f8fafc;
-  border-bottom: 2px solid #0f172a;
-  font-size: 16px;
+.summary-row td {
+  font-size: 15px;
   font-weight: 700;
   color: #0f172a;
-  padding: 18px 16px;
+  border-bottom: 2px solid #0f172a;
+  background: #f9fafb;
+  padding: 16px 12px;
 }
 
-.crypto-payment-box {
+.crypto-details-card {
   background: #f8fafc;
   border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 20px;
+  border-radius: 6px;
+  padding: 18px;
   margin-bottom: 40px;
+  font-size: 13px;
 }
 
-.crypto-payment-box h3 {
-  margin: 0 0 12px 0;
-  font-size: 13px;
+.crypto-details-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 12px;
   font-weight: 700;
   color: #0f172a;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
-.crypto-values {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
-  color: #334155;
+.crypto-lines p {
+  margin: 4px 0;
 }
 
-.crypto-values p {
-  margin: 6px 0;
-}
-
-.bold-lbl {
-  font-family: sans-serif;
-  font-weight: 600;
+.label-bold {
   color: #64748b;
+  font-weight: 600;
 }
 
-.mono-address {
+.wallet-string {
+  font-family: monospace;
   word-break: break-all;
 }
 
-.crypto-warning {
-  margin: 8px 0 0 0;
+.crypto-disclaimer {
+  margin: 10px 0 0 0;
   font-size: 11px;
   color: #64748b;
   font-style: italic;
 }
 
-.signature-block {
+.signature-area {
   margin-top: auto;
   padding-bottom: 20px;
 }
 
-.signature-block p {
+.signature-area p {
   font-size: 13px;
-  color: #475569;
   margin: 0;
 }
 
-.signature-line {
-  border-bottom: 1px solid #94a3b8;
-  width: 220px;
-  margin-top: 50px;
-  margin-bottom: 8px;
+.sig-line {
+  border-bottom: 1px solid #333;
+  width: 200px;
+  height: 48px;
+  margin-bottom: 6px;
 }
 
-.signature-name {
-  font-size: 12px;
-  font-weight: 600;
-  color: #0f172a;
+.sig-author {
+  color: #6b7280;
+  font-size: 11px !important;
 }
 
-.document-footer {
-  border-top: 1px solid #e2e8f0;
+.sheet-footer {
+  border-top: 1px solid #e5e7eb;
   padding-top: 16px;
   text-align: center;
-  font-size: 12px;
-  color: #94a3b8;
+  font-size: 11px;
+  color: #9ca3af;
 }
 
-/* Для вывода на печать сбрасываем тени страницы */
 @media print {
-  .a4-document-sheet {
+  .a4-sheet-canvas {
     width: 100%;
     min-height: auto;
     padding: 0;
