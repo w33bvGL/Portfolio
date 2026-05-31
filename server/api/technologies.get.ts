@@ -23,7 +23,7 @@ export default defineEventHandler(() => {
       { name: 'Nuxt UI', icon: 'https://nuxt.com/assets/design-kit/icon-green.svg' },
       { name: 'ShadCN', icon: '/tech/shad-cn.png' },
       { name: 'Prime Vue', icon: '/tech/prime-vue.png' },
-      { name: 'Vuetify', icon: 'https://bestofjs.org/logos/vuetify.svg' },
+      { name: 'Vuetify', icon: 'https://bestofjs.org/logos/vuetify.svg' }
     ],
     backend: [
       // Core Stack
@@ -64,7 +64,7 @@ export default defineEventHandler(() => {
       // File Storage & Analytics
       { name: 'MinIO', icon: '/tech/backend/minio.png' },
       { name: 'Cloudflare R2', icon: '/tech/backend/cloudflare.svg' },
-      { name: 'ClickHouse', icon: '/tech/backend/clickhouse.svg' },
+      { name: 'ClickHouse', icon: '/tech/backend/clickhouse.svg' }
     ],
     tools: [
       // Infrastructure
@@ -76,7 +76,7 @@ export default defineEventHandler(() => {
       { name: 'Stripe', icon: '/tech/tools/stripe.svg' },
       { name: 'PayPal', icon: '/tech/tools/paypal.svg' },
       { name: 'FreeKassa', icon: '/tech/tools/freekassa.png' },
-      { name: 'Platega.io', icon: '/tech/tools/platega.svg' },
+      { name: 'Platega.io', icon: '/tech/tools/platega.svg' }
     ]
   }
 })

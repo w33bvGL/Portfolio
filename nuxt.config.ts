@@ -7,7 +7,7 @@ import puppeteer from 'puppeteer'
 const locales = [
   { code: 'en', language: 'en-US', name: 'English' },
   { code: 'hy', language: 'hy-AM', name: 'Հայերեն' },
-  { code: 'ru', language: 'ru-RU', name: 'Русский' },
+  { code: 'ru', language: 'ru-RU', name: 'Русский' }
 ]
 
 export default defineNuxtConfig({
