@@ -30,12 +30,18 @@ export default defineEventHandler(() => {
       { name: 'PHP', icon: '/tech/php.svg' },
       { name: 'Laravel', icon: '/tech/laravel.svg' },
 
+      // High-Performance PHP & Async
+      { name: 'Swoole', icon: '/tech/backend/swoole.png' },
+
       // Laravel Ecosystem & Admin Panels
       { name: 'Inertia.js', icon: '/tech/inertia-js.svg' },
       { name: 'Livewire', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/livewire/livewire-original.svg' },
       { name: 'Filament', icon: '/tech/filament.svg' },
       { name: 'Moonshine', icon: 'https://demo.moonshine-laravel.com/vendor/moonshine/logo-small.svg' },
       { name: 'Nova', icon: '/tech/nova.svg' },
+
+      // Testing
+      { name: 'Pest', icon: '/tech/backend/pest.png' },
 
       // Primary Databases (Relational)
       { name: 'PostgresSQL', icon: '/tech/postgresql.svg' },
@@ -56,7 +62,7 @@ export default defineEventHandler(() => {
       { name: 'Elasticsearch', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/elasticsearch/elasticsearch-original.svg' },
 
       // File Storage & Analytics
-      { name: 'MinIO', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/minio/minio-original.svg' },
+      { name: 'MinIO', icon: '/tech/backend/minio.png' },
       { name: 'Cloudflare R2', icon: '/tech/backend/cloudflare.svg' },
       { name: 'ClickHouse', icon: '/tech/backend/clickhouse.svg' },
     ],
