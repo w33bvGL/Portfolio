@@ -6,41 +6,66 @@ defineProps<{
 
 <template>
   <div class="sidebar-form">
-    <h2 class="panel-title">Документ</h2>
+    <h2 class="panel-title">
+      Документ
+    </h2>
 
     <div class="form-row-2">
       <div class="form-group">
         <label>Инвойс №</label>
-        <input v-model="data.invoiceNo" type="text" />
+        <input
+          v-model="data.invoiceNo"
+          type="text"
+        >
       </div>
       <div class="form-group">
         <label>Дата</label>
-        <input v-model="data.date" type="date" />
+        <input
+          v-model="data.date"
+          type="date"
+        >
       </div>
     </div>
 
     <div class="form-group">
       <label>Срок оплаты</label>
-      <input v-model="data.dueDate" type="date" />
+      <input
+        v-model="data.dueDate"
+        type="date"
+      >
     </div>
 
-    <div class="form-divider"></div>
+    <div class="form-divider" />
 
-    <h2 class="panel-title">Данные клиента</h2>
+    <h2 class="panel-title">
+      Данные клиента
+    </h2>
 
     <div class="form-group">
       <label>Компания / Заказчик</label>
-      <input v-model="data.client.name" type="text" placeholder="Tech Solutions LLC" />
+      <input
+        v-model="data.client.name"
+        type="text"
+        placeholder="Tech Solutions LLC"
+      >
     </div>
 
     <div class="form-group">
       <label>Юридический адрес</label>
-      <textarea v-model="data.client.address" rows="3" placeholder="Адрес компании..."></textarea>
+      <textarea
+        v-model="data.client.address"
+        rows="3"
+        placeholder="Адрес компании..."
+      />
     </div>
 
     <div class="form-group">
       <label>Email для счетов</label>
-      <input v-model="data.client.email" type="email" placeholder="finance@company.com" />
+      <input
+        v-model="data.client.email"
+        type="email"
+        placeholder="finance@company.com"
+      >
     </div>
   </div>
 </template>

@@ -17,7 +17,9 @@ const formatCurrency = (value: number) => {
 <template>
   <div class="a4-sheet-canvas">
     <div class="doc-header">
-      <h1 class="doc-title">INVOICE</h1>
+      <h1 class="doc-title">
+        INVOICE
+      </h1>
       <div class="meta-block">
         <p><strong>Invoice No:</strong> #{{ data.invoiceNo }}</p>
         <p><strong>Date:</strong> {{ data.date }}</p>
@@ -28,36 +30,63 @@ const formatCurrency = (value: number) => {
     <div class="sides-grid">
       <div class="side-box">
         <h3>From (Contractor)</h3>
-        <p class="company-name">IE Vahe Sargsyan</p>
-        <p class="company-details">Reg No: 286.1571600 | TIN: 20218056</p>
-        <p class="company-details">28 I. Hakobyan st., Vosketap, Ararat reg., 0617, Armenia</p>
-        <p class="company-details">w33bv.gl@gmail.com</p>
+        <p class="company-name">
+          IE Vahe Sargsyan
+        </p>
+        <p class="company-details">
+          Reg No: 286.1571600 | TIN: 20218056
+        </p>
+        <p class="company-details">
+          28 I. Hakobyan st., Vosketap, Ararat reg., 0617, Armenia
+        </p>
+        <p class="company-details">
+          w33bv.gl@gmail.com
+        </p>
       </div>
 
       <div class="side-box">
         <h3>To (Client)</h3>
-        <p class="company-name">{{ data.client.name || '—' }}</p>
-        <p class="company-address">{{ data.client.address || '—' }}</p>
-        <p class="company-details">{{ data.client.email || '—' }}</p>
+        <p class="company-name">
+          {{ data.client.name || '—' }}
+        </p>
+        <p class="company-address">
+          {{ data.client.address || '—' }}
+        </p>
+        <p class="company-details">
+          {{ data.client.email || '—' }}
+        </p>
       </div>
     </div>
 
     <table class="items-table">
       <thead>
-      <tr>
-        <th>Description of Services</th>
-        <th class="text-right">Amount</th>
-      </tr>
+        <tr>
+          <th>Description of Services</th>
+          <th class="text-right">
+            Amount
+          </th>
+        </tr>
       </thead>
       <tbody>
-      <tr v-for="(item, index) in data.items" :key="index">
-        <td class="desc-cell">{{ item.description || '—' }}</td>
-        <td class="text-right val-cell">{{ formatCurrency(item.amount) }}</td>
-      </tr>
-      <tr class="summary-row">
-        <td class="sum-label">Total Due:</td>
-        <td class="text-right sum-value">{{ formatCurrency(totalAmount) }} USD</td>
-      </tr>
+        <tr
+          v-for="(item, index) in data.items"
+          :key="index"
+        >
+          <td class="desc-cell">
+            {{ item.description || '—' }}
+          </td>
+          <td class="text-right val-cell">
+            {{ formatCurrency(item.amount) }}
+          </td>
+        </tr>
+        <tr class="summary-row">
+          <td class="sum-label">
+            Total Due:
+          </td>
+          <td class="text-right sum-value">
+            {{ formatCurrency(totalAmount) }} USD
+          </td>
+        </tr>
       </tbody>
     </table>
 
@@ -74,8 +103,10 @@ const formatCurrency = (value: number) => {
 
     <div class="signature-area">
       <p>Authorized Signature:</p>
-      <div class="sig-line"></div>
-      <p class="sig-author">IE Vahe Sargsyan</p>
+      <div class="sig-line" />
+      <p class="sig-author">
+        IE Vahe Sargsyan
+      </p>
     </div>
 
     <footer class="sheet-footer">

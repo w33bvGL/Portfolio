@@ -20,43 +20,75 @@ const triggerPrint = () => {
 
 <template>
   <div class="sidebar-form">
-    <h2 class="panel-title">Спецификация услуг</h2>
+    <h2 class="panel-title">
+      Спецификация услуг
+    </h2>
 
-    <div v-for="(item, index) in data.items" :key="index" class="item-card">
+    <div
+      v-for="(item, index) in data.items"
+      :key="index"
+      class="item-card"
+    >
       <div class="form-group">
         <label>Описание работ</label>
-        <input v-model="item.description" type="text" placeholder="Software development..." />
+        <input
+          v-model="item.description"
+          type="text"
+          placeholder="Software development..."
+        >
       </div>
       <div class="form-group">
         <label>Цена (USD)</label>
-        <input v-model.number="item.amount" type="number" />
+        <input
+          v-model.number="item.amount"
+          type="number"
+        >
       </div>
-      <button v-if="data.items.length > 1" @click="removeItem(index)" class="btn-remove">
+      <button
+        v-if="data.items.length > 1"
+        class="btn-remove"
+        @click="removeItem(index)"
+      >
         Удалить позицию
       </button>
     </div>
 
-    <button @click="addItem" class="btn-add-row">
+    <button
+      class="btn-add-row"
+      @click="addItem"
+    >
       + Добавить строку
     </button>
 
-    <div class="form-divider"></div>
+    <div class="form-divider" />
 
-    <h2 class="panel-title">Крипто-реквизиты</h2>
+    <h2 class="panel-title">
+      Крипто-реквизиты
+    </h2>
 
     <div class="form-group">
       <label>Сеть (Network)</label>
-      <input v-model="data.crypto.network" type="text" />
+      <input
+        v-model="data.crypto.network"
+        type="text"
+      >
     </div>
 
     <div class="form-group">
       <label>Адрес кошелька</label>
-      <input v-model="data.crypto.wallet" type="text" class="font-mono" />
+      <input
+        v-model="data.crypto.wallet"
+        type="text"
+        class="font-mono"
+      >
     </div>
 
-    <div class="form-divider"></div>
+    <div class="form-divider" />
 
-    <button @click="triggerPrint" class="btn-submit">
+    <button
+      class="btn-submit"
+      @click="triggerPrint"
+    >
       Сохранить в PDF
     </button>
   </div>
