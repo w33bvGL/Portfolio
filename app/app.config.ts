@@ -12,7 +12,7 @@ export default defineAppConfig({
     experienceStartDate: '2023-01-01'
   },
   footer: {
-    credits: `Copyright © 2024 - ${new Date().getFullYear()}`,
+    credits: 'Copyright © Vahe Sargsyan',
     links: [
       {
         'icon': 'i-simple-icons-github',
