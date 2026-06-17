@@ -19,6 +19,25 @@ useSeoMeta({
   twitterDescription: description
 })
 useScrollReveal({ selector: '.scroll-animate-reveal, .scroll-animate-fade' })
+
+const adultConfirmed = useState<boolean>('adult-confirmed', () => false)
+const confirmingProject = ref<Project | null>(null)
+
+const onAdultClick = (project: Project) => {
+  confirmingProject.value = project
+}
+
+const onConfirm = () => {
+  adultConfirmed.value = true
+  if (confirmingProject.value?.url) {
+    window.open(confirmingProject.value.url, '_blank', 'noopener,noreferrer')
+  }
+  confirmingProject.value = null
+}
+
+const onCancel = () => {
+  confirmingProject.value = null
+}
 </script>
 
 <template>
@@ -41,9 +60,17 @@ useScrollReveal({ selector: '.scroll-animate-reveal, .scroll-animate-fade' })
         :key="project.name"
         :project="project"
         class="scroll-animate-reveal scroll-stagger-even"
+        @adult-click="onAdultClick"
       />
     </UiLayoutGrid>
   </UiLayoutContainer>
+
+  <UiAdultConfirmationModal
+    :is-open="!!confirmingProject"
+    :project-name="confirmingProject?.name"
+    @confirm="onConfirm"
+    @cancel="onCancel"
+  />
 </template>
 
 <style scoped>

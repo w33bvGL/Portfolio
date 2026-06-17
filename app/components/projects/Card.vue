@@ -1,18 +1,38 @@
 <script setup lang="ts">
 import type { Project } from '~/types/project'
 
-defineProps<{
+const props = defineProps<{
   project: Project
 }>()
+
+const emit = defineEmits<{
+  'adult-click': [project: Project]
+}>()
+
+const adultConfirmed = useState<boolean>('adult-confirmed', () => false)
+const isLocked = computed(() => !!props.project.isAdult && !adultConfirmed.value)
+
+const linkAttrs = computed(() => {
+  if (!isLocked.value && props.project.url) {
+    return { href: props.project.url, target: '_blank', rel: 'noopener noreferrer' }
+  }
+  return {}
+})
+
+const handleClick = () => {
+  if (isLocked.value) {
+    emit('adult-click', props.project)
+  }
+}
 </script>
 
 <template>
-  <a
-    :href="project.url"
-    target="_blank"
-    rel="noopener noreferrer"
+  <component
+    :is="!isLocked && project.url ? 'a' : 'div'"
+    v-bind="linkAttrs"
     class="p-card"
-    :class="{ 'is-adult': project.isAdult }"
+    :class="{ 'is-adult': project.isAdult, 'is-locked': isLocked }"
+    @click="handleClick"
   >
     <UiCard
       class="p-inner"
@@ -28,25 +48,25 @@ defineProps<{
           height="340"
           format="webp"
           class="p-img"
-          :class="{ 'p-blur': project.isAdult }"
+          :class="{ 'p-blur': isLocked }"
           loading="lazy"
         />
 
         <div
-          v-if="project.isAdult"
+          v-if="isLocked"
           class="p-adult-mask"
         >
-          <UiButton
-            variant="ghost"
-            icon="lucide:eye-off"
-            size="sm"
-          >
-            {{ $t('projects.sensitive_content') }}
-          </UiButton>
+          <div class="adult-lock-content">
+            <Icon
+              name="lucide:eye-off"
+              class="lock-icon"
+            />
+            <span class="lock-label">NSFW · 18+</span>
+          </div>
         </div>
 
         <div
-          v-if="project.url"
+          v-if="project.url && !isLocked"
           class="p-icon"
         >
           <UiButton
@@ -60,7 +80,9 @@ defineProps<{
 
       <UiCardHeader>
         <div class="p-row">
-          <UiCardTitle class="p-title">{{ project.name }}</UiCardTitle>
+          <UiCardTitle class="p-title">
+            {{ project.name }}
+          </UiCardTitle>
           <span
             v-if="project.isAdult"
             class="p-badge"
@@ -87,7 +109,7 @@ defineProps<{
         </UiCardDescription>
       </UiCardContent>
     </UiCard>
-  </a>
+  </component>
 </template>
 
 <style scoped>
@@ -139,6 +161,15 @@ defineProps<{
   }
 }
 
+.is-locked {
+  cursor: pointer;
+
+  &:hover .adult-lock-content {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .p-img-box {
   position: relative;
   width: 100%;
@@ -167,8 +198,8 @@ defineProps<{
   background: linear-gradient(to top, rgba(0, 0, 0, 0.15) 0%, transparent 60%);
 
   .dark &, @media (prefers-color-scheme: dark) {
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 60%);
-}
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 60%);
+  }
 }
 
 .p-adult-mask {
@@ -182,8 +213,34 @@ defineProps<{
   backdrop-filter: blur(4px);
 
   .dark &, @media (prefers-color-scheme: dark) {
-  background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.3);
+  }
 }
+
+.adult-lock-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.75;
+  transform: translateY(4px);
+  transition: opacity var(--duration-fast) ease, transform var(--duration-fast) ease;
+}
+
+.lock-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: #fff;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+}
+
+.lock-label {
+  font-size: var(--font-xs);
+  font-weight: var(--weight-bold);
+  color: #fff;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .p-badge {

@@ -65,7 +65,13 @@
   "projects": {
     "title": "Cases & Projects",
     "description": "Commercial production solutions across the full cycle: from interactive SPA/SSR interface design to database architecture and CI/CD deployment.",
-    "sensitive_content": "NDA · Private code"
+    "sensitive_content": "NDA · Private code",
+    "adult_confirm": {
+      "title": "Restricted Content",
+      "text": "The project {name} contains adult material. Please confirm you are 18 or older.",
+      "cancel": "Go Back",
+      "confirm": "I am 18+"
+    }
   },
   "languages": {
     "title": "Languages"

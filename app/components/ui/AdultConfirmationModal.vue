@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { t } = useI18n()
+
 defineProps<{
   isOpen: boolean
   projectName?: string
@@ -22,13 +24,18 @@ const emit = defineEmits(['confirm', 'cancel'])
         </div>
 
         <h2 class="guard-title">
-          Restricted Content
+          {{ t('projects.adult_confirm.title') }}
         </h2>
 
-        <p class="guard-text">
-          Project <span>{{ projectName }}</span> contains adult material.
-          Are you over 18 years of age?
-        </p>
+        <i18n-t
+          keypath="projects.adult_confirm.text"
+          tag="p"
+          class="guard-text"
+        >
+          <template #name>
+            <strong>{{ projectName }}</strong>
+          </template>
+        </i18n-t>
 
         <UiLayoutFlex full>
           <UiButton
@@ -36,14 +43,14 @@ const emit = defineEmits(['confirm', 'cancel'])
             block
             @click="emit('cancel')"
           >
-            Go Back
+            {{ t('projects.adult_confirm.cancel') }}
           </UiButton>
           <UiButton
             block
             variant="danger"
             @click="emit('confirm')"
           >
-            I am 18+
+            {{ t('projects.adult_confirm.confirm') }}
           </UiButton>
         </UiLayoutFlex>
       </div>
@@ -108,14 +115,8 @@ const emit = defineEmits(['confirm', 'cancel'])
   max-width: 300px;
 }
 
-.guard-text span {
+.guard-text strong {
   color: #fff;
   font-weight: 600;
-}
-
-.guard-actions {
-  display: flex;
-  gap: 1rem;
-  width: 100%;
 }
 </style>
