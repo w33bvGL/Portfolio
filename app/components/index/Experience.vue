@@ -41,13 +41,13 @@ const delayClass = (idx: number) => `scroll-delay-${Math.min(idx + 1, 5)}`
         </div>
 
         <div class="date-anchor">
-          <span class="desktop-period">{{ exp.period || exp.year }}</span>
+          <span class="desktop-period">{{ exp.period }}</span>
         </div>
 
         <div class="content-col">
           <UiCard class="exp-card">
             <UiCardHeader class="exp-header">
-              <span class="mobile-period">{{ exp.period || exp.year }}</span>
+              <span class="mobile-period">{{ exp.period }}</span>
               <UiCardTitle as="h3">
                 {{ exp.title }}
               </UiCardTitle>

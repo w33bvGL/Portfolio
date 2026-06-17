@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { Education, TranslatedEducation } from '~/types/education'
+import type { Education } from '~/types/education'
 
 const { t, locale } = useI18n()
 
-const { data: educations } = await useAsyncData<TranslatedEducation>(`education-${locale.value}`, () =>
+const { data: educations } = await useAsyncData<Education[]>(`education-${locale.value}`, () =>
   $fetch('/api/education', { query: { lang: locale.value } })
 )
 </script>

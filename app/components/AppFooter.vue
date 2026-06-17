@@ -4,7 +4,9 @@ const { t } = useI18n()
 
 const footerData = computed(() => appConfig.footer || {})
 const links = computed(() => footerData.value.links || [])
-const currentYear = new Date().getFullYear()
+
+const now = useNow()
+const currentYear = computed(() => new Date(now.value).getFullYear())
 </script>
 
 <template>

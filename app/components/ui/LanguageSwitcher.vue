@@ -15,7 +15,7 @@ const localeLabels: Record<string, string> = {
 const currentLocaleLabel = computed(() => localeLabels[locale.value] || locale.value)
 
 const switchLocale = (code: string) => {
-  setLocale(code)
+  setLocale(code as Locale)
   dropdownRef.value?.close()
 }
 </script>

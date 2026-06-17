@@ -4,6 +4,7 @@ export type Project = {
   description: string
   isAdult?: boolean
   url?: string
+  tags?: string[]
 }
 
 export type TranslatedProjects = Translated<Project>

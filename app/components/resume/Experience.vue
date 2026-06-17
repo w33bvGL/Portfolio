@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Experience, TranslatedExperiences } from '~/types/experience'
+import type { Experience } from '~/types/experience'
 
 const { t, locale } = useI18n()
 const { experienceString } = useExperienceString()

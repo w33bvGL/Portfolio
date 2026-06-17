@@ -18,7 +18,7 @@ const { data: faq } = await useAsyncData<FaqItem[]>(
       class="scroll-animate-fade"
     />
     <div class="scroll-animate-reveal">
-      <UiAccordion :items="faq" />
+      <UiAccordion :items="faq ?? []" />
     </div>
   </UiLayoutContainer>
 </template>

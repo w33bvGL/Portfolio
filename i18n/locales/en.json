@@ -5,20 +5,20 @@
     "about": "Profile"
   },
   "availability": {
-    "available": "Available for projects",
-    "unavailable": "Busy"
+    "available": "Open to new projects",
+    "unavailable": "Currently busy"
   },
   "error": {
-    "404_title": "Page not found (ノ°益°)ノ",
-    "default_title": "System failure (｡•́︿•̀｡)",
-    "404_message": "Route does not exist. 404. (－_－) zzZ",
-    "default_message": "Critical runtime error. (╯°□°）╯",
+    "404_title": "Page not found",
+    "default_title": "Something went wrong",
+    "404_message": "This page doesn't exist — it may have been moved or removed.",
+    "default_message": "An unexpected error occurred. Please try reloading the page.",
     "return": "Back to home"
   },
   "index": {
     "cta": {
-      "title": "Vahe Sargsyan. Full Stack Engineer.",
-      "description": "Designing fault-tolerant backends (async PHP, Swoole, DDD) and building complex SPA/SSR interfaces with modern stacks. Solving challenges from high-load DB architecture to client-side rendering optimization. (驾_驾)",
+      "title": "Vahe Sargsyan — Full Stack Engineer",
+      "description": "I design fault-tolerant backends in async PHP (Swoole, DDD) and build performant SPA/SSR interfaces on a modern frontend stack. I own the full cycle — from high-load database architecture to client-side rendering optimization.",
       "resume": {
         "label": "Resume / CV",
         "download": "Download PDF",
@@ -31,41 +31,41 @@
     },
     "experience": {
       "title": "Work Experience",
-      "description": "Commercial development: realized tasks, architectural decisions, and stack. (⚙_⚙)",
+      "description": "Commercial development: delivered features, architectural decisions, and the stack behind them.",
       "years": ["year", "years", "years"],
       "months": ["month", "months", "months"],
-      "lessThanMonth": "< 1 mo."
+      "lessThanMonth": "less than a month"
     },
     "education": {
-      "title": "Background",
-      "description": "Formal education and qualifications. (o_O)"
+      "title": "Education",
+      "description": "Formal training and qualifications."
     },
     "faq": {
-      "title": "Q&A",
-      "description": "Stack, processes, and technical collaboration terms. (￣ω￣;)"
+      "title": "Questions & Answers",
+      "description": "Stack, process, and terms of technical collaboration."
     },
     "the_connect": {
-      "title": "Project Integration (ò_ó)",
-      "description": "Available for architectural design, code auditing, or developing complex modules. (＠_＠)",
+      "title": "Project Integration",
+      "description": "I join at the architecture design, code audit, or complex module development stage.",
       "contact_telegram": "Message on Telegram"
     }
   },
   "about": {
     "title": "Engineering Profile",
-    "description": "Full Stack Engineer. Designing fault-tolerant backend architectures (Swoole, DDD) and creating performant SPA/SSR interfaces. Optimizing databases, writing clean code, and handling the full product lifecycle.",
+    "description": "Full Stack Engineer. I design fault-tolerant backend architectures (Swoole, DDD) and build performant SPA/SSR interfaces. I optimize databases, write maintainable code, and own the full product development cycle.",
     "stack": {
       "title": "Tech Stack",
-      "description": "Working tools: languages, frameworks, DBMS, and automation infrastructure. (⌐■_■)凸"
+      "description": "Day-to-day toolkit: languages, frameworks, databases, and automation infrastructure."
     },
     "story": {
-      "title": "Engineering Principles ( ` ω ` )",
-      "description": "Solving business problems with code. No spaghetti, automating routine, ensuring performance. (￣▽￣)b"
+      "title": "Engineering Principles",
+      "description": "I solve business problems with code — favouring maintainable architecture, automating routine, and owning performance."
     }
   },
   "projects": {
     "title": "Cases & Projects",
-    "description": "Commercial production solutions. Full cycle: from interactive SPA/SSR interface design to DB architecture and CI/CD deployment. (∠_∠)",
-    "sensitive_content": "NDA / Private code (递_递)"
+    "description": "Commercial production solutions across the full cycle: from interactive SPA/SSR interface design to database architecture and CI/CD deployment.",
+    "sensitive_content": "NDA · Private code"
   },
   "languages": {
     "title": "Languages"
@@ -80,6 +80,6 @@
     "skills": "Skills"
   },
   "footer": {
-    "copyright": "Vahe Sargsyan. (￣▽￣)b"
+    "copyright": "Vahe Sargsyan"
   }
 }

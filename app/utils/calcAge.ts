@@ -1,6 +1,6 @@
-export function calcAge(birthdayString: string): number {
+export function calcAge(birthdayString: string, now: number = Date.now()): number {
   const birthday = new Date(birthdayString)
-  const today = new Date()
+  const today = new Date(now)
 
   return today.getFullYear() - birthday.getFullYear() - (
     today.getMonth() < birthday.getMonth()
