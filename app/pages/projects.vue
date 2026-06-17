@@ -63,14 +63,13 @@ const onCancel = () => {
         @adult-click="onAdultClick"
       />
     </UiLayoutGrid>
+    <UiAdultConfirmationModal
+      :is-open="!!confirmingProject"
+      :project-name="confirmingProject?.name"
+      @confirm="onConfirm"
+      @cancel="onCancel"
+    />
   </UiLayoutContainer>
-
-  <UiAdultConfirmationModal
-    :is-open="!!confirmingProject"
-    :project-name="confirmingProject?.name"
-    @confirm="onConfirm"
-    @cancel="onCancel"
-  />
 </template>
 
 <style scoped>
