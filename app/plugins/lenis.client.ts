@@ -1,53 +1,107 @@
 import Lenis from 'lenis'
+import { nextTick } from 'vue'
+import type { RouteLocationNormalized } from 'vue-router'
 
-export default defineNuxtPlugin(() => {
-  if (!import.meta.client) return
+export default defineNuxtPlugin((nuxtApp) => {
+  if (typeof window === 'undefined') return
+
+  const router = useRouter()
+
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual'
+  }
 
   const lenis = new Lenis({
     duration: 1.2,
     easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    smoothWheel: true,
-    autoRaf: false
+    smoothWheel: true
   })
 
-  const isGlobalLocked = () => {
-    return window.getComputedStyle(document.body).overflow === 'hidden'
-      || window.getComputedStyle(document.documentElement).overflow === 'hidden'
-  }
+  let isNavigating = false
+  let previousHeight = 0
+  let rafId: number | null = null
+
+  const isGlobalLocked = () =>
+    window.getComputedStyle(document.body).overflow === 'hidden'
+    || window.getComputedStyle(document.documentElement).overflow === 'hidden'
+
+  let lastTargetState: 'start' | 'stop' | null = null
 
   const runRaf = (time: number) => {
-    if (isGlobalLocked()) {
-      lenis.stop()
-    } else {
-      lenis.start()
+    const shouldStop = isGlobalLocked() || isNavigating
+    const currentTargetState = shouldStop ? 'stop' : 'start'
+
+    if (currentTargetState !== lastTargetState) {
+      if (shouldStop) {
+        lenis.stop()
+      } else {
+        lenis.start()
+      }
+      lastTargetState = currentTargetState
     }
 
     lenis.raf(time)
-    requestAnimationFrame(runRaf)
+    rafId = requestAnimationFrame(runRaf)
   }
-  requestAnimationFrame(runRaf)
+  rafId = requestAnimationFrame(runRaf)
 
-  window.addEventListener('wheel', (event) => {
-    let target = event.target as HTMLElement | null
-    const delta = event.deltaY
+  let resizeObserver: ResizeObserver | null = null
+  const initResizeObserver = () => {
+    resizeObserver?.disconnect()
+    resizeObserver = new ResizeObserver(() => {
+      lenis.resize()
+    })
+    const target = document.getElementById('__nuxt') || document.body
+    resizeObserver.observe(target)
+  }
 
-    while (target && target !== document.body) {
-      const style = window.getComputedStyle(target)
-      const overflowY = style.overflowY
+  nuxtApp.hook('app:mounted', () => {
+    initResizeObserver()
+  })
 
-      const isScrollable = overflowY === 'auto' || overflowY === 'scroll'
-      const canScrollMore = delta > 0
-        ? target.scrollHeight > target.clientHeight + target.scrollTop
-        : target.scrollTop > 0
-
-      if (isScrollable && canScrollMore) {
-        event.stopPropagation()
-        return
-      }
-
-      target = target.parentElement
+  router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized) => {
+    if (to.path !== from.path) {
+      isNavigating = true
+      previousHeight = document.body.scrollHeight
+      lenis.stop()
     }
-  }, { passive: false, capture: true })
+  })
 
-  return { provide: { lenis } }
+  nuxtApp.hook('page:finish', async () => {
+    if (!isNavigating) return
+    await nextTick()
+
+    let attempts = 0
+    await new Promise<void>((resolve) => {
+      const interval = setInterval(() => {
+        attempts++
+        if (document.body.scrollHeight !== previousHeight || attempts > 15) {
+          clearInterval(interval)
+          resolve()
+        }
+      }, 32)
+    })
+
+    lenis.scrollTo(0, {
+      duration: 1.2,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      force: true
+    })
+
+    lenis.resize()
+    initResizeObserver()
+    isNavigating = false
+  })
+
+  const originalUnmount = nuxtApp.vueApp.unmount
+  nuxtApp.vueApp.unmount = function () {
+    if (rafId) cancelAnimationFrame(rafId)
+    resizeObserver?.disconnect()
+    lenis.destroy()
+    return originalUnmount.call(nuxtApp.vueApp)
+  }
+
+  return {
+    provide: { lenis }
+  }
 })
