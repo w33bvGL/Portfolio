@@ -34,7 +34,7 @@
     "@vueuse/nuxt": "^14.2.1",
     "dotenv-cli": "^8.0.0",
     "eslint": "^9.27.0",
-    "puppeteer": "^24.10.1",
+    "puppeteer": "^25.1.0",
     "typescript": "^5.8.3",
     "vue-tsc": "^2.2.10"
   },
