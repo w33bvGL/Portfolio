@@ -32,7 +32,7 @@
     "@nuxtjs/i18n": "^10.2.3",
     "@types/fs-extra": "^11.0.4",
     "@vueuse/nuxt": "^14.2.1",
-    "dotenv-cli": "^8.0.0",
+    "dotenv-cli": "^11.0.0",
     "eslint": "^9.27.0",
     "puppeteer": "^24.10.1",
     "typescript": "^5.8.3",
