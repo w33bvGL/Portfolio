@@ -20,6 +20,8 @@ export default defineNuxtConfig({
     '@vueuse/nuxt'
   ],
 
+  ssr: true,
+
   app: {
     pageTransition: { name: 'page', mode: 'out-in' }
   },
@@ -30,13 +32,19 @@ export default defineNuxtConfig({
     appEnv: process.env.APP_ENV || 'development',
     appBaseUrl: process.env.APP_BASE_URL || 'http://localhost:3000',
     public: {
-      appEnv: process.env.APP_ENV || 'development'
+      appEnv: process.env.APP_ENV || 'development',
+      enableLenis: process.env.ENABLE_LENIS == 'false'
     }
+  },
+
+  experimental: {
+    appManifest: false
   },
 
   compatibilityDate: '2024-11-01',
 
   nitro: {
+    preset: 'static',
     prerender: {
       crawlLinks: true,
       failOnError: true,
