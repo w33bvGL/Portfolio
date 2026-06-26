@@ -6,13 +6,18 @@ const { t } = useI18n()
 <template>
   <header class="resume-header">
     <div class="header-left">
-      <h1 class="name">
-        {{ t('resume.name') }} {{ t('resume.surname') }}
-      </h1>
-      <h2 class="position">
-        {{ t('resume.position') }}
-        <span class="stack-badge">{{ t('resume.stack') }}</span>
-      </h2>
+      <div class="name-row">
+        <span class="accent-bar" />
+        <div class="name-block">
+          <h1 class="name">
+            {{ t('resume.name') }} {{ t('resume.surname') }}
+          </h1>
+          <h2 class="position">
+            {{ t('resume.position') }}
+            <span class="stack-badge">{{ t('resume.stack') }}</span>
+          </h2>
+        </div>
+      </div>
       <p class="summary">
         {{ $t('about.description') }}
       </p>
@@ -21,14 +26,14 @@ const { t } = useI18n()
     <div class="header-right">
       <ul class="contacts-list">
         <li>
-          <span class="label">Email:</span>
+          <span class="label">Email</span>
           <a
             :href="`mailto:${global.email}`"
             class="value"
           >{{ global.email }}</a>
         </li>
         <li>
-          <span class="label">Telegram:</span>
+          <span class="label">Telegram</span>
           <a
             :href="`https://t.me/${global.telegram}`"
             target="_blank"
@@ -36,7 +41,7 @@ const { t } = useI18n()
           >{{ global.telegram }}</a>
         </li>
         <li>
-          <span class="label">Web:</span>
+          <span class="label">Web</span>
           <a
             href="https://vahe-sargsyan.com"
             target="_blank"
@@ -44,7 +49,7 @@ const { t } = useI18n()
           >vahe-sargsyan.com</a>
         </li>
         <li class="location">
-          <span class="label">Loc:</span>
+          <span class="label">Location</span>
           <span class="value">{{ global.location }}</span>
         </li>
       </ul>
@@ -56,74 +61,107 @@ const { t } = useI18n()
 .resume-header {
   display: flex;
   justify-content: space-between;
-  border-bottom: 2px solid #111;
-  padding-bottom: 1rem;
-  margin-bottom: 1.25rem;
-  gap: 2rem;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--r-line);
+  padding-bottom: 1.1rem;
+  gap: 2.5rem;
 }
 
-.header-left { flex: 1; }
+.header-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.name-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0.7rem;
+  margin-bottom: 0.65rem;
+}
+
+.accent-bar {
+  width: 4px;
+  border-radius: 2px;
+  background: var(--r-accent);
+  flex-shrink: 0;
+}
 
 .name {
-  font-size: 1.75rem;
+  font-size: 2.05rem;
   font-weight: 800;
-  line-height: 1;
+  line-height: 0.95;
   text-transform: uppercase;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.25rem;
+  letter-spacing: -0.025em;
+  color: var(--r-ink);
 }
 
 .position {
-  font-size: 1rem;
+  font-size: 0.92rem;
   font-weight: 600;
-  color: #374151;
+  color: var(--r-muted);
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 0.3rem;
 }
 
 .stack-badge {
-  font-size: 0.7rem;
-  background: #f3f4f6;
-  padding: 1px 6px;
+  font-family: var(--r-mono);
+  font-size: 0.66rem;
+  background: var(--r-accent-soft);
+  padding: 2px 7px;
   border-radius: 4px;
-  color: #4b5563;
-  font-weight: 500;
+  color: var(--r-accent);
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .summary {
   font-size: 0.8rem;
-  line-height: 1.3;
-  color: #4b5563;
-  text-align: justify;
+  line-height: 1.5;
+  color: var(--r-muted);
+  max-width: 62ch;
 }
 
 .header-right {
-  min-width: 170px;
+  min-width: 178px;
+  flex-shrink: 0;
   text-align: right;
 }
 
 .contacts-list {
   list-style: none;
-  font-size: 0.75rem;
-  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
 }
 
 .contacts-list li {
   display: flex;
-  justify-content: flex-end;
-  gap: 0.5rem;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.2;
 }
 
 .contacts-list .label {
-  color: #9ca3af;
-  font-weight: 500;
+  font-size: 0.55rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--r-faint);
+  margin-bottom: 1px;
 }
 
 .contacts-list .value {
-  color: #111;
+  font-size: 0.76rem;
+  color: var(--r-ink);
   font-weight: 600;
   text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.contacts-list a.value:hover {
+  color: var(--r-accent);
 }
 </style>

@@ -18,7 +18,7 @@
   "index": {
     "cta": {
       "title": "Vahe Sargsyan — Full Stack Engineer",
-      "description": "I design fault-tolerant backends in async PHP (Swoole, DDD) and build performant SPA/SSR interfaces on a modern frontend stack. I own the full cycle — from high-load database architecture to client-side rendering optimization.",
+      "description": "I design fault-tolerant backends in async PHP (Swoole, DDD) and build performant SPA/SSR interfaces on a modern frontend stack. I own the full cycle, from high-load database architecture to client-side rendering optimization.",
       "resume": {
         "label": "Resume / CV",
         "download": "Download PDF",
@@ -52,14 +52,14 @@
   },
   "about": {
     "title": "Engineering Profile",
-    "description": "Full Stack Engineer with 3.5 years building production systems end-to-end. I design fault-tolerant backends in async PHP (Swoole, DDD) and ship performant Vue/Nuxt SPA/SSR interfaces — recently delivered an entire platform solo, from PostgreSQL schema to UI.",
+    "description": "Full Stack Engineer. I build production systems end to end: fault-tolerant backends in async PHP (Swoole, DDD) and performant Vue/Nuxt SPA/SSR interfaces. Lately I shipped a whole platform on my own, from the PostgreSQL schema up to the UI.",
     "stack": {
       "title": "Tech Stack",
       "description": "Day-to-day toolkit: languages, frameworks, databases, and automation infrastructure."
     },
     "story": {
       "title": "Engineering Principles",
-      "description": "I solve business problems with code — favouring maintainable architecture, automating routine, and owning performance."
+      "description": "I solve business problems with code. I favour maintainable architecture, automate the routine, and stay accountable for performance."
     }
   },
   "projects": {

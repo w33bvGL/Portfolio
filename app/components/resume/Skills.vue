@@ -15,7 +15,7 @@ const skills = computed(() => ({
 <template>
   <section class="section">
     <h3 class="section-title">
-      {{ $t('resume.skills') }}
+      <span class="title-text">{{ $t('resume.skills') }}</span>
     </h3>
 
     <div
@@ -39,39 +39,58 @@ const skills = computed(() => ({
 
 <style scoped>
 .section-title {
-  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border-bottom: 1px solid #e5e7eb;
-  padding-bottom: 0.25rem;
-  margin-bottom: 0.75rem;
-  color: #111;
+  letter-spacing: 0.09em;
+  color: var(--r-ink);
+  padding-bottom: 0.4rem;
+  border-bottom: 1.5px solid var(--r-ink);
+  margin-bottom: 0.95rem;
 }
 
-.skills-group { margin-bottom: 1rem; }
+.title-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.title-text::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  background: var(--r-accent);
+}
+
+.skills-group { margin-bottom: 0.85rem; }
+.skills-group:last-child { margin-bottom: 0; }
 
 .skill-category {
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   font-weight: 700;
-  color: #9ca3af;
+  color: var(--r-accent);
   text-transform: uppercase;
-  margin-bottom: 0.35rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.4rem;
 }
 
 .skill-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.3rem;
+  gap: 0.28rem;
 }
 
 .tag {
-  font-size: 0.65rem;
-  background: #f3f4f6;
-  padding: 1px 5px;
-  border-radius: 3px;
-  color: #111;
+  font-size: 0.64rem;
+  background: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--r-muted);
   font-weight: 500;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--r-line);
+  line-height: 1.3;
 }
 </style>

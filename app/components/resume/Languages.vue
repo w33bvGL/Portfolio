@@ -15,7 +15,7 @@ const { data: languages } = await useAsyncData<Language[]>('languages', () =>
     class="section mt-section"
   >
     <h3 class="section-title">
-      {{ $t('languages.title') }}
+      <span class="title-text">{{ $t('languages.title') }}</span>
     </h3>
     <ul class="lang-list">
       <li
@@ -31,18 +31,34 @@ const { data: languages } = await useAsyncData<Language[]>('languages', () =>
 
 <style scoped>
 .mt-section {
-  margin-top: 1.25rem;
+  margin-top: 1.6rem;
 }
 
 .section-title {
-  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border-bottom: 1px solid #111;
-  padding-bottom: 0.25rem;
-  margin-bottom: 0.75rem;
-  color: #000 !important;
+  letter-spacing: 0.09em;
+  color: var(--r-ink);
+  padding-bottom: 0.4rem;
+  border-bottom: 1.5px solid var(--r-ink);
+  margin-bottom: 0.95rem;
+}
+
+.title-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.title-text::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  background: var(--r-accent);
 }
 
 .lang-list {
@@ -53,8 +69,9 @@ const { data: languages } = await useAsyncData<Language[]>('languages', () =>
 .lang-list li {
   display: flex;
   justify-content: space-between;
-  padding: 0.2rem 0;
-  border-bottom: 1px dashed #e5e7eb;
+  align-items: baseline;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--r-line-soft);
 }
 
 .lang-list li:last-child {
@@ -63,15 +80,12 @@ const { data: languages } = await useAsyncData<Language[]>('languages', () =>
 
 .lang-name {
   font-weight: 600;
-  color: #000 !important;
+  color: var(--r-ink);
 }
 
 .lang-lvl {
-  color: #4b5563 !important;
-}
-
-@media print {
-  .lang-name { color: #000 !important; }
-  .lang-lvl { color: #4b5563 !important; }
+  font-family: var(--r-mono);
+  font-size: 0.68rem;
+  color: var(--r-faint);
 }
 </style>

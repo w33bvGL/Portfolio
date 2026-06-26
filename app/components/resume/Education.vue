@@ -11,7 +11,7 @@ const { data: educations } = await useAsyncData<Education[]>(`education-${locale
 <template>
   <section class="section mt-section">
     <h3 class="section-title">
-      {{ t('index.education.title') }}
+      <span class="title-text">{{ t('index.education.title') }}</span>
     </h3>
     <div class="education-grid">
       <div
@@ -32,28 +32,68 @@ const { data: educations } = await useAsyncData<Education[]>(`education-${locale
 
 <style scoped>
 .mt-section {
-  margin-top: 1.25rem;
+  margin-top: 1.6rem;
 }
 
 .section-title {
-  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border-bottom: 1px solid #e5e7eb;
-  padding-bottom: 0.25rem;
-  margin-bottom: 0.75rem;
-  color: #111;
+  letter-spacing: 0.09em;
+  color: var(--r-ink);
+  padding-bottom: 0.4rem;
+  border-bottom: 1.5px solid var(--r-ink);
+  margin-bottom: 0.95rem;
 }
 
-.edu-item { margin-bottom: 0.75rem; }
-.edu-title {
-  font-size: 0.85rem;
-  font-weight: 700;
-  display: block;
+.title-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
+
+.title-text::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  background: var(--r-accent);
+}
+
+.edu-item {
+  position: relative;
+  padding-left: 0.85rem;
+  margin-bottom: 0.7rem;
+}
+
+.edu-item:last-child {
+  margin-bottom: 0;
+}
+
+.edu-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.28rem;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--r-faint);
+}
+
+.edu-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--r-ink);
+  display: block;
+  margin-bottom: 0.1rem;
+}
+
 .edu-desc {
-  font-size: 0.75rem;
-  color: #4b5563;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: var(--r-muted);
 }
 </style>
