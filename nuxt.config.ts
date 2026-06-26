@@ -36,6 +36,22 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2024-11-01',
 
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      failOnError: true,
+      routes: locales.flatMap((l) => {
+        const prefix = l.code === 'en' ? '' : `/${l.code}`
+        return [
+          `${prefix}/`,
+          `${prefix}/projects`,
+          `${prefix}/about`,
+          `${prefix}/resume`
+        ]
+      })
+    }
+  },
+
   hooks: {
     close: async () => {
       if (process.env.npm_lifecycle_event !== 'generate') return
@@ -125,7 +141,7 @@ export default defineNuxtConfig({
   i18n: {
     locales,
     defaultLocale: 'en',
-    strategy: 'prefix_except_default'
+    strategy: 'prefix_and_default'
   },
 
   image: {
