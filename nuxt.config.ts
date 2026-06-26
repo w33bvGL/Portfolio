@@ -50,20 +50,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
 
   nitro: {
-    preset: 'static',
-    prerender: {
-      crawlLinks: true,
-      failOnError: true,
-      routes: locales.flatMap((l) => {
-        const prefix = l.code === 'en' ? '' : `/${l.code}`
-        return [
-          `${prefix}/`,
-          `${prefix}/projects`,
-          `${prefix}/about`,
-          `${prefix}/resume`
-        ]
-      })
-    }
+    preset: 'static'
   },
 
   hooks: {
