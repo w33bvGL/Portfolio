@@ -52,7 +52,7 @@
   },
   "about": {
     "title": "Engineering Profile",
-    "description": "Full Stack Engineer. I design fault-tolerant backend architectures (Swoole, DDD) and build performant SPA/SSR interfaces. I optimize databases, write maintainable code, and own the full product development cycle.",
+    "description": "Full Stack Engineer with 3.5 years building production systems end-to-end. I design fault-tolerant backends in async PHP (Swoole, DDD) and ship performant Vue/Nuxt SPA/SSR interfaces — recently delivered an entire platform solo, from PostgreSQL schema to UI.",
     "stack": {
       "title": "Tech Stack",
       "description": "Day-to-day toolkit: languages, frameworks, databases, and automation infrastructure."
@@ -79,7 +79,7 @@
   "resume": {
     "name": "Vahe",
     "surname": "Sargsyan",
-    "position": "Full Stack Developer",
+    "position": "Full Stack Engineer",
     "stack": "PHP (Swoole) / DDD / PostgreSQL",
     "contacts": "Contacts",
     "portfolio": "Portfolio",
