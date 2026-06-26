@@ -18,6 +18,7 @@ export default defineEventHandler(() => {
       { name: 'Nuxt 2-4', icon: '/tech/frontend/nuxt.svg' },
       { name: 'Pinia', icon: '/tech/frontend/pinia.svg' },
       { name: 'Vitest', icon: '/tech/frontend/vitest.svg' },
+      { name: 'Storybook', icon: '/tech/frontend/storybook.svg' },
 
       // UI Components & Libraries
       { name: 'Nuxt UI', icon: '/tech/frontend/nuxt.svg' },
