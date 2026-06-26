@@ -52,7 +52,7 @@
   },
   "about": {
     "title": "Engineering Profile",
-    "description": "Full Stack Engineer. I build production systems end to end: fault-tolerant backends in async PHP (Swoole) and performant Vue/Nuxt SPA/SSR interfaces. Lately I shipped a whole platform on my own, from the PostgreSQL schema up to the UI.",
+    "description": "Full Stack Engineer. I build production systems end to end: fault-tolerant backends in async PHP (Swoole) and performant Vue/Nuxt SPA/SSR interfaces.",
     "stack": {
       "title": "Tech Stack",
       "description": "Day-to-day toolkit: languages, frameworks, databases, and automation infrastructure."
