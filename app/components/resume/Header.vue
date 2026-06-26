@@ -34,7 +34,7 @@ const { t } = useI18n()
         <li>
           <span class="label">Telegram</span>
           <a
-            :href="`https://t.me/${global.telegram}`"
+            :href="`https://t.me/${global.telegram.replace('@', '')}`"
             target="_blank"
             class="value"
           >{{ global.telegram }}</a>
@@ -113,38 +113,39 @@ const { t } = useI18n()
 }
 
 .header-right {
-  min-width: 178px;
   flex-shrink: 0;
-  text-align: right;
 }
 
 .contacts-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: 0.34rem;
 }
 
 .contacts-list li {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  line-height: 1.2;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  line-height: 1.3;
 }
 
 .contacts-list .label {
-  font-size: 0.55rem;
+  font-size: 0.58rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.08em;
   color: var(--r-faint);
-  margin-bottom: 1px;
+  min-width: 4.2rem;
+  text-align: right;
 }
 
 .contacts-list .value {
-  font-size: 0.76rem;
+  font-family: var(--r-mono);
+  font-size: 0.72rem;
   color: var(--r-ink);
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none;
   transition: color 0.15s ease;
 }

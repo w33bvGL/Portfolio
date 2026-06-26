@@ -44,7 +44,6 @@ definePageMeta({ layout: 'resume' })
   display: grid;
   grid-template-columns: 1.9fr 1fr;
   gap: 2.1rem;
-  flex: 1;
   margin-top: 1.4rem;
 }
 
@@ -59,8 +58,8 @@ definePageMeta({ layout: 'resume' })
 }
 
 .resume-footer {
-  margin-top: 1.4rem;
-  padding-top: 0.7rem;
+  margin-top: auto;
+  padding-top: 0.9rem;
   border-top: 1px solid var(--r-line);
   display: flex;
   justify-content: space-between;
