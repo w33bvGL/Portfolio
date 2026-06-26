@@ -66,13 +66,13 @@ design system with Storybook documentation as the single source of truth.
 
 **Сильные глаголы по категориям:**
 
-| Категория | Глаголы |
-|---|---|
-| Создание / архитектура | Built, Architected, Designed, Engineered, Developed, Established, Implemented |
+| Категория               | Глаголы                                                                          |
+|-------------------------|----------------------------------------------------------------------------------|
+| Создание / архитектура  | Built, Architected, Designed, Engineered, Developed, Established, Implemented    |
 | Улучшение / оптимизация | Optimized, Reduced, Cut, Improved, Streamlined, Refactored, Migrated, Modernized |
-| Лидерство / влияние | Led, Drove, Spearheaded, Mentored, Coordinated, Owned, Championed |
-| Решение проблем | Resolved, Debugged, Diagnosed, Eliminated, Untangled |
-| Запуск / результат | Shipped, Launched, Delivered, Released, Scaled |
+| Лидерство / влияние     | Led, Drove, Spearheaded, Mentored, Coordinated, Owned, Championed                |
+| Решение проблем         | Resolved, Debugged, Diagnosed, Eliminated, Untangled                             |
+| Запуск / результат      | Shipped, Launched, Delivered, Released, Scaled                                   |
 
 > Не перебарщивай с «вау-глаголами» (`Spearheaded`, `Orchestrated`). Если за ними не стоит реальное число — звучит как пустой пафос. Сильный глагол + слабый результат = хуже, чем простой глагол + сильный результат.
 
