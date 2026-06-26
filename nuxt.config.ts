@@ -11,6 +11,12 @@ const locales = [
 ]
 
 export default defineNuxtConfig({
+  vite: {
+    optimizeDeps: {
+      include: ['lenis']
+    }
+  },
+
   modules: [
     '@nuxt/eslint',
     '@nuxt/image',
