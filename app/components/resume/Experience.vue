@@ -50,7 +50,7 @@ const { data: experiences } = await useAsyncData<Experience[]>(
   letter-spacing: 0.09em;
   color: var(--r-ink);
   padding-bottom: 0.4rem;
-  border-bottom: 1.5px solid var(--r-ink);
+  border-bottom: 1.5px solid var(--r-accent);
   margin-bottom: 1rem;
 }
 

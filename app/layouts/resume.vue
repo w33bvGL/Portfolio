@@ -22,15 +22,15 @@
 }
 
 .resume-page {
-  /* Design tokens shared across resume sub-components */
-  --r-ink: #18181b;
-  --r-muted: #52525b;
-  --r-faint: #9499a3;
-  --r-line: #e6e7eb;
-  --r-line-soft: #eef0f3;
-  --r-accent: #4338ca;
-  --r-accent-soft: #eef1ff;
-  --r-panel: #fafafb;
+  /* Design tokens shared across resume sub-components — light blue scheme */
+  --r-ink: #16263f;
+  --r-muted: #475672;
+  --r-faint: #8b97ad;
+  --r-line: #dbe5f4;
+  --r-line-soft: #eaf1fb;
+  --r-accent: #2563eb;
+  --r-accent-soft: #e8f1ff;
+  --r-panel: #f3f8ff;
   --r-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
   background-color: white;
@@ -52,7 +52,7 @@
   left: 0;
   right: 0;
   height: 5px;
-  background: var(--r-accent);
+  background: linear-gradient(90deg, #2563eb, #60a5fa);
   z-index: 5;
 }
 

@@ -54,8 +54,10 @@ definePageMeta({ layout: 'resume' })
 
 .sidebar-column {
   min-width: 0;
-  padding-left: 1.75rem;
-  border-left: 1px solid var(--r-line);
+  background: var(--r-panel);
+  border: 1px solid var(--r-line);
+  border-radius: 10px;
+  padding: 1.25rem 1.35rem;
 }
 
 .resume-footer {

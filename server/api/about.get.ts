@@ -2,7 +2,7 @@ const ABOUT_DATA = {
   en: [
     {
       title: 'Architectural Philosophy',
-      content: 'I build systems end to end, not just features. I lean on clear domain boundaries (DDD), fault tolerance, and code that stays maintainable as the product grows, so the architecture supports the business instead of fighting it.'
+      content: 'I build systems end to end, not just features. I lean on clear domain boundaries, fault tolerance, and code that stays maintainable as the product grows, so the architecture supports the business instead of fighting it.'
     },
     {
       title: 'Technical Depth',
@@ -16,7 +16,7 @@ const ABOUT_DATA = {
   ru: [
     {
       title: 'Архитектурный подход',
-      content: 'Строю системы целиком, а не отдельные фичи. Опираюсь на чёткие доменные границы (DDD), отказоустойчивость и код, который остаётся поддерживаемым по мере роста продукта. Архитектура должна помогать бизнесу, а не мешать ему.'
+      content: 'Строю системы целиком, а не отдельные фичи. Опираюсь на чёткие доменные границы, отказоустойчивость и код, который остаётся поддерживаемым по мере роста продукта. Архитектура должна помогать бизнесу, а не мешать ему.'
     },
     {
       title: 'Техническая экспертиза',
@@ -30,7 +30,7 @@ const ABOUT_DATA = {
   hy: [
     {
       title: 'Ճարտարապետական մոտեցում',
-      content: 'Կառուցում եմ համակարգերն ամբողջությամբ, ոչ թե առանձին ֆիչերներ: Հենվում եմ հստակ դոմենային սահմանների (DDD), հուսալիության և կոդի վրա, որը մնում է պահպանելի՝ պրոդուկտի աճին զուգահեռ, որպեսզի ճարտարապետությունն օգնի բիզնեսին, ոչ թե խանգարի:'
+      content: 'Կառուցում եմ համակարգերն ամբողջությամբ, ոչ թե առանձին ֆիչերներ: Հենվում եմ հստակ դոմենային սահմանների, հուսալիության և կոդի վրա, որը մնում է պահպանելի՝ պրոդուկտի աճին զուգահեռ, որպեսզի ճարտարապետությունն օգնի բիզնեսին, ոչ թե խանգարի:'
     },
     {
       title: 'Տեխնիկական փորձառություն',

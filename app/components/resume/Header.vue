@@ -14,7 +14,6 @@ const { t } = useI18n()
           </h1>
           <h2 class="position">
             {{ t('resume.position') }}
-            <span class="stack-badge">{{ t('resume.stack') }}</span>
           </h2>
         </div>
       </div>
@@ -104,17 +103,6 @@ const { t } = useI18n()
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 0.3rem;
-}
-
-.stack-badge {
-  font-family: var(--r-mono);
-  font-size: 0.66rem;
-  background: var(--r-accent-soft);
-  padding: 2px 7px;
-  border-radius: 4px;
-  color: var(--r-accent);
-  font-weight: 600;
-  letter-spacing: -0.01em;
 }
 
 .summary {
