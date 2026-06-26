@@ -8,22 +8,22 @@ export default defineEventHandler(() => {
       { name: 'TypeScript', icon: '/tech/frontend/typescript.svg' },
 
       // Styling (Preprocessors & Frameworks)
-      { name: 'Sass', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg' },
-      { name: 'Less', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/less/less-plain-wordmark.svg' },
-      { name: 'Tailwind CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' },
-      { name: 'Bootstrap', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
+      { name: 'Sass', icon: '/tech/frontend/sass.svg' },
+      { name: 'Less', icon: '/tech/frontend/less.svg' },
+      { name: 'Tailwind CSS', icon: '/tech/frontend/tailwind.svg' },
+      { name: 'Bootstrap', icon: '/tech/frontend/bootstrap.svg' },
 
       // Main Frameworks & Ecosystem
-      { name: 'Vue 2-3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg' },
-      { name: 'Nuxt 2-4', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg' },
+      { name: 'Vue 2-3', icon: '/tech/frontend/vue.svg' },
+      { name: 'Nuxt 2-4', icon: '/tech/frontend/nuxt.svg' },
       { name: 'Pinia', icon: '/tech/frontend/pinia.svg' },
-      { name: 'Vitest', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitest/vitest-original.svg' },
+      { name: 'Vitest', icon: '/tech/frontend/vitest.svg' },
 
       // UI Components & Libraries
-      { name: 'Nuxt UI', icon: 'https://nuxt.com/assets/design-kit/icon-green.svg' },
+      { name: 'Nuxt UI', icon: '/tech/frontend/nuxt.svg' },
       { name: 'ShadCN', icon: '/tech/frontend/shad-cn.png' },
       { name: 'Prime Vue', icon: '/tech/frontend/prime-vue.png' },
-      { name: 'Vuetify', icon: 'https://bestofjs.org/logos/vuetify.svg' }
+      { name: 'Vuetify', icon: '/tech/frontend/vuetify.svg' }
     ],
     backend: [
       // Core Stack
@@ -49,16 +49,16 @@ export default defineEventHandler(() => {
 
       // Message Brokers & WebSockets
       { name: 'Kafka', icon: '/tech/backend/kafka.svg' },
-      { name: 'RabbitMQ', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rabbitmq/rabbitmq-original.svg' },
+      { name: 'RabbitMQ', icon: '/tech/backend/rabbitmq.svg' },
       { name: 'Centrifugo', icon: '/tech/backend/centrifugo.png' },
 
       // API, NoSQL, Cache & Search
       { name: 'GraphQL', icon: '/tech/backend/graphql.svg' },
-      { name: 'Redis', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
+      { name: 'Redis', icon: '/tech/backend/redis.svg' },
       { name: 'KeyDB', icon: '/tech/backend/key-db.webp' },
-      { name: 'Memcached', icon: 'https://www.vectorlogo.zone/logos/memcached/memcached-icon.svg' },
-      { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
-      { name: 'Cassandra', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cassandra/cassandra-original.svg' },
+      { name: 'Memcached', icon: '/tech/backend/memcached.svg' },
+      { name: 'MongoDB', icon: '/tech/backend/mongodb.svg' },
+      { name: 'Cassandra', icon: '/tech/backend/cassandra.svg' },
       { name: 'Elasticsearch', icon: '/tech/backend/elasticsearch.svg' },
 
       // File Storage & Analytics
