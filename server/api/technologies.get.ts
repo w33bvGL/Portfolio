@@ -35,9 +35,9 @@ export default defineEventHandler(() => {
 
       // Laravel Ecosystem & Admin Panels
       { name: 'Inertia.js', icon: '/tech/backend/inertia-js.svg' },
-      { name: 'Livewire', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/livewire/livewire-original.svg' },
+      { name: 'Livewire', icon: '/tech/backend/livewire.svg' },
       { name: 'Filament', icon: '/tech/backend/filament.svg' },
-      { name: 'Moonshine', icon: 'https://demo.moonshine-laravel.com/vendor/moonshine/logo-small.svg' },
+      { name: 'Moonshine', icon: '/tech/backend/moonshine.svg' },
       { name: 'Nova', icon: '/tech/backend/nova.svg' },
 
       // Testing
@@ -45,7 +45,7 @@ export default defineEventHandler(() => {
 
       // Primary Databases (Relational)
       { name: 'PostgresSQL', icon: '/tech/backend/postgresql.svg' },
-      { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+      { name: 'MySQL', icon: '/tech/backend/mysql.svg' },
 
       // Message Brokers & WebSockets
       { name: 'Kafka', icon: '/tech/backend/kafka.svg' },
@@ -72,7 +72,7 @@ export default defineEventHandler(() => {
     tools: [
       // Infrastructure
       { name: 'Linux', icon: '/tech/tools/linux.svg' },
-      { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
+      { name: 'Docker', icon: '/tech/tools/docker.svg' },
       { name: 'GitHub Actions', icon: '/tech/tools/github-actions.svg' },
 
       // Monitoring & Observability
