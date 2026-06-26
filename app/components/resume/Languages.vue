@@ -14,9 +14,7 @@ const { data: languages } = await useAsyncData<Language[]>('languages', () =>
     v-if="languages?.length"
     class="section mt-section"
   >
-    <h3 class="section-title">
-      <span class="title-text">{{ $t('languages.title') }}</span>
-    </h3>
+    <h3 class="section-title">{{ $t('languages.title') }}</h3>
     <ul class="lang-list">
       <li
         v-for="lang in languages"
@@ -35,30 +33,14 @@ const { data: languages } = await useAsyncData<Language[]>('languages', () =>
 }
 
 .section-title {
-  display: flex;
-  align-items: center;
-  font-size: 0.8rem;
-  font-weight: 800;
+  font-size: 0.7rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.09em;
-  color: var(--r-ink);
-  padding-bottom: 0.4rem;
-  border-bottom: 1.5px solid var(--r-accent);
-  margin-bottom: 0.95rem;
-}
-
-.title-text {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.title-text::before {
-  content: '';
-  width: 9px;
-  height: 9px;
-  border-radius: 2px;
-  background: var(--r-accent);
+  letter-spacing: 0.14em;
+  color: var(--r-faint);
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--r-line);
+  margin-bottom: 1rem;
 }
 
 .lang-list {

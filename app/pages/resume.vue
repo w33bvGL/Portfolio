@@ -42,8 +42,8 @@ definePageMeta({ layout: 'resume' })
 
 .resume-body {
   display: grid;
-  grid-template-columns: 1.85fr 1fr;
-  gap: 1.75rem;
+  grid-template-columns: 1.9fr 1fr;
+  gap: 2.1rem;
   flex: 1;
   margin-top: 1.4rem;
 }
@@ -54,10 +54,8 @@ definePageMeta({ layout: 'resume' })
 
 .sidebar-column {
   min-width: 0;
-  background: var(--r-panel);
-  border: 1px solid var(--r-line);
-  border-radius: 10px;
-  padding: 1.25rem 1.35rem;
+  padding-left: 1.7rem;
+  border-left: 1px solid var(--r-line);
 }
 
 .resume-footer {
