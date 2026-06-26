@@ -6,8 +6,8 @@ const { data: techs } = await useAsyncData('technologies', () =>
 )
 
 const skills = computed(() => ({
-  'Backend & Architecture': techs.value?.backend || [],
   'Frontend': techs.value?.frontend || [],
+  'Backend & Architecture': techs.value?.backend || [],
   'Tools & DevOps': techs.value?.tools || []
 }))
 </script>

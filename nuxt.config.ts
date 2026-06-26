@@ -123,11 +123,9 @@ export default defineNuxtConfig({
   },
 
   i18n: {
-    bundle: { optimizeTranslationDirective: false },
     locales,
     defaultLocale: 'en',
-    strategy: 'prefix_and_default',
-    vueI18n: './i18n.config.ts'
+    strategy: 'prefix_except_default'
   },
 
   image: {
