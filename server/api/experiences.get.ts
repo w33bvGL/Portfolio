@@ -5,14 +5,14 @@ const EXPERIENCES = {
       company: 'Nsoft',
       title: 'Full-Stack Engineer',
       period: 'Oct 2024',
-      description: 'Architecting and implementing core Full-Stack solutions across distributed microservices. Designed and deployed a centralized Content Storage system (CAS) for the ecosystem. Engineered a transactional billing module and a real-time currency exchange engine. Developed complex, state-heavy user dashboards (personal cabinets) and internal admin panels with a reactive Nuxt.js UI. Optimized PostgreSQL index strategy and Redis caching for maximum scalability, while establishing automated CI/CD pipelines from scratch.'
+      description: 'Sole engineer behind the entire platform — owned it end-to-end, from PostgreSQL schema and async PHP services to the reactive Nuxt.js UI. Designed and shipped a centralized Content-Addressable Storage (CAS) service as the single source of truth for all ecosystem media. Engineered a transactional billing module with idempotent, double-entry accounting that stays consistent under concurrent load. Built a real-time currency-exchange engine that streams live rates over WebSockets. Modeled the schema with a partitioning and indexing strategy from day one, and layered Redis caching to keep hot reads off the database. Established CI/CD pipelines from scratch for zero-downtime releases, and delivered state-heavy user dashboards and internal admin panels on a reactive frontend.'
     },
     {
       id: 2,
       company: 'Independent Contractor',
       title: 'Full-Stack Engineer',
       period: 'Jan 2023 — Sep 2024',
-      description: 'Developed scalable, event-driven backend systems for fintech platforms using Kafka and WebSockets. Implemented seamless integrations for fiat (Stripe) and crypto payment gateways. Designed a resilient, centralized logging and monitoring architecture utilizing the ELK stack. Managed containerized infrastructure and automated deployments using Docker.'
+      description: 'Delivered full-cycle web products for clients across e-commerce, hospitality, and lead-generation — each owned from database to UI. Integrated fiat and crypto payment gateways (Stripe, PayPal, and regional providers) end-to-end: checkout, webhooks, and reconciliation. Added real-time features over WebSockets where products needed live updates. Containerized environments with Docker and automated deployments for repeatable, low-friction releases. Stood up centralized logging and monitoring (ELK) to surface and resolve production issues faster.'
     }
   ],
   ru: [
@@ -21,14 +21,14 @@ const EXPERIENCES = {
       company: 'Nsoft',
       title: 'Full-Stack Engineer',
       period: 'Окт 2024',
-      description: 'Проектирование и сквозная Full-Stack разработка распределенных сервисов. Разработал и внедрил централизованную систему хранения контента (CAS) для инфраструктуры экосистемы. Спроектировал транзакционный биллинговый модуль и реалтайм-движок котировок валют. С нуля создал сложные, нагруженные состоянием личные кабинеты пользователей и внутренние админ-панели с реактивным интерфейсом на Nuxt.js. Оптимизировал структуру индексов в PostgreSQL и кэширование в Redis для обеспечения отказоустойчивости системы, полностью автоматизировал CI/CD пайплайны.'
+      description: 'Единственный инженер всей платформы — вёл её end-to-end: от схемы PostgreSQL и асинхронных PHP-сервисов до реактивного интерфейса на Nuxt.js. Спроектировал и запустил централизованное контент-адресуемое хранилище (CAS) как единый источник правды для всей медиа экосистемы. Реализовал транзакционный биллинг с идемпотентными операциями и двойной записью, сохраняющий консистентность под конкурентной нагрузкой. Построил реалтайм-движок котировок валют, транслирующий курсы по WebSocket. Заложил схему с партиционированием и стратегией индексов с первого дня, добавил кэш-слой на Redis, чтобы снять горячие чтения с базы. С нуля выстроил CI/CD для релизов без простоя и сделал нагруженные состоянием личные кабинеты и внутренние админ-панели на реактивном фронтенде.'
     },
     {
       id: 2,
       company: 'Independent Contractor',
       title: 'Full-Stack Engineer',
       period: 'Янв 2023 — Сент 2024',
-      description: 'Разработка масштабируемых event-driven бэкенд-систем для финтех-платформ с использованием Kafka и WebSockets. Реализовал интеграцию фиатных (Stripe) и криптовалютных платежных шлюзов. Спроектировал отказоустойчивую архитектуру централизованного логирования и мониторинга на базе ELK Stack. Управлял контейнеризированной инфраструктурой и автоматизацией деплоя через Docker.'
+      description: 'Делал веб-продукты полного цикла для клиентов в e-commerce, гостиничном бизнесе и lead-generation — каждый от базы данных до интерфейса. Интегрировал фиатные и крипто платёжные шлюзы (Stripe, PayPal и региональные провайдеры) сквозно: оплата, вебхуки, сверка. Добавлял реалтайм по WebSocket там, где продукту нужны были живые обновления. Контейнеризировал окружения в Docker и автоматизировал деплой ради повторяемых релизов без трения. Поднял централизованное логирование и мониторинг (ELK), чтобы быстрее находить и закрывать проблемы на проде.'
     }
   ],
   hy: [
@@ -37,14 +37,14 @@ const EXPERIENCES = {
       company: 'Nsoft',
       title: 'Full-Stack Engineer',
       period: 'Հոկտ 2024',
-      description: 'Բաշխված միկրոսերվիսների առանցքային Full-Stack ճարտարապետության նախագծում և իրականացում: Մշակել և ներդրել է բովանդակության պահպանման կենտրոնացված համակարգ (CAS) էկոհամակարգի ենթակառուցվածքի համար: Նախագծել է տրանզակցիոն բիլինգային մոդուլ և իրական ժամանակում աշխատող արժույթի փոխանակման շարժիչ: Զրոյից ստեղծել է օգտատերերի բարդ անձնական կաբինետներ և ներքին ադմինիստրատիվ վահանակներ՝ Nuxt.js-ի ռեակտիվ ինտերֆեյսով: Օպտիմալացրել է PostgreSQL ինդեքսների կառուցվածքը և Redis-ի քեշավորումը համակարգի կայունության համար, ամբողջությամբ ավտոմատացրել է CI/CD փողօղակները:'
+      description: 'Ամբողջ պլատֆորմի միակ ինժեները՝ վարել եմ այն end-to-end՝ PostgreSQL-ի սխեմայից և ասինխրոն PHP-սերվիսներից մինչև Nuxt.js-ի ռեակտիվ ինտերֆեյսը: Նախագծել և գործարկել եմ կենտրոնացված կոնտենտ-հասցեավորվող պահոց (CAS)՝ որպես էկոհամակարգի ողջ մեդիայի ճշմարտության միակ աղբյուր: Իրականացրել եմ տրանզակցիոն բիլինգ՝ իդեմպոտենտ գործողություններով և կրկնակի գրառմամբ, որը պահպանում է կոնսիստենտությունը կոնկուրենտ ծանրաբեռնվածության տակ: Կառուցել եմ արժույթի կուրսերի ռեալթայմ շարժիչ, որը հեռարձակում է կուրսերը WebSocket-ով: Առաջին օրվանից մոդելավորել եմ սխեման՝ պարտիցիոնավորմամբ և ինդեքսների ստրատեգիայով, ավելացրել Redis քեշ՝ տաք ընթերցումները բազայից հանելու համար: Զրոյից կառուցել եմ CI/CD՝ առանց պարապուրդի թողարկումների համար, և ստեղծել եմ վիճակով հագեցած անձնական կաբինետներ ու ներքին ադմին-վահանակներ ռեակտիվ ֆրոնտենդով:'
     },
     {
       id: 2,
       company: 'Independent Contractor',
       title: 'Full-Stack Engineer',
       period: 'Հուն 2023 — Սեպտ 2024',
-      description: 'Ֆինտեք հարթակների համար մասշտաբավորվող, event-driven backend համակարգերի մշակում Kafka-ի և WebSockets-ի միջոցով: Իրականացրել է ֆիատ (Stripe) և կրիպտո վճարային դարպասների անխափան ինտեգրում: Նախագծել է կենտրոնացված լոգինգի և մոնիտորինգի կայուն համակարգ ELK Stack-ի բազայի վրա: Կառավարել է կոնտեյներացված ենթակառուցվածքները և տեղակայումները Docker-ի միջոցով:'
+      description: 'Ստեղծել եմ ամբողջական ցիկլի վեբ-պրոդուկտներ հաճախորդների համար՝ e-commerce, հյուրանոցային ոլորտ և lead-generation՝ յուրաքանչյուրը տվյալների բազայից մինչև ինտերֆեյս: Ինտեգրել եմ ֆիատ և կրիպտո վճարային դարպասներ (Stripe, PayPal և տարածաշրջանային պրովայդերներ) ծայրից ծայր՝ վճարում, webhook-ներ, հաշվեկշռում: Ավելացրել եմ ռեալթայմ WebSocket-ով այնտեղ, որտեղ պրոդուկտին պետք էին կենդանի թարմացումներ: Կոնտեյներացրել եմ միջավայրերը Docker-ով և ավտոմատացրել տեղակայումը՝ կրկնվող, առանց շփման թողարկումների համար: Բարձրացրել եմ կենտրոնացված լոգինգ և մոնիտորինգ (ELK)՝ պրոդ-խնդիրներն ավելի արագ հայտնաբերելու և լուծելու համար:'
     }
   ]
 }

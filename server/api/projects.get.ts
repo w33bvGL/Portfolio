@@ -1,16 +1,16 @@
 const PROJECTS = {
   en: [
-    { name: 'Age of Astir', image: '/projects/age-of-astir.png', description: 'Immersive MMORPG universe featuring faction warfare, epic boss raids, and complex dungeon tracking systems.', url: 'https://ageofastir.com/' },
-    { name: 'Cyberhack Pro', image: '/projects/cyberhack-pro.png', description: 'A professional platform offering a wide range of game enhancement utilities. Reliable, secure architecture designed for gamers.', url: 'https://cyberhack.pro' },
-    { name: 'Omex Proxy', image: '/projects/omex-proxy.png', description: 'Enterprise-grade proxy management ecosystem. Features automated activation and Telegram bot integration.', url: 'https://omex.ai' },
-    { name: 'HentaiVoice', image: '/projects/hentai-voice.png', description: 'Hentai streaming service with a custom-built native MSE player. Supports HLS/M3U8, multi-track audio/video, and chunked subtitles without external libraries.', url: 'https://hentaivoice.com', isAdult: true },
-    { name: 'W33bvgl Portfolio', image: '/projects/portfolio.png', description: 'Personal portfolio showcasing full-stack engineering skills. Built with Nuxt 3, featuring modular architecture.', url: 'https://github.com/w33bvGL/Portfolio' },
-    { name: 'Mari Karkas', image: '/projects/mari-karkas.png', description: 'Turnkey construction service platform. Lead generation optimized UX with integrated calculation logic for frame houses.', url: 'https://quiz.mari-karkas.ru' },
-    { name: 'Ota-ku legacy', image: '/projects/ota-ku.png', description: 'Anime streaming portal with a massive localized library. Custom video player implementation and optimized CDN.' },
-    { name: 'Drive Fit', image: '/projects/drive-fit.png', description: 'Modern fitness club SPA. Features dynamic schedule management, trainer profiles, and membership integration.' },
-    { name: 'Crito', image: '/projects/crito.png', description: 'High-conversion landing page for a CRM system. Responsive design focused on feature showcasing and lead capture.' },
-    { name: 'TG Quick Click', image: '/projects/tg-quick-click.png', description: 'Telegram Mini App with clicker mechanics and economy. Optimized for high-load integration within the messenger.' },
-    { name: 'Podarok.ru', image: '/projects/podarokru.png', description: 'Personalized video greeting service. Complex backend for video rendering and order processing workflow.', url: 'https://podarokru.ru' }
+    { name: 'Age of Astir', image: '/projects/age-of-astir.png', description: 'Game platform for an MMORPG: three-faction warfare, boss raids, and dungeon-progression systems.', url: 'https://ageofastir.com/' },
+    { name: 'Cyberhack Pro', image: '/projects/cyberhack-pro.png', description: 'Platform for game-enhancement tools with secure licensing and a reliable delivery flow.', url: 'https://cyberhack.pro' },
+    { name: 'Omex Proxy', image: '/projects/omex-proxy.png', description: 'Proxy-management platform with automated activation and a Telegram-bot control flow.', url: 'https://omex.ai' },
+    { name: 'HentaiVoice', image: '/projects/hentai-voice.png', description: 'Streaming service built around a native MSE video player — HLS/M3U8, multi-track audio/video, and chunked subtitles, with zero third-party player libraries.', url: 'https://hentaivoice.com', isAdult: true },
+    { name: 'W33bvgl Portfolio', image: '/projects/portfolio.png', description: 'This site: Nuxt 3 with SSR, i18n in three languages, and on-the-fly PDF résumé generation via Puppeteer.', url: 'https://github.com/w33bvGL/Portfolio' },
+    { name: 'Mari Karkas', image: '/projects/mari-karkas.png', description: 'Lead-gen quiz funnel for a frame-house builder, with built-in construction-cost calculation.', url: 'https://quiz.mari-karkas.ru' },
+    { name: 'Ota-ku legacy', image: '/projects/ota-ku.png', description: 'Anime-streaming portal with a large localized library, a custom video player, and an optimized CDN.' },
+    { name: 'Drive Fit', image: '/projects/drive-fit.png', description: 'Fitness-club SPA with dynamic scheduling, trainer profiles, and membership flows.' },
+    { name: 'Crito', image: '/projects/crito.png', description: 'High-conversion CRM landing — responsive, focused on feature presentation and lead capture.' },
+    { name: 'TG Quick Click', image: '/projects/tg-quick-click.png', description: 'Telegram Mini App with clicker mechanics and an in-app economy, tuned for high-load use inside the messenger.' },
+    { name: 'Podarok.ru', image: '/projects/podarokru.png', description: 'Personalized video-greeting service with a backend pipeline for video rendering and order processing.', url: 'https://podarokru.ru' }
   ],
   hy: [
     { name: 'Age of Astir', image: '/projects/age-of-astir.png', description: 'MMORPG խաղային հարթակ: Մարտեր 3 ազգերի միջև, արշավներ, բոսսեր և զնդաններ (dungeons) ընկերների հետ խաղալու համար:', url: 'https://ageofastir.com/' },
