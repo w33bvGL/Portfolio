@@ -24,7 +24,7 @@ export default defineNuxtConfig({
     pageTransition: { name: 'page', mode: 'out-in' }
   },
 
-  css: ['lenis/dist/lenis.css', '~/assets/css/main.css'],
+  css: ['~/assets/css/main.css'],
 
   runtimeConfig: {
     appEnv: process.env.APP_ENV || 'development',
@@ -35,13 +35,6 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2024-11-01',
-
-  nitro: {
-    prerender: {
-      routes: ['/'],
-      crawlLinks: true
-    }
-  },
 
   hooks: {
     close: async () => {

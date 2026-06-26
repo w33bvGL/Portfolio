@@ -12,8 +12,11 @@
   }
 
   html, body {
-    block-size: 100%;
     min-height: 100svh;
+  }
+
+  html.lenis, html.lenis body {
+    height: auto;
   }
 
   html {
