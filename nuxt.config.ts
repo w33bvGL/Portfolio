@@ -24,7 +24,7 @@ export default defineNuxtConfig({
     pageTransition: { name: 'page', mode: 'out-in' }
   },
 
-  css: ['~/assets/css/main.css'],
+  css: ['lenis/dist/lenis.css', '~/assets/css/main.css'],
 
   runtimeConfig: {
     appEnv: process.env.APP_ENV || 'development',

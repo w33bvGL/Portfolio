@@ -57,6 +57,15 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   nuxtApp.hook('app:mounted', () => {
     initResizeObserver()
+
+    // On a hard/first load (no client navigation), Lenis caches its dimensions
+    // before fonts/images settle. Force a few recalculations so the scroll
+    // limit is correct without needing a route change to trigger page:finish.
+    lenis.resize()
+    requestAnimationFrame(() => lenis.resize())
+
+    document.fonts?.ready.then(() => lenis.resize())
+    window.addEventListener('load', () => lenis.resize(), { once: true })
   })
 
   router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized) => {
